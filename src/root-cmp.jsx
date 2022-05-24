@@ -1,10 +1,13 @@
-import React from 'react'
+import { Router, Route, Routes } from 'react-router-dom'
+import { routes } from './routes'
 
 function App() {
   return (
-    <div >
-      bob
-    </div>
+    <Router>
+      <Routes>
+        { routes.map(route => <Route path={ route.path } element={ route.element } key={ route.path } />) }
+      </Routes>
+    </Router>
   )
 }
 

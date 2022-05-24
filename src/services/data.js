@@ -1,14 +1,13 @@
 export const board = {
     "_id": "b101",
     "title": "Robot dev proj",
-    "archivedAt": 1589983468418,
-    "createdAt": 1589983468418,
+    "archivedAt": '',
+    "createdAt": '',
     "createdBy": {
         "_id": "u101",
         "fullname": "Abi Abambi",
         "imgUrl": "http://some-img"
     },
-    "style": {},
     "labels": [
         {
             "id": "l101",
