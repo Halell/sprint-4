@@ -2,7 +2,6 @@ import { storageService } from './async-storage.service'
 // import { httpService } from './http.service'
 import { store } from '../store/store'
 import { socketService, SOCKET_EVENT_USER_UPDATED, SOCKET_EMIT_USER_WATCH } from './socket.service'
-import { showSuccessMsg } from '../services/event-bus.service'
 
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
 // var gWatchedUser = null;
@@ -29,7 +28,7 @@ function getUsers() {
 }
 
 function onUserUpdate(user) {
-    showSuccessMsg(`This user ${user.fullname} just got updated from socket, new score: ${user.score}`)
+    // showSuccessMsg(`This user ${user.fullname} just got updated from socket, new score: ${user.score}`)
     store.dispatch({ type: 'SET_WATCHED_USER', user })
 }
 
@@ -54,7 +53,7 @@ async function update(user) {
     // user = await httpService.put(`user/${user._id}`, user)
     // Handle case in which admin updates other user's details
     if (getLoggedinUser()._id === user._id) saveLocalUser(user)
-    return user;
+    return user
 }
 
 async function login(userCred) {
@@ -67,7 +66,7 @@ async function login(userCred) {
     }
 }
 async function signup(userCred) {
-    userCred.score = 10000;
+    userCred.score = 10000
     const user = await storageService.post('user', userCred)
     // const user = await httpService.post('auth/signup', userCred)
     socketService.login(user._id)
