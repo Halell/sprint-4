@@ -1,20 +1,17 @@
-.board-group {
-    box-sizing: content-box;
-    padding-bottom: 40px;
-    padding-top: 18px;
-    padding-left: 16px;
+.group-header-wrppaer {
+    width: 100%;
+    position: relative; //absoulote
 
-    .board-group-wrapper {
-        box-sizing: content-box;
-        padding-right: 30px;
-        background-color: #fff;
-        border-radius: 8px;
+    .group-header-cmp {
+        padding-left: 30px;
+        position: relative;
 
-        .border-group-content {
-            height: 100%;
-            width: 100%;
-            outline: none;
-            position: relative;
+        .column-wrapper-title {
+            flex-basis: 425px;
+            // background-color: rgba(var(--pulse-floating-background-color), 0.95);
+            z-index: 2;
         }
+
+        .column-wrapper {}
     }
 }

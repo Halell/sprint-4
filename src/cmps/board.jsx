@@ -14,7 +14,14 @@ export const Board = () => {
     return (
         <section className='board board-controller-pinned flex'>
             <BoardHeader />
-            { board && board.groups?.map((group, idx) => <BoardGroup group={ group } key={ idx } />) }
+            <div className="board-group">
+                <div className="board-group-wrapper">
+                    <div className="border-group-content">
+                        {board && board.groups?.map((group, idx) => <BoardGroup group={group} key={idx} />)}
+                    </div>
+                </div>
+            </div>
         </section >
     )
 }
+
