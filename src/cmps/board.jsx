@@ -1,4 +1,6 @@
 import { Component } from 'react'
+import { BoardHeader } from './board-header'
+import { GroupList } from './group-list'
 
 export class Board extends Component {
 
@@ -6,7 +8,8 @@ export class Board extends Component {
         console.log('dddd')
         return (
             <section >
-                ahalan from board
+                <BoardHeader />
+                <GroupList />
             </section >
         )
 
