@@ -6,7 +6,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        { routes.map(route => <Route path={ route.path } element={ route.element } key={ route.path } />) }
+        {routes.map(route => <Route path={route.path} element={route.element} key={route.path} />)}
       </Routes>
     </Router>
   )

@@ -1,0 +1,14 @@
+.board {
+    height: 100%;
+    flex-direction: column;
+    position: relative;
+    flex-grow: 1;
+    min-width: 0;
+    width: 100%;
+    opacity: 1;
+    visibility: visible;
+
+    &.board-controller-pinned {
+        margin-left: 255px;
+    }
+}

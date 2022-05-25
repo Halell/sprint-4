@@ -8,7 +8,7 @@ import thunk from 'redux-thunk'
 // import { carReducer } from './reducer/car.reducer.js'
 import { userReducer } from './reducer/user.reducer'
 // import { reviewReducer } from './reducer/review.reducer'
-// import { systemReducer } from './reducer/system.reducer'
+import { systemReducer } from './reducer/system.reducer'
 
 const rootReducer = combineReducers({
     // carModule: carReducer,
