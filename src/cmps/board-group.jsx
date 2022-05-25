@@ -1,10 +1,9 @@
-import { BoardPreview } from "./board-preview";
+import { TaskList } from './task-list'
 
 
-
-export function BoardGroup({ items }) {
+export function BoardGroup({ group }) {
     return <div className="board-group">
-        {items.map((item, idx) => <BoardPreview item={item} key={idx} />)}
+        <TaskList group={group} />
         <input type="text" placeholder="+ Add Item" />
     </div>
 }
