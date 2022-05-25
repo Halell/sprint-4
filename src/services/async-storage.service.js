@@ -8,9 +8,8 @@ export const storageService = {
     remove,
     postMany
 }
-console.log('gGroups:', gGroups)
 function query(entityType, delay = 600) {
-    var entities = JSON.parse(localStorage.getItem(entityType)) || [gGroups]
+    var entities = JSON.parse(localStorage.getItem(entityType)) || gGroups
 
     return new Promise((resolve, reject) => {
         setTimeout(() => {

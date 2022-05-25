@@ -1,47 +1,45 @@
 const initialState = {
-    cars: [],
-    cart:[],
-    lastRemovedCar: null
+    board: {},
+    lastRemovedBoard: null
 }
-export function carReducer(state = initialState, action) {
+export function boardReducer(state = initialState, action) {
     var newState = state
-    var cars
-    var cart
+    var board
     switch (action.type) {
-        case 'SET_CARS':
-            newState = { ...state, cars: action.cars }
+        case 'SET_BOARD':
+            newState = { ...state, board: action.board }
             break
-        case 'REMOVE_CAR':
-            const lastRemovedCar = state.cars.find(car => car._id === action.carId)
-            cars = state.cars.filter(car => car._id !== action.carId)
-            newState = { ...state, cars, lastRemovedCar}
+        case 'REMOVE_BOARD':
+            const lastRemovedBoard = state.board.find(board => board._id === action.boardId)
+            board = state.board.filter(board => board._id !== action.boardId)
+            newState = { ...state, board, lastRemovedBoard }
             break
-        case 'ADD_CAR':
-            newState = { ...state, cars:[...state.cars, action.car]}
+        case 'ADD_BOARD':
+            newState = { ...state, board: [...state.board, action.board] }
             break
-        case 'UPDATE_CAR':
-            cars = state.cars.map(car => (car._id === action.car._id)? action.car : car)
-            newState = { ...state, cars}
+        case 'UPDATE_BOARD':
+            board = state.board.map(board => (board._id === action.board._id) ? action.board : board)
+            newState = { ...state, board }
             break
-        case 'ADD_TO_CART':
-            newState = { ...state, cart:[...state.cart, action.car]}
-            break
-        case 'REMOVE_FROM_CART':
-            cart = state.cart.filter(car => car._id !== action.carId)
-            newState = { ...state, cart}
-            break
-        case 'CLEAR_CART':
-            newState = { ...state, cart: []}
-            break
-        case 'UNDO_REMOVE_CAR':
-            if (state.lastRemovedCar) {
-                newState = { ...state, cars: [...state.cars, state.lastRemovedCar], lastRemovedCar: null}
-            }
-            break
+        // case 'ADD_TO_BOARD':
+        //     newState = { ...state, boardt:[...state.boardt, action.board]}
+        //     break
+        // case 'REMOVE_FROM_BOARD':
+        //     boardt = state.boardt.filter(board => board._id !== action.boardId)
+        //     newState = { ...state, boardt}
+        //     break
+        // case 'CLEAR_BOARD':
+        //     newState = { ...state, boardt: []}
+        //     break
+        // case 'UNDO_REMOVE_BOARD':
+        //     if (state.lastRemovedBoard) {
+        //         newState = { ...state, board: [...state.board, state.lastRemovedBoard], lastRemovedBoard: null}
+        //     }
+        // break
         default:
     }
     // For debug:
-    window.carState = newState
+    window.boardState = newState
     // console.log('Prev State:', state)
     // console.log('Action:', action)
     // console.log('New State:', newState)
