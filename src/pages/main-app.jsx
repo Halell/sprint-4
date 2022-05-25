@@ -3,6 +3,8 @@ import { BoardController } from '../cmps/board-controller'
 import { Board } from '../cmps/board.jsx'
 
 export const MainApp = () => {
+
+
     return (
         <main>
             <div className="app flex">
@@ -11,7 +13,7 @@ export const MainApp = () => {
             </div>
             <section className="work-space">
                 <BoardController />
-                <Board />
+                <Board  />
             </section>
         </main>
     )

@@ -2,56 +2,56 @@
 import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
-import { getActionRemoveCar, getActionAddCar, getActionUpdateCar } from '../store/car.actions.js'
+import { getActionRemoveBoard, getActionAddBoard, getActionUpdateBoard } from '../store/action/board.actions'
 
-const STORAGE_KEY = 'car'
-const carChannel = new BroadcastChannel('carChannel')
+const STORAGE_KEY = 'board'
+const boardChannel = new BroadcastChannel('boardChannel')
 // const listeners = []
 
-export const carService = {
+export const boardService = {
     query,
     getById,
     save,
     remove,
-    getEmptyCar,
+    getEmptyBoard,
     subscribe,
     unsubscribe
     
 }
-window.cs = carService;
+window.cs = boardService;
 
 
 function query() {
     return storageService.query(STORAGE_KEY)
 }
-function getById(carId) {
-    return storageService.get(STORAGE_KEY, carId)
-    // return axios.get(`/api/car/${carId}`)
+function getById(boardId) {
+    return storageService.get(STORAGE_KEY, boardId)
+    // return axios.get(`/api/board/${boardId}`)
 }
-async function remove(carId) {
+async function remove(boardId) {
     // return new Promise((resolve, reject) => {
     //     setTimeout(reject, 2000)
     // })
     // return Promise.reject('Not now!');
-    await storageService.remove(STORAGE_KEY, carId)
-    carChannel.postMessage(getActionRemoveCar(carId))
+    await storageService.remove(STORAGE_KEY, boardId)
+    boardChannel.postMessage(getActionRemoveBoard(boardId))
 }
-async function save(car) {
-    var savedCar
-    if (car._id) {
-        savedCar = await storageService.put(STORAGE_KEY, car)
-        carChannel.postMessage(getActionUpdateCar(savedCar))
+async function save(board) {
+    var savedBoard
+    if (board._id) {
+        savedBoard = await storageService.put(STORAGE_KEY, board)
+        boardChannel.postMessage(getActionUpdateBoard(savedBoard))
         
     } else {
         // Later, owner is set by the backend
-        car.owner = userService.getLoggedinUser()
-        savedCar = await storageService.post(STORAGE_KEY, car)
-        carChannel.postMessage(getActionAddCar(savedCar))
+        board.owner = userService.getLoggedinUser()
+        savedBoard = await storageService.post(STORAGE_KEY, board)
+        boardChannel.postMessage(getActionAddBoard(savedBoard))
     }
-    return savedCar
+    return savedBoard
 }
 
-function getEmptyCar() {
+function getEmptyBoard() {
     return {
         vendor: 'Susita-' + (Date.now() % 1000),
         price: utilService.getRandomIntInclusive(1000, 9000),
@@ -59,10 +59,10 @@ function getEmptyCar() {
 }
 
 function subscribe(listener) {
-    carChannel.addEventListener('message', listener)
+    boardChannel.addEventListener('message', listener)
 }
 function unsubscribe(listener) {
-    carChannel.removeEventListener('message', listener)
+    boardChannel.removeEventListener('message', listener)
 }
 
 
