@@ -1,6 +1,6 @@
     .board-controller {
         &.board-controller-pinned {
-            width: 255px;
+            width: 35px; //open 225px
             animation-name: slideInFromLeft;
             animation-duration: .1s;
             animation-timing-function: cubic-bezier(0, 0, 0.35, 1);

@@ -1,0 +1,20 @@
+.board-group {
+    box-sizing: content-box;
+    padding-bottom: 40px;
+    padding-top: 18px;
+    padding-left: 16px;
+
+    .board-group-wrapper {
+        box-sizing: content-box;
+        padding-right: 30px;
+        background-color: #fff;
+        border-radius: 8px;
+
+        .border-group-content {
+            height: 100%;
+            width: 100%;
+            outline: none;
+            position: relative;
+        }
+    }
+}

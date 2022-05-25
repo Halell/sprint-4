@@ -1,6 +1,6 @@
+import { userService } from "../../services/user.service.js";
 import { boardService } from "../../services/board.service.js";
 
-import { userService } from "../../services/user.service.js";
 
 // Action Creators:
 export function getActionRemoveBoard(boardId) {
@@ -24,14 +24,14 @@ export function getActionUpdateBoard(board) {
 
 var subscriber
 
-export function loadBoards() {
+export function loadBoard() {
     return (dispatch) => {
         boardService.query()
-            .then(boards => {
-                console.log('Boards from DB:', boards)
+            .then(board => {
+                // console.log('Board from DB:', board)
                 dispatch({
-                    type: 'SET_CARS',
-                    boards
+                    type: 'SET_BOARD',
+                    board
                 })
             })
             .catch(err => {
