@@ -6,7 +6,7 @@ export class Board extends Component {
         console.log('dddd')
         return (
             <section >
-                ahalan from board
+
             </section >
         )
 
