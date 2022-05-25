@@ -5,7 +5,9 @@ export function BoardGroup({ group, onAddTask }) {
     return <div className="group-header-wrppaer">
         <div className='group-header-cmp flex' >
             <div className='column-wrapper-title flex'>
-                <div className='btn-group-menu'></div>
+                <div className='btn-group-menu flex'>🟢
+                    <div className='group-title' >{group.title}</div>
+                </div>
                 <div></div>
             </div>
             <div className='column-wrapper'></div>
