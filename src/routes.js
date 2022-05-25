@@ -1,4 +1,5 @@
 import { HomePage } from './pages/HomePage'
+import { App } from './pages/app.jsx'
 
 export default [
     // {
@@ -9,17 +10,13 @@ export default [
     //     path: '/item/:itemId',
     //     element: <ItemDetails />
     // },
-    // {
-    //     path: '/shop',
-    //     element: <Shop />,
-    // },
-    // {
-    //     path: '/about',
-    //     element: <AboutUs />,
-    // },
+    {
+        path: '/home',
+        element: <HomePage />,
+    },
     {
         path: '/',
-        element: <HomePage />,
+        element: <App />,
     },
 
 ]
