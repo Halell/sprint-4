@@ -1,0 +1,20 @@
+    .board-controller {
+        &.board-controller-pinned {
+            width: 255px;
+            animation-name: slideInFromLeft;
+            animation-duration: .1s;
+            animation-timing-function: cubic-bezier(0, 0, 0.35, 1);
+            animation-delay: 0s;
+            animation-iteration-count: 1;
+            animation-direction: normal;
+            display: flex;
+            height: 100%;
+            position: absolute;
+            border-right: 1px solid;
+            border-color: #d0d4e4;
+            z-index: 1000001;
+            transition: width .1s cubic-bezier(0, 0, 0.35, 1);
+            color: #323338;
+            // background-color: var(--dark-background-color);
+        }
+    }
