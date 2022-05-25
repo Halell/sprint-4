@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useCallback } from 'react'
 import { BoardHeader } from './board-header'
 import { BoardGroup } from './board-group'
 import { useDispatch, useSelector } from 'react-redux'
@@ -10,6 +10,14 @@ export const Board = () => {
     useEffect(() => {
         dispatch(loadBoard())
     }, [])
+    const onSetTask = useCallback(async (task) => {
+        console.log(task)
+        // dispatch(setFilterBy(filterBy))
+        // dispatch(loadRobots())
+    }, [])
+
+    console.log(board)
+
 
     return (
         <section className='board board-controller-pinned flex'>
@@ -17,7 +25,15 @@ export const Board = () => {
             <div className="board-group">
                 <div className="board-group-wrapper">
                     <div className="border-group-content">
-                        {board && board.groups?.map((group, idx) => <BoardGroup group={group} key={idx} />)}
+                        { board && board.groups?.map((group, idx) =>
+                            <BoardGroup
+                                onSetTask={ onSetTask }
+                                group={ group }
+                                columns={ board.columns }
+                                key={ idx }
+
+                            />
+                        ) }
                     </div>
                 </div>
             </div>

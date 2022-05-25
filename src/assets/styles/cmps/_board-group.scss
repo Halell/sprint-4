@@ -7,10 +7,25 @@
         position: relative;
 
         .column-wrapper-title {
-            flex-basis: 425px;
+            // flex-basis: 425px;
+            flex-grow: 1;
             position: sticky;
+            flex-grow: 1;
             // background-color: rgba(var(--pulse-floating-background-color), 0.95);
             z-index: 2;
+
+            .title-inner-container {
+                position: relative;
+                min-height: 40px;
+                text-align: left;
+                font-size: 18px;
+                flex: 1 0 308px;
+                min-width: 0px;
+                display: flex;
+                align-items: center;
+                padding-bottom: 1px;
+                z-index: 1;
+            }
 
             .btn-group-menu {
                 position: absolute;
@@ -24,5 +39,9 @@
         }
     }
 
-    .column-wrapper {}
+    .column-wrapper-columns {
+        width: 100%;
+        position: relative;
+        height: 100%;
+    }
 }
