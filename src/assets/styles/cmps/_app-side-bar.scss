@@ -2,4 +2,27 @@
     width: 65px;
     height: 100%;
     flex-shrink: 0;
+
+    .sep {
+        width: 80%;
+        margin: auto;
+        border-top: 1px solid #676879;
+    }
+}
+
+
+
+.logo-container {
+    margin-left: 13px;
+    margin-top: 6px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    margin-bottom: 7px;
+
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.427);
+    }
 }

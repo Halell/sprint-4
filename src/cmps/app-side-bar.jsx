@@ -3,7 +3,12 @@
 export const AppSideBar = () => {
     return (
         <div className="app-side-bar-container">
-            <h1>sidebar!</h1>
+            <div className="logo-container">
+                <img className="surface-item-image" src="https://cdn.monday.com/images/logos/monday_logo_icon.png" />
+            </div>
+            <div className="sep">
+                
+            </div>
         </div>
     )
 }
