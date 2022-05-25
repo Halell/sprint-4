@@ -22,7 +22,8 @@ export class Board extends Component {
     ]
     render() {
         return (
-            <section >
+            <section className='board board-controller-pinned flex'
+            >
                 <BoardHeader />
                 <BoardGroup items={this.items} />
             </section >
