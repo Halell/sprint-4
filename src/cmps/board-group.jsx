@@ -1,19 +1,34 @@
-import { TaskList } from './task-list'
+import { TaskList } from "./task-list"
+import { useFormRegister } from "../hooks/useFormRegister"
 
-
-export function BoardGroup({ group }) {
-    return <div className="group-header-wrppaer">
-        <div className='group-header-cmp flex' >
-            <div className='column-wrapper-title flex'>
-                <div className='btn-group-menu flex'>🟢
-                    <div className='group-title' >{group.title}</div>
+export function BoardGroup({ group, onSetTask, columns }) {
+    const [register] = useFormRegister({
+        taskTitle: ""
+    }, onSetTask)
+    console.log(columns)
+    return (
+        <div className="group-header-wrppaer">
+            <div className="group-header-cmp flex" >
+                <div className="column-wrapper-title flex">
+                    <div className="btn-group-menu flex">🟢
+                        <div className="title-inner-container">
+                            <div className="group-title text-component" style={ { color: "#037f4c" } } >{ group.title }</div>
+                        </div>
+                    </div>
                 </div>
-                <div></div>
+                <div className="column-wrapper-columns">
+                    { columns.map(column =>
+                        <div>{ column }</div>
+                    ) }
+                </div>
+                <div className="column-wrapper-add"></div>
             </div>
-            <div className='column-wrapper'></div>
-            <div className='column-wrapper-add'></div>
+            <TaskList group={ group } />
+            <section >
+                <label htmlFor="model">Model</label>
+                <input { ...register('taskTitle') } />
+            </section>
         </div>
-        <TaskList group={group} />
-        <input type="text" placeholder="+ Add Item" />
-    </div>
+    )
+
 }
