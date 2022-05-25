@@ -1,5 +1,5 @@
 import { HomePage } from './pages/HomePage'
-import { App } from './pages/app.jsx'
+import { MainApp } from './pages/main-app'
 
 export default [
     // {
@@ -16,7 +16,7 @@ export default [
     },
     {
         path: '/',
-        element: <App />,
+        element: <MainApp />,
     },
 
 ]
