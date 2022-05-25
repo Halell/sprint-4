@@ -1,5 +1,5 @@
 const fs = require('fs')
-const gGroups = require('../data/board.json')
+const gBoard = require('../data/board.json')
 export const storageService = {
     query,
     get,
@@ -8,13 +8,15 @@ export const storageService = {
     remove,
     postMany
 }
-console.log('gGroups:', gGroups)
-function query(entityType, delay = 600) {
-    var entities = JSON.parse(localStorage.getItem(entityType)) || [gGroups]
+// console.log('gGroups:', gGroups)
+
+function query(entityType, delay = 100) {
+    var entities = JSON.parse(localStorage.getItem(entityType)) || gBoard
 
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             // reject('OOOOPs')
+            _save(entityType, entities)
             resolve(entities)
         }, delay)
     })
