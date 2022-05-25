@@ -1,6 +1,6 @@
 import { AppSideBar } from '../cmps/app-side-bar'
 import { BoardController } from '../cmps/board-controller'
-import { Board } from '../cmps/board-app.jsx'
+import { Board } from '../cmps/board.jsx'
 
 export const MainApp = () => {
 

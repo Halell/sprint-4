@@ -1,5 +1,5 @@
 const fs = require('fs')
-const gGroups = require('../data/group.json')
+const gGroups = require('../data/board.json')
 export const storageService = {
     query,
     get,
