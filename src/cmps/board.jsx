@@ -3,6 +3,7 @@ import { BoardHeader } from './board-header'
 import { BoardGroup } from './board-group'
 import { useDispatch, useSelector } from 'react-redux'
 import { loadBoard } from '../store/action/board.actions'
+import { boardService } from '../services/board.service'
 
 export const Board = () => {
     const { board } = useSelector((storeState) => storeState.boardModule)
@@ -18,6 +19,11 @@ export const Board = () => {
 
     console.log(board)
 
+
+    const onAddTask = (task) => {
+        console.log('saving')
+        boardService.save(task)
+    }
 
     return (
         <section className='board board-controller-pinned flex'>

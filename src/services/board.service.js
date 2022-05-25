@@ -16,7 +16,7 @@ export const boardService = {
     getEmptyBoard,
     subscribe,
     unsubscribe
-    
+
 }
 window.cs = boardService;
 
@@ -36,19 +36,20 @@ async function remove(boardId) {
     await storageService.remove(STORAGE_KEY, boardId)
     boardChannel.postMessage(getActionRemoveBoard(boardId))
 }
-async function save(board) {
-    var savedBoard
-    if (board._id) {
-        savedBoard = await storageService.put(STORAGE_KEY, board)
-        boardChannel.postMessage(getActionUpdateBoard(savedBoard))
-        
+async function save(task) {
+    console.log('hi')
+    var savedTask
+    if (task._id) {
+        savedTask = await storageService.put(STORAGE_KEY, task)
+        boardChannel.postMessage(getActionUpdateBoard(savedTask))
+
     } else {
         // Later, owner is set by the backend
-        board.owner = userService.getLoggedinUser()
-        savedBoard = await storageService.post(STORAGE_KEY, board)
-        boardChannel.postMessage(getActionAddBoard(savedBoard))
+        task.owner = userService.getLoggedinUser()
+        savedTask = await storageService.post(STORAGE_KEY, task)
+        boardChannel.postMessage(getActionAddBoard(savedTask))
     }
-    return savedBoard
+    return savedTask
 }
 
 function getEmptyBoard() {
