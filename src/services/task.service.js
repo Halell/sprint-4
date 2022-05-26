@@ -29,20 +29,23 @@ async function remove(taskId) {
     await storageService.remove(STORAGE_KEY, taskId)
 }
 
-async function saveTask(boardId, groupId, taskToSave) {
+async function saveTask(board, groupId, taskToSave) {
     try {
-        const board = await getById(boardId)
-        if (taskToSave._id) {
-            const groups = board.groups.map(group => {
-                if (group.id === groupId) group.taskes.push(taskToSave)
-                return group
-            })
-            board.groups = groups
-            boardService.save(board)
-        } else {
-            // board.group
-        }
-
+        // await
+        const groups = board.groups.map(group => {
+            if (group.id === groupId) {
+                if (!taskToSave._id) {
+                    taskToSave.id = utilService.makeId()
+                    group.tasks.push(taskToSave)
+                } else {
+                    const idx = group.tasks.findIndex(task => task._id === taskToSave._id)
+                    group.tasks[idx] = taskToSave
+                }
+            }
+            return group
+        })
+        board.groups = groups
+        return boardService.save(board)
     } catch (err) {
         throw err
     }
