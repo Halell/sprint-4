@@ -18,17 +18,31 @@ export const Board = () => {
             <div className="board-group">
                 <div className="board-group-wrapper">
                     <div className="border-group-content">
-                        { board && board.groups?.map((group, idx) =>
-                            <BoardGroup
-                                group={ group }
-                                columns={ board.columns }
-                                key={ idx }
+<<<<<<< HEAD
+    {
+        board && board.groups?.map((group, idx) =>
+=======
+<<<<<<< HEAD
+                        {board && board.groups?.map((group, idx) => <BoardGroup group={group} key={idx} />)}
+=======
+                        {board && board.groups?.map((group, idx) =>
+>>>>>>> 0e037df20b707471324a20486cbf6f1947e2bc4d
+            <BoardGroup
+                group={ group }
+                columns={ board.columns }
+                key={ idx }
 
-                            />
-                        ) }
-                    </div>
-                </div>
-            </div>
+            />
+<<<<<<< HEAD
+        )
+    }
+=======
+                        )}
+>>>>>>> ea8e494ca9644c5f44fab15a29d31c2b952cb0e1
+>>>>>>> 0e037df20b707471324a20486cbf6f1947e2bc4d
+                    </div >
+                </div >
+            </div >
         </section >
     )
 }
