@@ -11,8 +11,8 @@ export function BoardGroup({ group, columns, onAddTask }) {
         const field = target.name
         const value = target.type === 'number' ? (+target.value || '') : target.value
         setTask((prevFields) => ({ ...prevFields, [field]: value }))
-        console.log('task22: ', task)
     }
+
     return (
         <div className="group-header-wrppaer">
             <div className="group-header-cmp flex" >

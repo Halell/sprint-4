@@ -32,6 +32,9 @@ async function remove(taskId) {
 async function saveTask(board, groupId, taskToSave) {
     try {
         // await
+        console.log('taskToSave33: ', taskToSave);
+        console.log('board33: ', board);
+        console.log('groupId33: ', groupId);
         const groups = board.groups.map(group => {
             if (group.id === groupId) {
                 if (!taskToSave._id) {
@@ -45,6 +48,7 @@ async function saveTask(board, groupId, taskToSave) {
             return group
         })
         board.groups = groups
+        console.log('board44: ', board);
         return boardService.save(board)
     } catch (err) {
         throw err
