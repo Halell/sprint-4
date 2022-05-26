@@ -1,6 +1,6 @@
 import { boardService } from "./board.service"
 import { utilService } from "./util.service"
-
+import { loadBoard } from "../store/action/board.actions"
 
 export const groupService = {
     saveGroup,
@@ -18,5 +18,6 @@ async function saveGroup(board) {
         title: 'Group ' + (board.groups.length + 1)
     }
     board.groups.unshift(newGroup)
-    boardService.save(board)
+    const savedBoard = await boardService.save(board)
+    return savedBoard
 }

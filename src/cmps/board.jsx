@@ -14,9 +14,15 @@ export const Board = () => {
         dispatch(loadBoard())
     }, [])
 
+    useEffect(() => {
+        console.log(board)
+    }, [board])
+
     const onAddGroup = async () => {
         console.log('adding group!')
-        groupService.saveGroup(board)
+        const savedBoard = await groupService.saveGroup(board)
+        board = savedBoard
+        console.log(board)
     }
 
     const onAddTask = async (board, groupId, task, ev) => {

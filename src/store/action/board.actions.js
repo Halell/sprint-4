@@ -60,7 +60,6 @@ export function removeBoard(boardId) {
 
 export function addBoard(board) {
     return (dispatch) => {
-
         boardService.save(board)
             .then(savedBoard => {
                 console.log('Added Board', savedBoard);
