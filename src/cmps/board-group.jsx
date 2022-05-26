@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { TaskList } from "./task-list"
-import { useFormRegister } from "../hooks/useFormRegister"
+// import { useFormRegister } from "../hooks/useFormRegister"
 import { useDispatch, useSelector } from 'react-redux'
 
 export function BoardGroup({ group, columns, onAddTask }) {
