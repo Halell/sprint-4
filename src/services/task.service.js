@@ -41,7 +41,11 @@ async function saveTask(board, groupId, taskToSave) {
             return group
         })
         board.groups = groups
+<<<<<<< HEAD
         return boardService.save(board)
+=======
+        return board
+>>>>>>> 34d47cc4b4743316132340a079e691cfc19b34ff
     } catch (err) {
         throw err
     }

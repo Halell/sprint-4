@@ -1,13 +1,17 @@
 import { useState } from 'react'
 import { TaskList } from "./task-list"
-// import { useFormRegister } from "../hooks/useFormRegister"
-import { useDispatch, useSelector } from 'react-redux'
-import { saveTask } from '../store/action/task.actions'
 
+import { useSelector } from 'react-redux'
+
+
+<<<<<<< HEAD
 export function BoardGroup({ group, columns, onAddTask, onARemoveGroup }) {
     const dispatch = useDispatch()
+=======
+export function BoardGroup({ group, columns, onAddTask }) {
+
+>>>>>>> 34d47cc4b4743316132340a079e691cfc19b34ff
     const { board } = useSelector((storeState) => storeState.boardModule)
-    const boardId = board._id
     const [task, setTask] = useState(null)
     const [isOpen, setIsOpen] = useState(false)
     const onHandleChange = ({ target }) => {
@@ -15,11 +19,15 @@ export function BoardGroup({ group, columns, onAddTask, onARemoveGroup }) {
         const value = target.type === 'number' ? (+target.value || '') : target.value
         setTask((prevFields) => ({ ...prevFields, [field]: value }))
     }
+<<<<<<< HEAD
     // console.log('from board group', task)
     const toggleBtn = () => {
         // const isOpend = isOpen ? false : true
         setIsOpen(isOpen ? false : true)
     }
+=======
+
+>>>>>>> 34d47cc4b4743316132340a079e691cfc19b34ff
     return (
         <div className="group-header-wrppaer">
             <div className="group-header-cmp flex" >
@@ -45,7 +53,7 @@ export function BoardGroup({ group, columns, onAddTask, onARemoveGroup }) {
                         <div key={idx} >{column}</div>
                     )}
                 </div>
-                <div className="column-wrapper-add"></div>
+                <div className="column-wrapper-add">+</div>
             </div>
             <TaskList group={group} onAddTask={onAddTask} />
             <form onSubmit={(ev) => onAddTask(board, group.id, task, ev)}  >
