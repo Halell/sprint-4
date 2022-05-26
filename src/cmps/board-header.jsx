@@ -1,6 +1,7 @@
+import { BoardFilter } from "./board-filter";
 
 
-export function BoardHeader() {
+export function BoardHeader({ onAddGroup }) {
     return (
         <div className="board-header">
             <div className="board-header-content" >
@@ -25,7 +26,9 @@ export function BoardHeader() {
                 </div>
                 <div className="board-header-bottom">
                     <div className="board-header-filter">
-                        sdfghjk
+                        <BoardFilter
+                            onAddGroup={onAddGroup}
+                        />
                     </div>
                 </div>
             </div>
