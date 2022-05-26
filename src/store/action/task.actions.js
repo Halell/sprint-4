@@ -1,12 +1,12 @@
 import { taskService } from "../../services/task.service"
 
-export function saveTask(task, boardId, groupId) { // Action Creator
+export function saveTask(board, groupId, task) { // Action Creator
     return async (dispatch) => {
         try {
+            console.log('task: ', task);
             const actionType = (task._id) ? 'UPDATE_TASK' : 'ADD_TASK'
-            const res = await taskService.saveTask(task, boardId, groupId)
+            const res = await taskService.saveTask(board, groupId, task)
             const savedTask = res
-            console.log('savedTask: ', savedTask);
             dispatch({
                 type: actionType,
                 task: savedTask
