@@ -27,7 +27,7 @@ var subscriber
 export function loadBoard() {
     return (dispatch) => {
         boardService.query()
-            .then(board => {
+        .then(board => {
                 dispatch({
                     type: 'SET_BOARD',
                     board

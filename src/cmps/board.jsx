@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { BoardHeader } from './board-header'
 import { BoardGroup } from './board-group'
 import { useDispatch, useSelector } from 'react-redux'
-import { loadBoard } from '../store/action/board.actions'
+import { loadBoard,updateBoard } from '../store/action/board.actions'
 import { taskService } from '../services/task.service'
 import { groupService } from '../services/group.service'
 
@@ -14,20 +14,22 @@ export const Board = () => {
         dispatch(loadBoard())
     }, [])
 
-    useEffect(() => {
-        console.log(board)
-    }, [board])
+    const onARemoveGroup = async (groupId) => {
+        console.log('removing!')
+        await groupService.remove(groupId, board)
+        dispatch(loadBoard())
+    }
 
     const onAddGroup = async () => {
         console.log('adding group!')
-        const savedBoard = await groupService.saveGroup(board)
-        board = savedBoard
-        console.log(board)
+        await groupService.addGroup(board)
+        dispatch(updateBoard(board,))
     }
 
     const onAddTask = async (board, groupId, task, ev) => {
         ev.preventDefault()
-        taskService.saveTask(board, groupId, task)
+        await taskService.saveTask(board, groupId, task)
+        dispatch(loadBoard())
     }
 
     return (
@@ -40,6 +42,7 @@ export const Board = () => {
                     <div className="border-group-content">
                         {board && board.groups?.map((group, idx) =>
                             <BoardGroup
+                                onARemoveGroup={onARemoveGroup}
                                 onAddTask={onAddTask}
                                 group={group}
                                 columns={board.columns}

@@ -1,7 +1,7 @@
 import { storageService } from "./async-storage.service"
 import { utilService } from "./util.service"
 import { boardService } from "./board.service"
-import { loadBoard, updateBoard } from '../store/action/board.actions'
+
 const STORAGE_KEY = 'board'
 
 
@@ -41,9 +41,7 @@ async function saveTask(board, groupId, taskToSave) {
             return group
         })
         board.groups = groups
-
-        // const savedBoard = boardService.save(board)
-        return updateBoard(board)
+        return boardService.save(board)
     } catch (err) {
         throw err
     }

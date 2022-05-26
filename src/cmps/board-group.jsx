@@ -4,24 +4,35 @@ import { TaskList } from "./task-list"
 import { useDispatch, useSelector } from 'react-redux'
 import { saveTask } from '../store/action/task.actions'
 
-export function BoardGroup({ group, columns, onAddTask }) {
+export function BoardGroup({ group, columns, onAddTask, onARemoveGroup }) {
     const dispatch = useDispatch()
     const { board } = useSelector((storeState) => storeState.boardModule)
     const boardId = board._id
     const [task, setTask] = useState(null)
-
+    const [isOpen, setIsOpen] = useState(false)
     const onHandleChange = ({ target }) => {
         const field = target.name
         const value = target.type === 'number' ? (+target.value || '') : target.value
         setTask((prevFields) => ({ ...prevFields, [field]: value }))
     }
     // console.log('from board group', task)
-
+    const toggleBtn = () => {
+        // const isOpend = isOpen ? false : true
+        setIsOpen(isOpen ? false : true)
+    }
     return (
         <div className="group-header-wrppaer">
             <div className="group-header-cmp flex" >
                 <div className="column-wrapper-title flex">
-                    <div className="btn-group-menu flex">🟢</div>
+                    <div onClick={() => toggleBtn()} className="btn-group-menu flex">🟢</div>
+                    {isOpen &&
+                        <div className='btns-modal'>
+                            <button>Add group</button>
+                            <button onClick={() => onARemoveGroup(group.id)}>x</button>
+                            <button>Duplicate this group</button>
+                            <button>Rename group</button>
+                        </div>
+                    }
                     <div className="title-inner-container">
                         <div>
                             <div className="group-title text-component" style={{ color: "#037f4c" }} >{group.title}</div>

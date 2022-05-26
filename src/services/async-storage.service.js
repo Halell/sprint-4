@@ -11,7 +11,6 @@ export const storageService = {
 // console.log('gGroups:', gGroups)
 
 function query(entityType, delay = 100) {
-    console.log('hi')
     var entities = JSON.parse(localStorage.getItem(entityType)) || gBoard
     return new Promise((resolve, reject) => {
         setTimeout(() => {
@@ -20,7 +19,6 @@ function query(entityType, delay = 100) {
             resolve(entities)
         }, delay)
     })
-    // return Promise.resolve(entities)
 }
 
 function get(entityType, entityId) {

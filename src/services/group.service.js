@@ -3,13 +3,13 @@ import { utilService } from "./util.service"
 import { loadBoard } from "../store/action/board.actions"
 
 export const groupService = {
-    saveGroup,
+    addGroup,
+    remove,
     // query,
     // getById,
-    // remove,
 }
 
-async function saveGroup(board) {
+async function addGroup(board) {
     const newGroup = {
         id: utilService.makeId(),
         archivedAt: 'hour ago',
@@ -18,6 +18,11 @@ async function saveGroup(board) {
         title: 'Group ' + (board.groups.length + 1)
     }
     board.groups.unshift(newGroup)
-    const savedBoard = await boardService.save(board)
-    return savedBoard
+    return boardService.save(board)
+}
+
+function remove(id, board) {
+    const idx = board.groups.findIndex(group => group.id === id)
+    board.groups.splice(idx, 1)
+    return boardService.save(board)
 }
