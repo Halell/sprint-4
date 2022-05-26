@@ -10,18 +10,20 @@ export function BoardGroup({ group, onSetTask, columns }) {
         <div className="group-header-wrppaer">
             <div className="group-header-cmp flex" >
                 <div className="column-wrapper-title flex">
-                    <div className="btn-group-menu flex">🟢
-                        <div className="title-inner-container">
+                    <div className="btn-group-menu flex">🟢</div>
+                    <div className="title-inner-container">
+                        <div>
                             <div className="group-title text-component" style={ { color: "#037f4c" } } >{ group.title }</div>
                         </div>
                     </div>
+
                 </div>
                 <div className="column-wrapper-columns">
                     { columns.map(column =>
-                        <div>{ column }</div>
+                        <div className="columns">{ column }</div>
                     ) }
                 </div>
-                <div className="column-wrapper-add"></div>
+                <div className="column-wrapper-add">+</div>
             </div>
             <TaskList group={ group } />
             <section >
@@ -30,5 +32,4 @@ export function BoardGroup({ group, onSetTask, columns }) {
             </section>
         </div>
     )
-
 }

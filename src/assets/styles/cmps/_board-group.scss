@@ -7,12 +7,12 @@
         position: relative;
 
         .column-wrapper-title {
-            // flex-basis: 425px;
-            flex-grow: 1;
+            width: 100%;
+            // display: flex;
+            // flex: 1 1 auto;
             position: sticky;
-            flex-grow: 1;
-            // background-color: rgba(var(--pulse-floating-background-color), 0.95);
-            z-index: 2;
+            // flex-grow: 1;
+            // z-index: 2;
 
             .title-inner-container {
                 position: relative;
@@ -35,13 +35,16 @@
                 display: flex;
                 background-color: #fff;
                 align-items: center;
+                justify-content: center;
             }
         }
-    }
 
-    .column-wrapper-columns {
-        width: 100%;
-        position: relative;
-        height: 100%;
+        .column-wrapper-columns {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            position: relative;
+            height: 100%;
+        }
     }
 }
