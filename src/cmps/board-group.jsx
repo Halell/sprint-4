@@ -34,7 +34,7 @@ export function BoardGroup({ group, columns, onAddTask }) {
                 </div>
                 <div className="column-wrapper-add"></div>
             </div>
-            <TaskList group={group} />
+            <TaskList group={group} onAddTask={onAddTask} />
             <form onSubmit={(ev) => onAddTask(board, group.id, task, ev)}  >
                 <input type="text" onChange={onHandleChange} name="title" />
             </form>
