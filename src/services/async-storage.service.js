@@ -45,7 +45,7 @@ function put(entityType, updatedEntity) {
             // const idx = entities.findIndex(entity => entity._id === updatedEntity._id)
             // entities.splice(idx, 1, updatedEntity)
             console.log('entities: ', entities);
-            _save(entityType, entities)
+            _save(entityType, updatedEntity)
             return updatedEntity
         })
 }
