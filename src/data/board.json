@@ -9,17 +9,11 @@
         "imgUrl": "http://some-img"
     },
     "style": {},
-    "labels": [
-        {
-            "id": "l101",
-            "title": "Done",
-            "color": "#61bd4f"
-        },
-        {
-            "id": "l102",
-            "title": "Progress",
-            "color": "#61bd33"
-        }
+    "columns": [
+        "text",
+        "status",
+        "date",
+        "person"
     ],
     "members": [
         {
