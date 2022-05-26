@@ -17,7 +17,7 @@ export const boardService = {
     unsubscribe
 
 }
-window.cs = boardService;
+window.cs = boardService
 
 
 function query() {
@@ -40,7 +40,6 @@ async function save(board) {
     var savedBoard
     if (board._id) {
         savedBoard = await storageService.put(STORAGE_KEY, board)
-        console.log('savedBoard55: ', savedBoard);
         boardChannel.postMessage(getActionUpdateBoard(savedBoard))
 
     } else {

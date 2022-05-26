@@ -15,13 +15,15 @@ export function BoardGroup({ group, columns, onAddTask }) {
         const value = target.type === 'number' ? (+target.value || '') : target.value
         setTask((prevFields) => ({ ...prevFields, [field]: value }))
     }
+    // console.log('from board group', task)
 
     return (
         <div className="group-header-wrppaer">
             <div className="group-header-cmp flex" >
                 <div className="column-wrapper-title flex">
-                    <div className="btn-group-menu flex">🟢
-                        <div className="title-inner-container">
+                    <div className="btn-group-menu flex">🟢</div>
+                    <div className="title-inner-container">
+                        <div>
                             <div className="group-title text-component" style={{ color: "#037f4c" }} >{group.title}</div>
                         </div>
                     </div>
