@@ -28,23 +28,23 @@ export function BoardGroup({ group, columns }) {
                     <div className="btn-group-menu flex">🟢</div>
                     <div className="title-inner-container">
                         <div>
-                            <div className="group-title text-component" style={ { color: "#037f4c" } } >{ group.title }</div>
+                            <div className="group-title text-component" style={{ color: "#037f4c" }} >{group.title}</div>
                         </div>
                     </div>
 
                 </div>
                 <div className="column-wrapper-columns">
-                    { columns.map((column, idx) =>
+                    {columns && columns.map((column, idx) =>
 
-                        <div key={ idx } >{ column }</div>
-                    ) }
+                        <div key={idx} >{column}</div>
+                    )}
                 </div>
                 <div className="column-wrapper-add">+</div>
             </div>
-            <TaskList group={ group } />
-            <form onSubmit={ (ev) => onAddTask(task, boardId, group.id, ev.preventDefault()
-            ) }  >
-                <input type="text" onChange={ onHandleChange } />
+            <TaskList group={group} />
+            <form onSubmit={(ev) => onAddTask(task, boardId, group.id, ev.preventDefault()
+            )}  >
+                <input type="text" onChange={onHandleChange} />
             </form>
         </div>
     )
