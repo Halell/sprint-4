@@ -9,25 +9,33 @@ import { groupService } from '../services/group.service'
 export const Board = () => {
     let { board } = useSelector((storeState) => storeState.boardModule)
     const dispatch = useDispatch()
-
     useEffect(() => {
         dispatch(loadBoard())
     }, [])
 
-    useEffect(() => {
-        console.log(board)
-    }, [board])
+    const onARemoveGroup = async (groupId) => {
+        console.log('removing!')
+        await groupService.remove(groupId, board)
+        dispatch(loadBoard())
+    }
 
-    const onAddGroup = async () => {
+    const onAddGroup = async (group) => {
         console.log('adding group!')
-        const savedBoard = await groupService.saveGroup(board)
-        board = savedBoard
-        console.log(board)
+        await groupService.addGroup(board)
+        dispatch(loadBoard())
     }
 
     const onAddTask = async (board, groupId, task, ev) => {
         ev.preventDefault()
         dispatch(updateBoard(board, groupId, task))
+    }
+
+    const onUpdateTask = (task, groupId) => {
+        dispatch(updateBoard(board, groupId, task))
+    }
+
+    const onRemoveTask = async (taskId) => {
+        dispatch(updateBoard())
     }
 
     return (
@@ -40,7 +48,10 @@ export const Board = () => {
                     <div className="border-group-content">
                         {board && board.groups?.map((group, idx) =>
                             <BoardGroup
+                                onARemoveGroup={onARemoveGroup}
                                 onAddTask={onAddTask}
+                                onUpdateTask={onUpdateTask}
+                                onRemoveTask={onRemoveTask}
                                 group={group}
                                 columns={board.columns}
                                 key={idx}

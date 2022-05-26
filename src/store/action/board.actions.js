@@ -75,7 +75,6 @@ export function updateBoard(board, groupId, task) {
     return (dispatch) => {
         boardService.save(board, groupId, task)
             .then(savedBoard => {
-                console.log('Updated Board:', savedBoard);
                 dispatch(getActionUpdateBoard(savedBoard))
             })
             .catch(err => {

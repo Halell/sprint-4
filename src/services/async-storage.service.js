@@ -19,7 +19,6 @@ function query(entityType, delay = 100) {
             resolve(entities)
         }, delay)
     })
-    // return Promise.resolve(entities)
 }
 
 function get(entityType, entityId) {

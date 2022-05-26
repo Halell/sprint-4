@@ -1,20 +1,27 @@
-
-export const TaskEdit = () => {
-
-    // onHandleChange = ({ target }) => {
-    //     const field = target.name
-    //     this.setState((prevState) => ({
-    //         toy: { ...prevState.toy, [field]: target.value },
-    //     }))
-    // }
+import { useState, useEffect } from 'react'
+import { updateBoard } from '../store/action/board.actions'
 
 
 
+export function TaskEdit({ task, onUpdateTask, group, toggle }) {
+    let title = ''
+    const groupId = group.id
+
+    const onSaveTask = (ev) => {
+        ev.preventDefault()
+        task.title = title
+        console.log('task', task)
+        onUpdateTask(task, groupId)
+        toggle('btn-input')
+    }
+
+    const handleChange = ({ target }) => {
+        title = target.value
+    }
 
     return (
-        <div>
-            {console.log('ddddddddddd')}
-            <input type="text" name="title" />
-        </div>
+        <form onSubmit={onSaveTask}>
+            <input type="text" name="title" onChange={handleChange} onBlur={() => toggle('btn-input')} />
+        </form>
     )
 }

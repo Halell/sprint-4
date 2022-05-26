@@ -21,8 +21,9 @@ export const boardService = {
 window.cs = boardService
 
 
-function query() {
-    return storageService.query(STORAGE_KEY)
+async function query() {
+    const board = await storageService.query(STORAGE_KEY)
+    return board
 }
 function getById(boardId) {
     return storageService.get(STORAGE_KEY, boardId)
@@ -39,6 +40,7 @@ async function remove(boardId) {
 
 async function save(board, groupId, task) {
     var savedBoard = (task) ? taskService.saveTask(board, groupId, task) : null
+    // savedBoard = (groupId)? 
     if (board._id) {
         savedBoard = await storageService.put(STORAGE_KEY, board)
         boardChannel.postMessage(getActionUpdateBoard(savedBoard))
