@@ -1,14 +1,15 @@
-import { useEffect, useCallback } from 'react'
+import { useEffect } from 'react'
 import { BoardHeader } from './board-header'
 import { BoardGroup } from './board-group'
 import { useDispatch, useSelector } from 'react-redux'
 import { loadBoard } from '../store/action/board.actions'
-import { saveTask } from '../store/action/task.actions'
+import { taskService } from '../services/task.service'
 import { groupService } from '../services/group.service'
 
 export const Board = () => {
     let { board } = useSelector((storeState) => storeState.boardModule)
     const dispatch = useDispatch()
+
     useEffect(() => {
         dispatch(loadBoard())
     }, [])
@@ -20,12 +21,7 @@ export const Board = () => {
 
     const onAddTask = async (board, groupId, task, ev) => {
         ev.preventDefault()
-        console.log('task11: ', JSON.stringify(task))
-        console.log('taskid: ', task.id)
-
-        // console.log('board11: ', board)
-        // console.log('groupId11: ', groupId)
-        dispatch(saveTask(board, groupId, task))
+        taskService.saveTask(board, groupId, task)
     }
 
     return (
