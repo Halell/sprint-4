@@ -1,10 +1,12 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { TaskList } from "./task-list"
+import { useFormRegister } from "../hooks/useFormRegister"
 import { useDispatch, useSelector } from 'react-redux'
 
-export function BoardGroup({ group, columns, onAddTask }) {
+export function BoardGroup({ group, columns }) {
     const dispatch = useDispatch()
     const { board } = useSelector((storeState) => storeState.boardModule)
+    const boardId = board._id
     const [task, setTask] = useState(null)
 
     const onHandleChange = ({ target }) => {
@@ -13,17 +15,21 @@ export function BoardGroup({ group, columns, onAddTask }) {
         setTask((prevFields) => ({ ...prevFields, [field]: value }))
         console.log('task22: ', task)
     }
+
+    const onAddTask = (task, boardId, groupId) => {
+        console.log('saving')
+        dispatch(saveTask(task, boardId, groupId))
+    }
+
     return (
         <div className="group-header-wrppaer">
             <div className="group-header-cmp flex" >
                 <div className="column-wrapper-title flex">
-                    <div className="btn-group-menu flex">🟢</div>
-                    <div className="title-inner-container">
-                        <div>
+                    <div className="btn-group-menu flex">🟢
+                        <div className="title-inner-container">
                             <div className="group-title text-component" style={{ color: "#037f4c" }} >{group.title}</div>
                         </div>
                     </div>
-
                 </div>
                 <div className="column-wrapper-columns">
                     {columns.map((column, idx) =>
@@ -31,7 +37,7 @@ export function BoardGroup({ group, columns, onAddTask }) {
                         <div key={idx} >{column}</div>
                     )}
                 </div>
-                <div className="column-wrapper-add">+</div>
+                <div className="column-wrapper-add"></div>
             </div>
             <TaskList group={group} />
             <form onSubmit={(ev) => onAddTask(board, group.id, task, ev)}  >
@@ -39,4 +45,5 @@ export function BoardGroup({ group, columns, onAddTask }) {
             </form>
         </div>
     )
+
 }
