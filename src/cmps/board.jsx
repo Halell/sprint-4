@@ -15,9 +15,9 @@ export const Board = () => {
 
     const onAddTask = async (board, groupId, task, ev) => {
         ev.preventDefault()
-        console.log('task11: ', task);
-        console.log('board11: ', board);
-        console.log('groupId11: ', groupId);
+        console.log('task11: ', task)
+        console.log('board11: ', board)
+        console.log('groupId11: ', groupId)
         dispatch(saveTask(board, groupId, task))
     }
 

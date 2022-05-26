@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import { TaskList } from "./task-list"
 import { useDispatch, useSelector } from 'react-redux'
-import { saveTask } from '../store/action/task.actions'
 
 export function BoardGroup({ group, columns, onAddTask }) {
     const dispatch = useDispatch()
@@ -12,7 +11,7 @@ export function BoardGroup({ group, columns, onAddTask }) {
         const field = target.name
         const value = target.type === 'number' ? (+target.value || '') : target.value
         setTask((prevFields) => ({ ...prevFields, [field]: value }))
-        console.log('task22: ', task);
+        console.log('task22: ', task)
     }
     return (
         <div className="group-header-wrppaer">
