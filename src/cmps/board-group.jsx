@@ -12,7 +12,7 @@ export function BoardGroup({ group, columns, onAddTask }) {
         const field = target.name
         const value = target.type === 'number' ? (+target.value || '') : target.value
         setTask((prevFields) => ({ ...prevFields, [field]: value }))
-        console.log('task22: ', task);
+        console.log('task22: ', task)
     }
     return (
         <div className="group-header-wrppaer">
@@ -34,16 +34,9 @@ export function BoardGroup({ group, columns, onAddTask }) {
                 </div>
                 <div className="column-wrapper-add">+</div>
             </div>
-<<<<<<< HEAD
-            <TaskList group={group} />
-            <form onSubmit={(ev) => onAddTask(board, group.id, task, ev)}  >
-                <input type="text" onChange={onHandleChange} name="title" />
-=======
             <TaskList group={ group } />
-            <form onSubmit={ (ev) => onAddTask(task, boardId, group.id, ev.preventDefault()) }  >
-
-                <input type="text" onChange={ onHandleChange } />
->>>>>>> 9508a7fbce2213b32af0f195a196d40c242aeecd
+            <form onSubmit={ (ev) => onAddTask(board, group.id, task, ev) }  >
+                <input type="text" onChange={ onHandleChange } name="title" />
             </form>
         </div>
     )
