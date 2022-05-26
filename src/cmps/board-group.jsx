@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import { TaskList } from "./task-list"
 import { useDispatch, useSelector } from 'react-redux'
-import { saveTask } from '../store/action/task.actions'
 
 export function BoardGroup({ group, columns, onAddTask }) {
     const dispatch = useDispatch()
