@@ -38,15 +38,13 @@ async function remove(boardId) {
 
 async function save(board) {
     var savedBoard
-    // console.log('board55: ', board);
     if (board._id) {
         savedBoard = await storageService.put(STORAGE_KEY, board)
-        // console.log('savedBoard55: ', savedBoard);
         boardChannel.postMessage(getActionUpdateBoard(savedBoard))
 
     } else {
         // Later, owner is set by the backend
-        board.owner = userService.getLoggedinUser()
+        // board.owner = userService.getLoggedinUser()
         savedBoard = await storageService.post(STORAGE_KEY, board)
         boardChannel.postMessage(getActionAddBoard(savedBoard))
     }

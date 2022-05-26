@@ -28,7 +28,6 @@ export function loadBoard() {
     return (dispatch) => {
         boardService.query()
             .then(board => {
-                // console.log('Board from DB:', board)
                 dispatch({
                     type: 'SET_BOARD',
                     board
@@ -61,7 +60,6 @@ export function removeBoard(boardId) {
 
 export function addBoard(board) {
     return (dispatch) => {
-
         boardService.save(board)
             .then(savedBoard => {
                 console.log('Added Board', savedBoard);
