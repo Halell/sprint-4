@@ -1,5 +1,5 @@
-import { userService } from "../../services/user.service.js";
-import { boardService } from "../../services/board.service.js";
+import { userService } from "../../services/user.service.js"
+import { boardService } from "../../services/board.service.js"
 
 
 // Action Creators:
@@ -16,6 +16,7 @@ export function getActionAddBoard(board) {
     }
 }
 export function getActionUpdateBoard(board) {
+    console.log('from action get up')
     return {
         type: 'UPDATE_CAR',
         board
@@ -50,7 +51,7 @@ export function removeBoard(boardId) {
     return async (dispatch) => {
         try {
             await boardService.remove(boardId)
-            console.log('Deleted Succesfully!');
+            console.log('Deleted Succesfully!')
             dispatch(getActionRemoveBoard(boardId))
         } catch (err) {
             console.log('Cannot remove board', err)
@@ -62,7 +63,7 @@ export function addBoard(board) {
     return (dispatch) => {
         boardService.save(board)
             .then(savedBoard => {
-                console.log('Added Board', savedBoard);
+                console.log('Added Board', savedBoard)
                 dispatch(getActionAddBoard(savedBoard))
             })
             .catch(err => {
@@ -73,9 +74,10 @@ export function addBoard(board) {
 
 export function updateBoard(board) {
     return (dispatch) => {
+        console.log('from action')
         boardService.save(board)
             .then(savedBoard => {
-                console.log('Updated Board:', savedBoard);
+                console.log('Updated Board:', savedBoard)
                 dispatch(getActionUpdateBoard(savedBoard))
             })
             .catch(err => {
@@ -127,7 +129,7 @@ export function onRemoveBoardOptimistic(boardId) {
 
         boardService.remove(boardId)
             .then(() => {
-                console.log('Server Reported - Deleted Succesfully');
+                console.log('Server Reported - Deleted Succesfully')
             })
             .catch(err => {
                 console.log('Cannot load boards', err)
