@@ -46,7 +46,7 @@ async function save(board) {
 
     } else {
         // Later, owner is set by the backend
-        board.owner = userService.getLoggedinUser()
+        // board.owner = userService.getLoggedinUser()
         savedBoard = await storageService.post(STORAGE_KEY, board)
         boardChannel.postMessage(getActionAddBoard(savedBoard))
     }
