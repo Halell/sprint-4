@@ -25,7 +25,7 @@
     "groups": [
         {
             "id": "g101",
-            "title": "Group 1",
+            "title": "Day 1",
             "archivedAt": 1589983468418,
             "style": {},
             "tasks": [
@@ -41,7 +41,7 @@
         },
         {
             "id": "g102",
-            "title": "Group 2",
+            "title": "Day 2",
             "tasks": [
                 {
                     "id": "c103",
