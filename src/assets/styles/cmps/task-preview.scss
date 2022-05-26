@@ -1,19 +1,32 @@
-.task-preview{
+.task-preview {
     .edit-btn {
         border: none;
         background-color: inherit;
         color: rgb(104, 104, 104);
         display: none;
-        
+        cursor: pointer;
+
         &:hover {
             background-color: rgb(255, 255, 255);
         }
     }
-    
-    &:hover{
-        .edit-btn{
+
+    &:hover {
+        .edit-btn {
             display: block;
             display: inline-block;
         }
+    }
+
+    .btn-side-task {
+        width: 18px;
+        height: 18px;
+        font-size: 15px;
+        border-radius: 4px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        background-color: #e6e9ef;
     }
 }
