@@ -4,7 +4,7 @@ import { useFormRegister } from "../hooks/useFormRegister"
 import { useDispatch, useSelector } from 'react-redux'
 import { saveTask } from '../store/action/task.actions'
 
-export function BoardGroup({ group, columns }) {
+export function BoardGroup({ group, columns, onAddTask }) {
     const dispatch = useDispatch()
     const { board } = useSelector((storeState) => storeState.boardModule)
     const boardId = board._id
@@ -16,13 +16,11 @@ export function BoardGroup({ group, columns }) {
         setTask((prevFields) => ({ ...prevFields, [field]: value }))
         console.log('task22: ', task)
     }
-    
-    const onAddTask = (task, boardId, groupId ,ev) => {
-        ev.preventDefault()
-        console.log('saving')
-        dispatch(saveTask(task, boardId, groupId))
-    }
-    console.log(group.title)
+
+    // const onAddTask = (task, boardId, groupId) => {
+    //     console.log('saving')
+    //     dispatch(saveTask(task, boardId, groupId))
+    // }
 
     return (
         <div className="group-header-wrppaer">
@@ -30,21 +28,21 @@ export function BoardGroup({ group, columns }) {
                 <div className="column-wrapper-title flex">
                     <div className="btn-group-menu flex">🟢
                         <div className="title-inner-container">
-                            <div className="group-title text-component" style={{ color: "#037f4c" }} >{group.title}</div>
+                            <div className="group-title text-component" style={ { color: "#037f4c" } } >{ group.title }</div>
                         </div>
                     </div>
                 </div>
                 <div className="column-wrapper-columns">
-                    {columns.map((column, idx) =>
+                    { columns.map((column, idx) =>
 
-                        <div key={idx} >{column}</div>
-                    )}
+                        <div key={ idx } >{ column }</div>
+                    ) }
                 </div>
                 <div className="column-wrapper-add"></div>
             </div>
-            <TaskList group={group} />
-            <form onSubmit={(ev) => onAddTask(board, group.id, task, ev)}  >
-                <input type="text" onChange={onHandleChange} name="title" />
+            <TaskList group={ group } />
+            <form onSubmit={ (ev) => onAddTask(board, group.id, task, ev) }  >
+                <input type="text" onChange={ onHandleChange } name="title" />
             </form>
         </div>
     )
