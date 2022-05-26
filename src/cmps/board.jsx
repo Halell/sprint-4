@@ -18,14 +18,14 @@ export const Board = () => {
             <div className="board-group">
                 <div className="board-group-wrapper">
                     <div className="border-group-content">
-                        {board && board.groups?.map((group, idx) =>
+                        { board && board.groups?.map((group, idx) =>
                             <BoardGroup
-                                group={group}
-                                columns={board.columns}
-                                key={idx}
+                                group={ group }
+                                columns={ board.columns }
+                                key={ idx }
 
                             />
-                        )}
+                        ) }
                     </div>
                 </div>
             </div>
