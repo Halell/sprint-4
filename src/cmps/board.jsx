@@ -12,10 +12,6 @@ export const Board = () => {
         dispatch(loadBoard())
     }, [])
 
-    const onAddTask = (task) => {
-        console.log('saving')
-        boardService.save(task)
-    }
 
     return (
         <section className='board board-controller-pinned flex'>
@@ -23,7 +19,7 @@ export const Board = () => {
             <div className="board-group">
                 <div className="board-group-wrapper">
                     <div className="border-group-content">
-                        {board && board.groups?.map((group, idx) => <BoardGroup group={group} key={idx} onAddTask={onAddTask} />)}
+                        {board && board.groups?.map((group, idx) => <BoardGroup group={group} key={idx} />)}
                     </div>
                 </div>
             </div>

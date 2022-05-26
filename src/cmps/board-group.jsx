@@ -1,7 +1,9 @@
 import { TaskList } from './task-list'
 
 
-export function BoardGroup({ group, onAddTask }) {
+export const BoardGroup = ({ group }) => {
+    
+
     return <div className="group-header-wrppaer">
         <div className='group-header-cmp flex' >
             <div className='column-wrapper-title flex'>
@@ -13,7 +15,10 @@ export function BoardGroup({ group, onAddTask }) {
             <div className='column-wrapper'></div>
             <div className='column-wrapper-add'></div>
         </div>
-        <TaskList group={group} onAddTask={onAddTask} />
+        <TaskList group={group} />
+        <form onSubmit={onSaveTask}>
+
         <input type="text" placeholder="+ Add Item" />
+        </form>
     </div>
 }
