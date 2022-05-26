@@ -21,6 +21,12 @@ export const Board = () => {
     }
 
     const onAddGroup = async (group) => {
+        if (group) {
+            console.log('updating group!')
+            await groupService.addGroup(board, group)
+            dispatch(loadBoard())
+            return
+        }
         console.log('adding group!')
         await groupService.addGroup(board)
         dispatch(loadBoard())
@@ -41,11 +47,12 @@ export const Board = () => {
                     <div className="border-group-content">
                         {board && board.groups?.map((group, idx) =>
                             <BoardGroup
-                                onARemoveGroup={onARemoveGroup}
-                                onAddTask={onAddTask}
-                                group={group}
-                                columns={board.columns}
-                                key={idx}
+                            onARemoveGroup={onARemoveGroup}
+                            onAddTask={onAddTask}
+                            group={group}
+                            columns={board.columns}
+                            key={idx}
+                            onAddGroup={onAddGroup}
                             />
                         )}
                     </div>

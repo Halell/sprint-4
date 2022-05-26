@@ -9,15 +9,26 @@ export const groupService = {
     // getById,
 }
 
-async function addGroup(board) {
-    const newGroup = {
-        id: utilService.makeId(),
-        archivedAt: 'hour ago',
-        style: {},
-        tasks: [],
-        title: 'Group ' + (board.groups.length + 1)
+async function addGroup(board, updateGroup) {
+    console.log(updateGroup)
+    let newGroup
+    if (updateGroup) {
+        const idx = board.groups.findIndex(group => group.id === updateGroup.id)
+        board.groups[idx] = updateGroup
+        console.log(board.groups[idx])
+        console.log('board', board)
+
+    } else {
+        newGroup = {
+            id: utilService.makeId(),
+            archivedAt: 'hour ago',
+            columns: ['text', 'status', 'date', 'person+'],
+            style: {},
+            tasks: [],
+            title: 'Group ' + (board.groups.length + 1)
+        }
+        board.groups.unshift(newGroup)
     }
-    board.groups.unshift(newGroup)
     return boardService.save(board)
 }
 

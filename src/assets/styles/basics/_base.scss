@@ -107,6 +107,10 @@ p {
     }
 }
 
+button {
+    cursor: pointer;
+}
+
 .btn {
     @include btn;
 
