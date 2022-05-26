@@ -12,7 +12,6 @@ export const Board = () => {
     useEffect(() => {
         dispatch(loadBoard())
     }, [])
-
     const onAddTask = async (board, groupId, task, ev) => {
         ev.preventDefault()
         console.log('task11: ', task)
@@ -20,22 +19,20 @@ export const Board = () => {
         console.log('groupId11: ', groupId)
         dispatch(saveTask(board, groupId, task))
     }
-
-
     return (
         <section className='board board-controller-pinned flex'>
             <BoardHeader />
             <div className="board-group">
                 <div className="board-group-wrapper">
                     <div className="border-group-content">
-                        {board && board.groups?.map((group, idx) =>
+                        { board && board.groups?.map((group, idx) =>
                             <BoardGroup
-                                onAddTask={onAddTask}
-                                group={group}
-                                columns={board.columns}
-                                key={idx}
+                                onAddTask={ onAddTask }
+                                group={ group }
+                                columns={ board.columns }
+                                key={ idx }
                             />
-                        )}
+                        ) }
                     </div>
                 </div>
             </div>
