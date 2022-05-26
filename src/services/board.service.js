@@ -13,7 +13,6 @@ export const boardService = {
     getById,
     save,
     remove,
-    getEmptyBoard,
     subscribe,
     unsubscribe
 
@@ -36,28 +35,28 @@ async function remove(boardId) {
     await storageService.remove(STORAGE_KEY, boardId)
     boardChannel.postMessage(getActionRemoveBoard(boardId))
 }
-async function save(task) {
-    console.log('hi')
-    var savedTask
-    if (task._id) {
-        savedTask = await storageService.put(STORAGE_KEY, task)
-        boardChannel.postMessage(getActionUpdateBoard(savedTask))
+
+async function save(board) {
+    var savedBoard
+    if (board._id) {
+        savedBoard = await storageService.put(STORAGE_KEY, board)
+        boardChannel.postMessage(getActionUpdateBoard(savedBoard))
 
     } else {
         // Later, owner is set by the backend
-        task.owner = userService.getLoggedinUser()
-        savedTask = await storageService.post(STORAGE_KEY, task)
-        boardChannel.postMessage(getActionAddBoard(savedTask))
+        board.owner = userService.getLoggedinUser()
+        savedBoard = await storageService.post(STORAGE_KEY, board)
+        boardChannel.postMessage(getActionAddBoard(savedBoard))
     }
-    return savedTask
+    return savedBoard
 }
 
-function getEmptyBoard() {
-    return {
-        vendor: 'Susita-' + (Date.now() % 1000),
-        price: utilService.getRandomIntInclusive(1000, 9000),
-    }
-}
+// function getEmptyBoard() {
+//     return {
+//         vendor: 'Susita-' + (Date.now() % 1000),
+//         price: utilService.getRandomIntInclusive(1000, 9000),
+//     }
+// }
 
 function subscribe(listener) {
     boardChannel.addEventListener('message', listener)

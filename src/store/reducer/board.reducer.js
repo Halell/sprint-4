@@ -1,5 +1,6 @@
 const initialState = {
     board: {},
+    task: [],
     lastRemovedBoard: null
 }
 export function boardReducer(state = initialState, action) {
@@ -21,9 +22,9 @@ export function boardReducer(state = initialState, action) {
             board = state.board.map(board => (board._id === action.board._id) ? action.board : board)
             newState = { ...state, board }
             break
-        // case 'ADD_TO_BOARD':
-        //     newState = { ...state, boardt:[...state.boardt, action.board]}
-        //     break
+        case 'ADD_TASK':
+            newState = { ...state, task: [...state.task, action.task] }
+            break
         // case 'REMOVE_FROM_BOARD':
         //     boardt = state.boardt.filter(board => board._id !== action.boardId)
         //     newState = { ...state, boardt}
