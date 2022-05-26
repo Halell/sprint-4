@@ -1,8 +1,8 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { BoardHeader } from './board-header'
 import { BoardGroup } from './board-group'
 import { useDispatch, useSelector } from 'react-redux'
-import { loadBoard } from '../store/action/board.actions'
+import { loadBoard, updateBoard } from '../store/action/board.actions'
 import { taskService } from '../services/task.service'
 import { groupService } from '../services/group.service'
 
@@ -21,7 +21,7 @@ export const Board = () => {
 
     const onAddTask = async (board, groupId, task, ev) => {
         ev.preventDefault()
-        taskService.saveTask(board, groupId, task)
+        dispatch(updateBoard(board, groupId, task))
     }
 
     return (

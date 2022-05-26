@@ -41,7 +41,7 @@ async function saveTask(board, groupId, taskToSave) {
             return group
         })
         board.groups = groups
-        return boardService.save(board)
+        return board
     } catch (err) {
         throw err
     }
