@@ -40,6 +40,7 @@ async function remove(boardId) {
 
 async function save(board, groupId, task) {
     var savedBoard = (task) ? taskService.saveTask(board, groupId, task) : null
+    // savedBoard = (groupId)? 
     if (board._id) {
         savedBoard = await storageService.put(STORAGE_KEY, board)
         boardChannel.postMessage(getActionUpdateBoard(savedBoard))
