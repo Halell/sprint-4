@@ -42,8 +42,8 @@ export function BoardGroup({ group, columns }) {
                 <div className="column-wrapper-add">+</div>
             </div>
             <TaskList group={ group } />
-            <form onSubmit={ (ev) => onAddTask(task, boardId, group.id, ev.preventDefault()
-            ) }  >
+            <form onSubmit={ (ev) => onAddTask(task, boardId, group.id, ev.preventDefault()) }  >
+
                 <input type="text" onChange={ onHandleChange } />
             </form>
         </div>
