@@ -1,5 +1,6 @@
 const fs = require('fs')
 const gBoard = require('../data/board.json')
+
 export const storageService = {
     query,
     get,
@@ -23,9 +24,9 @@ function query(entityType, delay = 100) {
     // return Promise.resolve(entities)
 }
 
-function get(entityType, entityId) {
+function get(entityType, entityId, groupId) {
     return query(entityType)
-        .then(entities => entities.find(entity => entity._id === entityId))
+        .then(entities => entities.groups.find(entity => entity._id === entityId))
 }
 function post(entityType, newEntity) {
     newEntity._id = _makeId()

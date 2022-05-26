@@ -11,19 +11,6 @@ export const Board = () => {
     useEffect(() => {
         dispatch(loadBoard())
     }, [])
-    const onSetTask = useCallback(async (task) => {
-        console.log(task)
-        // dispatch(setFilterBy(filterBy))
-        // dispatch(loadRobots())
-    }, [])
-
-    console.log(board)
-
-
-    const onAddTask = (task) => {
-        console.log('saving')
-        boardService.save(task)
-    }
 
     return (
         <section className='board board-controller-pinned flex'>
@@ -31,15 +18,14 @@ export const Board = () => {
             <div className="board-group">
                 <div className="board-group-wrapper">
                     <div className="border-group-content">
-                        { board && board.groups?.map((group, idx) =>
+                        {board && board.groups?.map((group, idx) =>
                             <BoardGroup
-                                onSetTask={ onSetTask }
-                                group={ group }
-                                columns={ board.columns }
-                                key={ idx }
+                                group={group}
+                                columns={board.columns}
+                                key={idx}
 
                             />
-                        ) }
+                        )}
                     </div>
                 </div>
             </div>
