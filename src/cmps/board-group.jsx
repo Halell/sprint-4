@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { TaskList } from "./task-list"
 import { useFormRegister } from "../hooks/useFormRegister"
 import { useDispatch, useSelector } from 'react-redux'
+import { saveTask } from '../store/action/task.actions'
 
 export function BoardGroup({ group, columns }) {
     const dispatch = useDispatch()
@@ -15,11 +16,13 @@ export function BoardGroup({ group, columns }) {
         setTask((prevFields) => ({ ...prevFields, [field]: value }))
         console.log('task22: ', task)
     }
-
-    const onAddTask = (task, boardId, groupId) => {
+    
+    const onAddTask = (task, boardId, groupId ,ev) => {
+        ev.preventDefault()
         console.log('saving')
         dispatch(saveTask(task, boardId, groupId))
     }
+    console.log(group.title)
 
     return (
         <div className="group-header-wrppaer">
