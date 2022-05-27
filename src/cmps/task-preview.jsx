@@ -13,9 +13,9 @@ export function TaskPreview({ task, onUpdateTask, group, onRemoveTask }) {
     }
 
     return (
-        <div className="task-preview">
+        <div className="task-preview ">
             <hr />
-            <div onClick={onRemoveTask} className="btn-side-task">🗑</div>
+            <button onClick={() => onRemoveTask(group.id, task.id)} className="btn-side-task">🗑</button>
             {isBtnInoutOpen ?
                 < div className='btn-input'>
                     {task && task.title}

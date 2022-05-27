@@ -11,12 +11,6 @@
         }
     }
 
-    &:hover {
-        .edit-btn {
-            display: block;
-            display: inline-block;
-        }
-    }
 
     .btn-side-task {
         width: 18px;
@@ -28,5 +22,18 @@
         align-items: center;
         cursor: pointer;
         background-color: #e6e9ef;
+        display: none;
+    }
+
+    &:hover {
+        .edit-btn {
+            display: block;
+            display: inline-block;
+        }
+
+        .btn-side-task {
+            display: block;
+            display: inline-block;
+        }
     }
 }

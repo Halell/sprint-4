@@ -40,8 +40,10 @@ export const Board = () => {
         dispatch(updateBoard(board, groupId, task))
     }
 
-    const onRemoveTask = async (taskId) => {
-        dispatch(updateBoard())
+    const onRemoveTask = async (groupId, taskId) => {
+        console.log('removing task!')
+        await taskService.remove(groupId, taskId, board)
+        dispatch(loadBoard())
     }
 
     return (

@@ -73,10 +73,10 @@ export function BoardGroup({ group, columns, onAddTask, onARemoveGroup, onUpdate
                     {columns.map((column, idx) =>
                         <div
                             suppressContentEditableWarning={true}
-                            contentEditable={true}
-                            key={idx}
                             onBlur={onUpdateColumns}
+                            contentEditable={true}
                             title={column}
+                            key={idx}
                             idx={idx}>
                             {column}
                         </div>
