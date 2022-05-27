@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import { BoardHeader } from './board-header'
 import { BoardGroup } from './board-group'
 import { useDispatch, useSelector } from 'react-redux'
-import { loadBoard, updateBoard } from '../store/action/board.actions'
+import { loadBoard, updateBoard, setFilterBy } from '../store/action/board.actions'
 import { taskService } from '../services/task.service'
 import { groupService } from '../services/group.service'
 
@@ -41,15 +41,24 @@ export const Board = () => {
     }
 
     const onRemoveTask = async (groupId, taskId) => {
+<<<<<<< HEAD
         console.log('removing task!')
         await taskService.remove(groupId, taskId, board)
         dispatch(loadBoard())
+=======
+        dispatch(updateBoard(board, groupId, taskId))
+    }
+
+    const onChangeFilter = (filterBy) => {
+        dispatch(setFilterBy(filterBy))
+>>>>>>> 700e7bc4e1193094c452bafa76d604dbedeed823
     }
 
     return (
         <section className='board board-controller-pinned flex'>
             <BoardHeader
                 onAddGroup={onAddGroup}
+                onChangeFilter={onChangeFilter}
             />
             <div className="board-group">
                 <div className="board-group-wrapper">

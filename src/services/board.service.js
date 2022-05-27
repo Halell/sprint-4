@@ -7,7 +7,7 @@ import { taskService } from './task.service'
 
 const STORAGE_KEY = 'board'
 const boardChannel = new BroadcastChannel('boardChannel')
-// const listeners = []
+var gBoard
 
 export const boardService = {
     query,
@@ -15,20 +15,26 @@ export const boardService = {
     save,
     remove,
     subscribe,
-    unsubscribe
-
+    unsubscribe,
+    getCurrBoard
 }
 window.cs = boardService
 
+function getCurrBoard() {
+    return gBoard
+}
 
 async function query() {
     const board = await storageService.query(STORAGE_KEY)
-    return board
+    gBoard = board
+    return gBoard
 }
+
 function getById(boardId) {
     return storageService.get(STORAGE_KEY, boardId)
     // return axios.get(`/api/board/${boardId}`)
 }
+
 async function remove(boardId) {
     // return new Promise((resolve, reject) => {
     //     setTimeout(reject, 2000)
