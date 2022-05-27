@@ -3,7 +3,7 @@ import { BoardController } from '../cmps/board-controller'
 import { Board } from '../cmps/board.jsx'
 
 export const MainApp = () => {
-
+   
 
     return (
         <main>
@@ -12,8 +12,9 @@ export const MainApp = () => {
                 <div className="search-all-container"></div>
             </div>
             <section className="work-space">
+                
                 <BoardController />
-                <Board  />
+                <Board />
             </section>
         </main>
     )
