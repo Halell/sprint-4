@@ -10,7 +10,6 @@ export function TaskEdit({ task, onUpdateTask, group, toggle }) {
     const onSaveTask = (ev) => {
         ev.preventDefault()
         task.title = title
-        console.log('task', task)
         onUpdateTask(task, groupId)
         toggle('btn-input')
     }

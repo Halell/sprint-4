@@ -15,7 +15,6 @@ export const useFormRegister = (initialFields, cb) => {
         if (cb) cb(fields)
     }, [fields])
 
-    // onChange={handleChange} type="text" id="model" name="model" value={model} 
     const register = (field, type = 'text') => {
         return {
             onChange: handleChange,

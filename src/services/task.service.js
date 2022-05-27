@@ -30,11 +30,11 @@ async function saveTask(board, groupId, taskToSave) {
         // await
         const groups = board.groups.map(group => {
             if (group.id === groupId) {
-                if (!taskToSave._id) {
+                if (!taskToSave.id) {
                     taskToSave.id = utilService.makeId()
                     group.tasks.push(taskToSave)
                 } else {
-                    const idx = group.tasks.findIndex(task => task._id === taskToSave._id)
+                    const idx = group.tasks.findIndex(task => task.id === taskToSave.id)
                     group.tasks[idx] = taskToSave
                 }
             }
