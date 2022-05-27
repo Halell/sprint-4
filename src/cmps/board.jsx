@@ -49,12 +49,17 @@ export const Board = () => {
     const onChangeFilter = (filterBy) => {
         dispatch(setFilterBy(filterBy))
     }
+    const getPersons = () => {
+        const persons = board.persons
+        console.log('persons: ', persons);
+    }
 
     return (
         <section className='board board-controller-pinned flex'>
             <BoardHeader
                 onAddGroup={onAddGroup}
                 onChangeFilter={onChangeFilter}
+                getPersons={getPersons}
             />
             <div className="board-group">
                 <div className="board-group-wrapper">

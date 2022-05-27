@@ -14,10 +14,12 @@ export function filterByName(filterBy) {
 function filter(filterBy, tasks) {
     let tasksToReturn = tasks;
     if (filterBy) {
-        var { title } = filterBy
+        var { title, persons } = filterBy
         // maxBatteryStatus = maxBatteryStatus || Infinity
         // minBatteryStatus = minBatteryStatus || 0
-        tasksToReturn = tasks.filter(task => task.title.toLowerCase().includes(title.toLowerCase()))
+        tasksToReturn = tasks.filter(task => task.title.toLowerCase().includes(title.toLowerCase()) ||
+            task.persons.includes(persons))
+
         //  && robot.model.toLowerCase().includes(model.toLowerCase())
         // && (robot.batteryStatus < maxBatteryStatus)
         // && robot.batteryStatus > minBatteryStatus)

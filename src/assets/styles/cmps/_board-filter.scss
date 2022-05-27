@@ -1,6 +1,4 @@
-
-
-.new-item-btn{
+.new-item-btn {
     // height: 30px;
     background-color: #0085ff;
     color: white;
@@ -11,4 +9,44 @@
     display: flex;
     padding: 16px 0px;
     border-radius: 10px 0 0 10px;
+}
+
+.person-modal {
+    border-radius: 8px;
+    background-color: #fff;
+    color: #323338;
+    box-shadow: 0 4px 17px 6px rgb(0 0 0 / 10%);
+    padding: 16px;
+
+    .first-txt-modal {
+        flex: 1 1 auto;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        margin-right: 16px;
+        font-weight: bolder;
+    }
+
+    .second-txt-modal {
+        margin-bottom: 16px;
+        font-size: 14px;
+        max-width: 270px;
+    }
+
+    .person-link {
+        color: #323338;
+        cursor: pointer;
+        text-decoration: none;
+
+        .person-img {
+            width: 30px;
+            height: 30px;
+        }
+    }
+}
+
+
+
+.person-btn {
+    cursor: pointer;
 }
