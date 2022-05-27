@@ -3,6 +3,7 @@ import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
 import { getActionRemoveBoard, getActionAddBoard, getActionUpdateBoard } from '../store/action/board.actions'
+import { taskService } from './task.service'
 
 const STORAGE_KEY = 'board'
 const boardChannel = new BroadcastChannel('boardChannel')
@@ -20,8 +21,9 @@ export const boardService = {
 window.cs = boardService
 
 
-function query() {
-    return storageService.query(STORAGE_KEY)
+async function query() {
+    const board = await storageService.query(STORAGE_KEY)
+    return board
 }
 function getById(boardId) {
     return storageService.get(STORAGE_KEY, boardId)
@@ -36,9 +38,9 @@ async function remove(boardId) {
     boardChannel.postMessage(getActionRemoveBoard(boardId))
 }
 
-async function save(board) {
-    console.log('from board service', savedBoard)
-    var savedBoard
+async function save(board, groupId, task) {
+    var savedBoard = (task) ? taskService.saveTask(board, groupId, task) : null
+    // savedBoard = (groupId)? 
     if (board._id) {
         savedBoard = await storageService.put(STORAGE_KEY, board)
 

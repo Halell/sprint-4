@@ -1,4 +1,4 @@
-import { BoardFilter } from "./board-filter";
+import { BoardFilter } from "./board-filter"
 
 
 export function BoardHeader({ onAddGroup }) {
@@ -7,14 +7,15 @@ export function BoardHeader({ onAddGroup }) {
             <div className="board-header-content" >
                 <div className="board-header-top">
                     <div className="board-header-top-top" >
-                        <div className="top-container" >
+                        <div className="top-container flex" >
                             <div className="left-container flex">
-                                <div className="board-title">sprint 4</div>
+                                <div className="board-title">sprint 4fffffffffffffffffffffaaaaaaassssssssssssssssssssssssssssssssss</div>
                                 <div>d</div>
                                 <div>⭐</div>
                             </div>
+                            <div>:::</div>
                         </div>
-                        <div className="bottom-container">
+                        <div className="bottom-top-container">
                             <div className="desc" >add</div>
                         </div>
                     </div>
@@ -27,7 +28,7 @@ export function BoardHeader({ onAddGroup }) {
                 <div className="board-header-bottom">
                     <div className="board-header-filter">
                         <BoardFilter
-                            onAddGroup={onAddGroup}
+                            onAddGroup={ onAddGroup }
                         />
                     </div>
                 </div>

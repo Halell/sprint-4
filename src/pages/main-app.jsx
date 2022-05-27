@@ -6,15 +6,17 @@ export const MainApp = () => {
 
 
     return (
-        <main>
-            <div className="app flex">
-                <AppSideBar />
-                <div className="search-all-container"></div>
+        <main className="application">
+            <div className="app-wrapper">
+                <div className="base-layer">
+                    <AppSideBar />
+                    <div className="app-base-surface"></div>
+                </div>
+                <section className="work-space">
+                    <BoardController />
+                    <Board />
+                </section>
             </div>
-            <section className="work-space">
-                <BoardController />
-                <Board  />
-            </section>
         </main>
     )
 }

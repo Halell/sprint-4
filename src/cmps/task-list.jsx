@@ -1,9 +1,11 @@
+import { Fragment } from 'react'
+
 import { TaskPreview } from './task-preview'
 
 export function TaskList({ group, onAddTask, columns }) {
 
     return (
-        <div className="task-list">
+        <Fragment>
             { group.tasks.map((task, idx) =>
                 <TaskPreview
                     onAddTask={ onAddTask }
@@ -11,6 +13,6 @@ export function TaskList({ group, onAddTask, columns }) {
                     key={ idx }
                     columns={ columns }
                 />) }
-        </div>
+        </Fragment>
     )
 }

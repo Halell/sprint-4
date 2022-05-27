@@ -5,20 +5,20 @@ import { boardService } from "../../services/board.service.js"
 // Action Creators:
 export function getActionRemoveBoard(boardId) {
     return {
-        type: 'REMOVE_CAR',
+        type: 'REMOVE_BOARD',
         boardId
     }
 }
 export function getActionAddBoard(board) {
     return {
-        type: 'ADD_CAR',
+        type: 'ADD_BOARD',
         board
     }
 }
 export function getActionUpdateBoard(board) {
     console.log('from action get up')
     return {
-        type: 'UPDATE_CAR',
+        type: 'UPDATE_BOARD',
         board
     }
 }
@@ -72,10 +72,9 @@ export function addBoard(board) {
     }
 }
 
-export function updateBoard(board) {
+export function updateBoard(board, groupId, task) {
     return (dispatch) => {
-        console.log('from action')
-        boardService.save(board)
+        boardService.save(board, groupId, task)
             .then(savedBoard => {
                 console.log('Updated Board:', savedBoard)
                 dispatch(getActionUpdateBoard(savedBoard))

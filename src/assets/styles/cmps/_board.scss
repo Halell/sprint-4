@@ -1,5 +1,10 @@
 .board {
+    &.board-controller-pinned {
+        margin-left: 30px; //open:225px
+    }
+
     height: 100%;
+    display: flex;
     flex-direction: column;
     position: relative;
     flex-grow: 1;
@@ -8,28 +13,19 @@
     opacity: 1;
     visibility: visible;
 
-    &.board-controller-pinned {
-        margin-left: 30px; //open:225px
-    }
+    .board-container {
+        flex-grow: 1;
+        height: 100%;
+        overflow: auto;
+        position: relative;
 
-    .board-group {
-        box-sizing: content-box;
-        padding-bottom: 40px;
-        padding-top: 18px;
-        padding-left: 16px;
+        .board-wrapper {
+            height: 100%;
+            flex-direction: column;
+            position: relative;
+            overflow: auto;
 
-        .board-group-wrapper {
-            box-sizing: content-box;
-            padding-right: 30px;
-            background-color: #fff;
-            border-radius: 8px;
 
-            .border-group-content {
-                height: 100%;
-                width: 100%;
-                outline: none;
-                position: relative;
-            }
         }
     }
 }

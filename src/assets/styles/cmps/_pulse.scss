@@ -1,0 +1,134 @@
+.pulse-component-wrapper {
+    width: 100%;
+    z-index: 0;
+    background-color: #fff;
+
+    .pulse-component {
+        height: 36px;
+        line-height: 36px;
+        padding-left: 30px;
+        cursor: pointer;
+        display: flex;
+        border-bottom: 1px solid;
+        border-bottom-color: #fff;
+        position: relative;
+
+        .title-container {
+            flex-basis: 263px;
+            flex-shrink: 0;
+            position: sticky;
+            left: 46px;
+            z-index: 2000;
+            display: flex;
+            flex: 1 1 auto;
+            // position: relative;
+
+            .btn-pulse-menu {
+
+                position: absolute;
+                width: 30px;
+                left: -30px;
+                height: 100%;
+
+                background-color: #fff;
+            }
+
+            // .btn-pulse-menu:hover::after {
+            //     content: ◉;
+
+            // }
+            .title-inner-container {
+                flex-basis: 400px;
+                flex-grow: 1;
+                width: 0;
+
+                .title-inner-wrapper {
+                    height: 100%;
+
+                    .cell-component {
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                        text-align: center;
+                        font-size: 13px;
+                        font-weight: 400;
+                        border-right: 1px solid;
+                        border-right-color: #fff;
+                        border-right-color: var(--primary-background-color);
+                        color: #323338;
+                        color: var(--primary-text-color);
+                        position: relative;
+
+                        &.title-cell {
+                            flex-basis: 400px;
+                            flex: 1 0 308px;
+                            height: 100%;
+                        }
+
+                        .title-cell-component {
+                            display: flex;
+                            align-items: center;
+                            padding: 0 10px 0 0;
+                            height: 100%;
+                            text-align: left;
+
+                            .pulse-left-indicator {
+                                background-color: rgb(87, 155, 252);
+                                color: rgb(87, 155, 252);
+                                flex: 0 0 8px;
+                                height: 100%;
+                                transition: flex-basis .1s ease-in;
+                                position: relative;
+                            }
+
+                            .name-cell-text {
+                                height: 24px;
+                                display: flex;
+                                flex: 1;
+                                align-items: center;
+                                min-width: 0;
+                                padding-left: 10px;
+                                line-height: 23px;
+                                text-decoration: none;
+                                color: #323338;
+                                color: var(--primary-text-color);
+                                font-weight: 400;
+                                font-size: 13px;
+                            }
+
+                            .conversation-indicator-component {
+                                display: flex;
+                                justify-content: center;
+                                padding: 0 4px;
+                            }
+
+                        }
+                    }
+                }
+            }
+        }
+
+
+    }
+
+    .pulse-right-indicator {}
+
+    .cells-row-container {
+        max-width: 426px;
+        flex-basis: 426px;
+        flex-shrink: 0;
+
+        .cells-row-component {
+            width: 100%;
+            position: relative;
+            height: 100%;
+            display: flex;
+
+            .cell-component-wrapper {
+                width: 148px;
+                display: inline-block;
+                height: 100%;
+            }
+        }
+    }
+}
