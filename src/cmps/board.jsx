@@ -13,6 +13,8 @@ export const Board = () => {
         dispatch(loadBoard())
     }, [])
 
+    console.log('board', board)
+
     const onARemoveGroup = async (groupId) => {
         console.log('removing!')
         await groupService.remove(groupId, board)
