@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-export function GroupHeader({ board, group, onSaveGroup, onARemoveGroup }) {
+export function GroupHeader({ board, group, onUseBtn, onSaveGroup, onRemoveGroup, onUpdateColumns }) {
 
     const [isBtnsModalOpen, setIsBtnsModalOpen] = useState(false)
     const toggle = (val) => {
@@ -15,31 +15,40 @@ export function GroupHeader({ board, group, onSaveGroup, onARemoveGroup }) {
                     <div onClick={ () => toggle('btns-modal') } className="btn-group-menu flex">🟢</div>
                     { isBtnsModalOpen &&
                         <div className='btns-modal'>
-                            <button>Add group</button>
-                            <button onClick={ () => onARemoveGroup(group.id) }>x</button>
-                            <button>Duplicate this group</button>
-                            <button>Rename group</button>
+                            <button onClick={ () => onUseBtn('add') }>Add group</button>
+                            <button onClick={ () => onUseBtn('remove') }>x</button>
+                            <button onClick={ () => onUseBtn('duplicate') }>Duplicate this group</button>
+                            <button onClick={ () => onUseBtn('rename') }>Rename group</button>
                         </div>
                     }
-                    <div className="title-inner-container">
-                        <div>
-                            <div contentEditable={ true }
-                                onBlur={ onSaveGroup }
-                                className="group-title text-component"
-                                style={ { color: "#037f4c" } }
-                            >
-                                { group.title }
-                            </div>
+                </div>
+                <div className="title-inner-container">
+                    <div>
+                        <div
+                            suppressContentEditableWarning={ true }
+                            contentEditable={ true }
+                            onBlur={ onSaveGroup }
+                            className="group-title text-component"
+                            style={ { color: "#037f4c" } } >
+                            { group.title && group.title }
                         </div>
                     </div>
                 </div>
-                <div className="column-wrapper-row-columns ">
-                    { board.columns.map((column, idx) =>
-                        <div className="column-cell-wrapper" key={ idx } >{ column }</div>
-                    ) }
-                </div>
-                <div className="column-wrapper-add">+</div>
             </div>
+            <div className="column-wrapper-row-columns ">
+                { board.columns.map((column, idx) =>
+                    <div
+                        suppressContentEditableWarning={ true }
+                        onBlur={ onUpdateColumns }
+                        contentEditable={ true }
+                        title={ column }
+                        key={ idx }
+                        idx={ idx }>
+                        { column }
+                    </div>
+                ) }
+            </div>
+            <div className="column-wrapper-add">+</div>
         </div>
     )
 }
