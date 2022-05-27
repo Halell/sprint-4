@@ -201,6 +201,10 @@ img {
 //     }
 // }
 
+button {
+    cursor: pointer;
+}
+
 .btn {
     @include btn;
 

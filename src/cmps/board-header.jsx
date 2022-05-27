@@ -1,7 +1,6 @@
 import { BoardFilter } from "./board-filter"
 
-
-export function BoardHeader({ onAddGroup }) {
+export function BoardHeader({ onAddGroup, onChangeFilter, getPersons }) {
     return (
         <div className="board-header">
             <div className="board-header-content" >
@@ -29,6 +28,8 @@ export function BoardHeader({ onAddGroup }) {
                     <div className="board-header-filter">
                         <BoardFilter
                             onAddGroup={ onAddGroup }
+                            onChangeFilter={ onChangeFilter }
+                            getPersons={ getPersons }
                         />
                     </div>
                 </div>

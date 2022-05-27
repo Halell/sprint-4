@@ -21,20 +21,26 @@ function getById(taskId) {
     // return axios.get(`/api/board/${boardId}`)
 }
 
-async function remove(taskId) {
-    await storageService.remove(STORAGE_KEY, taskId)
+function remove(groupId, taskId, board) {
+    const groupIdx = board.groups.findIndex(group => group.id === groupId)
+    const taskIdx = board.groups[groupIdx].tasks.map(task => task.id === taskId)
+    board.groups[groupIdx].tasks.splice(taskIdx, 1)
+    console.log(board.groups[groupIdx].tasks)
+    return boardService.save(board)
 }
+
+
 
 async function saveTask(board, groupId, taskToSave) {
     try {
         // await
         const groups = board.groups.map(group => {
             if (group.id === groupId) {
-                if (!taskToSave._id) {
+                if (!taskToSave.id) {
                     taskToSave.id = utilService.makeId()
                     group.tasks.push(taskToSave)
                 } else {
-                    const idx = group.tasks.findIndex(task => task._id === taskToSave._id)
+                    const idx = group.tasks.findIndex(task => task.id === taskToSave.id)
                     group.tasks[idx] = taskToSave
                 }
             }

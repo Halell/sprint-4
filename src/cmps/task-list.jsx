@@ -2,16 +2,19 @@ import { Fragment } from 'react'
 
 import { TaskPreview } from './task-preview'
 
-export function TaskList({ group, onAddTask, columns }) {
+export function TaskList({ board, group, onAddTask, onUpdateTask, onRemoveTask }) {
 
     return (
         <Fragment>
             { group.tasks.map((task, idx) =>
                 <TaskPreview
+                    onRemoveTask={ onRemoveTask }
+                    group={ group }
+                    onUpdateTask={ onUpdateTask }
                     onAddTask={ onAddTask }
                     task={ task }
                     key={ idx }
-                    columns={ columns }
+                    board={ board }
                 />) }
         </Fragment>
     )

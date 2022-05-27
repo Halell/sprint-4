@@ -15,7 +15,7 @@
         "date",
         "person"
     ],
-    "members": [
+    "persons": [
         {
             "_id": "u101",
             "fullname": "Tal Tarablus",
@@ -31,11 +31,18 @@
             "tasks": [
                 {
                     "id": "c101",
-                    "title": "Replace logo"
+                    "title": "Replace logo",
+                    "persons": [
+                        "shani",
+                        "Tal Tarablus"
+                    ]
                 },
                 {
                     "id": "c102",
-                    "title": "Add Samples"
+                    "title": "Add Samples",
+                    "persons": [
+                        "halell"
+                    ]
                 }
             ]
         },
@@ -46,11 +53,17 @@
                 {
                     "id": "c103",
                     "title": "Do that",
+                    "persons": [
+                        "bob"
+                    ],
                     "archivedAt": 1589983468418
                 },
                 {
                     "id": "c104",
                     "title": "Help me",
+                    "persons": [
+                        "shani"
+                    ],
                     "status": "in-progress",
                     "description": "description",
                     "comments": [

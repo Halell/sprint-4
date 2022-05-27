@@ -1,5 +1,6 @@
 import { userService } from "../../services/user.service.js"
 import { boardService } from "../../services/board.service.js"
+import { filterByName } from "../../services/filter.service.js"
 
 
 // Action Creators:
@@ -73,15 +74,22 @@ export function addBoard(board) {
 }
 
 export function updateBoard(board, groupId, task) {
+    console.log('board: ', board)
     return (dispatch) => {
         boardService.save(board, groupId, task)
             .then(savedBoard => {
-                console.log('Updated Board:', savedBoard)
                 dispatch(getActionUpdateBoard(savedBoard))
             })
             .catch(err => {
                 console.log('Cannot save board', err)
             })
+    }
+}
+
+export function setFilterBy(filterBy) {
+    return async (dispatch) => {
+        filterByName(filterBy)
+        dispatch({ type: 'SET_FILTER_BY', filterBy })
     }
 }
 

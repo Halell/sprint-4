@@ -1,6 +1,16 @@
+import { TaskEdit } from './task-edit'
+import { useState } from 'react'
 
 
-export function TaskPreview({ task, onAddTask, columns }) {
+export function TaskPreview({ board, task, onUpdateTask, group, onRemoveTask }) {
+
+    const [isBtnInputOpen, setIsBtnInputOpen] = useState(true)
+
+    const toggle = (val) => {
+        if (val === 'btn-input') {
+            setIsBtnInputOpen(isBtnInputOpen ? false : true)
+        }
+    }
     // console.log(task)
     return (
         <div className="pulse-component-wrapper">
@@ -17,8 +27,21 @@ export function TaskPreview({ task, onAddTask, columns }) {
                                         <div className="title-component"></div>
                                     </div>
                                     <div className="conversation-indicator-component">T</div>
-                                    { task && task.title }
-                                    <button onClick={ () => onAddTask() } className=" edit-btn">Edit</button>
+                                    { isBtnInputOpen ?
+                                        < div className='btn-input'>
+                                            { task && task.title }
+                                            <button onClick={ () => toggle('btn-input') } className=" edit-btn">Edit</button>
+                                        </div>
+                                        :
+                                        < div className='btn-input' >
+                                            <TaskEdit
+                                                group={ group }
+                                                task={ task }
+                                                onUpdateTask={ onUpdateTask }
+                                                toggle={ toggle }
+                                            />
+                                        </div>
+                                    }
                                 </div>
                             </div>
                         </div>
@@ -26,7 +49,7 @@ export function TaskPreview({ task, onAddTask, columns }) {
                 </div>
                 <div className="cells-row-container">
                     <div className="cells-row-component">
-                        { columns.map((column, idx) =>
+                        { board.columns.map((column, idx) =>
                             <div className="cell-component-wrapper" key={ idx } >
                                 <div className="cell-component-inner">
                                     <div className="cell-component">
@@ -42,3 +65,18 @@ export function TaskPreview({ task, onAddTask, columns }) {
         </div>
     )
 }
+
+{/* <button onClick={() => onRemoveTask(group.id, task.id)} className="btn-side-task">🗑</button> */ }
+
+
+
+
+
+
+
+
+
+
+
+
+
