@@ -41,17 +41,13 @@ export const Board = () => {
     }
 
     const onRemoveTask = async (groupId, taskId) => {
-<<<<<<< HEAD
         console.log('removing task!')
         await taskService.remove(groupId, taskId, board)
         dispatch(loadBoard())
-=======
-        dispatch(updateBoard(board, groupId, taskId))
     }
 
     const onChangeFilter = (filterBy) => {
         dispatch(setFilterBy(filterBy))
->>>>>>> 700e7bc4e1193094c452bafa76d604dbedeed823
     }
 
     return (
