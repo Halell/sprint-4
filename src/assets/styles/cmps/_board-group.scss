@@ -7,9 +7,9 @@
     //     position: relative;
     //     align-items: center;
 
-        // .column-wrapper-title {
-        //     width: 100%;
-        //     position: sticky;
+    // .column-wrapper-title {
+    //     width: 100%;
+    //     position: sticky;
 
 
 
@@ -100,13 +100,15 @@
         height: 100%;
 
         .group-column-list {
-            font-size: .875rem;
+            font-size: 14px;
+            font-family: Roboto; //  rubik
             position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
             height: 100%;
             min-width: 140px;
+            font-weight: 400;
 
             .group-column {
                 outline: none;

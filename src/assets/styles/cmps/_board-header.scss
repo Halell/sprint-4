@@ -26,22 +26,18 @@
 
                             .board-title {
                                 margin-right: 4px;
-                                font-size: 2rem;
-                                font-family: roboto-bold;
                                 box-sizing: border-box;
 
                                 .board-title-name {
                                     border-radius: 4px;
-                                    font-size: 1.5rem;
                                     line-height: 32px;
                                     overflow: hidden;
                                     white-space: normal;
                                     line-height: 52px;
-                                    font-family: Robo;
-                                    font-weight: 400;
+                                    font-family: Roboto;
+                                    font-weight: 500;
+                                    font-size: 24px;
                                     margin: 0;
-
-
                                 }
 
                                 .btn-hide {
@@ -70,6 +66,12 @@
                 }
             }
 
+            .btn-defult-view {
+                font-size: 14px;
+                font-family: Roboto; // rubik
+                font-weight: 400;
+            }
+
         }
 
         .board-header-bottom {
@@ -91,6 +93,9 @@
     color: #676879;
     outline-style: none;
     max-width: 70%;
+    font-size: 14px;
+    font-family: Roboto; //  rubik
+    font-weight: 400;
 
     &:hover {
         outline: dashed 1px rgb(180, 180, 180);

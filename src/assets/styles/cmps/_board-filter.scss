@@ -23,6 +23,9 @@
             padding: 4px 8px;
             align-items: center;
             display: flex;
+            font-size: 14px;
+            font-family: Roboto; // rubik
+            font-weight: 400;
 
             &:hover {
                 background-color: rgb(3, 76, 145);
@@ -127,14 +130,14 @@
             }
         }
 
-        .person-btn {
-            cursor: pointer;
+        // .person-btn {
+        //     cursor: pointer;
 
-            .open {
-                display: block;
-                position: absolute;
-            }
-        }
+        //     .open {
+        //         display: block;
+        //         position: absolute;
+        //     }
+        // }
     }
 
     .search-wrapper {
@@ -154,7 +157,9 @@
             padding: 1px 2px;
             box-sizing: border-box;
             background-color: #FFFFFF;
-            font-weight: bold;
+            font-size: 14px;
+            font-family: Roboto; //rubik
+            font-weight: 400;
             border-radius: 4px;
             height: 32px;
 
@@ -182,6 +187,8 @@
             text-align: center;
             align-items: center;
             justify-content: center;
+            font-size: 14px;
+            font-family: Roboto; // rubik
 
             &:hover {
                 background-color: #ece7e7;
