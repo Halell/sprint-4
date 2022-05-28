@@ -49,6 +49,7 @@ export const Board = () => {
     }
     const getPersons = () => {
         const persons = board.persons
+        console.log('persons: ', persons);
     }
 
     const onSaveBoard = async (newBoard) => {

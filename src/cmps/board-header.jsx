@@ -63,6 +63,7 @@ export function BoardHeader({ onAddGroup, onChangeFilter, getPersons, onSaveBoar
                         onAddGroup={onAddGroup}
                         onChangeFilter={onChangeFilter}
                         getPersons={getPersons}
+                        board={board}
                     />
                 </div>
                 {/* </div> */}

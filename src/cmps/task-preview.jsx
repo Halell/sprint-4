@@ -21,12 +21,12 @@ export function TaskPreview({ board, task, onUpdateTask, group, onRemoveTask }) 
                         <div className="title-inner-wrapper">
                             <div className="cell-component title-cell"  >
                                 <div className="title-cell-component">
-                                    <div className="pulse-left-indicator">T</div>
+                                    <div className="pulse-left-indicator"></div>
                                     <div className="title-cell-text">
                                         <div className="edit-icon-wrapper"></div>
                                         <div className="title-component"></div>
                                     </div>
-                                    <div className="conversation-indicator-component">T</div>
+                                    <div className="conversation-indicator-component"></div>
                                     {isBtnInputOpen ?
                                         < div className='btn-input'>
                                             {task && task.title}
