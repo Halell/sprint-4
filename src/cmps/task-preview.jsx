@@ -27,18 +27,18 @@ export function TaskPreview({ board, task, onUpdateTask, group, onRemoveTask }) 
                                         <div className="title-component"></div>
                                     </div>
                                     <div className="conversation-indicator-component">T</div>
-                                    { isBtnInputOpen ?
+                                    {isBtnInputOpen ?
                                         < div className='btn-input'>
-                                            { task && task.title }
-                                            <button onClick={ () => toggle('btn-input') } className=" edit-btn">Edit</button>
+                                            {task && task.title}
+                                            <button onClick={() => toggle('btn-input')} className=" edit-btn">Edit</button>
                                         </div>
                                         :
                                         < div className='btn-input' >
                                             <TaskEdit
-                                                group={ group }
-                                                task={ task }
-                                                onUpdateTask={ onUpdateTask }
-                                                toggle={ toggle }
+                                                group={group}
+                                                task={task}
+                                                onUpdateTask={onUpdateTask}
+                                                toggle={toggle}
                                             />
                                         </div>
                                     }
@@ -49,15 +49,15 @@ export function TaskPreview({ board, task, onUpdateTask, group, onRemoveTask }) 
                 </div>
                 <div className="cells-row-container">
                     <div className="cells-row-component">
-                        { board.columns.map((column, idx) =>
-                            <div className="cell-component-wrapper" key={ idx } >
+                        {board.columns.map((column, idx) =>
+                            <div className="cell-component-wrapper" key={idx} >
                                 <div className="cell-component-inner">
                                     <div className="cell-component">
-                                        { column }
+                                        {column}
                                     </div>
                                 </div>
                             </div>
-                        ) }
+                        )}
                     </div>
                 </div>
                 <div className="column-wrapper-add"></div>

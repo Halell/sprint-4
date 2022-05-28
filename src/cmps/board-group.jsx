@@ -42,29 +42,31 @@ export function BoardContent({ group, columns, onAddTask, onRemoveGroup, onUpdat
         onAddGroup(group)
     }
     return (
-        <Fragment>
-            <GroupHeader
-                onSaveGroup={ onSaveGroup }
-                onRemoveGroup={ onRemoveGroup }
-                group={ group }
-                board={ board }
-                onUpdateColumns={ onUpdateColumns }
-                onUseBtn={ onUseBtn }
-            />
-            <TaskList
-                onRemoveTask={ onRemoveTask }
-                group={ group }
-                onAddTask={ onAddTask }
-                onUpdateTask={ onUpdateTask }
-                board={ board }
-            />
+        // <Fragment>
+            <div>
+                <GroupHeader
+                    onSaveGroup={onSaveGroup}
+                    onRemoveGroup={onRemoveGroup}
+                    group={group}
+                    board={board}
+                    onUpdateColumns={onUpdateColumns}
+                    onUseBtn={onUseBtn}
+                />
+                <TaskList
+                    onRemoveTask={onRemoveTask}
+                    group={group}
+                    onAddTask={onAddTask}
+                    onUpdateTask={onUpdateTask}
+                    board={board}
+                />
 
-            <div className="group-footer">
-                <form onSubmit={ (ev) => onAddTask(board, group.id, task, ev) }  >
-                    <input type="text" onChange={ onHandleChange } name="title" />
-                </form>
+                <div className="group-footer">
+                    <form onSubmit={(ev) => onAddTask(board, group.id, task, ev)}  >
+                        <input type="text" onChange={onHandleChange} name="title" />
+                    </form>
+                </div>
             </div>
-        </Fragment>
+        // </Fragment>
     )
 
 }
