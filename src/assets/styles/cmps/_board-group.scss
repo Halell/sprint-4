@@ -32,6 +32,11 @@
         color: rgb(0, 134, 192);
         align-items: center;
         justify-content: center;
+        outline: none;
+
+        &:hover {
+            outline: dashed 1px rgb(180, 180, 180);
+        }
     }
 
     .btn-group-menu {
@@ -47,7 +52,6 @@
 
     .column-wrapper-row-columns {
         display: flex;
-        // justify-content: space-between;
         width: 100%;
         position: relative;
         height: 100%;
@@ -58,9 +62,16 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            cursor: default;
             height: 100%;
             min-width: 140px;
+
+            .group-column {
+                outline: none;
+
+                &:hover {
+                    outline: dashed 1px rgb(123, 123, 123);
+                }
+            }
 
             &:hover {
                 background-color: #e6e9ef;

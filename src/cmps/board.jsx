@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { loadBoard, updateBoard, setFilterBy } from '../store/action/board.actions'
 import { taskService } from '../services/task.service'
 import { groupService } from '../services/group.service'
+import { boardService } from '../services/board.service'
 
 export const Board = () => {
     let { board } = useSelector((storeState) => storeState.boardModule)
@@ -14,28 +15,22 @@ export const Board = () => {
     }, [])
 
 
-
     const onRemoveGroup = async (groupId) => {
-        console.log('removing!')
         await groupService.remove(groupId, board)
         dispatch(loadBoard())
     }
 
     const onAddGroup = async (group) => {
         if (group) {
-            console.log('updating group!')
             await groupService.addGroup(board, group)
             dispatch(loadBoard())
             return
         }
-        console.log('adding group!')
         await groupService.addGroup(board)
         dispatch(loadBoard())
     }
 
     const onAddTask = async (board, groupId, task) => {
-  
-        console.log(task)
         dispatch(updateBoard(board, groupId, task))
         task = null
     }
@@ -45,7 +40,6 @@ export const Board = () => {
     }
 
     const onRemoveTask = async (groupId, taskId) => {
-        console.log('removing task!')
         await taskService.remove(groupId, taskId, board)
         dispatch(loadBoard())
     }
@@ -55,9 +49,11 @@ export const Board = () => {
     }
     const getPersons = () => {
         const persons = board.persons
-        console.log('persons: ', persons)
     }
 
+    const onSaveBoard = async (newBoard) => {
+        await boardService.save(newBoard)
+    }
     return (
         <section className='board board-controller-pinned'>
             <div className="board-container">
@@ -66,6 +62,8 @@ export const Board = () => {
                         onAddGroup={onAddGroup}
                         onChangeFilter={onChangeFilter}
                         getPersons={getPersons}
+                        board={board}
+                        onSaveBoard={onSaveBoard}
                     />
                     <div className="board-content">
                         <div className="board-content-container">
