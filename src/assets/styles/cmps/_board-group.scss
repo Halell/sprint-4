@@ -35,6 +35,7 @@
     .group-title-wraper {
         flex: 1 1;
         outline: none;
+        padding: 0 5px;
         transition: padding .15s;
         padding: 0;
         text-overflow: ellipsis;
@@ -62,13 +63,13 @@
             height: 24px;
             display: none;
             color: grey;
+            padding: 1px;
         }
 
         &:hover {
             .drag-btn svg {
                 display: block;
                 margin-top: 5px;
-
                 cursor: move;
             }
         }
@@ -79,9 +80,11 @@
         align-items: center;
         justify-content: center;
         outline: none;
-        padding: 0 5px;
+        transition: padding .15s;
 
+        // transition:;
         &:hover {
+            padding: 0 5px;
             outline: dashed 1px rgb(180, 180, 180);
 
             .drag-btn {
