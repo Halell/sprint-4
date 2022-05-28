@@ -41,6 +41,7 @@ export function GroupHeader({ board, group, onUseBtn, onSaveGroup, onRemoveGroup
                     <div className='draggable'>
                         <div className="group-column-list">
                             <div
+                                className="group-column"
                                 suppressContentEditableWarning={true}
                                 onBlur={onUpdateColumns}
                                 contentEditable={true}

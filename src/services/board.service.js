@@ -49,7 +49,6 @@ async function save(board, groupId, task) {
     // savedBoard = (groupId)? 
     if (board._id) {
         savedBoard = await storageService.put(STORAGE_KEY, board)
-
         boardChannel.postMessage(getActionUpdateBoard(savedBoard))
 
     } else {

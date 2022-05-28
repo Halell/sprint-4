@@ -1,6 +1,23 @@
+import { updateBoard } from "../store/action/board.actions"
 import { BoardFilter } from "./board-filter"
 
-export function BoardHeader({ onAddGroup, onChangeFilter, getPersons }) {
+export function BoardHeader({ onAddGroup, onChangeFilter, getPersons, onSaveBoard, board }) {
+
+
+    function updateBoardTitle(el) {
+        const title = el.target.innerText
+        board.title = title
+        onSaveBoard(board)
+    }
+
+    function updateBoardDesc(el) {
+        const desc = el.target.innerText
+        board.desc = desc
+        console.log(board)
+        onSaveBoard(board)
+    }
+
+
     return (
         <div className="board-header">
             <div className="board-header-content" >
@@ -10,9 +27,11 @@ export function BoardHeader({ onAddGroup, onChangeFilter, getPersons }) {
                             <div className="left-container flex">
                                 <div className="board-name flex">
                                     <div className="board-title">
-                                        <h1 className="board-title-name" suppressContentEditableWarning={true}
+                                        <div className="board-title-name"
+                                            suppressContentEditableWarning={true}
                                             contentEditable={true}
-                                        >My first board</h1>
+                                            onBlur={updateBoardTitle}
+                                        >{board.title}</div>
                                     </div>
                                     <div className="btn-hide">
                                         <div >🎱</div>
@@ -24,9 +43,11 @@ export function BoardHeader({ onAddGroup, onChangeFilter, getPersons }) {
                             </div>
                         </div>
                         <div className="bottom-top-container">
-                            <div className="desc" suppressContentEditableWarning={true}
+                            <div className="desc"
+                                suppressContentEditableWarning={true}
                                 contentEditable={true}
-                            >add</div>
+                                onBlur={updateBoardDesc}
+                            >{board.desc ? board.desc : 'Add board description'} </div>
                         </div>
                     </div>
                     <div className="board-header-top-bottom flex" >

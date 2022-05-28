@@ -40,6 +40,8 @@
                                     font-family: Robo;
                                     font-weight: 400;
                                     margin: 0;
+
+
                                 }
 
                                 .btn-hide {
@@ -82,5 +84,15 @@
             font-size: .875rem;
             box-sizing: border-box;
         }
+    }
+}
+
+.desc {
+    color: #676879;
+    outline-style: none;
+    max-width: 70%;
+
+    &:hover {
+        outline: dashed 1px rgb(180, 180, 180);
     }
 }
