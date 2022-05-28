@@ -23,11 +23,6 @@ export function boardReducer(state = initialState, action) {
             // board = state.board.map(board => (board._id === action.board._id) ? action.board : board)
             newState = { ...state, board: action.board }
             break
-        case 'SET_FILTER_BY':
-            return {
-                ...state,
-                filterBy: { ...action.filterBy }
-            }
         default:
     }
     // For debug:
