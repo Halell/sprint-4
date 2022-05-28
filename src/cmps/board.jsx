@@ -33,9 +33,11 @@ export const Board = () => {
         dispatch(loadBoard())
     }
 
-    const onAddTask = async (board, groupId, task, ev) => {
-        ev.preventDefault()
+    const onAddTask = async (board, groupId, task) => {
+  
+        console.log(task)
         dispatch(updateBoard(board, groupId, task))
+        task = null
     }
 
     const onUpdateTask = (task, groupId) => {
@@ -61,25 +63,25 @@ export const Board = () => {
             <div className="board-container">
                 <div className="board-wrapper flex">
                     <BoardHeader
-                        onAddGroup={ onAddGroup }
-                        onChangeFilter={ onChangeFilter }
-                        getPersons={ getPersons }
+                        onAddGroup={onAddGroup}
+                        onChangeFilter={onChangeFilter}
+                        getPersons={getPersons}
                     />
                     <div className="board-content">
                         <div className="board-content-container">
                             <div className="border-content-wrapper">
-                                { board && board.groups?.map((group, idx) =>
+                                {board && board.groups?.map((group, idx) =>
                                     <BoardContent
-                                        onRemoveGroup={ onRemoveGroup }
-                                        onAddTask={ onAddTask }
-                                        onUpdateTask={ onUpdateTask }
-                                        onRemoveTask={ onRemoveTask }
-                                        group={ group }
-                                        columns={ board.columns }
-                                        key={ idx }
-                                        onAddGroup={ onAddGroup }
+                                        onRemoveGroup={onRemoveGroup}
+                                        onAddTask={onAddTask}
+                                        onUpdateTask={onUpdateTask}
+                                        onRemoveTask={onRemoveTask}
+                                        group={group}
+                                        columns={board.columns}
+                                        key={idx}
+                                        onAddGroup={onAddGroup}
                                     />
-                                ) }
+                                )}
                             </div>
                         </div>
                     </div>

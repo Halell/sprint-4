@@ -16,6 +16,13 @@ export function BoardContent({ group, columns, onAddTask, onRemoveGroup, onUpdat
         const value = target.type === 'number' ? (+target.value || '') : target.value
         setTask((prevFields) => ({ ...prevFields, [field]: value }))
     }
+
+    const onSaveTask = (ev) => {
+        ev.preventDefault()
+        onAddTask(board, group.id, task)
+        setTask(null)
+    }
+    
     const toggle = (val) => {
         if (val === 'btns-modal') {
             setIsBtnsModalOpen(isBtnsModalOpen ? false : true)
@@ -43,29 +50,29 @@ export function BoardContent({ group, columns, onAddTask, onRemoveGroup, onUpdat
     }
     return (
         // <Fragment>
-            <div>
-                <GroupHeader
-                    onSaveGroup={onSaveGroup}
-                    onRemoveGroup={onRemoveGroup}
-                    group={group}
-                    board={board}
-                    onUpdateColumns={onUpdateColumns}
-                    onUseBtn={onUseBtn}
-                />
-                <TaskList
-                    onRemoveTask={onRemoveTask}
-                    group={group}
-                    onAddTask={onAddTask}
-                    onUpdateTask={onUpdateTask}
-                    board={board}
-                />
+        <div>
+            <GroupHeader
+                onSaveGroup={onSaveGroup}
+                onRemoveGroup={onRemoveGroup}
+                group={group}
+                board={board}
+                onUpdateColumns={onUpdateColumns}
+                onUseBtn={onUseBtn}
+            />
+            <TaskList
+                onRemoveTask={onRemoveTask}
+                group={group}
+                onAddTask={onAddTask}
+                onUpdateTask={onUpdateTask}
+                board={board}
+            />
 
-                <div className="group-footer">
-                    <form onSubmit={(ev) => onAddTask(board, group.id, task, ev)}  >
-                        <input type="text" onChange={onHandleChange} name="title" />
-                    </form>
-                </div>
+            <div className="group-footer">
+                <form onSubmit={(ev) => onSaveTask(ev)}  >
+                    <input type="text" onChange={onHandleChange} name="title" placeholder='+ Add' />
+                </form>
             </div>
+        </div>
         // </Fragment>
     )
 

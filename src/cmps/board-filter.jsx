@@ -30,7 +30,7 @@ export const BoardFilter = ({ onAddGroup, onChangeFilter, getPersons }) => {
     return (
         <div className="header-bottom-main-wrapper">
             <div className="new-item-wraper flex">
-                <div onClick={() => onAddGroup()} className="new-item-btn">New Item</div>
+                <div onClick={() => onAddGroup()} className="new-item-btn flex">New Item</div>
                 <div className="new-item-modal-btn-wrpper">
                     <div onClick={() => openModal()} className="new-item-modal-btn">\/</div>
                 </div>

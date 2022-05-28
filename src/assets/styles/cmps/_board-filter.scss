@@ -13,9 +13,7 @@
         position: relative;
         cursor: pointer;
 
-        &:hover {
-            background-color: rgb(3, 76, 145);
-        }
+
 
         .new-item-modal-btn-wrpper {
             border-radius: 0 4px 4px 0;
@@ -39,21 +37,19 @@
 
 
     .new-item-btn {
-        // height: 30px;
-        // background-color: #0085ff;
-        // color: white;
-        // font-weight: 550;
-        // font-size: large;
-        // border-top: 1px solid;
-        // border-color: #e6e9ef;
-        // display: flex;
-        // padding: 16px 0px;
-        // border-radius: 10px 0 0 10px;
         border-radius: 4px 0 0 4px;
         background-color: #0073ea;
         color: #fff;
         padding: 4px 8px;
         align-items: center;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 24px;
+        font-family: sans-serif;
+        
+        &:hover {
+            background-color: rgb(3, 76, 145);
+        }
     }
 
 
@@ -174,10 +170,13 @@
 
         .person-btn {
             cursor: pointer;
+            display: flex;
             width: 100%;
             border-radius: 4px;
             height: 32px;
             text-align: center;
+            align-items: center;
+            justify-content: center;
 
             &:hover {
                 background-color: #ece7e7;
