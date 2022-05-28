@@ -8,14 +8,25 @@ export function BoardHeader({ onAddGroup, onChangeFilter, getPersons }) {
                     <div className="board-header-top-top" >
                         <div className="top-container flex" >
                             <div className="left-container flex">
-                                <div className="board-title">sprint 4fffffffffffffffffffffaaaaaaassssssssssssssssssssssssssssssssss</div>
-                                <div>d</div>
-                                <div>⭐</div>
+                                <div className="board-name flex">
+                                    <div className="board-title">
+                                        <h1 className="board-title-name" suppressContentEditableWarning={true}
+                                            contentEditable={true}
+                                        >My first board</h1>
+                                    </div>
+                                    <div className="btn-hide">
+                                        <div >🎱</div>
+                                    </div>
+                                    <div className="btn-star">
+                                        <div >⭐</div>
+                                    </div>
+                                </div>
                             </div>
-                            <div>:::</div>
                         </div>
                         <div className="bottom-top-container">
-                            <div className="desc" >add</div>
+                            <div className="desc" suppressContentEditableWarning={true}
+                                contentEditable={true}
+                            >add</div>
                         </div>
                     </div>
                     <div className="board-header-top-bottom flex" >
@@ -24,15 +35,16 @@ export function BoardHeader({ onAddGroup, onChangeFilter, getPersons }) {
                         </div>
                     </div>
                 </div>
-                <div className="board-header-bottom">
-                    <div className="board-header-filter">
-                        <BoardFilter
-                            onAddGroup={ onAddGroup }
-                            onChangeFilter={ onChangeFilter }
-                            getPersons={ getPersons }
-                        />
-                    </div>
+                {/* <div className="board-header-bottom"> */}
+                <hr />
+                <div className="board-header-filter flex">
+                    <BoardFilter
+                        onAddGroup={onAddGroup}
+                        onChangeFilter={onChangeFilter}
+                        getPersons={getPersons}
+                    />
                 </div>
+                {/* </div> */}
             </div>
         </div>
     )

@@ -28,10 +28,12 @@ export const BoardFilter = ({ onAddGroup, onChangeFilter, getPersons }) => {
     }
 
     return (
-        <div>
+        <div className="header-bottom-main-wrapper">
             <div className="new-item-wraper flex">
-                <button onClick={() => onAddGroup()} className="new-item-btn">New Item</button>
-                <button onClick={() => openModal()} className="new-item-modal-btn">\/</button>
+                <div onClick={() => onAddGroup()} className="new-item-btn">New Item</div>
+                <div className="new-item-modal-btn-wrpper">
+                    <div onClick={() => openModal()} className="new-item-modal-btn">\/</div>
+                </div>
             </div>
 
             <div className={"new-item-modal " + className}>
@@ -42,11 +44,12 @@ export const BoardFilter = ({ onAddGroup, onChangeFilter, getPersons }) => {
                 </div>
             </div>
 
-            <div>
-                <label htmlFor="title">filter</label>
-                <input {...register('title')} />
+            <div className="search-wrapper">
+                <input className="search-input" placeholder="🔍 search" {...register('title')} />
             </div>
-            <div className="person-btn" onClick={() => toggle('person-modal')}>persons</div>
+            <div className="persons-wrapper">
+                <div className="person-btn" onClick={() => toggle('person-modal')}>persons</div>
+            </div>
             {isModalOpen &&
                 <div className="person-modal" onBlur={() => toggle('person-modal')}>
                     <p className="first-txt-modal">Quick person filter</p>
