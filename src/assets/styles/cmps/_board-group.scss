@@ -1,55 +1,130 @@
 .group-header-wrppaer {
-    width: 100%;
     position: relative; //absoulote
+    height: 36px;
 
-    .group-header-cmp {
-        padding-left: 30px;
-        position: relative;
+    // .group-header-cmp {
+    //     padding-left: 30px;
+    //     position: relative;
+    //     align-items: center;
+
+        // .column-wrapper-title {
+        //     width: 100%;
+        //     position: sticky;
+
+
+
+    .title-inner-container {
+        flex: 1 1;
+        outline: none;
+        transition: padding .15s;
+        padding: 0;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        position: -webkit-sticky;
+        position: sticky;
+        left: 0;
+        z-index: 2;
+        min-width: 180px;
+        background-color: rgba(253, 253, 250, .95);
+        cursor: default;
         align-items: center;
+    }
 
 
-        .column-wrapper-title {
-            width: 100%;
-            // display: flex;
-            // flex: 1 1 auto;
-            position: sticky;
-            // flex-grow: 1;
-            // z-index: 2;
 
-            .title-inner-container {
-                position: relative;
-                min-height: 40px;
-                text-align: left;
-                font-size: 18px;
-                flex: 1 0 308px;
-                min-width: 0px;
-                display: flex;
-                align-items: center;
-                padding-bottom: 1px;
-                z-index: 1;
-            }
+    .group-title-wraper {
+        flex: 1 1;
+        outline: none;
+        padding: 0 5px;
+        transition: padding .15s;
+        padding: 0;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        // position: -webkit-sticky;
+        position: sticky;
+        left: 0;
+        z-index: 2;
+        min-width: 180px;
+        background-color: rgba(253, 253, 250, .95);
 
-            .btn-group-menu {
-                position: absolute;
-                width: 30px;
-                left: -30px;
-                height: 100%;
-                display: flex;
-                background-color: #fff;
-                align-items: center;
-                cursor: pointer;
-            }
+        .btn-group-menu {
+            display: flex;
+            flex: 0 0 30px;
+            max-width: 30px;
+            padding-bottom: 1px;
+            left: -30px;
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
         }
 
-        .column-wrapper-row-columns {
-            display: flex;
-            // justify-content: space-between;
-            width: 100%;
+        .drag-btn svg {
+            height: 24px;
+            display: none;
+            color: grey;
+            padding: 1px;
+        }
+
+        &:hover {
+            .drag-btn svg {
+                display: block;
+                margin-top: 5px;
+                cursor: move;
+            }
+        }
+    }
+
+    .group-title {
+        color: rgb(0, 134, 192);
+        align-items: center;
+        justify-content: center;
+        outline: none;
+        transition: padding .15s;
+
+        // transition:;
+        &:hover {
+            padding: 0 5px;
+            outline: dashed 1px rgb(180, 180, 180);
+
+            .drag-btn {
+                display: block;
+            }
+        }
+    }
+
+    .column-wrapper-row-columns {
+        display: flex;
+        width: 100%;
+        position: relative;
+        height: 100%;
+
+        .group-column-list {
+            font-size: .875rem;
             position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             height: 100%;
+            min-width: 140px;
+
+            .group-column {
+                outline: none;
+
+                &:hover {
+                    outline: dashed 1px rgb(123, 123, 123);
+                }
+            }
+
+            &:hover {
+                background-color: #e6e9ef;
+            }
         }
     }
 }
+
+// }
+// }
 
 
 .btns-modal {
@@ -59,6 +134,9 @@
     z-index: 100;
     background-color: #fff;
     margin-left: 144px;
+    width: 264px;
+    top: 80%;
+    left: 7px;
 
     button {
         border: 1px solid rgb(186, 185, 185);

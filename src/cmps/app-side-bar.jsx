@@ -6,7 +6,7 @@ export const AppSideBar = () => {
             <div className="app-side-bar-wrapper">
                 <div className="logo-container">
                     <div className="logo-wrapper">
-                        <Link to={ '/' } className="routs-link ">
+                        <Link to={'/'} className="routs-link ">
                             <img className="surface-item-image" src="https://cdn.monday.com/images/logos/monday_logo_icon.png" />
                         </Link>
                     </div>
@@ -22,7 +22,7 @@ export const AppSideBar = () => {
 
                     </div>
                     <div className="bottom">
-                        {/* <div className="search-all-container"></div> */ }
+                        {/* <div className="search-all-container"></div> */}
                     </div>
                 </div>
                 <div className="footer">

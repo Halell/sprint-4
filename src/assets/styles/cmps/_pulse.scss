@@ -1,7 +1,10 @@
 .pulse-component-wrapper {
     width: 100%;
     z-index: 0;
-    background-color: #fff;
+    background-color: rgb(237, 237, 237);
+    &:hover{
+        background-color: rgb(223, 223, 223);
+    }
 
     .pulse-component {
         height: 36px;
@@ -14,13 +17,13 @@
         position: relative;
 
         .title-container {
-            flex-basis: 263px;
+            flex-basis: 237px; //263px;
             flex-shrink: 0;
             position: sticky;
             left: 46px;
             z-index: 2000;
             display: flex;
-            flex: 1 1 auto;
+            // flex: 1 1 auto;
             // position: relative;
 
             .btn-pulse-menu {

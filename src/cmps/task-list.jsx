@@ -2,7 +2,7 @@ import { Fragment } from 'react'
 
 import { TaskPreview } from './task-preview'
 
-export function TaskList({ board, group, onAddTask, onUpdateTask, onRemoveTask }) {
+export function TaskList({ board, group, onUpdateTask, onRemoveTask }) {
 
     return (
         <Fragment>
@@ -11,7 +11,6 @@ export function TaskList({ board, group, onAddTask, onUpdateTask, onRemoveTask }
                     onRemoveTask={ onRemoveTask }
                     group={ group }
                     onUpdateTask={ onUpdateTask }
-                    onAddTask={ onAddTask }
                     task={ task }
                     key={ idx }
                     board={ board }

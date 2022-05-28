@@ -40,6 +40,7 @@ async function saveTask(board, groupId, taskToSave) {
                     taskToSave.id = utilService.makeId()
                     group.tasks.push(taskToSave)
                 } else {
+                    console.log('hi')
                     const idx = group.tasks.findIndex(task => task.id === taskToSave.id)
                     group.tasks[idx] = taskToSave
                 }

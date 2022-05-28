@@ -1,8 +1,7 @@
 import { boardService } from "./board.service";
 
-export function filterByName(filterBy) {
-    const board = boardService.getCurrBoard()
-    // var { title } = filterBy
+export async function filterByName(filterBy) {
+    const board = await boardService.query()
     const groups = board.groups.map(group => {
         group.tasks = filter(filterBy, group.tasks)
         return group

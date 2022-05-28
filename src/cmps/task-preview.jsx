@@ -20,6 +20,7 @@ export function TaskPreview({ board, task, onUpdateTask, group, onRemoveTask }) 
                     onUpdateTask={ onUpdateTask }
                     group={ group }
                 />
+
                 <div className="cells-row-container">
                     <div className="cells-row-component">
                         { board.columns.map((column, idx) =>
