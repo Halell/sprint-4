@@ -83,6 +83,10 @@
                         position: relative;
                         cursor: pointer;
                         outline: none;
+
+                        &:hover {
+                            background-color: rgba(0, 0, 0, 0.427);
+                        }
                     }
                 }
             }

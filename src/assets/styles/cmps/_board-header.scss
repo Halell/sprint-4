@@ -40,26 +40,28 @@
                                     margin: 0;
                                 }
 
-                                .btn-hide {
+                                .btn-title-name {
                                     color: #676879;
-                                    height: 32px;
+                                    height: 16px;
                                     width: 32px;
                                     display: flex;
                                     align-items: center;
                                     justify-content: center;
-                                    margin-right: 4px;
-                                    border-radius: 4px;
+
+                                    svg {
+                                        height: 16px;
+                                    }
+
                                 }
 
-                                .btn-star {
-                                    color: #676879;
-                                    height: 32px;
-                                    width: 32px;
-                                    display: flex;
-                                    align-items: center;
-                                    justify-content: center;
-                                    border-radius: 4px;
-                                }
+                                // .btn-title-name {
+                                //     color: #676879;
+                                //     height: 32px;
+                                //     width: 32px;
+                                //     display: flex;
+                                //     align-items: center;
+                                //     justify-content: center;
+                                // }
                             }
                         }
                     }
