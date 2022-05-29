@@ -7,7 +7,7 @@ import { taskService } from './task.service'
 
 const STORAGE_KEY = 'board'
 const boardChannel = new BroadcastChannel('boardChannel')
-var gBoard
+var gCurrBoard
 
 export const boardService = {
     query,
@@ -21,13 +21,15 @@ export const boardService = {
 window.cs = boardService
 
 function getCurrBoard() {
-    return gBoard
+    return gCurrBoard
 }
 
-async function query() {
-    const board = await storageService.query(STORAGE_KEY)
-    gBoard = board
-    return gBoard
+async function query(boardId) {
+    console.log(boardId)
+    // we going to use get by id for every query
+    const board = await storageService.get(STORAGE_KEY, boardId)
+    gCurrBoard = board
+    return gCurrBoard
 }
 
 function getById(boardId) {

@@ -8,7 +8,7 @@ export const storageService = {
     remove,
     postMany
 }
-// console.log('gGroups:', gGroups)
+
 
 function query(entityType, delay = 100) {
     var entities = JSON.parse(localStorage.getItem(entityType)) || gBoard
@@ -21,7 +21,7 @@ function query(entityType, delay = 100) {
     })
 }
 
-function get(entityType, entityId) {
+function get(entityType, entityId = "b101") {
     return query(entityType)
         .then(entities => entities.find(entity => entity._id === entityId))
 }
