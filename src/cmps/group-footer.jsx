@@ -18,7 +18,7 @@ export function GroupFooter({ group, onAddTask }) {
 
     const handleKeyPressAddTask = (event) => {
         if (event.key === 'Enter') {
-            console.log(group.id)
+            // console.log(group.id)
             onSaveTask(event)
         }
     }

@@ -12,19 +12,19 @@ export const BoardController = () => {
     }
 
     const onAddBoard = () => {
-        console.log('Adding board!')
+        // console.log('Adding board!')
     }
 
     return (
-        <main style={style} className="board-controller board-controller" >
-            <button className={"controller-btn " + className} onClick={() => toggleController()}>{isOpen ? '>' : '<'}</button>
+        <main style={ style } className="board-controller board-controller" >
+            <button className={ "controller-btn " + className } onClick={ () => toggleController() }>{ isOpen ? '>' : '<' }</button>
 
-            {!isOpen &&
+            { !isOpen &&
                 <div className="controller-container">
-                    <button className="controller-add-btn" onClick={() => { onAddBoard() }}>+ Add</button>
+                    <button className="controller-add-btn" onClick={ () => { onAddBoard() } }>+ Add</button>
                     <div
-                        suppressContentEditableWarning={true}
-                        contentEditable={true}>
+                        suppressContentEditableWarning={ true }
+                        contentEditable={ true }>
                         Search
                     </div>
                     <hr />
@@ -33,7 +33,7 @@ export const BoardController = () => {
                         <li>Board 2 <button>...</button></li>
                         <li>Board 3 <button>...</button></li>
                     </ul>
-                    {/* {boards && boards.title} */}
+                    {/* {boards && boards.title} */ }
                 </div>
 
             }

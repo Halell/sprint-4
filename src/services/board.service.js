@@ -25,7 +25,7 @@ function getCurrBoard() {
 }
 
 async function query(boardId) {
-    console.log(boardId)
+    // console.log(boardId)
     // we going to use get by id for every query
     const board = await storageService.get(STORAGE_KEY, boardId)
     gCurrBoard = board

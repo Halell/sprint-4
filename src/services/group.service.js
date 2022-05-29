@@ -15,8 +15,8 @@ async function addGroup(board, updateGroup) {
     if (updateGroup) {
         const idx = board.groups.findIndex(group => group.id === updateGroup.id)
         board.groups[idx] = updateGroup
-        console.log(board.groups[idx])
-        console.log('board', board)
+        // console.log(board.groups[idx])
+        // console.log('board', board)
 
     } else {
         newGroup = {

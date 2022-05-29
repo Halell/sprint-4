@@ -29,12 +29,12 @@ export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask }) 
     }
 
     const openImportanceModal = () => {
-        console.log('impo')
+        // console.log('impo')
 
     }
 
     const setStatus = (val) => {
-        console.log(val)
+
         if (val === 'done') {
             task.status = val
             onUpdateTask(task, group.id)
@@ -63,29 +63,29 @@ export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask }) 
         <div className="pulse-component-wrapper">
             <div className="pulse-component" >
                 <TitleCell
-                    task={task}
-                    onUpdateTask={onUpdateTask}
-                    group={group}
+                    task={ task }
+                    onUpdateTask={ onUpdateTask }
+                    group={ group }
                 />
 
                 <div className="cells-row-container">
                     <div className="cells-row-component">
-                        {board.columns && board.columns.map((column, idx) =>
-                            <div className="cell-component-wrapper" key={idx}>
+                        { board.columns && board.columns.map((column, idx) =>
+                            <div className="cell-component-wrapper" key={ idx }>
                                 <div className="cell-component-inner">
-                                    <div className={"cell-component"} >
+                                    <div className={ "cell-component" } >
                                         <TaskColumn
-                                            setStatus={setStatus}
-                                            column={column}
-                                            task={task}
-                                            setColumn={setColumn}
-                                            isStatusEdit={isStatusEdit}
-                                            bgColor={bgColor}
+                                            setStatus={ setStatus }
+                                            column={ column }
+                                            task={ task }
+                                            setColumn={ setColumn }
+                                            isStatusEdit={ isStatusEdit }
+                                            bgColor={ bgColor }
                                         />
                                     </div>
                                 </div>
                             </div>
-                        )}
+                        ) }
                     </div>
                 </div>
                 <div className="column-wrapper-add"></div>

@@ -45,11 +45,13 @@ export const Board = () => {
     }
 
     const onAddTask = async (board, groupId, task) => {
+        console.log('onAddTask')
         dispatch(updateBoard(board, groupId, task))
         // task = null
     }
 
     const onUpdateTask = (task, groupId) => {
+        console.log('onUpdateTask')
         dispatch(updateBoard(board, groupId, task))
     }
 
@@ -63,7 +65,7 @@ export const Board = () => {
     }
     const getPersons = () => {
         const persons = board.persons
-        console.log('persons: ', persons)
+        // console.log('persons: ', persons)
     }
 
     const onSaveBoard = async (newBoard) => {

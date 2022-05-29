@@ -2,12 +2,12 @@ import { useState } from "react"
 import { useFormRegister } from "../hooks/useFormRegister"
 import { ReactComponent as ArrowSvg } from '../assets/svg/arrow.svg'
 import { ReactComponent as UserSvg } from '../assets/svg/user.svg'
-import { FiFilter } from 'react-icons/fi';
-import { FaRegUserCircle } from 'react-icons/fa';
-import { AiOutlinePushpin } from 'react-icons/ai';
-import { BsArrowDownUp, BsEyeSlash } from 'react-icons/bs';
-import { RiLineHeight } from 'react-icons/ri';
-import { CgColorBucket } from 'react-icons/cg';
+import { FiFilter } from 'react-icons/fi'
+import { FaRegUserCircle } from 'react-icons/fa'
+import { AiOutlinePushpin } from 'react-icons/ai'
+import { BsArrowDownUp, BsEyeSlash } from 'react-icons/bs'
+import { RiLineHeight } from 'react-icons/ri'
+import { CgColorBucket } from 'react-icons/cg'
 
 
 
@@ -31,7 +31,7 @@ export const BoardFilter = ({ onAddGroup, onChangeFilter, getPersons, board }) =
     }, onChangeFilter)
 
     const openModal = () => {
-        console.log('Opening!')
+        // console.log('Opening!')
         if (className === "open") setClassName("")
         else setClassName("open")
 
@@ -40,14 +40,14 @@ export const BoardFilter = ({ onAddGroup, onChangeFilter, getPersons, board }) =
     return (
         <div className="header-bottom-main-wrapper">
             <div className="new-item-wraper flex">
-                <div onClick={() => onAddGroup()} className="new-item-btn flex">New Item</div>
+                <div onClick={ () => onAddGroup() } className="new-item-btn flex">New Item</div>
                 <div className="new-item-modal-btn-wrpper">
-                    {/* <div onClick={() => openModal()} className="new-item-modal-btn"><img src={filterSvg} alt="" /></div> */}
-                    <div onClick={() => openModal()} className="new-item-modal-btn"><ArrowSvg /></div>
+                    {/* <div onClick={() => openModal()} className="new-item-modal-btn"><img src={filterSvg} alt="" /></div> */ }
+                    <div onClick={ () => openModal() } className="new-item-modal-btn"><ArrowSvg /></div>
                 </div>
             </div>
 
-            <div className={"new-item-modal " + className}>
+            <div className={ "new-item-modal " + className }>
                 <div className="new-item-modal-opend" >
                     <div className="new-group-of-items">
                         <button className="btn-new-group-of-items">New group of items</button>
@@ -56,10 +56,10 @@ export const BoardFilter = ({ onAddGroup, onChangeFilter, getPersons, board }) =
             </div>
 
             <div className="search-wrapper">
-                <input className="search-input" placeholder=" search"  {...register('title')} />
+                <input className="search-input" placeholder=" search"  { ...register('title') } />
             </div>
             <div className="filter-wrapper">
-                <div className="filter-btn" onClick={() => toggle('person-modal')}><FaRegUserCircle />persons</div>
+                <div className="filter-btn" onClick={ () => toggle('person-modal') }><FaRegUserCircle />persons</div>
             </div>
             <div className="filter-wrapper">
                 <div className="filter-btn"><FiFilter /> Filter</div>
@@ -79,11 +79,11 @@ export const BoardFilter = ({ onAddGroup, onChangeFilter, getPersons, board }) =
             <div className="filter-wrapper-small" >
                 <div className="small-btn"><CgColorBucket />/2</div>
             </div>
-            {isModalOpen &&
-                <div className="person-modal" onBlur={() => toggle('person-modal')}>
+            { isModalOpen &&
+                <div className="person-modal" onBlur={ () => toggle('person-modal') }>
                     <p className="first-txt-modal">Quick person filter</p>
                     <p className="second-txt-modal">Filter items and subitems by person</p>
-                    <div onClick={getPersons} className="person-link" href=""><img className="person-img" src="https://cdn.monday.com/images/logos/monday_logo_icon.png" alt="" /></div>
+                    <div onClick={ getPersons } className="person-link" href=""><img className="person-img" src="https://cdn.monday.com/images/logos/monday_logo_icon.png" alt="" /></div>
 
                 </div>
             }

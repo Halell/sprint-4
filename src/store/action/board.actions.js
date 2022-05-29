@@ -17,7 +17,7 @@ export function getActionAddBoard(board) {
     }
 }
 export function getActionUpdateBoard(board) {
-    console.log('from action get up')
+    // console.log('from action get up')
     return {
         type: 'UPDATE_BOARD',
         board
@@ -74,7 +74,7 @@ export function addBoard(board) {
 }
 
 export function updateBoard(board, groupId, task) {
-    console.log('board: ', board)
+    console.log('from board action- board: ', board)
     return (dispatch) => {
         boardService.save(board, groupId, task)
             .then(savedBoard => {

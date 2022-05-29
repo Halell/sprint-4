@@ -5,7 +5,7 @@ import { GroupFooter } from "./group-footer"
 
 import { useSelector } from 'react-redux'
 
-export function BoardContent({ group, columns, onAddTask, onRemoveGroup, onUpdateTask, onRemoveTask, onAddGroup }) {
+export function BoardContent({ group, onAddTask, onRemoveGroup, onUpdateTask, onRemoveTask, onAddGroup }) {
 
     const { board } = useSelector((storeState) => storeState.boardModule)
     // const [task, setTask] = useState(null)
