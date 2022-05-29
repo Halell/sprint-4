@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 import App from './root-cmp'
 import { Provider } from 'react-redux'
 import * as serviceWorkerRegistration from './services/serviceWorkerRegistration'
-import '../node_modules/font-awesome/css/font-awesome.min.css';
+// import '../node_modules/font-awesome/css/font-awesome.min.css';
 import './assets/styles/styles.scss'
 import { store } from './store/store'
 // import 'font-awesome/css/font-awesome.min.css'

@@ -16,25 +16,27 @@ export const BoardController = () => {
     }
 
     return (
-        <main style={ style } className="board-controller board-controller" >
-            <button className={ "controller-btn " + className } onClick={ () => toggleController() }>{ isOpen ? '>' : '<' }</button>
+        <main style={style} className="board-controller board-controller" >
+            <button className={"controller-btn " + className} onClick={() => toggleController()}>{isOpen ? '>' : '<'}</button>
 
-            <div className="controller-container">
-                <button onClick={ () => { onAddBoard() } }>+ Add</button>
-                <div
-                    suppressContentEditableWarning={ true }
-                    contentEditable={ true }>
-                    Search
+            {!isOpen &&
+                <div className="controller-container">
+                    <button className="controller-add-btn" onClick={() => { onAddBoard() }}>+ Add</button>
+                    <div
+                        suppressContentEditableWarning={true}
+                        contentEditable={true}>
+                        Search
+                    </div>
+                    <hr />
+                    <ul>
+                        <li>Board 1 <button>...</button></li>
+                        <li>Board 2 <button>...</button></li>
+                        <li>Board 3 <button>...</button></li>
+                    </ul>
+                    {/* {boards && boards.title} */}
                 </div>
-                <hr />
-                <ul>
-                    <li>Board 1 <button>...</button></li>
-                    <li>Board 2 <button>...</button></li>
-                    <li>Board 3 <button>...</button></li>
-                </ul>
-                {/* {boards && boards.title} */ }
-            </div>
 
+            }
 
         </main>
     )
