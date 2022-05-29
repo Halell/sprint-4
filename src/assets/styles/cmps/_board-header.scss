@@ -49,6 +49,10 @@
                                 display: flex;
                                 align-items: center;
                                 justify-content: center;
+
+                                svg {
+                                    height: 16px;
+                                }
                             }
 
                         }
@@ -88,9 +92,11 @@
                         .add-to-board {
                             margin-left: 16px;
                             border: 1px solid #c5c7d0;
-                            padding: 4px 8px;
-                            height: 32px;
+                            padding: 3px 3px;
+                            height: 26px;
                             cursor: pointer;
+                            border-radius: 2px;
+                            font-size: 14px;
 
 
                             &:hover {

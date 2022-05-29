@@ -3,8 +3,7 @@ import { BoardFilter } from "./board-filter"
 import { ReactComponent as StarSvg } from '../assets/svg/star.svg'
 import { ReactComponent as UserSvg } from '../assets/svg/user.svg'
 import { ReactComponent as HideSecondSvg } from '../assets/svg/hide.second.svg'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCoffee, faUser } from '@fortawesome/free-solid-svg-icons'
+import { FiUserPlus } from 'react-icons/fi';
 
 export function BoardHeader({ onAddGroup, onChangeFilter, getPersons, onSaveBoard, board }) {
 
@@ -49,10 +48,10 @@ export function BoardHeader({ onAddGroup, onChangeFilter, getPersons, onSaveBoar
                                 </div>
                             </div>
                             <div className="right-container flex">
-                                <div className="invite">Invite/1</div>
+                                <div className="invite"><FiUserPlus />Invite/1</div>
                                 <div className="activity">Activity</div>
                                 <div className="add-to-board">+ Add to board </div>
-                                <div className="edit">...</div>
+                                <div className="edit"></div>
                             </div>
                         </div>
                         <div className="bottom-top-container">
