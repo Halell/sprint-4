@@ -48,7 +48,7 @@ export function GroupHeader({ board, group, onUseBtn, onSaveGroup, onRemoveGroup
                 <div className="cells-row-container">
                     <div className="cells-row-component">
                         {board.columns.map((column, idx) =>
-                            <div className='cell-component-wrapper draggable'>
+                            <div className='cell-component-wrapper draggable' key={idx}>
                                 <div className="cell-component-inner">
                                     <div
                                         className="cell-component group-column"
@@ -56,7 +56,7 @@ export function GroupHeader({ board, group, onUseBtn, onSaveGroup, onRemoveGroup
                                         onBlur={onUpdateColumns}
                                         contentEditable={true}
                                         title={column}
-                                        key={idx}
+
                                         idx={idx}>
                                         {column}
                                     </div>

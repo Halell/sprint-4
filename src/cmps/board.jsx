@@ -55,6 +55,7 @@ export const Board = () => {
     const onSaveBoard = async (newBoard) => {
         await boardService.save(newBoard)
     }
+
     return (
         <section className='board board-controller-pinned'>
             <div className="board-container">
