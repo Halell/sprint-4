@@ -2,8 +2,13 @@ import { useState } from "react"
 import { useFormRegister } from "../hooks/useFormRegister"
 import { ReactComponent as ArrowSvg } from '../assets/svg/arrow.svg'
 import { ReactComponent as UserSvg } from '../assets/svg/user.svg'
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import { solid, regular, brands } from '@fortawesome/fontawesome-svg-core/import.macro' // <-- import styles to be used
+import { FiFilter } from 'react-icons/fi';
+import { FaRegUserCircle } from 'react-icons/fa';
+import { AiOutlinePushpin } from 'react-icons/ai';
+import { BsArrowDownUp, BsEyeSlash } from 'react-icons/bs';
+import { RiLineHeight } from 'react-icons/ri';
+import { CgColorBucket } from 'react-icons/cg';
+
 
 
 
@@ -54,13 +59,25 @@ export const BoardFilter = ({ onAddGroup, onChangeFilter, getPersons, board }) =
                 <input className="search-input" placeholder=" search"  {...register('title')} />
             </div>
             <div className="filter-wrapper">
-                <div className="filter-btn" onClick={() => toggle('person-modal')}>persons</div>
+                <div className="filter-btn" onClick={() => toggle('person-modal')}><FaRegUserCircle />persons</div>
             </div>
             <div className="filter-wrapper">
-                <div className="filter-btn">Filter</div>
+                <div className="filter-btn"><FiFilter /> Filter</div>
             </div>
             <div className="filter-wrapper" >
-                <div className="filter-btn">Sort</div>
+                <div className="filter-btn"><BsArrowDownUp />Sort</div>
+            </div>
+            <div className="filter-wrapper-small" >
+                <div className="small-btn"><AiOutlinePushpin /></div>
+            </div>
+            <div className="filter-wrapper-small">
+                <div className="small-btn"><BsEyeSlash /></div>
+            </div>
+            <div className="filter-wrapper-small">
+                <div className="small-btn"><RiLineHeight /></div>
+            </div>
+            <div className="filter-wrapper-small" >
+                <div className="small-btn"><CgColorBucket />/2</div>
             </div>
             {isModalOpen &&
                 <div className="person-modal" onBlur={() => toggle('person-modal')}>
