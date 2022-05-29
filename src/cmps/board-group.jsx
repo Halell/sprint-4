@@ -31,7 +31,7 @@ export function BoardContent({ group, columns, onAddTask, onRemoveGroup, onUpdat
 
     const onUseBtn = (val) => {
         if (val === 'remove') onRemoveGroup(group.id)
-        // if(var==='')
+        if (val === 'add') onAddGroup()
         setIsBtnsModalOpen(false)
     }
 

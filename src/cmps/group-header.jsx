@@ -1,4 +1,9 @@
 import { useState } from 'react'
+import { AiOutlineDelete } from 'react-icons/ai';
+import { RiAddCircleLine } from 'react-icons/ri';
+import { HiOutlineDocumentDuplicate } from 'react-icons/hi';
+import { GoPrimitiveDot } from 'react-icons/go';
+
 
 export function GroupHeader({ board, group, onUseBtn, onSaveGroup, onRemoveGroup, onUpdateColumns }) {
 
@@ -13,7 +18,7 @@ export function GroupHeader({ board, group, onUseBtn, onSaveGroup, onRemoveGroup
             <div className="pulse-component">
                 <div className="title-container group-title-wrapper">
                     <div className="btn-pulse-menu-wrapper btn-group-menu-wrapper"
-                        onClick={ () => toggle('btns-modal') }>
+                        onClick={() => toggle('btns-modal')}>
                         <div className="btn-group-menu">▼</div>
                     </div>
                     <div className="title-inner-container group-header">
@@ -26,12 +31,12 @@ export function GroupHeader({ board, group, onUseBtn, onSaveGroup, onRemoveGroup
                                     <div className="title-cell-text name-column-header">
                                         <div className="title-component group-title-wrapper">
                                             <div
-                                                suppressContentEditableWarning={ true }
-                                                contentEditable={ true }
-                                                onBlur={ onSaveGroup }
+                                                suppressContentEditableWarning={true}
+                                                contentEditable={true}
+                                                onBlur={onSaveGroup}
                                                 className="group-title text-component"
                                             >
-                                                { group.title && group.title }
+                                                {group.title && group.title}
                                             </div>
                                         </div>
                                     </div>
@@ -42,22 +47,22 @@ export function GroupHeader({ board, group, onUseBtn, onSaveGroup, onRemoveGroup
                 </div>
                 <div className="cells-row-container">
                     <div className="cells-row-component">
-                        { board.columns.map((column, idx) =>
+                        {board.columns.map((column, idx) =>
                             <div className='cell-component-wrapper draggable'>
                                 <div className="cell-component-inner">
                                     <div
                                         className="cell-component group-column"
-                                        suppressContentEditableWarning={ true }
-                                        onBlur={ onUpdateColumns }
-                                        contentEditable={ true }
-                                        title={ column }
-                                        key={ idx }
-                                        idx={ idx }>
-                                        { column }
+                                        suppressContentEditableWarning={true}
+                                        onBlur={onUpdateColumns}
+                                        contentEditable={true}
+                                        title={column}
+                                        key={idx}
+                                        idx={idx}>
+                                        {column}
                                     </div>
                                 </div>
                             </div>
-                        ) }
+                        )}
                     </div>
                 </div>
                 <div className="column-wrapper-add"></div>
@@ -65,10 +70,14 @@ export function GroupHeader({ board, group, onUseBtn, onSaveGroup, onRemoveGroup
             {
                 isBtnsModalOpen &&
                 <div className='btns-modal'>
-                    <button onClick={ () => onUseBtn('add') }>Add group</button>
-                    <button onClick={ () => onUseBtn('remove') }>x</button>
-                    <button onClick={ () => onUseBtn('duplicate') }>Duplicate this group</button>
-                    <button onClick={ () => onUseBtn('rename') }>Rename group</button>
+                    <div className='btns-top-modal'>
+                        <div className='btn-modal-top-section' onClick={() => onUseBtn('add')}><RiAddCircleLine /> Add group</div>
+                        <div className='btn-modal-top-section' onClick={() => onUseBtn('duplicate')}><HiOutlineDocumentDuplicate />Duplicate this group</div>
+                        <hr />
+                    </div>
+                    <div className='btn-modal-color' onClick={() => onUseBtn('color')}><GoPrimitiveDot />Change group color</div>
+                    <hr />
+                    <div className='btn-modal-remove' onClick={() => onUseBtn('remove')}><AiOutlineDelete />Remove group</div>
                 </div>
             }
         </div >

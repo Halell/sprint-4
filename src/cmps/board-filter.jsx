@@ -8,18 +8,23 @@ import { AiOutlinePushpin } from 'react-icons/ai';
 import { BsArrowDownUp, BsEyeSlash } from 'react-icons/bs';
 import { RiLineHeight } from 'react-icons/ri';
 import { CgColorBucket } from 'react-icons/cg';
+import { MdOutlineWeb } from 'react-icons/md';
 
 
 
 
 
 
-export const BoardFilter = ({ onAddGroup, onChangeFilter, getPersons, board }) => {
+export const BoardFilter = ({ onAddGroup, onChangeFilter, getPersons, onAddTask, board, group }) => {
     const [isModalOpen, setIsModalOpen] = useState(false)
+    const [isNewItemOpen, setIsNewItemOpen] = useState(false)
     const [className, setClassName] = useState("")
     const toggle = (val) => {
         if (val === 'person-modal') {
             setIsModalOpen(isModalOpen ? false : true)
+        }
+        if (val === 'new-item-btn') {
+            setIsNewItemOpen(isNewItemOpen ? false : true)
         }
     }
 
@@ -30,30 +35,36 @@ export const BoardFilter = ({ onAddGroup, onChangeFilter, getPersons, board }) =
         },
     }, onChangeFilter)
 
-    const openModal = () => {
-        console.log('Opening!')
-        if (className === "open") setClassName("")
-        else setClassName("open")
+    // const openModal = () => {
+    //     console.log('Opening!')
+    //     if (className === "open") setClassName("")
+    //     else setClassName("open")
 
-    }
+    // }
 
     return (
         <div className="header-bottom-main-wrapper">
             <div className="new-item-wraper flex">
-                <div onClick={() => onAddGroup()} className="new-item-btn flex">New Item</div>
+                <div onClick={() => onAddTask(board)} className="new-item-btn flex">New Item</div>
                 <div className="new-item-modal-btn-wrpper">
                     {/* <div onClick={() => openModal()} className="new-item-modal-btn"><img src={filterSvg} alt="" /></div> */}
-                    <div onClick={() => openModal()} className="new-item-modal-btn"><ArrowSvg /></div>
+                    <div onClick={() => toggle('new-item-btn')} className="new-item-modal-btn"><ArrowSvg /></div>
                 </div>
             </div>
 
-            <div className={"new-item-modal " + className}>
+            {/* <div className={"new-item-modal " + className}>
                 <div className="new-item-modal-opend" >
                     <div className="new-group-of-items">
-                        <button className="btn-new-group-of-items">New group of items</button>
+                        <div className="btn-new-group-of-items">
+                            New group of items</div>
                     </div>
                 </div>
-            </div>
+            </div> */}
+            {isNewItemOpen &&
+                <div className="menu-new-item-modal">
+                    <div onClick={() => onAddGroup(board)} className="item-modal-add-group">  <MdOutlineWeb />New group of items</div>
+                </div>
+            }
 
             <div className="search-wrapper">
                 <input className="search-input" placeholder=" search"  {...register('title')} />

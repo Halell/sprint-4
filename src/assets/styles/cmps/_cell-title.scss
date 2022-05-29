@@ -53,7 +53,6 @@
 
 }
 
-
 .title-cell-component {
     display: flex;
     align-items: center;
@@ -129,6 +128,39 @@
                 background-color: #f5f6f8;
 
             }
+        }
+    }
+}
+
+.detailes-main-modal-wrapper {
+    // position: fixed;
+    // flex-wrap: nowrap;
+    // display: flex;
+    // flex-direction: column;
+    // background-color: rgb(255, 255, 255);
+    // box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 17px 6px;
+    // color: rgb(50, 51, 56);
+    // height: 657px;
+    // right: 0;
+    // top: 0;
+    // width: 560px;
+
+    .activity-header {
+        padding: 20px;
+        flex: 0 1 auto;
+
+        .activity-close-btn {
+            cursor: pointer;
+        }
+
+        .activity-title {
+            display: flex;
+            font-weight: 700;
+            font-size: 14px;
+            margin-bottom: 6px;
+            line-height: 26px;
+            min-height: 25px;
+            cursor: default;
         }
     }
 }

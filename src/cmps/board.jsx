@@ -65,6 +65,8 @@ export const Board = () => {
                         getPersons={getPersons}
                         board={board}
                         onSaveBoard={onSaveBoard}
+                        onAddTask={onAddTask}
+                    // group={group}
                     />
                     <div className="board-content">
                         <div className="board-content-container">
