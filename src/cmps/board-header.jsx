@@ -44,14 +44,14 @@ export function BoardHeader({ onAddGroup, onChangeFilter, getPersons, onSaveBoar
                                         </div>
                                     </div>
                                     <div className="btn-title-name">
-                                        <div ><StarSvg /></div>
+                                        <StarSvg />
                                     </div>
                                 </div>
                             </div>
                             <div className="right-container flex">
-                                <div className="invite">Invite</div>
+                                <div className="invite">Invite/1</div>
                                 <div className="activity">Activity</div>
-                                <div className="add-to-board">+ Add to board</div>
+                                <div className="add-to-board">+ Add to board </div>
                                 <div className="edit">...</div>
                             </div>
                         </div>

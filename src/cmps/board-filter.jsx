@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useFormRegister } from "../hooks/useFormRegister"
 import { ReactComponent as ArrowSvg } from '../assets/svg/arrow.svg'
+import { ReactComponent as UserSvg } from '../assets/svg/user.svg'
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // import { solid, regular, brands } from '@fortawesome/fontawesome-svg-core/import.macro' // <-- import styles to be used
 
@@ -50,7 +51,7 @@ export const BoardFilter = ({ onAddGroup, onChangeFilter, getPersons, board }) =
             </div>
 
             <div className="search-wrapper">
-                <input className="search-input" placeholder="🔍 search"  {...register('title')} />
+                <input className="search-input" placeholder=" search"  {...register('title')} />
             </div>
             <div className="filter-wrapper">
                 <div className="filter-btn" onClick={() => toggle('person-modal')}>persons</div>

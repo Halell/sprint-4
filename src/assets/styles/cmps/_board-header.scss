@@ -40,46 +40,49 @@
                                     margin: 0;
                                 }
 
-                                .btn-title-name {
-                                    color: #676879;
-                                    height: 16px;
-                                    width: 32px;
-                                    display: flex;
-                                    align-items: center;
-                                    justify-content: center;
-
-                                    svg {
-                                        height: 16px;
-                                    }
-
-                                }
-
-                                // .btn-title-name {
-                                //     color: #676879;
-                                //     height: 32px;
-                                //     width: 32px;
-                                //     display: flex;
-                                //     align-items: center;
-                                //     justify-content: center;
-                                // }
                             }
+
+                            .btn-title-name {
+                                color: #676879;
+                                height: 16px;
+                                width: 32px;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                            }
+
                         }
                     }
 
                     .right-container {
                         position: absolute;
-                        top: 20px;
+                        top: 26px;
                         right: 20px;
                         justify-content: center;
                         align-items: center;
 
                         .invite {
                             padding: 4px 8px;
+                            cursor: pointer;
+
+                            &:hover {
+                                background-color: #ece7e7;
+                                border-radius: 4px;
+
+                            }
                         }
 
                         .activity {
                             padding: 4px 8px;
                             margin-left: 16px;
+                            cursor: pointer;
+
+
+                            &:hover {
+                                background-color: #ece7e7;
+                                border-radius: 4px;
+
+                            }
                         }
 
                         .add-to-board {
@@ -87,6 +90,14 @@
                             border: 1px solid #c5c7d0;
                             padding: 4px 8px;
                             height: 32px;
+                            cursor: pointer;
+
+
+                            &:hover {
+                                background-color: #ece7e7;
+                                border-radius: 4px;
+
+                            }
                         }
 
                         .edit {
@@ -131,4 +142,8 @@
     &:hover {
         outline: dashed 1px rgb(180, 180, 180);
     }
+}
+
+svg {
+    height: 16px;
 }
