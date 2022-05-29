@@ -1,5 +1,5 @@
 
-export function TaskColumn({ column: boardColumn, setColumn, task, isEdit, setStatus, bgColor }) {
+export function TaskColumn({ column: boardColumn, setColumn, task, isStatusEdit, setStatus, bgColor }) {
 
     return <div className="task-columns-wraper " >
         {boardColumn === 'text' && <div onClick={() => setColumn(boardColumn)} className="task-column">
@@ -7,7 +7,7 @@ export function TaskColumn({ column: boardColumn, setColumn, task, isEdit, setSt
         </div>}
         {boardColumn === 'status' && <div style={{ backgroundColor: bgColor }} onClick={() => setColumn(boardColumn)} className="task-column">
             {task.status}
-            {isEdit &&
+            {isStatusEdit &&
                 <div className="column-modal">
 
                     <div style={{ backgroundColor: 'rgb(0, 200, 117)' }} className="btn-wraper"> <div onClick={() => setStatus('done')} className="status-edit-btn status-edit-btn-done">done!</div></div>

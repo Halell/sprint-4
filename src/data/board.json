@@ -13,7 +13,8 @@
         "text",
         "status",
         "date",
-        "persons"
+        "persons",
+        "importance"
     ],
     "persons": [
         {
@@ -35,6 +36,7 @@
                     "text": "lets get it done",
                     "status": "done",
                     "date": "24/05/2022",
+                    "importance":"high",
                     "persons": [
                         "shani",
                         "Tal Tarablus"
