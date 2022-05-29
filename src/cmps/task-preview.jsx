@@ -6,7 +6,8 @@ import { TaskColumn } from './task-column'
 export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask }) => {
     const [bgColor, setBgColor] = useState('')
     const [isBtnInputOpen, setIsBtnInputOpen] = useState(true)
-    const [isEdit, setIsEdit] = useState(false)
+    const [isStatusEdit, setIsEdit] = useState(false)
+    const [isImportanceEdit, setIsImportanceEdit] = useState(false)
 
     useEffect(() => {
         setStatus(task.status)
@@ -22,6 +23,14 @@ export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask }) 
         if (val === 'status') {
             openStatusModal()
         }
+        if (val === 'importance') {
+            openImportanceModal()
+        }
+    }
+
+    const openImportanceModal = () => {
+        console.log('impo')
+
     }
 
     const setStatus = (val) => {
@@ -48,7 +57,7 @@ export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask }) 
         }
     }
     const openStatusModal = () => {
-        setIsEdit(isEdit ? false : true)
+        setIsEdit(isStatusEdit ? false : true)
     }
     return (
         <div className="pulse-component-wrapper">
@@ -70,7 +79,7 @@ export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask }) 
                                             column={column}
                                             task={task}
                                             setColumn={setColumn}
-                                            isEdit={isEdit}
+                                            isStatusEdit={isStatusEdit}
                                             bgColor={bgColor}
                                         />
                                     </div>

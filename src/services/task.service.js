@@ -38,6 +38,10 @@ async function saveTask(board, groupId, taskToSave) {
             if (group.id === groupId) {
                 if (!taskToSave.id) {
                     taskToSave.id = utilService.makeId()
+                    taskToSave.date = "24/05/2022"
+                    taskToSave.persons = ["shani", "Tal Tarablus"]
+                    taskToSave.status = "none"
+                    taskToSave.text = "lets get it done"
                     group.tasks.push(taskToSave)
                 } else {
                     console.log('hi')
