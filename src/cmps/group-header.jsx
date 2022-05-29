@@ -10,8 +10,34 @@ export function GroupHeader({ board, group, onUseBtn, onSaveGroup, onRemoveGroup
     }
     return (
         <div className="group-header-wrppaer flex">
+            {/* <div className="pulse-component-wrapper"> */ }
+            {/* <div className="pulse-component" > */ }
+
             {/* <div className="column-wrapper-title flex"> */ }
             {/* <div className="group-header-cmp flex"> */ }
+
+            {/* <div className="cells-row-container">
+                <div className="cells-row-component">
+                    { board.columns.map((column, idx) =>
+                    <div className='cell-component-wrapper draggable'>
+                        <div className="cell-component-inner">
+                            <div
+                                className="cell-component group-column"
+                                suppressContentEditableWarning={ true }
+                                onBlur={ onUpdateColumns }
+                                contentEditable={ true }
+                                title={ column }
+                                key={ idx }
+                                idx={ idx }>
+                                { column }
+                            </div>
+                        </div>
+                    </div>
+                    ) }
+                </div>
+            </div>
+            <div className="column-wrapper-add"></div> */}
+
             <div className="group-title-wraper flex">
                 <div onClick={ () => toggle('btns-modal') } className="btn-group-menu-wrapper flex"><div className="btn-group-menu">▼</div></div>
                 <div className="drag-btn flex">
@@ -31,7 +57,6 @@ export function GroupHeader({ board, group, onUseBtn, onSaveGroup, onRemoveGroup
                 </div>
             </div>
             {/* </div> */ }
-
             { isBtnsModalOpen &&
                 <div className='btns-modal'>
                     <button onClick={ () => onUseBtn('add') }>Add group</button>
@@ -41,8 +66,6 @@ export function GroupHeader({ board, group, onUseBtn, onSaveGroup, onRemoveGroup
                 </div>
             }
             {/* </div> */ }
-
-
             <div className="column-wrapper-row-columns flex">
                 { board.columns.map((column, idx) =>
                     <div className='draggable'>
@@ -63,5 +86,6 @@ export function GroupHeader({ board, group, onUseBtn, onSaveGroup, onRemoveGroup
             </div>
             <div className="column-wrapper-add">+</div>
         </div>
+        // </div>
     )
 }

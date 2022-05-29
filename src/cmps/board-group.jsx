@@ -49,8 +49,7 @@ export function BoardContent({ group, columns, onAddTask, onRemoveGroup, onUpdat
         onAddGroup(group)
     }
     return (
-        // <Fragment>
-        <div>
+        <Fragment>
             <GroupHeader
                 onSaveGroup={ onSaveGroup }
                 onRemoveGroup={ onRemoveGroup }
@@ -72,8 +71,7 @@ export function BoardContent({ group, columns, onAddTask, onRemoveGroup, onUpdat
                     <input type="text" onChange={ onHandleChange } name="title" placeholder='+ Add' />
                 </form>
             </div>
-        </div>
-        // </Fragment>
+        </Fragment>
     )
 
 }
