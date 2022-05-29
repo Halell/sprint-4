@@ -43,6 +43,8 @@
             text-overflow: ellipsis;
             white-space: nowrap;
             font-size: 18px;
+            transition: padding .15s;
+
 
             .group-title {
                 padding: 0 5px;
