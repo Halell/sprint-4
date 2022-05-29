@@ -30,6 +30,9 @@
             "style": {},
             "tasks": [
                 {
+                    "columns": [
+                        {}
+                    ],
                     "id": "c101",
                     "title": "Replace logo",
                     "persons": [
