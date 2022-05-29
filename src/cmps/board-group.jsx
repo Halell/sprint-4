@@ -22,7 +22,7 @@ export function BoardContent({ group, columns, onAddTask, onRemoveGroup, onUpdat
         onAddTask(board, group.id, task)
         setTask(null)
     }
-    
+
     const toggle = (val) => {
         if (val === 'btns-modal') {
             setIsBtnsModalOpen(isBtnsModalOpen ? false : true)
@@ -52,24 +52,24 @@ export function BoardContent({ group, columns, onAddTask, onRemoveGroup, onUpdat
         // <Fragment>
         <div>
             <GroupHeader
-                onSaveGroup={onSaveGroup}
-                onRemoveGroup={onRemoveGroup}
-                group={group}
-                board={board}
-                onUpdateColumns={onUpdateColumns}
-                onUseBtn={onUseBtn}
+                onSaveGroup={ onSaveGroup }
+                onRemoveGroup={ onRemoveGroup }
+                group={ group }
+                board={ board }
+                onUpdateColumns={ onUpdateColumns }
+                onUseBtn={ onUseBtn }
             />
             <TaskList
-                onRemoveTask={onRemoveTask}
-                group={group}
-                onAddTask={onAddTask}
-                onUpdateTask={onUpdateTask}
-                board={board}
+                onRemoveTask={ onRemoveTask }
+                group={ group }
+                onAddTask={ onAddTask }
+                onUpdateTask={ onUpdateTask }
+                board={ board }
             />
 
-            <div className="group-footer">
-                <form onSubmit={(ev) => onSaveTask(ev)}  >
-                    <input type="text" onChange={onHandleChange} name="title" placeholder='+ Add' />
+            <div className="pulse-component-wrapper group-footer ">
+                <form className="group-footer pulse-component " onSubmit={ (ev) => onSaveTask(ev) }  >
+                    <input type="text" onChange={ onHandleChange } name="title" placeholder='+ Add' />
                 </form>
             </div>
         </div>

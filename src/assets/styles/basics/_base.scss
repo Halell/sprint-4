@@ -8,7 +8,7 @@
 }
 
 html {
-    font-family: Roberto, sans-serif;
+    font-family: Roboto, sans-serif;
     // color: $clr3;
     line-height: 1.8;
     line-height: 1.5;
@@ -166,6 +166,25 @@ img {
     padding: 0 2px;
 }
 
+.btn {
+    --loader-padding: 8px;
+    outline: none;
+    border: none;
+    height: auto;
+    border-radius: 4px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: 50ms transform, .1scubic-bezier(0, 0, 0.35, 1) min-width;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    --element-width: 32;
+    --element-height: 32;
+}
+
 // p {
 //     margin: 0 0 1em;
 //     max-width: 60ch;
@@ -205,17 +224,17 @@ button {
     cursor: pointer;
 }
 
-.btn {
-    @include btn;
+// .btn {
+//     @include btn;
 
-    &-dark {
-        @include btn($type: dark);
-    }
+//     &-dark {
+//         @include btn($type: dark);
+//     }
 
-    &-light {
-        @include btn($type: light);
-    }
-}
+//     &-light {
+//         @include btn($type: light);
+//     }
+// }
 
 
 // links
@@ -231,4 +250,12 @@ a {
 mark {
     color: $clr1;
     background-color: transparent;
+}
+
+input {
+    border: none;
+}
+
+input:focus {
+    outline: none;
 }
