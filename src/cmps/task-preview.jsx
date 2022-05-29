@@ -41,6 +41,11 @@ export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask }) 
             onUpdateTask(task, group.id)
             setBgColor('rgb(226, 68, 92)')
         }
+        if (val === 'no-status') {
+            task.status = val
+            onUpdateTask(task, group.id)
+            setBgColor('grey')
+        }
     }
     const openStatusModal = () => {
         setIsEdit(isEdit ? false : true)
