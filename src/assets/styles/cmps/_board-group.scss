@@ -48,11 +48,10 @@
 
 
             .group-title {
-                padding: 0 5px;
-                transition: padding .15s;
                 outline: none;
-
+                
                 &:hover {
+                    padding: 0 5px;
                     outline: dashed 1px rgb(106, 106, 106);
                 }
             }
