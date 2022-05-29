@@ -26,9 +26,9 @@ export function getActionUpdateBoard(board) {
 
 var subscriber
 
-export function loadBoard() {
+export function loadBoard(boardId) {
     return (dispatch) => {
-        boardService.query()
+        boardService.query(boardId)
             .then(board => {
                 dispatch({
                     type: 'SET_BOARD',

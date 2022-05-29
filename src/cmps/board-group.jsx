@@ -1,27 +1,16 @@
 import { useState, Fragment } from 'react'
 import { TaskList } from "./task-list"
 import { GroupHeader } from "./group-header"
+import { GroupFooter } from "./group-footer"
 
 import { useSelector } from 'react-redux'
 
 export function BoardContent({ group, columns, onAddTask, onRemoveGroup, onUpdateTask, onRemoveTask, onAddGroup }) {
 
     const { board } = useSelector((storeState) => storeState.boardModule)
-    const [task, setTask] = useState(null)
+    // const [task, setTask] = useState(null)
     const [isBtnsModalOpen, setIsBtnsModalOpen] = useState(false)
 
-
-    const onHandleChange = ({ target }) => {
-        const field = target.name
-        const value = target.type === 'number' ? (+target.value || '') : target.value
-        setTask((prevFields) => ({ ...prevFields, [field]: value }))
-    }
-
-    const onSaveTask = (ev) => {
-        ev.preventDefault()
-        onAddTask(board, group.id, task)
-        setTask(null)
-    }
 
     const toggle = (val) => {
         if (val === 'btns-modal') {
@@ -51,27 +40,24 @@ export function BoardContent({ group, columns, onAddTask, onRemoveGroup, onUpdat
     return (
         <Fragment>
             <GroupHeader
-                onSaveGroup={onSaveGroup}
-                onRemoveGroup={onRemoveGroup}
-                group={group}
-                board={board}
-                onUpdateColumns={onUpdateColumns}
-                onUseBtn={onUseBtn}
+                onSaveGroup={ onSaveGroup }
+                onRemoveGroup={ onRemoveGroup }
+                group={ group }
+                board={ board }
+                onUpdateColumns={ onUpdateColumns }
+                onUseBtn={ onUseBtn }
             />
             <TaskList
-                onRemoveTask={onRemoveTask}
-                group={group}
-                onAddTask={onAddTask}
-                onUpdateTask={onUpdateTask}
-                board={board}
+                onRemoveTask={ onRemoveTask }
+                group={ group }
+                onAddTask={ onAddTask }
+                onUpdateTask={ onUpdateTask }
+                board={ board }
             />
-
-            <div className="pulse-component-wrapper group-footer ">
-                <form className="group-footer pulse-component " onSubmit={(ev) => onSaveTask(ev)}  >
-                    <input type="text" onChange={onHandleChange} name="title" placeholder='+ Add' />
-                </form>
-            </div>
-
+            <GroupFooter
+                group={ group }
+                onAddTask={ onAddTask }
+            />
         </Fragment >
     )
 
