@@ -1,42 +1,9 @@
-.group-header-wrppaer {
-    position: relative; //absoulote
-    height: 36px;
-<<<<<<< HEAD
-    transition: padding .15s;
-=======
+.group-header-wrapper.pulse-component-wrapper {
+    // position: relative; //absoulote
+    // height: 36px;
+    // transition: padding .15s;
 
-    // .group-header-cmp {
-    //     padding-left: 30px;
-    //     position: relative;
-    //     align-items: center;
-
-    // .column-wrapper-title {
-    //     width: 100%;
-    //     position: sticky;
-
-
-
-    .title-inner-container {
-        flex: 1 1;
-        outline: none;
-        transition: padding .15s;
-        padding: 0;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        position: -webkit-sticky;
-        position: sticky;
-        left: 0;
-        z-index: 2;
-        min-width: 180px;
-        background-color: rgba(253, 253, 250, .95);
-        cursor: default;
-        align-items: center;
-    }
-
-
->>>>>>> 60ef823d77c0f0976afb8841b5c814df5f593b59
-
-    .group-title-wraper {
+    .title-container.group-title-wrapper {
         flex: 1 1;
         outline: none;
         text-overflow: ellipsis;
@@ -48,7 +15,7 @@
         min-width: 180px;
         background-color: rgba(253, 253, 250, .95);
 
-        .btn-group-menu-wrapper {
+        .btn-pulse-menu-wrapper.btn-group-menu-wrapper {
             display: flex;
             flex: 0 0 30px;
             max-width: 30px;
@@ -58,6 +25,7 @@
             align-items: center;
             justify-content: center;
             margin-right: 10px;
+
 
             .btn-group-menu {
                 display: flex;
@@ -74,7 +42,8 @@
             }
         }
 
-        .group-header-cmp {
+        .title-cell-component.group-header {
+            .pulse-left-indicator.group-header {}
 
             .drag-btn svg {
                 height: 24px;
@@ -120,60 +89,16 @@
         }
     }
 
-<<<<<<< HEAD
     &:hover {
         .group-header-cmp {
-=======
-    .group-title {
-        color: rgb(0, 134, 192);
-        align-items: center;
-        font-size: 18px;
-        justify-content: center;
-        outline: none;
-        transition: padding .15s;
-
-        // transition:;
-        &:hover {
->>>>>>> 60ef823d77c0f0976afb8841b5c814df5f593b59
             padding: 0 5px;
             transition: padding .15s;
         }
 
-<<<<<<< HEAD
         .drag-btn svg {
             cursor: move;
             display: block;
             margin-top: 5px;
-=======
-    .column-wrapper-row-columns {
-        display: flex;
-        width: 100%;
-        position: relative;
-        height: 100%;
-
-        .group-column-list {
-            font-size: 14px;
-
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-            min-width: 140px;
-            font-weight: 400;
-
-            .group-column {
-                outline: none;
-
-                &:hover {
-                    outline: dashed 1px rgb(123, 123, 123);
-                }
-            }
-
-            &:hover {
-                background-color: #e6e9ef;
-            }
->>>>>>> 60ef823d77c0f0976afb8841b5c814df5f593b59
         }
     }
 }
