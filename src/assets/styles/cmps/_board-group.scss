@@ -1,6 +1,9 @@
 .group-header-wrppaer {
     position: relative; //absoulote
     height: 36px;
+<<<<<<< HEAD
+    transition: padding .15s;
+=======
 
     // .group-header-cmp {
     //     padding-left: 30px;
@@ -31,13 +34,11 @@
     }
 
 
+>>>>>>> 60ef823d77c0f0976afb8841b5c814df5f593b59
 
     .group-title-wraper {
         flex: 1 1;
         outline: none;
-        padding: 0 5px;
-        transition: padding .15s;
-        padding: 0;
         text-overflow: ellipsis;
         white-space: nowrap;
         // position: -webkit-sticky;
@@ -73,22 +74,56 @@
             }
         }
 
-        .drag-btn svg {
-            height: 24px;
-            display: none;
-            color: grey;
-            padding: 1px;
+        .group-header-cmp {
+
+            .drag-btn svg {
+                height: 24px;
+                display: none;
+                color: grey;
+                // padding: 1px;
+            }
+
+            .title-inner-container {
+                flex: 1 1;
+                outline: none;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                position: -webkit-sticky;
+                position: sticky;
+                left: 0;
+                z-index: 2;
+                min-width: 180px;
+                background-color: rgba(253, 253, 250, .95);
+                cursor: default;
+                align-items: center;
+
+                .group-title {
+
+                    padding: 0 5px;
+                    transition: padding .15s;
+                    outline: none;
+
+                    &:hover {
+                        outline: dashed 1px rgb(106, 106, 106);
+                    }
+                }
+            }
+
         }
 
         &:hover {
             .drag-btn svg {
+                cursor: move;
                 display: block;
                 margin-top: 5px;
-                cursor: move;
             }
         }
     }
 
+<<<<<<< HEAD
+    &:hover {
+        .group-header-cmp {
+=======
     .group-title {
         color: rgb(0, 134, 192);
         align-items: center;
@@ -99,15 +134,17 @@
 
         // transition:;
         &:hover {
+>>>>>>> 60ef823d77c0f0976afb8841b5c814df5f593b59
             padding: 0 5px;
-            outline: dashed 1px rgb(180, 180, 180);
-
-            .drag-btn {
-                display: block;
-            }
+            transition: padding .15s;
         }
-    }
 
+<<<<<<< HEAD
+        .drag-btn svg {
+            cursor: move;
+            display: block;
+            margin-top: 5px;
+=======
     .column-wrapper-row-columns {
         display: flex;
         width: 100%;
@@ -136,12 +173,10 @@
             &:hover {
                 background-color: #e6e9ef;
             }
+>>>>>>> 60ef823d77c0f0976afb8841b5c814df5f593b59
         }
     }
 }
-
-// }
-// }
 
 
 .btns-modal {

@@ -65,6 +65,35 @@
                             }
                         }
                     }
+
+                    .right-container {
+                        position: absolute;
+                        top: 20px;
+                        right: 20px;
+                        justify-content: center;
+                        align-items: center;
+
+                        .invite {
+                            padding: 4px 8px;
+                        }
+
+                        .activity {
+                            padding: 4px 8px;
+                            margin-left: 16px;
+                        }
+
+                        .add-to-board {
+                            margin-left: 16px;
+                            border: 1px solid #c5c7d0;
+                            padding: 4px 8px;
+                            height: 32px;
+                        }
+
+                        .edit {
+                            padding: 4px 8px;
+                            margin-left: 16px;
+                        }
+                    }
                 }
             }
 
