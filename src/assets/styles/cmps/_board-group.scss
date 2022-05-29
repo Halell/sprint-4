@@ -47,7 +47,7 @@
         min-width: 180px;
         background-color: rgba(253, 253, 250, .95);
 
-        .btn-group-menu {
+        .btn-group-menu-wrapper {
             display: flex;
             flex: 0 0 30px;
             max-width: 30px;
@@ -57,6 +57,20 @@
             align-items: center;
             justify-content: center;
             margin-right: 10px;
+
+            .btn-group-menu {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 12px;
+                height: 45%;
+                width: 50%;
+                /* padding: 24px; */
+                margin: 0px;
+                background-color: rgb(87, 155, 252);
+                border-radius: 50%;
+                color: white;
+            }
         }
 
         .drag-btn svg {
@@ -78,6 +92,7 @@
     .group-title {
         color: rgb(0, 134, 192);
         align-items: center;
+        font-size: 18px;
         justify-content: center;
         outline: none;
         transition: padding .15s;
@@ -101,7 +116,7 @@
 
         .group-column-list {
             font-size: 14px;
-            font-family: Roboto; //  rubik
+
             position: relative;
             display: flex;
             align-items: center;
@@ -145,5 +160,17 @@
         display: inline-block;
         margin-bottom: 5px;
         cursor: pointer;
+    }
+}
+
+.pulse-component-wrapper.group-footer {
+    background-color: #fff;
+
+    .group-footer.pulse-component {
+        background-color: #fff;
+        padding-left: 0;
+        border-left: 8px solid rgb(87, 155, 252);
+        margin-left: 30px;
+        padding-left: 8px;
     }
 }

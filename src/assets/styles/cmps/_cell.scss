@@ -3,4 +3,20 @@
     justify-content: space-around;
     // width: 200px;
     // background-color: rgb(46, 26, 163);
+
+}
+
+.cell-component {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 400;
+    border-right: 1px solid;
+    border-right-color: #fff;
+
+    color: #323338;
+    color: var(--primary-text-color);
+    position: relative;
 }
