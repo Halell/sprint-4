@@ -13,7 +13,7 @@
         "text",
         "status",
         "date",
-        "person"
+        "persons"
     ],
     "persons": [
         {
@@ -30,11 +30,11 @@
             "style": {},
             "tasks": [
                 {
-                    "columns": [
-                        {}
-                    ],
                     "id": "c101",
                     "title": "Replace logo",
+                    "text": "lets get it done",
+                    "status": "done",
+                    "date": "24/05/2022",
                     "persons": [
                         "shani",
                         "Tal Tarablus"
@@ -43,6 +43,9 @@
                 {
                     "id": "c102",
                     "title": "Add Samples",
+                    "text": "lets get it done",
+                    "status": "done",
+                    "date": "24/05/2022",
                     "persons": [
                         "halell"
                     ]
@@ -56,6 +59,9 @@
                 {
                     "id": "c103",
                     "title": "Do that",
+                    "text": "lets get it done",
+                    "status": "done",
+                    "date": "24/05/2022",
                     "persons": [
                         "bob"
                     ],
@@ -64,6 +70,8 @@
                 {
                     "id": "c104",
                     "title": "Help me",
+                    "text": "lets get it done",
+                    "date": "24/05/2022",
                     "persons": [
                         "shani"
                     ],
