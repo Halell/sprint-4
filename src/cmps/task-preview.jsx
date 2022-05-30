@@ -79,7 +79,8 @@ export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask }) 
             onUpdateTask(task, group.id)
             setImportanceBgcColor('rgb(226, 68, 92)')
         }
-        if (val === 'no-importance') {
+        if (val === 'low') {
+            console.log(val)
             task.importance = val
             onUpdateTask(task, group.id)
             setImportanceBgcColor('rgb(173, 150, 122)')

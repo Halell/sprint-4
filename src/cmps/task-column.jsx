@@ -65,10 +65,11 @@ export function TaskColumn({ column: boardColumn, setColumn, task, isStatusEdit,
                     <div style={{ backgroundColor: 'rgb(0, 200, 117)' }} className="btn-wraper"> <div onClick={() => setStatus('high')} className="status-edit-btn status-edit-btn-done">high</div></div>
                     <div style={{ backgroundColor: 'rgb(253, 171, 61)' }} className="btn-wraper"> <div onClick={() => setStatus('mid')} className="status-edit-btn in-progress">mid</div></div>
                     <div style={{ backgroundColor: 'rgb(226, 68, 92)' }} className="btn-wraper"> <div onClick={() => setStatus('low')} className="status-edit-btn stuck">low</div></div>
-                    <div style={{ backgroundColor: 'rgb(173, 150, 122)' }} className="btn-wraper"> <div onClick={() => setStatus('no-importance')} className="status-edit-btn stuck"></div>none</div>
+                    <div style={{ backgroundColor: 'rgb(173, 150, 122)' }} className="btn-wraper"> <div onClick={() => setStatus('very-low')} className="status-edit-btn stuck"></div>none</div>
                     <div className="btn-wraper"> <div className="status-edit-btn add-edit-labels">Add/Edit Labels</div></div>
 
-                </div>}
+                </div>
+            }
         </div>}
 
 
