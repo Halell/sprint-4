@@ -15,8 +15,12 @@
     font-weight: 400;
     border-right: 1px solid;
     border-right-color: #fff;
-
+    min-width: 140px;
     color: #323338;
     color: var(--primary-text-color);
     position: relative;
+
+    &.date {
+        overflow: visible;
+    }
 }
