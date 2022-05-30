@@ -7,13 +7,12 @@ import { loadBoard, updateBoard, setFilterBy } from '../store/action/board.actio
 import { taskService } from '../services/task.service'
 import { groupService } from '../services/group.service'
 import { boardService } from '../services/board.service'
-import { utilService } from '../services/util.service'
 
 export const Board = ({ isPinned }) => {
     const params = useParams()
     let { board } = useSelector((storeState) => storeState.boardModule)
     const dispatch = useDispatch()
-    
+
     useEffect(() => {
         dispatch(loadBoard(params.id))
         console.log(params.id)

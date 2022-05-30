@@ -23,6 +23,12 @@ export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask }) 
         }
     }
 
+    const handleSelect = async (date) => {
+        await boardService.setActivity(board, 'Set date ', task.date,  date.toLocaleDateString())
+        task.date = date.toLocaleDateString()
+        onUpdateTask(task, group)
+    }
+
     const addUser = async (fullname) => {
         const user = {
             id: utilService.makeId(),
@@ -60,11 +66,15 @@ export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask }) 
     const setStatus = async (val, field, loading) => {
         var color = 'rgb(173, 150, 122)'
         const prevStatus = task[field]
+
         if (val === 'done' || val === 'high') color = 'rgb(0, 200, 117)'
         if (val === 'in-progress' || val === 'mid') color = 'rgb(253, 171, 61)'
         if (val === 'stuck' || val === 'low') color = 'rgb(226, 68, 92)'
+
         task[field] = val
         field === 'status' ? setStatusBgcColor(color) : setImportanceBgcColor(color)
+        task.style = { backgroundColor: color }
+
         if (loading) return
         onUpdateTask(task, group.id)
         await boardService.setActivity(board, `Changed ${field}`, prevStatus, task[field])
@@ -96,6 +106,7 @@ export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask }) 
                                             setMember={setMember}
                                             removeMember={removeMember}
                                             addUser={addUser}
+                                            handleSelect={handleSelect}
                                         />
                                     </div>
                                 </div>

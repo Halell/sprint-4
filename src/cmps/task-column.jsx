@@ -1,13 +1,16 @@
 import { useState } from "react"
-import DatePicker from "react-datepicker"
-import "react-datepicker/dist/react-datepicker.css"
+import 'react-date-range/dist/styles.css'; // main style file
+import 'react-date-range/dist/theme/default.css'; // theme css file
+import { Calendar } from 'react-date-range';
+// import DatePicker from "react-datepicker"
+// import "react-datepicker/dist/react-datepicker.css"
 import { LabelsModal } from "./labels-modal"
 import { ReactComponent as InviteSvg } from '../assets/svg/invite.svg'
 import { ReactComponent as RemoveSvg } from '../assets/svg/remove.svg'
 import { ReactComponent as UserSvg } from '../assets/svg/user.svg'
 import { faL } from "@fortawesome/free-solid-svg-icons"
 
-export function TaskColumn({ board, boardColumn, task, setStatus, statusBgcColor, importanceBgcColor, setTxt, setMember, removeMember, addUser }) {
+export function TaskColumn({ board, boardColumn, task, setStatus, statusBgcColor, importanceBgcColor, setTxt, setMember, removeMember, addUser, handleSelect }) {
 
     const [startDate, setStartDate] = useState(new Date())
     const [isImportanceEdit, setIsImportanceEdit] = useState(false)
@@ -46,6 +49,8 @@ export function TaskColumn({ board, boardColumn, task, setStatus, statusBgcColor
         setUser({ ...user, [field]: value })
     }
 
+
+
     return <div className="task-columns-wraper " >
         {boardColumn === 'text' && <div onClick={() => setColumn(boardColumn)} className="task-column">
             <div
@@ -67,7 +72,14 @@ export function TaskColumn({ board, boardColumn, task, setStatus, statusBgcColor
         }
         {/* date */}
         {boardColumn === 'date' && <div onClick={() => openDateModal(openDateModal)} className="task-column">
-            <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
+            <div onClick={() => setIsDateEdit(isDateEdit ? false : true)}>{task.date}</div>
+            {isDateEdit &&
+                <div className="date-picker">
+                    <Calendar date={new Date()}
+                        onChange={handleSelect} />
+                </div>
+                // <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
+            }
             {/* {task.date} */}
         </div>}
 
@@ -134,8 +146,7 @@ export function TaskColumn({ board, boardColumn, task, setStatus, statusBgcColor
                                     placeholder="Invite by email"
                                     value={user.fullname}
                                     name='fullname'
-                                    onChange={handleChange}
-                                >
+                                    onChange={handleChange}>
                                 </input>
                             </form>
                         </div>
