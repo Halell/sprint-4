@@ -69,6 +69,7 @@ export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask }) 
                                             setTxt={ setTxt }
                                             setStartDate={ setStartDate }
                                             startdate={ startdate }
+                                            board={ board }
                                         />
                                     </div>
                                 </div>

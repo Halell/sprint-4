@@ -72,7 +72,7 @@ export function GroupHeader({ board, group, onUseBtn, onSaveGroup, onUpdateColum
                         <hr />
                     </div>
                     <div className='btns-bottom-modal'>
-                        <div className='btn-modal-color' onClick={() => onUseBtn('color')}><GoPrimitiveDot />Change group color</div>
+                        <div className='btn-modal-color' onClick={() => onUseBtn('color', group)}><GoPrimitiveDot />Change group color</div>
                         <hr />
                         <div className='btn-modal-remove' onClick={() => onUseBtn('remove', group)}><AiOutlineDelete />Remove group</div>
                     </div>

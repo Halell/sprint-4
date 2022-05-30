@@ -16,15 +16,20 @@ export function BoardContent({ group, onAddTask, onRemoveGroup, onUpdateTask, on
     }
 
     const onUseBtn = (val, group) => {
-        console.log(group)
         if (val === 'remove') onRemoveGroup(group.id)
         if (val === 'add') onAddGroup()
+        if (val === 'color') onchangeColor(group)
         if (val === 'duplicate') {
             const duplicateGroup = { ...group }
             duplicateGroup.id = null
             onAddGroup(duplicateGroup)
         }
         setIsBtnsModalOpen(isBtnsModalOpen ? false : true)
+    }
+
+    const onchangeColor = (group) => {
+        group.style = { backgroundColor: 'rgb(0, 200, 117)' }
+        onAddGroup(group)
     }
 
     const onUpdateColumns = (el) => {
