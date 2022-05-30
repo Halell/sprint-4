@@ -8,9 +8,11 @@
     flex: 1 1 auto;
 
     .title-inner-container {
-        flex-basis: 400px;
+        background-color: #f5f6f8d4;
+        min-width: 282px;
         flex-grow: 1;
         width: 0;
+        z-index: 2;
 
         .title-inner-wrapper {
             height: 100%;
