@@ -11,7 +11,6 @@ export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask }) 
     const [importanceBgcColor, setImportanceBgcColor] = useState('')
     const [isBtnInputOpen, setIsBtnInputOpen] = useState(true)
     const [isModalOpen, setIsModalOpen] = useState(false)
-    const [startdate, setStartDate] = useState(new Date())
 
     useEffect(() => {
         setStatus(task.importance, 'importance')
@@ -68,7 +67,6 @@ export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask }) 
                                             importanceBgcColor={importanceBgcColor}
                                             statusBgcColor={statusBgcColor}
                                             setTxt={setTxt}
-                                            setStartDate={setStartDate}
                                             board={board}
                                             setMember={setMember}
                                         />

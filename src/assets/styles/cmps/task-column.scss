@@ -2,6 +2,7 @@
     min-width: 140px;
     z-index: 15;
 
+
     .member-col {
         overflow: hidden;
         text-overflow: ellipsis;
@@ -48,6 +49,44 @@
         width: 264px;
         top: 100%;
         right: 0;
+
+        .item-member-list {
+            justify-content: flex-start;
+            position: relative;
+            width: 100%;
+            flex-wrap: wrap;
+
+            .member-box {
+                margin: 4px;
+                height: 22px;
+                background-color: #cce5ff;
+                border-radius: 24px;
+                align-items: center;
+                justify-content: center;
+
+                .svg {
+                    background-color: inherit;
+                    height: 16px;
+                    width: 16px;
+                    font-size: .5rem;
+                    border-radius: 100%;
+                    cursor: pointer;
+                    margin-left: 4px;
+                    margin-right: 2px;
+                    flex-shrink: 0;
+                    justify-content: center;
+                    align-items: center;
+
+                    &:hover {
+                        background-color: white;
+                    }
+
+                    svg {
+                        height: 8px;
+                    }
+                }
+            }
+        }
 
         .search-persons {
             height: 34px;

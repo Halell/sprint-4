@@ -4,8 +4,16 @@ import { ReactComponent as StarSvg } from '../assets/svg/star.svg'
 import { ReactComponent as UserSvg } from '../assets/svg/user.svg'
 import { ReactComponent as HideSecondSvg } from '../assets/svg/hide.second.svg'
 import { FiUserPlus } from 'react-icons/fi'
+import { ReactComponent as ActivitySvg } from '../assets/svg/activity.svg'
+import { Link } from "react-router-dom"
+import { useState } from "react"
 
-export function BoardHeader({ onAddGroup, onChangeFilter, getPersons, onSaveBoard, board, onAddTask }) {
+export function BoardHeader({ onAddGroup, onChangeFilter, getPersons, onSaveBoard, board, onAddTask, group }) {
+    const [isActivityOpen, setActivityOpen] = useState(false)
+
+    function openActivty() {
+        setActivityOpen(isActivityOpen ? false : true)
+    }
 
     function updateBoardTitle(el) {
         const title = el.target.innerText
@@ -16,7 +24,6 @@ export function BoardHeader({ onAddGroup, onChangeFilter, getPersons, onSaveBoar
     function updateBoardDesc(el) {
         const desc = el.target.innerText
         board.desc = desc
-
         onSaveBoard(board)
     }
 
@@ -48,7 +55,9 @@ export function BoardHeader({ onAddGroup, onChangeFilter, getPersons, onSaveBoar
                             </div>
                             <div className="right-container flex">
                                 <div className="invite"><FiUserPlus />Invite/1</div>
-                                <div className="activity">Activity</div>
+                                <div onClick={() => openActivty()} className="activity">
+                                    <ActivitySvg /> Activity
+                                </div>
                                 <div className="add-to-board">+ Add to board </div>
                                 <div className="edit"></div>
                             </div>
@@ -80,6 +89,17 @@ export function BoardHeader({ onAddGroup, onChangeFilter, getPersons, onSaveBoar
                 </div>
                 {/* </div> */}
             </div>
+
+            {isActivityOpen &&
+
+                <div className="activity-log-pannel">
+                    <div className="">
+
+                    </div>
+
+                </div>
+
+            }
         </div >
     )
 }

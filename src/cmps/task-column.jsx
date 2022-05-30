@@ -3,6 +3,8 @@ import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
 import { LabelsModal } from "./labels-modal"
 import { ReactComponent as InviteSvg } from '../assets/svg/invite.svg'
+import { ReactComponent as RemoveSvg } from '../assets/svg/remove.svg'
+import { ReactComponent as UserSvg } from '../assets/svg/user.svg'
 
 export function TaskColumn({ board, boardColumn, task, setStatus, statusBgcColor, importanceBgcColor, setTxt, setMember }) {
 
@@ -27,56 +29,65 @@ export function TaskColumn({ board, boardColumn, task, setStatus, statusBgcColor
     const openDateModal = () => {
         setIsDateEdit(isDateEdit ? false : true)
     }
-    console.log('time to rokk')
     return <div className="task-columns-wraper " >
-        { boardColumn === 'text' && <div onClick={ () => setColumn(boardColumn) } className="task-column">
+        {boardColumn === 'text' && <div onClick={() => setColumn(boardColumn)} className="task-column">
             <div
-                suppressContentEditableWarning={ true }
-                contentEditable={ true }
-                onBlur={ setTxt }
-            >{ task.text }
+                suppressContentEditableWarning={true}
+                contentEditable={true}
+                onBlur={setTxt}
+            >{task.text}
             </div>
-        </div> }
-        {/* status */ }
-        { boardColumn === 'status' && <div style={ { backgroundColor: statusBgcColor } } onClick={ () => setColumn(boardColumn) } className="task-column">
-            { task.status }
-            { isStatusEdit &&
+        </div>}
+        {/* status */}
+        {boardColumn === 'status' && <div style={{ backgroundColor: statusBgcColor }} onClick={() => setColumn(boardColumn)} className="task-column">
+            {task.status}
+            {isStatusEdit &&
                 <div className="column-modal">
-                    <LabelsModal setStatus={ setStatus } field={ 'status' } />
+                    <LabelsModal setStatus={setStatus} field={'status'} />
                 </div>
             }
         </div>
         }
-        {/* date */ }
-        { boardColumn === 'date' && <div onClick={ () => openDateModal(openDateModal) } className="task-column">
-            <DatePicker selected={ startDate } onChange={ (date) => setStartDate(date) } />
-            {/* {task.date} */ }
-        </div> }
+        {/* date */}
+        {boardColumn === 'date' && <div onClick={() => openDateModal(openDateModal)} className="task-column">
+            <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
+            {/* {task.date} */}
+        </div>}
 
 
 
-        {/* persons */ }
-        { boardColumn === 'persons' && <div onClick={ () => setColumn(boardColumn) } className="task-column member-col">
+        {/* persons */}
+        {boardColumn === 'persons' && <div onClick={() => setColumn(boardColumn)} className="task-column member-col">
             <div className="add-member flex">
-                { task.persons.map(person => {
-                    return <div>{ person }</div>
-                }) }
+                <UserSvg />
+                {task.persons.map((person, idx) => {
+                    return <div key={idx}></div>
+                })}
             </div>
-        </div> }
-        { isPersonsEdit &&
+        </div>}
+        {isPersonsEdit &&
             <div className="person-menu menu-modal flex column">
                 <div className="person-menu flex column">
-                    <div className="item-member-list flex"></div>
+                    <div className="item-member-list flex">
+                        {task.persons.map((person, idx) => {
+                            return <div key={idx} className="member-box flex ">
+
+                                <img src="" alt="" />
+                                {person}
+                                <div className="svg flex"> <RemoveSvg /></div>
+                            </div>
+                        })}
+                    </div>
                     <div className="search-persons"><input type="text" placeholder="Enter name" /></div>
                     <div className="divider"></div>
-                    { board.persons && board.persons.map((person, idx) => {
+                    {board.persons && board.persons.map((person, idx) => {
                         console.log(person)
-                        return < div onClick={ () => setMember(person) } className="wrapper" key={ idx }>
+                        return < div onClick={() => setMember(person)} className="wrapper" key={idx}>
                             <div className="add-member-box flex">
                                 <div className="img-user flex">
                                     <img src="src/assets/img/carmel.png" />
                                 </div>
-                                <div className="user-full-name flex">{ person.fullname }</div>
+                                <div className="user-full-name flex">{person.fullname}</div>
                             </div>
                         </div>
                     })
@@ -85,17 +96,17 @@ export function TaskColumn({ board, boardColumn, task, setStatus, statusBgcColor
                 </div>
             </div>
         }
-        {/* importance */ }
+        {/* importance */}
 
 
 
 
         {
-            boardColumn === 'importance' && <div style={ { backgroundColor: importanceBgcColor } } onClick={ () => setColumn(boardColumn) } className="task-column">
-                { task.importance }
-                { isImportanceEdit &&
+            boardColumn === 'importance' && <div style={{ backgroundColor: importanceBgcColor }} onClick={() => setColumn(boardColumn)} className="task-column">
+                {task.importance}
+                {isImportanceEdit &&
                     <div className="column-modal">
-                        <LabelsModal setStatus={ setStatus } field={ 'importance' } />
+                        <LabelsModal setStatus={setStatus} field={'importance'} />
                     </div>
                 }
             </div>
