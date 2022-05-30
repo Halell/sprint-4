@@ -24,75 +24,75 @@ socketService.setup()
 
 
 function createSocketService() {
-  var socket = null;
-  const socketService = {
-    setup() {
-      socket = io(baseUrl)
-      setTimeout(()=>{
-        const user = userService.getLoggedinUser()
-        if (user) this.login(user._id)
-      }, 500)
-    },
-    on(eventName, cb) {
-      socket.on(eventName, cb)
-    },
-    off(eventName, cb = null) {
-      if (!socket) return;
-      if (!cb) socket.removeAllListeners(eventName)
-      else socket.off(eventName, cb)
-    },
-    emit(eventName, data) {
-      socket.emit(eventName, data)
-    },
-    login(userId) {
-      socket.emit(SOCKET_EMIT_LOGIN, userId)
-    },
-    logout() {
-      socket.emit(SOCKET_EMIT_LOGOUT)
-    },
-    terminate() {
-      socket = null
-    },
+    var socket = null;
+    const socketService = {
+        setup() {
+            socket = io(baseUrl)
+            setTimeout(() => {
+                const user = userService.getLoggedinUser()
+                if (user) this.login(user._id)
+            }, 500)
+        },
+        on(eventName, cb) {
+            socket.on(eventName, cb)
+        },
+        off(eventName, cb = null) {
+            if (!socket) return;
+            if (!cb) socket.removeAllListeners(eventName)
+            else socket.off(eventName, cb)
+        },
+        emit(eventName, data) {
+            socket.emit(eventName, data)
+        },
+        login(userId) {
+            socket.emit(SOCKET_EMIT_LOGIN, userId)
+        },
+        logout() {
+            socket.emit(SOCKET_EMIT_LOGOUT)
+        },
+        terminate() {
+            socket = null
+        },
 
-  }
-  return socketService
+    }
+    return socketService
 }
 
 // eslint-disable-next-line
 function createDummySocketService() {
-  var listenersMap = {}
-  const socketService = {
-    listenersMap,
-    setup() {
-      listenersMap = {}
-    },
-    terminate() {
-      this.setup()
-    },
-    login() {   
-    },
-    logout() {   
-    },
-    on(eventName, cb) {
-      listenersMap[eventName] = [...(listenersMap[eventName]) || [], cb]
-    },
-    off(eventName, cb) {
-      if (!listenersMap[eventName]) return
-      if (!cb) delete listenersMap[eventName]
-      else listenersMap[eventName] = listenersMap[eventName].filter(l => l !== cb)
-    },
-    emit(eventName, data) {
-      if (!listenersMap[eventName]) return
-      listenersMap[eventName].forEach(listener => {
-        listener(data)
-      })
-    },
-    debugMsg() {
-      this.emit('chat addMsg', { from: 'Someone', txt: 'Aha it worked!' })
-    },
-  }
-  window.listenersMap = listenersMap;
-  return socketService
+    var listenersMap = {}
+    const socketService = {
+        listenersMap,
+        setup() {
+            listenersMap = {}
+        },
+        terminate() {
+            this.setup()
+        },
+        login() {
+        },
+        logout() {
+        },
+        on(eventName, cb) {
+            listenersMap[eventName] = [...(listenersMap[eventName]) || [], cb]
+        },
+        off(eventName, cb) {
+            if (!listenersMap[eventName]) return
+            if (!cb) delete listenersMap[eventName]
+            else listenersMap[eventName] = listenersMap[eventName].filter(l => l !== cb)
+        },
+        emit(eventName, data) {
+            if (!listenersMap[eventName]) return
+            listenersMap[eventName].forEach(listener => {
+                listener(data)
+            })
+        },
+        debugMsg() {
+            this.emit('chat addMsg', { from: 'Someone', txt: 'Aha it worked!' })
+        },
+    }
+    window.listenersMap = listenersMap;
+    return socketService
 }
 
 

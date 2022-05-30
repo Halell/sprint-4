@@ -12,6 +12,8 @@ export const Board = ({ isPinned }) => {
     const params = useParams()
     let { board } = useSelector((storeState) => storeState.boardModule)
     const dispatch = useDispatch()
+    // const { groups } = board
+
     useEffect(() => {
         dispatch(loadBoard(params.id))
     }, [params.id])
@@ -59,6 +61,7 @@ export const Board = ({ isPinned }) => {
                         getPersons={getPersons}
                         board={board}
                         onSaveBoard={onSaveBoard}
+                        onAddTask={onAddTask}
                     />
                     <div className="board-content">
                         <div className="board-content-container">

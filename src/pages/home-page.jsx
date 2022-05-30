@@ -1,5 +1,11 @@
+import { useDispatch } from "react-redux"
+import { onLogin, onSignup } from '../store/action/user.actions'
 
 export const HomePage = () => {
+
+    const dispatch = useDispatch()
+
+
     return (
         <div className="home-container">
             <div className="main-header">

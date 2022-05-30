@@ -5,8 +5,7 @@ import { ReactComponent as UserSvg } from '../assets/svg/user.svg'
 import { ReactComponent as HideSecondSvg } from '../assets/svg/hide.second.svg'
 import { FiUserPlus } from 'react-icons/fi'
 
-export function BoardHeader({ onAddGroup, onChangeFilter, getPersons, onSaveBoard, board, onAddTask, group }) {
-
+export function BoardHeader({ onAddGroup, onChangeFilter, getPersons, onSaveBoard, board, onAddTask }) {
 
     function updateBoardTitle(el) {
         const title = el.target.innerText
@@ -76,6 +75,7 @@ export function BoardHeader({ onAddGroup, onChangeFilter, getPersons, onSaveBoar
                         onChangeFilter={onChangeFilter}
                         getPersons={getPersons}
                         board={board}
+                        onAddTask={onAddTask}
                     />
                 </div>
                 {/* </div> */}

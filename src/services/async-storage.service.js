@@ -1,5 +1,6 @@
 const fs = require('fs')
 const gBoard = require('../data/board.json')
+const gUser = require('../data/user.json')
 export const storageService = {
     query,
     get,
@@ -36,6 +37,7 @@ function post(entityType, newEntity) {
 }
 
 function put(entityType, updatedEntity) {
+    console.log('upda: ', updatedEntity);
     return query(entityType)
         .then(entities => {
             const idx = entities.findIndex(entity => entity._id === updatedEntity._id)

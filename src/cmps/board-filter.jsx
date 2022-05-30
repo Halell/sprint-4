@@ -15,10 +15,9 @@ import { MdOutlineWeb } from 'react-icons/md';
 
 
 
-export const BoardFilter = ({ onAddGroup, onChangeFilter, getPersons, onAddTask, board, group }) => {
+export const BoardFilter = ({ onAddGroup, onChangeFilter, getPersons, onAddTask, board }) => {
     const [isModalOpen, setIsModalOpen] = useState(false)
     const [isNewItemOpen, setIsNewItemOpen] = useState(false)
-    // const [className, setClassName] = useState("")
     const toggle = (val) => {
         if (val === 'person-modal') {
             setIsModalOpen(isModalOpen ? false : true)
@@ -35,17 +34,20 @@ export const BoardFilter = ({ onAddGroup, onChangeFilter, getPersons, onAddTask,
         },
     }, onChangeFilter)
 
-    // const openModal = () => {
-    //     console.log('Opening!')
-    //     if (className === "open") setClassName("")
-    //     else setClassName("open")
 
-    // }
+    const onUseBtnFilter = (val, group) => {
+        if (val === 'add') {
+            const addTask = { ...group }
+            addTask.id = null
+            addTask.title = 'New item'
+            onAddTask(board, board.groups[0].id, addTask)
+        }
+    }
 
     return (
         <div className="header-bottom-main-wrapper">
             <div className="new-item-wraper flex">
-                <div onClick={() => onAddTask(board)} className="new-item-btn flex">New Item</div>
+                <div onClick={() => onUseBtnFilter('add', board.groups[0].id)} className="new-item-btn flex">New Item</div>
                 <div className="new-item-modal-btn-wrpper">
                     {/* <div onClick={() => openModal()} className="new-item-modal-btn"><img src={filterSvg} alt="" /></div> */}
                     <div onClick={() => toggle('new-item-btn')} className="new-item-modal-btn"><ArrowSvg /></div>

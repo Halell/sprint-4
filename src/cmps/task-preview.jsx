@@ -26,8 +26,6 @@ export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask }) 
     }
 
     const setStatus = (val, field) => {
-        console.log('val', val)
-        console.log('field', field)
         var color = 'rgb(173, 150, 122)'
         if (val === 'done' || val === 'high') color = 'rgb(0, 200, 117)'
         if (val === 'in-progress' || val === 'mid') color = 'rgb(253, 171, 61)'
