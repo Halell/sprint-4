@@ -6,12 +6,12 @@ export function TaskColumn({ boardColumn, task, setStatus, statusBgcColor, impor
 
 
     const [isImportanceEdit, setIsImportanceEdit] = useState(false)
-    const [isStatusEdit, setIsEdit] = useState(false)
+    const [isStatusEdit, setIsStatusEdit] = useState(false)
     const [isDateEdit, setIsDateEdit] = useState(false)
 
     const setColumn = (val) => {
         if (val === 'status') {
-            setIsDateEdit(isDateEdit ? false : true)
+            setIsStatusEdit(isStatusEdit ? false : true)
         }
         if (val === 'importance') {
             setIsImportanceEdit(isImportanceEdit ? false : true)
