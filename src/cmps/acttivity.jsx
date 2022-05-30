@@ -36,11 +36,11 @@ export function ActivityLog({ board, setActivityOpen }) {
                         </div>
                         <div className="activity-info flex">
                             <div className="from flex">
-
+                                {activity.from}
                             </div>
                             {'>'}
                             <div className="to flex">
-
+                                {activity.to}
                             </div>
 
                         </div>
