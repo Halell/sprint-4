@@ -16,7 +16,8 @@ export const boardService = {
     remove,
     subscribe,
     unsubscribe,
-    getCurrBoard
+    getCurrBoard,
+    setActivity
 }
 window.cs = boardService
 
@@ -41,6 +42,25 @@ async function remove(boardId) {
     await storageService.remove(STORAGE_KEY, boardId)
     boardChannel.postMessage(getActionRemoveBoard(boardId))
 }
+
+async function setActivity(board, txt, from, to) {
+    const activity = {
+        byMember: {
+            fullname: "guest",
+            imgUrl: "",
+            _id: "userId",
+            createdAt: new Date(),
+        },
+        from,
+        to,
+        id: utilService.makeId(),
+        txt
+    }
+    board.activities.push(activity)
+    save(board)
+    return board
+}
+
 async function save(board, groupId, task) {
     var savedBoard = (task) ? taskService.saveTask(board, groupId, task) : null
     if (board._id) {

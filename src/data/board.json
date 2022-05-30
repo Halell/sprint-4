@@ -63,9 +63,7 @@
                         "status": "done",
                         "date": "24/05/2022",
                         "importance": "high",
-                        "persons": [
-                            "shani"
-                        ]
+                        "persons": []
                     },
                     {
                         "id": "c102",
@@ -74,9 +72,7 @@
                         "status": "done",
                         "date": "24/05/2022",
                         "importance": "mid",
-                        "persons": [
-                            "halell"
-                        ]
+                        "persons": []
                     }
                 ]
             },
@@ -91,9 +87,7 @@
                         "status": "done",
                         "date": "24/05/2022",
                         "importance": "low",
-                        "persons": [
-                            "bob"
-                        ],
+                        "persons": [],
                         "archivedAt": 1589983468418
                     },
                     {
@@ -102,9 +96,7 @@
                         "text": "lets get it done",
                         "date": "24/05/2022",
                         "importance": "high",
-                        "persons": [
-                            "shani"
-                        ],
+                        "persons": [],
                         "status": "in-progress",
                         "description": "description",
                         "comments": [
@@ -216,10 +208,7 @@
                         "status": "done",
                         "date": "24/05/2022",
                         "importance": "high",
-                        "persons": [
-                            "shani",
-                            "Tal Tarablus"
-                        ]
+                        "persons": []
                     },
                     {
                         "id": "c102",
@@ -227,9 +216,7 @@
                         "text": "lets get it done",
                         "status": "done",
                         "date": "24/05/2022",
-                        "persons": [
-                            "halell"
-                        ]
+                        "persons": []
                     }
                 ]
             },
@@ -243,9 +230,7 @@
                         "text": "lets get it done",
                         "status": "done",
                         "date": "24/05/2022",
-                        "persons": [
-                            "bob"
-                        ],
+                        "persons": [],
                         "archivedAt": 1589983468418
                     },
                     {
@@ -253,9 +238,7 @@
                         "title": "Help me",
                         "text": "lets get it done",
                         "date": "24/05/2022",
-                        "persons": [
-                            "shani"
-                        ],
+                        "persons": [],
                         "status": "in-progress",
                         "description": "description",
                         "comments": [
