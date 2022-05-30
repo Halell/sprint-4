@@ -21,7 +21,8 @@ export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask }) 
     }
 
     const setMember = (member) => {
-        console.log(member)
+        task.persons.push(member.fullname)
+        onUpdateTask(task, group.id)
     }
 
     const setTxt = (el) => {
