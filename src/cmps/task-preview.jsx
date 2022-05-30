@@ -25,15 +25,16 @@ export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask }) 
 
     const onSetIsModalOpen = () => {
         setIsModalOpen(!isModalOpen)
-        console.log('ttttttt')
     }
+    const setMember = (member) => {
+        console.log(member)
+    }
+
     const setTxt = (el) => {
         task.text = el.target.innerText
         onUpdateTask(task, group.id)
     }
     const setStatus = (val, field) => {
-        console.log('val', val)
-        console.log('field', field)
         var color = 'rgb(173, 150, 122)'
         if (val === 'done' || val === 'high') color = 'rgb(0, 200, 117)'
         if (val === 'in-progress' || val === 'mid') color = 'rgb(253, 171, 61)'
@@ -53,7 +54,6 @@ export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask }) 
                     onUpdateTask={ onUpdateTask }
                     group={ group }
                 />
-
                 <div className="cells-row-container">
                     <div className="cells-row-component">
                         { board.columns && board.columns.map((boardColumn, idx) =>
@@ -68,8 +68,8 @@ export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask }) 
                                             statusBgcColor={ statusBgcColor }
                                             setTxt={ setTxt }
                                             setStartDate={ setStartDate }
-                                            startdate={ startdate }
                                             board={ board }
+                                            setMember={ setMember }
                                         />
                                     </div>
                                 </div>

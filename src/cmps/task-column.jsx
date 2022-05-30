@@ -2,10 +2,11 @@ import { useState } from "react"
 import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
 import { LabelsModal } from "./labels-modal"
+import { ReactComponent as InviteSvg } from '../assets/svg/invite.svg'
 
-export function TaskColumn({ board, boardColumn, task, setStatus, statusBgcColor, importanceBgcColor, setTxt }) {
+export function TaskColumn({ board, boardColumn, task, setStatus, statusBgcColor, importanceBgcColor, setTxt, setMember }) {
 
-    const [startdate, setStartDate] = useState(new Date())
+    const [startDate, setStartDate] = useState(new Date())
     const [isImportanceEdit, setIsImportanceEdit] = useState(false)
     const [isStatusEdit, setIsStatusEdit] = useState(false)
     const [isDateEdit, setIsDateEdit] = useState(false)
@@ -48,32 +49,39 @@ export function TaskColumn({ board, boardColumn, task, setStatus, statusBgcColor
         }
         {/* date */ }
         { boardColumn === 'date' && <div onClick={ () => openDateModal(openDateModal) } className="task-column">
-            <DatePicker selected={ startdate } onChange={ (date) => setStartDate(date) } />
+            <DatePicker selected={ startDate } onChange={ (date) => setStartDate(date) } />
             {/* {task.date} */ }
         </div> }
 
 
 
         {/* persons */ }
-        { boardColumn === 'persons' && <div onClick={ () => setColumn(boardColumn) } className="task-column">
-            { task.persons }
+        { boardColumn === 'persons' && <div onClick={ () => setColumn(boardColumn) } className="task-column member-col">
+            <div className="add-member flex">
+                { board.persons.map(person => {
+                    return <div>{ person.fullname }</div>
+                }) }
+            </div>
         </div> }
         { isPersonsEdit &&
             <div className="person-menu menu-modal flex column">
                 <div className="person-menu flex column">
+                    <div className="item-member-list flex"></div>
                     <div className="search-persons"><input type="text" placeholder="Enter name" /></div>
                     <div className="divider"></div>
-                    { board.persons.map(person => {
-                        < div className="wrapper" >
+                    { board.persons && board.persons.map((person, idx) => {
+                        console.log(person)
+                        return < div onClick={ () => setMember(person) } className="wrapper" key={ idx }>
                             <div className="add-member-box flex">
                                 <div className="img-user flex">
-                                    <img src="" />
+                                    <img src="src/assets/img/carmel.png" />
                                 </div>
-                                <div className="user-full-name flex">user full name</div>
+                                <div className="user-full-name flex">{ person.fullname }</div>
                             </div>
                         </div>
                     })
                     }
+                    <div className="invite flex"><InviteSvg />Invite a new member by username</div>
                 </div>
             </div>
         }
