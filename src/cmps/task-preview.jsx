@@ -20,14 +20,16 @@ export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask }) 
         }
     }
 
+    const setMember = (member) => {
+        console.log(member)
+    }
+
     const setTxt = (el) => {
         task.text = el.target.innerText
         onUpdateTask(task, group.id)
     }
 
     const setStatus = (val, field) => {
-        console.log('val', val)
-        console.log('field', field)
         var color = 'rgb(173, 150, 122)'
         if (val === 'done' || val === 'high') color = 'rgb(0, 200, 117)'
         if (val === 'in-progress' || val === 'mid') color = 'rgb(253, 171, 61)'
@@ -63,6 +65,7 @@ export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask }) 
                                             setStartDate={setStartDate}
                                             startdate={startdate}
                                             board={board}
+                                            setMember={setMember}
                                         />
                                     </div>
                                 </div>

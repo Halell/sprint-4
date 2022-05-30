@@ -4,7 +4,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { LabelsModal } from "./labels-modal";
 import { ReactComponent as InviteSvg } from '../assets/svg/invite.svg'
 
-export function TaskColumn({ board, boardColumn, task, setStatus, statusBgcColor, importanceBgcColor, setTxt }) {
+export function TaskColumn({ board, boardColumn, task, setStatus, statusBgcColor, importanceBgcColor, setTxt, setMember }) {
 
     const [startdate, setStartDate] = useState(new Date())
     const [isImportanceEdit, setIsImportanceEdit] = useState(false)
@@ -58,7 +58,9 @@ export function TaskColumn({ board, boardColumn, task, setStatus, statusBgcColor
         {/* persons */}
         {boardColumn === 'persons' && <div onClick={() => setColumn(boardColumn)} className="task-column member-col">
             <div className="add-member flex">
-
+                {board.persons.map(person => {
+                    return <div>{person.fullname}</div>
+                })}
             </div>
         </div>}
         {isPersonsEdit &&
@@ -69,7 +71,7 @@ export function TaskColumn({ board, boardColumn, task, setStatus, statusBgcColor
                     <div className="divider"></div>
                     {board.persons && board.persons.map((person, idx) => {
                         console.log(person)
-                        return < div className="wrapper" key={idx}>
+                        return < div onClick={() => setMember(person)} className="wrapper" key={idx}>
                             <div className="add-member-box flex">
                                 <div className="img-user flex">
                                     <img src="src/assets/img/carmel.png" />

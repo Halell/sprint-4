@@ -1,9 +1,12 @@
-// .task-column {
-//     min-width: 140px;
-//     z-index: 15;
+.task-column {
+    min-width: 140px;
+    z-index: 15;
 
-//     .member-col {}
-// }
+    .member-col {
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
 
 
 
