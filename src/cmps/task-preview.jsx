@@ -29,8 +29,6 @@ export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask }) 
     }
 
     const openImportanceModal = () => {
-        // console.log('impo')
-
     }
 
     const setStatus = (val) => {

@@ -10,13 +10,10 @@ export const groupService = {
 }
 
 async function addGroup(board, updateGroup) {
-    console.log(updateGroup)
     let newGroup
     if (updateGroup) {
         const idx = board.groups.findIndex(group => group.id === updateGroup.id)
         board.groups[idx] = updateGroup
-        // console.log(board.groups[idx])
-        // console.log('board', board)
 
     } else {
         newGroup = {
