@@ -1,4 +1,5 @@
 import { useDispatch } from "react-redux"
+import { Link } from 'react-router-dom'
 import { onLogin, onSignup } from '../store/action/user.actions'
 
 export const HomePage = () => {
@@ -21,7 +22,7 @@ export const HomePage = () => {
                     </div>
                     <div className="right-content">
                         <a className="login" href="">Log in</a>
-                        <div className="started-btn">Get Started</div>
+                        <Link to={ '/board' }> <div className="started-btn">Get Started</div></Link>
                     </div>
                 </div>
             </div>

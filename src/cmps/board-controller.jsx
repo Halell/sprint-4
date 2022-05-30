@@ -59,7 +59,7 @@ export const BoardController = ({ onSetIsPinned, isPinned }) => {
 
                         <NavLink style={ { backgroundColor: 'rgb(0, 200, 117)' } }
                             className={ (navData) => (navData.isActive ? 'active' : '') }
-                            to="/b102">
+                            to="/board/b102">
                             <div className="board-preview-card-wrapper">
                                 <div className="board-preview-card">
                                     <div className="board-icon"><Board /></div>
@@ -70,8 +70,6 @@ export const BoardController = ({ onSetIsPinned, isPinned }) => {
                                 </div>
                             </div>
                         </NavLink>
-                        <DatePicker
-                            className="red-border" />
                     </div>
                 </div>
             </div>

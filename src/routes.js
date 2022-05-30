@@ -15,6 +15,10 @@ export default [
         element: <MainApp />,
     },
     {
+        path: '/board/',
+        element: <MainApp />,
+    },
+    {
         path: '/',
         element: <HomePage />,
     },
