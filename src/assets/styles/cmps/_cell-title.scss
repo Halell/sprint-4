@@ -12,7 +12,6 @@
         flex-grow: 1;
         width: 0;
 
-
         .title-inner-wrapper {
             height: 100%;
 
@@ -29,9 +28,12 @@
     display: flex;
     align-items: center;
     position: absolute;
-    width: 30px;
-    left: -30px;
+    width: 46px;
+    padding-left: 16px;
+    left: -46px;
     height: 100%;
+    border-left: -3px solid white;
+    /* margin-left: 30px; */
     background-color: #fff;
 
     .btn-pulse-menu {

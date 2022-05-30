@@ -8,7 +8,7 @@ export const storageService = {
     remove,
     postMany
 }
-// console.log('gGroups:', gGroups)
+
 
 function query(entityType, delay = 100) {
     var entities = JSON.parse(localStorage.getItem(entityType)) || gBoard
@@ -20,8 +20,7 @@ function query(entityType, delay = 100) {
         }, delay)
     })
 }
-
-function get(entityType, entityId) {
+function get(entityType, entityId = "b101") {
     return query(entityType)
         .then(entities => entities.find(entity => entity._id === entityId))
 }
@@ -30,6 +29,7 @@ function post(entityType, newEntity) {
     return query(entityType)
         .then(entities => {
             entities.push(newEntity)
+
             _save(entityType, entities)
             return newEntity
         })
@@ -38,10 +38,9 @@ function post(entityType, newEntity) {
 function put(entityType, updatedEntity) {
     return query(entityType)
         .then(entities => {
-            // const idx = entities.findIndex(entity => entity._id === updatedEntity._id)
-            // entities.splice(idx, 1, updatedEntity)
-            // console.log('entities: ', entities);
-            _save(entityType, updatedEntity)
+            const idx = entities.findIndex(entity => entity._id === updatedEntity._id)
+            entities.splice(idx, 1, updatedEntity)
+            _save(entityType, entities)
             return updatedEntity
         })
 }

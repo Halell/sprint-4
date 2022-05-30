@@ -1,43 +1,41 @@
 import { useState } from 'react'
 
-export const BoardController = () => {
-    const [isOpen, setIsOpen] = useState(true)
-    const [style, setStyle] = useState({})
-    const [className, setClassName] = useState("")
+export const BoardController = ({ onSetIsPinned, isPinned }) => {
 
-    const toggleController = () => {
-        setIsOpen(isOpen ? false : true)
-        setClassName(isOpen ? "pinned" : "")
-        setStyle(isOpen ? { width: '225px' } : { width: '30px' })
-    }
-
-    const onAddBoard = () => {
-        console.log('Adding board!')
-    }
+    const [isExpend, setIsExpend] = useState(false)
 
     return (
-        <main style={style} className="board-controller board-controller" >
-            <button className={"controller-btn " + className} onClick={() => toggleController()}>{isOpen ? '>' : '<'}</button>
+        <main
+            className={ `board-controller ${isExpend ? 'expend' : ''} ${isPinned ? 'pinned' : ''}` }
+            onMouseEnter={ () => setIsExpend(!isExpend, console.log('ksks')) }
+            onMouseLeave={ () => setIsExpend(!isExpend) }
+        >
+            <div className={ "controller-btn " }
+                // onMouseOver={ () => setIsExpend(isExpend) }
+                onClick={ onSetIsPinned }>
+                { isPinned ? '>' : '<' }
+            </div>
 
-            {!isOpen &&
-                <div className="controller-container">
-                    <button className="controller-add-btn" onClick={() => { onAddBoard() }}>+ Add</button>
-                    <div
-                        suppressContentEditableWarning={true}
-                        contentEditable={true}>
-                        Search
-                    </div>
-                    <hr />
-                    <ul>
-                        <li>Board 1 <button>...</button></li>
-                        <li>Board 2 <button>...</button></li>
-                        <li>Board 3 <button>...</button></li>
-                    </ul>
-                    {/* {boards && boards.title} */}
-                </div>
+            {
+                // !IsPinned &&
+                // <div className="controller-container">
+                //     <button className="controller-add-btn" onClick={ () => { onAddBoard() } }>+ Add</button>
+                //     <div
+                //         suppressContentEditableWarning={ true }
+                //         contentEditable={ true }>
+                //         Search
+                //     </div>
+                //     <hr />
+                //     <ul>
+                //         <li>Board 1 <button>...</button></li>
+                //         <li>Board 2 <button>...</button></li>
+                //         <li>Board 3 <button>...</button></li>
+                //     </ul>
+                //     {/* {boards && boards.title} */ }
+                // </div>
 
             }
 
-        </main>
+        </main >
     )
 }

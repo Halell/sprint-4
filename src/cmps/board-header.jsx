@@ -3,7 +3,7 @@ import { BoardFilter } from "./board-filter"
 import { ReactComponent as StarSvg } from '../assets/svg/star.svg'
 import { ReactComponent as UserSvg } from '../assets/svg/user.svg'
 import { ReactComponent as HideSecondSvg } from '../assets/svg/hide.second.svg'
-import { FiUserPlus } from 'react-icons/fi';
+import { FiUserPlus } from 'react-icons/fi'
 
 export function BoardHeader({ onAddGroup, onChangeFilter, getPersons, onSaveBoard, board, onAddTask, group }) {
 
@@ -17,7 +17,7 @@ export function BoardHeader({ onAddGroup, onChangeFilter, getPersons, onSaveBoar
     function updateBoardDesc(el) {
         const desc = el.target.innerText
         board.desc = desc
-        console.log(board)
+
         onSaveBoard(board)
     }
 
@@ -76,8 +76,6 @@ export function BoardHeader({ onAddGroup, onChangeFilter, getPersons, onSaveBoar
                         onChangeFilter={onChangeFilter}
                         getPersons={getPersons}
                         board={board}
-                        onAddTask={onAddTask}
-                        group={group}
                     />
                 </div>
                 {/* </div> */}

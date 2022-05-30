@@ -1,26 +1,31 @@
     .board-controller {
-        &.board-controller {
-            width: 30px; //open : 225px close : 30px
-            animation-name: slideInFromLeft;
-            animation-duration: .1s;
-            animation-timing-function: cubic-bezier(0, 0, 0.35, 1);
-            animation-delay: 0s;
-            animation-iteration-count: 1;
-            animation-direction: normal;
-            display: flex;
-            height: 100%;
-            position: absolute;
-            border-right: 1px solid;
-            border-color: #d0d4e4;
-            z-index: 20;
-            transition: width .1s cubic-bezier(0, 0, 0.35, 1);
-            color: #323338;
-            background-color: rgb(244, 244, 244);
+        width: 30px; //open : 225px close : 30px
+        animation-name: slideInFromLeft;
+        animation-duration: .1s;
+        animation-timing-function: cubic-bezier(0, 0, 0.35, 1);
+        animation-delay: 0s;
+        animation-iteration-count: 1;
+        animation-direction: normal;
+        display: flex;
+        height: 100%;
+        position: absolute;
+        border-right: 1px solid;
+        border-color: #d0d4e4;
+        z-index: 20;
+        transition: width .1s cubic-bezier(0, 0, 0.35, 1);
+        color: #323338;
+        background-color: rgb(244, 244, 244);
 
-            // background-color: var(--dark-background-color);
-            & :hover {
-                // width: 225px;
-            }
+        &.expend {
+            width: 225px;
+        }
+
+        &.expend:not(.pinned) {
+            box-shadow: 0px 6px 20px rgb(0 0 0 / 20%);
+        }
+
+        &.pinned {
+            width: 225px;
         }
 
         .controller-btn {
@@ -33,10 +38,6 @@
             margin-top: 20px;
             background-color: white;
             text-align: center;
-        }
-
-        .pinned {
-            margin-left: 216px;
         }
 
         .controller-container {
@@ -58,30 +59,9 @@
                 padding: 0 8px;
             }
 
-            & ul {
-                list-style-type: none;
-            }
+            // & ul {
+            //     list-style-type: none;
+            // }
         }
 
     }
-
-    //     animation-name: slideInFromLeft;
-    //     animation-duration: .1s;
-    //     animation-timing-function: cubic-bezier(0, 0, 0.35, 1);
-    //     animation-delay: 0s;
-    //     animation-iteration-count: 1;
-    //     animation-direction: normal;
-    //     display: flex;
-    //     height: 100%;
-    //     position: absolute;
-    //     border-right: 1px solid;
-    //     border-color: #e6e9ef;
-    //     border-color: var(--layout-border-color);
-    //     z-index: 1000001;
-    //     width: 30px;
-    //     transition: width .1s cubic-bezier(0, 0, 0.35, 1);
-    //     color: #323338;
-    //     color: var(--primary-text-color);
-    //     background-color: #f5f6f8;
-    //     background-color: var(--dark-background-color);
-    // }

@@ -50,7 +50,7 @@ export const BoardFilter = ({ onAddGroup, onChangeFilter, getPersons, onAddTask,
                     {/* <div onClick={() => openModal()} className="new-item-modal-btn"><img src={filterSvg} alt="" /></div> */}
                     <div onClick={() => toggle('new-item-btn')} className="new-item-modal-btn"><ArrowSvg /></div>
                 </div>
-            </div>
+            </div >
             {isNewItemOpen &&
                 <div className="menu-new-item-modal">
                     <div onClick={() => onAddGroup()} className="item-modal-add-group">  <MdOutlineWeb />New group of items</div>

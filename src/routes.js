@@ -18,5 +18,9 @@ export default [
         path: '/',
         element: <MainApp />,
     },
+    {
+        path: '/:id',
+        element: <MainApp />,
+    },
 
 ]

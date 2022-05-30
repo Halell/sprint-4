@@ -25,7 +25,7 @@ function remove(groupId, taskId, board) {
     const groupIdx = board.groups.findIndex(group => group.id === groupId)
     const taskIdx = board.groups[groupIdx].tasks.map(task => task.id === taskId)
     board.groups[groupIdx].tasks.splice(taskIdx, 1)
-    console.log(board.groups[groupIdx].tasks)
+    // console.log(board.groups[groupIdx].tasks)
     return boardService.save(board)
 }
 
@@ -42,9 +42,11 @@ async function saveTask(board, groupId, taskToSave) {
                     taskToSave.persons = ["shani", "Tal Tarablus"]
                     taskToSave.status = "none"
                     taskToSave.text = "lets get it done"
+                    taskToSave.importance = "mid"
                     group.tasks.push(taskToSave)
+
                 } else {
-                    console.log('hi')
+                    // console.log('hi')
                     const idx = group.tasks.findIndex(task => task.id === taskToSave.id)
                     group.tasks[idx] = taskToSave
                 }

@@ -1,4 +1,5 @@
 import { useEffect, useState, useCallback } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
 import { BoardHeader } from './board-header'
 import { BoardContent } from './board-group'
 import { useDispatch, useSelector } from 'react-redux'
@@ -7,19 +8,18 @@ import { taskService } from '../services/task.service'
 import { groupService } from '../services/group.service'
 import { boardService } from '../services/board.service'
 
-export const Board = () => {
+export const Board = ({ isPinned }) => {
+    const params = useParams()
     let { board } = useSelector((storeState) => storeState.boardModule)
     const dispatch = useDispatch()
     useEffect(() => {
-        dispatch(loadBoard())
+        dispatch(loadBoard(params.id))
     }, [])
-
 
     const onRemoveGroup = async (groupId) => {
         await groupService.remove(groupId, board)
         dispatch(loadBoard())
     }
-
     const onAddGroup = async (group) => {
         if (group) {
             await groupService.addGroup(board, group)
@@ -29,35 +29,28 @@ export const Board = () => {
         await groupService.addGroup(board)
         dispatch(loadBoard())
     }
-
     const onAddTask = async (board, groupId, task) => {
         dispatch(updateBoard(board, groupId, task))
-        task = null
     }
-
     const onUpdateTask = (task, groupId) => {
         dispatch(updateBoard(board, groupId, task))
     }
-
     const onRemoveTask = async (groupId, taskId) => {
         await taskService.remove(groupId, taskId, board)
         dispatch(loadBoard())
     }
-
     const onChangeFilter = (filterBy) => {
         dispatch(setFilterBy(filterBy))
     }
     const getPersons = () => {
         const persons = board.persons
-        console.log('persons: ', persons);
     }
-
     const onSaveBoard = async (newBoard) => {
         await boardService.save(newBoard)
     }
 
     return (
-        <section className='board board-controller-pinned'>
+        <section className={`board ${isPinned ? ' board-controller-pinned' : ''}`}>
             <div className="board-container">
                 <div className="board-wrapper flex">
                     <BoardHeader
@@ -66,8 +59,6 @@ export const Board = () => {
                         getPersons={getPersons}
                         board={board}
                         onSaveBoard={onSaveBoard}
-                        onAddTask={onAddTask}
-                    // group={group}
                     />
                     <div className="board-content">
                         <div className="board-content-container">
