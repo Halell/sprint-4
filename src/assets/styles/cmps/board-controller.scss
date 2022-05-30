@@ -16,11 +16,15 @@
     color: #323338;
     background-color: rgb(246, 247, 251);
 
-    &.expend {
+    &:hover {
         width: 255px;
+
+        .controller-container {
+            display: block;
+        }
     }
 
-    &.expend:not(.pinned) {
+    &:hover:not(.pinned) {
         box-shadow: 0px 6px 20px rgb(0 0 0 / 20%);
     }
 
@@ -75,7 +79,7 @@
     flex-direction: column;
     display: none;
 
-    &.expend {
+    .controller-container:hover {
         display: block;
     }
 

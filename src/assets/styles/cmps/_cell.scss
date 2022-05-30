@@ -19,4 +19,8 @@
     color: #323338;
     color: var(--primary-text-color);
     position: relative;
+
+    &.date {
+        overflow: visible;
+    }
 }

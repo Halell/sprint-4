@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 
+import DatePicker from "react-datepicker"
+
 import { ReactComponent as Plus } from '../assets/svg/plus-sign.svg'
 import { ReactComponent as Magnifier } from '../assets/svg/magnifier.svg'
 import { ReactComponent as Lightning } from '../assets/svg/lightning.svg'
@@ -68,6 +70,8 @@ export const BoardController = ({ onSetIsPinned, isPinned }) => {
                                 </div>
                             </div>
                         </NavLink>
+                        <DatePicker
+                            className="red-border" />
                     </div>
                 </div>
             </div>
