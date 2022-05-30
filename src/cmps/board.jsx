@@ -14,7 +14,7 @@ export const Board = ({ isPinned }) => {
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(loadBoard(params.id))
-    }, [])
+    }, [params.id])
 
     const onRemoveGroup = async (groupId) => {
         await groupService.remove(groupId, board)

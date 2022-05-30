@@ -238,13 +238,21 @@ button {
 
 
 // links
-a {
-    color: $clr1;
+// a {
+//     color: $clr1;
 
-    &.active {
-        background-color: $clr1;
-        color: $clr2;
-    }
+//     &.active {
+//         background-color: $clr1;
+//         color: $clr2;
+//     }
+// }
+
+a,
+a:hover,
+a:focus,
+a:active {
+    text-decoration: none;
+    color: inherit;
 }
 
 mark {
