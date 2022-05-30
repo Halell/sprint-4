@@ -11,16 +11,16 @@ export default [
     //     element: <ItemDetails />
     // },
     {
-        path: '/home',
-        element: <HomePage />,
+        path: '/board/:id',
+        element: <MainApp />,
+    },
+    {
+        path: '/board/',
+        element: <MainApp />,
     },
     {
         path: '/',
-        element: <MainApp />,
-    },
-    {
-        path: '/:id',
-        element: <MainApp />,
+        element: <HomePage />,
     },
 
 ]

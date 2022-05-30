@@ -85,6 +85,7 @@ export function BoardHeader({ onAddGroup, onChangeFilter, getPersons, onSaveBoar
                         onChangeFilter={onChangeFilter}
                         getPersons={getPersons}
                         board={board}
+                        onAddTask={onAddTask}
                     />
                 </div>
                 {/* </div> */}

@@ -34,16 +34,16 @@ export function GroupFooter({ group, onAddTask }) {
                     <div className="title-cell-component group-footer" >
                         <div className="pulse-left-indicator"/*{ enter color obj here } */></div>
 
-                        { isNewTaskEdit ? <div className="title-component "
-                            ref={ inputRef }
-                            suppressContentEditableWarning={ true }
-                            contentEditable={ true }
-                            onBlur={ onSaveTask }
-                            onKeyPress={ handleKeyPressAddTask }
+                        {isNewTaskEdit ? <div className="title-component "
+                            ref={inputRef}
+                            suppressContentEditableWarning={true}
+                            contentEditable={true}
+                            onBlur={onSaveTask}
+                            onKeyPress={handleKeyPressAddTask}
                         >
                         </div>
                             : <div className="title-component "
-                                onClick={ () => setIsNewTaskEdit(!isNewTaskEdit, inputRef()) }
+                                onClick={() => setIsNewTaskEdit(!isNewTaskEdit, inputRef())}
 
                             >+Add Item</div>
                         }

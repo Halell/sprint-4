@@ -1,5 +1,6 @@
 const fs = require('fs')
 const gBoard = require('../data/board.json')
+const gUser = require('../data/user.json')
 export const storageService = {
     query,
     get,

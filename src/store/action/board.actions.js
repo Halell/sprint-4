@@ -1,4 +1,4 @@
-import { userService } from "../../services/user.service.js"
+// import { userService } from "../../services/user.service.js"
 import { boardService } from "../../services/board.service.js"
 import { filterByName } from "../../services/filter.service.js"
 
@@ -41,7 +41,6 @@ export function loadBoard(boardId) {
 
         if (subscriber) boardService.unsubscribe(subscriber)
         subscriber = (ev) => {
-            console.log('Got notified', ev.data)
             dispatch(ev.data)
         }
         boardService.subscribe(subscriber)
@@ -92,56 +91,56 @@ export function setFilterBy(filterBy) {
     }
 }
 
-export function addToBoardt(board) {
-    return (dispatch) => {
-        dispatch({
-            type: 'ADD_TO_CART',
-            board
-        })
-    }
-}
-export function removeFromBoardt(boardId) {
-    return (dispatch) => {
-        dispatch({
-            type: 'REMOVE_FROM_CART',
-            boardId
-        })
-    }
-}
-export function checkout() {
-    return async (dispatch, getState) => {
-        try {
-            const state = getState()
-            const total = state.boardModule.boardt.reduce((acc, board) => acc + board.price, 0)
-            const score = await userService.changeScore(-total)
-            dispatch({ type: 'SET_SCORE', score })
-            dispatch({ type: 'CLEAR_CART' })
-        } catch (err) {
-            console.log('BoardActions: err in checkout', err)
-        }
-    }
-}
+// export function addToBoardt(board) {
+//     return (dispatch) => {
+//         dispatch({
+//             type: 'ADD_TO_CART',
+//             board
+//         })
+//     }
+// }
+// export function removeFromBoardt(boardId) {
+//     return (dispatch) => {
+//         dispatch({
+//             type: 'REMOVE_FROM_CART',
+//             boardId
+//         })
+//     }
+// }
+// export function checkout() {
+//     return async (dispatch, getState) => {
+//         try {
+//             const state = getState()
+//             const total = state.boardModule.boardt.reduce((acc, board) => acc + board.price, 0)
+//             const score = await userService.changeScore(-total)
+//             dispatch({ type: 'SET_SCORE', score })
+//             dispatch({ type: 'CLEAR_CART' })
+//         } catch (err) {
+//             console.log('BoardActions: err in checkout', err)
+//         }
+//     }
+// }
 
 
 // Demo for Optimistic Mutation (IOW - Assuming the server call will work, so updating the UI first)
-export function onRemoveBoardOptimistic(boardId) {
+// export function onRemoveBoardOptimistic(boardId) {
 
-    return (dispatch, getState) => {
+//     return (dispatch, getState) => {
 
-        dispatch({
-            type: 'REMOVE_CAR',
-            boardId
-        })
+//         dispatch({
+//             type: 'REMOVE_CAR',
+//             boardId
+//         })
 
-        boardService.remove(boardId)
-            .then(() => {
-                console.log('Server Reported - Deleted Succesfully')
-            })
-            .catch(err => {
-                console.log('Cannot load boards', err)
-                dispatch({
-                    type: 'UNDO_REMOVE_CAR',
-                })
-            })
-    }
-}
+//         boardService.remove(boardId)
+//             .then(() => {
+//                 console.log('Server Reported - Deleted Succesfully')
+//             })
+//             .catch(err => {
+//                 console.log('Cannot load boards', err)
+//                 dispatch({
+//                     type: 'UNDO_REMOVE_CAR',
+//                 })
+//             })
+//     }
+// }
