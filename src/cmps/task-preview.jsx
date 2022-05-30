@@ -1,6 +1,5 @@
 import { HiOutlineDocumentDuplicate } from 'react-icons/hi'
 import { AiOutlineDelete } from 'react-icons/ai'
-
 import { TaskEdit } from './task-edit'
 import { useEffect, useState } from 'react'
 import { TitleCell } from './title-cell.jsx'
