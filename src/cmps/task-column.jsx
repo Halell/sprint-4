@@ -58,8 +58,8 @@ export function TaskColumn({ board, boardColumn, task, setStatus, statusBgcColor
         {/* persons */}
         {boardColumn === 'persons' && <div onClick={() => setColumn(boardColumn)} className="task-column member-col">
             <div className="add-member flex">
-                {board.persons.map(person => {
-                    return <div>{person.fullname}</div>
+                {task.persons.map(person => {
+                    return <div>{person}</div>
                 })}
             </div>
         </div>}

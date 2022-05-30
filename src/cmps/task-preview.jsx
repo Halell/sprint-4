@@ -63,7 +63,6 @@ export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask }) 
                                             statusBgcColor={statusBgcColor}
                                             setTxt={setTxt}
                                             setStartDate={setStartDate}
-                                            startdate={startdate}
                                             board={board}
                                             setMember={setMember}
                                         />
