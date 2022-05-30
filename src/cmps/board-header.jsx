@@ -5,8 +5,9 @@ import { ReactComponent as UserSvg } from '../assets/svg/user.svg'
 import { ReactComponent as HideSecondSvg } from '../assets/svg/hide.second.svg'
 import { FiUserPlus } from 'react-icons/fi'
 import { ReactComponent as ActivitySvg } from '../assets/svg/activity.svg'
-import { Link } from "react-router-dom"
 import { useState } from "react"
+import { ActivityLog } from "./acttivity"
+
 
 export function BoardHeader({ onAddGroup, onChangeFilter, getPersons, onSaveBoard, board, onAddTask, group }) {
     const [isActivityOpen, setActivityOpen] = useState(false)
@@ -90,14 +91,7 @@ export function BoardHeader({ onAddGroup, onChangeFilter, getPersons, onSaveBoar
             </div>
 
             {isActivityOpen &&
-            
-                <div className="activity-log-pannel">
-                    <div className="">
-
-                    </div>
-
-                </div>
-
+                <ActivityLog board={board} setActivityOpen={setActivityOpen} />
             }
         </div >
     )

@@ -16,7 +16,8 @@ export const boardService = {
     remove,
     subscribe,
     unsubscribe,
-    getCurrBoard
+    getCurrBoard,
+    setActivity
 }
 window.cs = boardService
 
@@ -43,6 +44,23 @@ async function remove(boardId) {
     // return Promise.reject('Not now!');
     await storageService.remove(STORAGE_KEY, boardId)
     boardChannel.postMessage(getActionRemoveBoard(boardId))
+}
+
+async function setActivity(board, txt) {
+    const activity = {
+        byMember: {
+            fullname: "guest",
+            imgUrl: "",
+            _id: "userId",
+            createdAt: new Date(),
+        },
+        id: utilService.makeId(),
+        txt: txt
+    }
+    board.activities.push(activity)
+    save(board)
+    console.log(board)
+    return board
 }
 
 async function save(board, groupId, task) {

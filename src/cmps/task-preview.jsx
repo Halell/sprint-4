@@ -5,6 +5,7 @@ import { TaskEdit } from './task-edit'
 import { useEffect, useState } from 'react'
 import { TitleCell } from './title-cell.jsx'
 import { TaskColumn } from './task-column'
+import { boardService } from '../services/board.service'
 
 export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask }) => {
     const [statusBgcColor, setStatusBgcColor] = useState('')
@@ -25,16 +26,18 @@ export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask }) 
     const onSetIsModalOpen = () => {
         setIsModalOpen(!isModalOpen)
     }
-    const setMember = (member) => {
+    const setMember = async (member) => {
         task.persons.push(member.fullname)
         onUpdateTask(task, group.id)
+        await boardService.setActivity(board, 'Seted member')
     }
 
-    const setTxt = (el) => {
+    const setTxt = async (el) => {
         task.text = el.target.innerText
         onUpdateTask(task, group.id)
+        await boardService.setActivity(board, 'Update task txt')
     }
-    const setStatus = (val, field) => {
+    const setStatus = async (val, field) => {
         var color = 'rgb(173, 150, 122)'
         if (val === 'done' || val === 'high') color = 'rgb(0, 200, 117)'
         if (val === 'in-progress' || val === 'mid') color = 'rgb(253, 171, 61)'
@@ -43,42 +46,43 @@ export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask }) 
         task[field] = val
         onUpdateTask(task, group.id)
         field === 'status' ? setStatusBgcColor(color) : setImportanceBgcColor(color)
+        await boardService.setActivity(board, `Changed ${field}`)
     }
 
     return (
         <div className="pulse-component-wrapper">
             <div className="pulse-component" >
                 <TitleCell
-                    onSetIsModalOpen={ onSetIsModalOpen }
-                    task={ task }
-                    onUpdateTask={ onUpdateTask }
-                    group={ group }
+                    onSetIsModalOpen={onSetIsModalOpen}
+                    task={task}
+                    onUpdateTask={onUpdateTask}
+                    group={group}
                 />
                 <div className="cells-row-container">
                     <div className="cells-row-component">
-                        { board.columns && board.columns.map((boardColumn, idx) =>
-                            <div className="cell-component-wrapper" key={ idx }>
+                        {board.columns && board.columns.map((boardColumn, idx) =>
+                            <div className="cell-component-wrapper" key={idx}>
                                 <div className="cell-component-inner">
-                                    <div className={ `cell-component ${boardColumn}` } >
+                                    <div className={`cell-component ${boardColumn}`} >
                                         <TaskColumn
-                                            setStatus={ setStatus }
-                                            boardColumn={ boardColumn }
-                                            task={ task }
-                                            importanceBgcColor={ importanceBgcColor }
-                                            statusBgcColor={ statusBgcColor }
-                                            setTxt={ setTxt }
-                                            board={ board }
-                                            setMember={ setMember }
+                                            setStatus={setStatus}
+                                            boardColumn={boardColumn}
+                                            task={task}
+                                            importanceBgcColor={importanceBgcColor}
+                                            statusBgcColor={statusBgcColor}
+                                            setTxt={setTxt}
+                                            board={board}
+                                            setMember={setMember}
                                         />
                                     </div>
                                 </div>
                             </div>
-                        ) }
+                        )}
                     </div>
                 </div>
                 <div className="column-wrapper-add"></div>
             </div>
-            { isModalOpen &&
+            {isModalOpen &&
                 <div className='task-modal-menu'>
                     <div color='task-btns-modal-open'>
                         <div className='task-btn-crud'><HiOutlineDocumentDuplicate />Duplicate</div>

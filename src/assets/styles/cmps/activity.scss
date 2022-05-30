@@ -1,0 +1,63 @@
+.activity-log-panel {
+    flex-wrap: nowrap;
+    width: 560px;
+    flex-direction: column;
+    height: 100vh;
+    width: 560px;
+    position: fixed;
+    right: 0;
+    top: 0;
+    box-shadow: 0 4px 17px 6px rgb(0 0 0 / 10%);
+    background-color: #fff;
+    z-index: 10;
+
+    // .slide-log-panel {
+
+
+    .activity-log-header {
+        padding: 20px;
+        flex: 0 1 auto;
+
+        .activity-log-close-btn {
+            cursor: pointer;
+        }
+
+        .activity-title {
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin-bottom: 6px;
+            line-height: 26px;
+            min-height: 25px;
+            cursor: default;
+        }
+
+        .tabs-wrapper {
+            align-items: center;
+            border-bottom: 1px solid #efefef;
+
+            .activity-tab {
+                margin-right: 10px;
+                padding: 0 8px 8px;
+                font-size: .875rem;
+                cursor: pointer;
+            }
+        }
+
+        .activity-log-wrapper {
+            padding: 0 25px;
+            overflow-y: scroll;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+
+            .single-activity {
+                width: 100%;
+                align-items: center;
+                // flex-direction: column;
+            }
+
+        }
+    }
+
+    // }
+}
