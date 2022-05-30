@@ -21,3 +21,63 @@
         }
     }
 }
+
+.menu-modal {
+    position: fixed;
+    right: 100px;
+    z-index: 90;
+    box-shadow: 0 4px 17px 6px rgb(0 0 0 / 10%);
+    background-color: #fff;
+    border-radius: 8px;
+
+
+    .person-menu {
+        width: 264px;
+        top: 100%;
+        right: 0;
+
+        .search-persons {
+            height: 34px;
+            width: 100%;
+
+            &input {
+                outline: none;
+                height: 100%;
+                width: 100%;
+                border: none;
+                padding: 8px;
+                background: transparent;
+            }
+        }
+
+        .divider {
+            height: 1px;
+            border-bottom: 1px solid #e6e9ef;
+            width: 100%;
+        }
+
+        .wrapper {
+            padding: 4px 8px;
+
+            .add-member-box {
+                line-height: 34px;
+                font-size: .8125rem;
+
+                .img-user {
+                    justify-content: center;
+                    align-items: center;
+
+                    img {
+                        margin-right: 5px;
+                        width: 26px;
+                        height: 26px;
+                        border-radius: 50%;
+                    }
+                }
+                .user-full-name{
+                    flex: 1 1;
+                }
+            }
+        }
+    }
+}

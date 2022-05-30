@@ -23,7 +23,6 @@ async function addGroup(board, updateGroup) {
         newGroup = {
             id: utilService.makeId(),
             archivedAt: 'hour ago',
-            columns: ['text', 'status', 'date', 'person+'],
             style: {},
             tasks: [],
             title: 'Group ' + (board.groups.length + 1)
