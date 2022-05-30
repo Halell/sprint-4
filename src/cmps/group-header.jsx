@@ -5,6 +5,7 @@ import { HiOutlineDocumentDuplicate } from 'react-icons/hi';
 import { GoPrimitiveDot } from 'react-icons/go';
 
 
+
 export function GroupHeader({ board, group, onUseBtn, onSaveGroup, onRemoveGroup, onUpdateColumns }) {
 
     const [isBtnsModalOpen, setIsBtnsModalOpen] = useState(false)
@@ -75,9 +76,11 @@ export function GroupHeader({ board, group, onUseBtn, onSaveGroup, onRemoveGroup
                         <div className='btn-modal-top-section' onClick={() => onUseBtn('duplicate')}><HiOutlineDocumentDuplicate />Duplicate this group</div>
                         <hr />
                     </div>
-                    <div className='btn-modal-color' onClick={() => onUseBtn('color')}><GoPrimitiveDot />Change group color</div>
-                    <hr />
-                    <div className='btn-modal-remove' onClick={() => onUseBtn('remove')}><AiOutlineDelete />Remove group</div>
+                    <div className='btns-bottom-modal'>
+                        <div className='btn-modal-color' onClick={() => onUseBtn('color')}><GoPrimitiveDot />Change group color</div>
+                        <hr />
+                        <div className='btn-modal-remove' onClick={() => onUseBtn('remove')}><AiOutlineDelete />Remove group</div>
+                    </div>
                 </div>
             }
         </div >

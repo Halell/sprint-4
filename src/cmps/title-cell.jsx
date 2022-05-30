@@ -1,13 +1,17 @@
 import { TaskEdit } from './task-edit'
 import { useState } from 'react'
 import { GrClose } from 'react-icons/gr';
+import { HiOutlineDocumentDuplicate } from 'react-icons/hi';
+import { AiOutlineDelete } from 'react-icons/ai';
+
+
 
 
 export function TitleCell({ task, onUpdateTask, group }) {
 
     const [isBtnInputOpen, setIsBtnInputOpen] = useState(true)
-    const [isTaskModalOpen, setIsTaskModalOpen] = useState(true)
-    const [isDetailesModalOpen, setIsDetailesModalOpen] = useState(true)
+    const [isTaskModalOpen, setIsTaskModalOpen] = useState(false)
+    const [isDetailesModalOpen, setIsDetailesModalOpen] = useState(false)
 
     const toggle = (val) => {
         if (val === 'btn-input') {
@@ -26,7 +30,8 @@ export function TitleCell({ task, onUpdateTask, group }) {
 
         <div className="title-container">
             <div className="btn-pulse-menu-wrapper">
-                <div onClick={() => toggle('task-modal')} className="btn-pulse-menu"></div>
+                <div onClick={() => toggle('task-modal')} className="btn-pulse-menu">
+                </div>
             </div>
             <div className="title-inner-container">
                 <div className="title-inner-wrapper">
@@ -36,7 +41,14 @@ export function TitleCell({ task, onUpdateTask, group }) {
                                 <div className='detailes-main-modal-wrapper'>
                                     <div className='activity-header'>
                                         <div className='activity-close-btn'><GrClose /></div>
-                                        <div className='activity-title'></div>
+                                        <div className='activity-title'>New item</div>
+                                        <div className='activity-btns'>
+                                            <div className='activity-btn-update'>Update</div>
+                                            <div className='activity-btn-log'>Activity Log</div>
+                                        </div>
+                                    </div>
+                                    <div className='main-body-modal'>
+                                        <div className='item-update-content'></div>
                                     </div>
                                 </div>
                             }
@@ -70,6 +82,15 @@ export function TitleCell({ task, onUpdateTask, group }) {
                     </div>
                 </div>
             </div>
+            {isTaskModalOpen &&
+                <div className='task-modal-menu'>
+                    <div color='task-btns-modal-open'>
+                        <div className='task-btn-crud'><HiOutlineDocumentDuplicate />Duplicate</div>
+                        <hr />
+                        <div className='task-btn-crud'><AiOutlineDelete />Delete</div>
+                    </div>
+                </div>
+            }
         </div >
     )
 }

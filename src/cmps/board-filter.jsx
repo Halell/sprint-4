@@ -18,7 +18,7 @@ import { MdOutlineWeb } from 'react-icons/md';
 export const BoardFilter = ({ onAddGroup, onChangeFilter, getPersons, onAddTask, board, group }) => {
     const [isModalOpen, setIsModalOpen] = useState(false)
     const [isNewItemOpen, setIsNewItemOpen] = useState(false)
-    const [className, setClassName] = useState("")
+    // const [className, setClassName] = useState("")
     const toggle = (val) => {
         if (val === 'person-modal') {
             setIsModalOpen(isModalOpen ? false : true)
@@ -51,18 +51,9 @@ export const BoardFilter = ({ onAddGroup, onChangeFilter, getPersons, onAddTask,
                     <div onClick={() => toggle('new-item-btn')} className="new-item-modal-btn"><ArrowSvg /></div>
                 </div>
             </div>
-
-            {/* <div className={"new-item-modal " + className}>
-                <div className="new-item-modal-opend" >
-                    <div className="new-group-of-items">
-                        <div className="btn-new-group-of-items">
-                            New group of items</div>
-                    </div>
-                </div>
-            </div> */}
             {isNewItemOpen &&
                 <div className="menu-new-item-modal">
-                    <div onClick={() => onAddGroup(board)} className="item-modal-add-group">  <MdOutlineWeb />New group of items</div>
+                    <div onClick={() => onAddGroup()} className="item-modal-add-group">  <MdOutlineWeb />New group of items</div>
                 </div>
             }
 
