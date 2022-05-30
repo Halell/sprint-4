@@ -12,9 +12,13 @@ export const groupService = {
 async function addGroup(board, updateGroup) {
     let newGroup
     if (updateGroup) {
+        if (!updateGroup.id) {
+            updateGroup.title += ' copy'
+            updateGroup.id = utilService.makeId()
+            board.groups.unshift(updateGroup)
+        }
         const idx = board.groups.findIndex(group => group.id === updateGroup.id)
         board.groups[idx] = updateGroup
-
     } else {
         newGroup = {
             id: utilService.makeId(),

@@ -8,20 +8,23 @@ import { useSelector } from 'react-redux'
 export function BoardContent({ group, onAddTask, onRemoveGroup, onUpdateTask, onRemoveTask, onAddGroup }) {
 
     const { board } = useSelector((storeState) => storeState.boardModule)
-    // const [task, setTask] = useState(null)
     const [isBtnsModalOpen, setIsBtnsModalOpen] = useState(false)
-
-
     const toggle = (val) => {
         if (val === 'btns-modal') {
             setIsBtnsModalOpen(isBtnsModalOpen ? false : true)
         }
     }
 
-    const onUseBtn = (val) => {
+    const onUseBtn = (val, group) => {
+        console.log(group)
         if (val === 'remove') onRemoveGroup(group.id)
         if (val === 'add') onAddGroup()
-        setIsBtnsModalOpen(false)
+        if (val === 'duplicate') {
+            const duplicateGroup = { ...group }
+            duplicateGroup.id = null
+            onAddGroup(duplicateGroup)
+        }
+        setIsBtnsModalOpen(isBtnsModalOpen ? false : true)
     }
 
     const onUpdateColumns = (el) => {
@@ -40,23 +43,25 @@ export function BoardContent({ group, onAddTask, onRemoveGroup, onUpdateTask, on
     return (
         <Fragment>
             <GroupHeader
-                onSaveGroup={ onSaveGroup }
-                onRemoveGroup={ onRemoveGroup }
-                group={ group }
-                board={ board }
-                onUpdateColumns={ onUpdateColumns }
-                onUseBtn={ onUseBtn }
+                onSaveGroup={onSaveGroup}
+                onRemoveGroup={onRemoveGroup}
+                group={group}
+                board={board}
+                onUpdateColumns={onUpdateColumns}
+                onUseBtn={onUseBtn}
+                toggle={toggle}
+                isBtnsModalOpen={isBtnsModalOpen}
             />
             <TaskList
-                onRemoveTask={ onRemoveTask }
-                group={ group }
-                onAddTask={ onAddTask }
-                onUpdateTask={ onUpdateTask }
-                board={ board }
+                onRemoveTask={onRemoveTask}
+                group={group}
+                onAddTask={onAddTask}
+                onUpdateTask={onUpdateTask}
+                board={board}
             />
             <GroupFooter
-                group={ group }
-                onAddTask={ onAddTask }
+                group={group}
+                onAddTask={onAddTask}
             />
         </Fragment >
     )

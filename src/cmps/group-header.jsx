@@ -6,14 +6,9 @@ import { GoPrimitiveDot } from 'react-icons/go';
 
 
 
-export function GroupHeader({ board, group, onUseBtn, onSaveGroup, onRemoveGroup, onUpdateColumns }) {
+export function GroupHeader({ board, group, onUseBtn, onSaveGroup, onUpdateColumns, toggle, isBtnsModalOpen }) {
 
-    const [isBtnsModalOpen, setIsBtnsModalOpen] = useState(false)
-    const toggle = (val) => {
-        if (val === 'btns-modal') {
-            setIsBtnsModalOpen(isBtnsModalOpen ? false : true)
-        }
-    }
+
     return (
         <div className=" pulse-component-wrapper group-header-wrapper">
             <div className="pulse-component">
@@ -73,13 +68,13 @@ export function GroupHeader({ board, group, onUseBtn, onSaveGroup, onRemoveGroup
                 <div className='btns-modal'>
                     <div className='btns-top-modal'>
                         <div className='btn-modal-top-section' onClick={() => onUseBtn('add')}><RiAddCircleLine /> Add group</div>
-                        <div className='btn-modal-top-section' onClick={() => onUseBtn('duplicate')}><HiOutlineDocumentDuplicate />Duplicate this group</div>
+                        <div className='btn-modal-top-section' onClick={() => onUseBtn('duplicate', group)}><HiOutlineDocumentDuplicate />Duplicate this group</div>
                         <hr />
                     </div>
                     <div className='btns-bottom-modal'>
                         <div className='btn-modal-color' onClick={() => onUseBtn('color')}><GoPrimitiveDot />Change group color</div>
                         <hr />
-                        <div className='btn-modal-remove' onClick={() => onUseBtn('remove')}><AiOutlineDelete />Remove group</div>
+                        <div className='btn-modal-remove' onClick={() => onUseBtn('remove', group)}><AiOutlineDelete />Remove group</div>
                     </div>
                 </div>
             }
