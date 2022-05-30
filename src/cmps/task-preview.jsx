@@ -6,15 +6,12 @@ import { TaskColumn } from './task-column'
 export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask }) => {
     const [statusBgcColor, setStatusBgcColor] = useState('')
     const [importanceBgcColor, setImportanceBgcColor] = useState('')
-    const [isImportanceEdit, setIsImportanceEdit] = useState(false)
     const [isBtnInputOpen, setIsBtnInputOpen] = useState(true)
-    const [isStatusEdit, setIsEdit] = useState(false)
-    const [isDateEdit, setIsDateEdit] = useState(false)
     const [startdate, setStartDate] = useState(new Date())
 
     useEffect(() => {
-        setStatus(task.importance)
-        setStatus(task.status)
+        setStatus(task.importance, 'importance')
+        setStatus(task.status, 'status')
     }, [])
 
     const toggle = (val) => {
@@ -23,82 +20,32 @@ export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask }) 
         }
     }
 
-    const setColumn = (val) => {
-        if (val === 'status') {
-            openStatusModal()
-        }
-        if (val === 'importance') {
-            openImportanceModal()
-        }
-    }
-
     const setTxt = (el) => {
         task.text = el.target.innerText
         onUpdateTask(task, group.id)
     }
 
-
-
-    const setStatus = (val) => {
-
-        //set status:
-        if (val === 'done') {
-            task.status = val
-            onUpdateTask(task, group.id)
-            setStatusBgcColor('rgb(0, 200, 117)')
+    const setStatus = (val, field) => {
+        console.log('hi')
+        var color = 'rgb(173, 150, 122)'
+        if (val === 'done' || val === 'high') {
+            task[field] = val
+            color = 'rgb(0, 200, 117)'
         }
-        if (val === 'in-progress') {
-            task.status = val
-            onUpdateTask(task, group.id)
-            setStatusBgcColor('rgb(253, 171, 61)')
+        if (val === 'in-progress' || val === 'mid') {
+            task[field] = val
+            color = 'rgb(253, 171, 61)'
         }
-        if (val === 'stuck') {
-            task.status = val
-            onUpdateTask(task, group.id)
-            setStatusBgcColor('rgb(226, 68, 92)')
+        if (val === 'stuck' || val === 'low') {
+            task[field] = val
+            color = 'rgb(226, 68, 92)'
         }
-        if (val === 'no-status') {
-            task.status = val
-            onUpdateTask(task, group.id)
-            setStatusBgcColor('rgb(173, 150, 122)')
+        if (val === 'no-status' || val === 'very-low') {
+            task[field] = val
+            color = 'rgb(173, 150, 122)'
         }
-
-        //set imporatnce:
-        if (val === 'high') {
-            task.importance = val
-            onUpdateTask(task, group.id)
-            setImportanceBgcColor('rgb(0, 200, 117)')
-        }
-        if (val === 'mid') {
-            task.importance = val
-            onUpdateTask(task, group.id)
-            setImportanceBgcColor('rgb(253, 171, 61)')
-        }
-        if (val === 'low') {
-            task.importance = val
-            onUpdateTask(task, group.id)
-            setImportanceBgcColor('rgb(226, 68, 92)')
-        }
-        if (val === 'low') {
-            console.log(val)
-            task.importance = val
-            onUpdateTask(task, group.id)
-            setImportanceBgcColor('rgb(173, 150, 122)')
-        }
-
-    }
-
-
-    const openDateModal = () => {
-        setIsDateEdit(isDateEdit ? false : true)
-    }
-
-    const openImportanceModal = () => {
-        setIsImportanceEdit(isImportanceEdit ? false : true)
-    }
-
-    const openStatusModal = () => {
-        setIsEdit(isStatusEdit ? false : true)
+        onUpdateTask(task, group.id)
+        field === 'status' ? setStatusBgcColor(color) : setImportanceBgcColor(color)
     }
 
     return (
@@ -112,24 +59,19 @@ export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask }) 
 
                 <div className="cells-row-container">
                     <div className="cells-row-component">
-                        {board.columns && board.columns.map((column, idx) =>
+                        {board.columns && board.columns.map((boardColumn, idx) =>
                             <div className="cell-component-wrapper" key={idx}>
                                 <div className="cell-component-inner">
                                     <div className={"cell-component"} >
                                         <TaskColumn
                                             setStatus={setStatus}
-                                            column={column}
+                                            boardColumn={boardColumn}
                                             task={task}
-                                            setColumn={setColumn}
-                                            isStatusEdit={isStatusEdit}
-                                            isImportanceEdit={isImportanceEdit}
                                             importanceBgcColor={importanceBgcColor}
                                             statusBgcColor={statusBgcColor}
                                             setTxt={setTxt}
-                                            isDateEdit={isDateEdit}
                                             setStartDate={setStartDate}
                                             startdate={startdate}
-                                            openDateModal={openDateModal}
                                         />
                                     </div>
                                 </div>
