@@ -4,7 +4,7 @@ import thunk from 'redux-thunk'
 
 
 import { boardReducer } from './reducer/board.reducer.js'
-import { userReducer } from './reducer/user.reducer'
+import { userReducer } from './reducer/user.reducer.js'
 // import { reviewReducer } from './reducer/review.reducer'
 // import { systemReducer } from './reducer/system.reducer'
 

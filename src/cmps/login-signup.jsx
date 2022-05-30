@@ -1,49 +1,71 @@
-// import { Component } from 'react'
+// import { useState, useEffect } from 'react'
+// // import { useNavigate, useParams } from 'react-router-dom'
+// import { useDispatch, useSelector } from 'react-redux'
 
+// import { loadUser, onLogout, onSignup, onLogin, onLogin, removeUser, loadUsers } from '../store/action/user.actions'
+// import { ImgUploader } from '../cmps/img-uploader'
 
-// export class LoginSignup extends Component {
-//     state = {
-//         credentials: {
-//             username: '',
-//             password: '',
-//             fullname: ''
-//         },
-//         isSignup: false
+// export function LoginSignup(props) {
+//     const [credentials, setCredentials] = useState({ username: '', password: '', fullname: '' })
+//     const [isSignup, setIsSignup] = useState(false)
+//     const [users, setUsers] = useState([])
+//     const dispatch = useDispatch()
+//     let { user } = useSelector((storeState) => storeState.userModule)
+
+//     useEffect(async () => {
+//         dispatch(loadUser())
+//         // const users = await userService.getUsers()
+//         console.log(user)
+//         // setUsers(users)
+//     }, [])
+
+//     const clearState = () => {
+//         setCredentials({ username: '', password: '', fullname: '', imgUrl: '' })
+//         setIsSignup(false)
 //     }
 
-//     clearState = () => {
-//         const clearTemplate = {
-//             credentials: {
-//                 username: '',
-//                 password: '',
-//                 fullname: ''
-//             },
-//             isSignup: false
-//         }
-//         this.setState({ clearTemplate })
+//     const handleChange = ev => {
+//         const field = ev.target.name
+//         const value = ev.target.value
+//         setCredentials({ ...credentials, [field]: value })
 //     }
 
-//     handleChange = (ev) => {
-//         const field = ev.target.name;
-//         const value = ev.target.value;
-//         this.setState({ credentials: { ...this.state.credentials, [field]: value } });
+//     const onLogin = (ev = null) => {
+//         if (ev) ev.preventDefault()
+//         if (!credentials.username) return
+//         props.onLogin(credentials)
+//         clearState()
 //     }
 
-
-//     toggleSignup = () => {
-//         this.setState({ isSignup: !this.state.isSignup })
+//     const onSignup = (ev = null) => {
+//         if (ev) ev.preventDefault()
+//         if (!credentials.username || !credentials.password || !credentials.fullname) return
+//         props.onSignup(credentials)
+//         clearState()
 //     }
 
-//     render() {
-//         const { username, password, fullname } = this.state.credentials;
-//         const { isSignup } = this.state;
-//         return (
-//             <div className="login-page">
-//                 <p>
-//                     <a href="#" onClick={this.toggleSignup}>{!isSignup ? 'Signup' : 'Login'}</a>
-//                 </p>
-//                 {!isSignup && <form className="login-form" onSubmit={this.onLogin}>
-//                     <input
+//     const toggleSignup = () => {
+//         setIsSignup(!isSignup)
+//     }
+//     const onUploaded = (imgUrl) => {
+//         setCredentials({ ...credentials, imgUrl })
+//     }
+
+//     return (
+//         <div className="login-page">
+//             <p>
+//                 <button className="btn-link" onClick={ toggleSignup }>{ !isSignup ? 'Signup' : 'Login' }</button>
+//             </p>
+//             { !isSignup && <form className="login-form" onSubmit={ onLogin }>
+//                 <select
+//                     name="username"
+//                     value={ credentials.username }
+//                     onChange={ handleChange }
+//                 >
+//                     <option value="">Select User</option>
+//                     { users.map(user => <option key={ user._id } value={ user.username }>{ user.fullname }</option>) }
+//                 </select>
+//                 {/* <input
 //                         type="text"
 //                         name="username"
 //                         value={username}
@@ -59,41 +81,39 @@
 //                         placeholder="Password"
 //                         onChange={this.handleChange}
 //                         required
+//                     /> */}
+//                 <button>Login!</button>
+//             </form> }
+//             <div className="signup-section">
+//                 { isSignup && <form className="signup-form" onSubmit={ onSignup }>
+//                     <input
+//                         type="text"
+//                         name="fullname"
+//                         value={ credentials.fullname }
+//                         placeholder="Fullname"
+//                         onChange={ handleChange }
+//                         required
 //                     />
-//                     <button onClick={() => { this.props.onLogin(this.state.credentials) }} >Login!</button>
-//                 </form>}
-
-//                 <div className="signup-section">
-//                     {isSignup && <form className="signup-form" onSubmit={this.onSignup}>
-//                         <input
-//                             type="text"
-//                             name="fullname"
-//                             value={fullname}
-//                             placeholder="Fullname"
-//                             onChange={this.handleChange}
-//                             required
-//                         />
-//                         <input
-//                             type="text"
-//                             name="username"
-//                             value={username}
-//                             placeholder="Username"
-//                             onChange={this.handleChange}
-//                             required
-//                         />
-//                         <input
-//                             type="password"
-//                             name="password"
-//                             value={password}
-//                             placeholder="Password"
-//                             onChange={this.handleChange}
-//                             required
-//                         />
-//                         <button onClick={() => { this.props.onSignup(this.state.credentials) }} >Signup!</button>
-//                     </form>}
-//                 </div>
-
+//                     <input
+//                         type="text"
+//                         name="username"
+//                         value={ credentials.username }
+//                         placeholder="Username"
+//                         onChange={ handleChange }
+//                         required
+//                     />
+//                     <input
+//                         type="password"
+//                         name="password"
+//                         value={ credentials.password }
+//                         placeholder="Password"
+//                         onChange={ handleChange }
+//                         required
+//                     />
+//                     <ImgUploader onUploaded={ onUploaded } />
+//                     <button >Signup!</button>
+//                 </form> }
 //             </div>
-//         )
-//     }
+//         </div>
+//     )
 // }

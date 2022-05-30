@@ -1,4 +1,4 @@
-// import { userService } from "../../services/user.service.js"
+import { userService } from "../../services/user.service-old.js"
 import { boardService } from "../../services/board.service.js"
 import { filterByName } from "../../services/filter.service.js"
 
@@ -23,6 +23,13 @@ export function getActionUpdateBoard(board) {
         board
     }
 }
+export function getActionSetBoard(board) {
+    // console.log('from action get up')
+    return {
+        type: 'UPDATE_BOARD',
+        board
+    }
+}
 
 var subscriber
 
@@ -30,10 +37,7 @@ export function loadBoard(boardId) {
     return (dispatch) => {
         boardService.query(boardId)
             .then(board => {
-                dispatch({
-                    type: 'SET_BOARD',
-                    board
-                })
+                dispatch(getActionSetBoard(board))
             })
             .catch(err => {
                 console.log('Cannot load boards', err)
@@ -50,9 +54,9 @@ export function loadBoard(boardId) {
 export function removeBoard(boardId) {
     return async (dispatch) => {
         try {
-            await boardService.remove(boardId)
+            const savedBoard = await boardService.remove(boardId)
             console.log('Deleted Succesfully!')
-            dispatch(getActionRemoveBoard(boardId))
+            dispatch(getActionSetBoard(boardId))
         } catch (err) {
             console.log('Cannot remove board', err)
         }
@@ -60,23 +64,26 @@ export function removeBoard(boardId) {
 }
 
 export function addBoard(board) {
-    return (dispatch) => {
-        boardService.save(board)
-            .then(savedBoard => {
-                console.log('Added Board', savedBoard)
-                dispatch(getActionAddBoard(savedBoard))
-            })
-            .catch(err => {
-                console.log('Cannot add board', err)
-            })
+    return async (dispatch) => {
+        try {
+            const savedBoard = await boardService.save(board)
+            console.log('Added Board', savedBoard)
+            dispatch(getActionSetBoard(savedBoard))
+            return savedBoard
+        } catch (err) {
+            console.log('Cannot add board', err)
+
+            throw err
+        }
     }
+
 }
 
 export function updateBoard(board, groupId, task) {
     return (dispatch) => {
         boardService.save(board, groupId, task)
             .then(savedBoard => {
-                dispatch(getActionUpdateBoard(savedBoard))
+                dispatch(getActionSetBoard(savedBoard))
             })
             .catch(err => {
                 console.log('Cannot save board', err)
