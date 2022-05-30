@@ -26,24 +26,14 @@ export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask }) 
     }
 
     const setStatus = (val, field) => {
-        console.log('hi')
+        console.log('val', val)
+        console.log('field', field)
         var color = 'rgb(173, 150, 122)'
-        if (val === 'done' || val === 'high') {
-            task[field] = val
-            color = 'rgb(0, 200, 117)'
-        }
-        if (val === 'in-progress' || val === 'mid') {
-            task[field] = val
-            color = 'rgb(253, 171, 61)'
-        }
-        if (val === 'stuck' || val === 'low') {
-            task[field] = val
-            color = 'rgb(226, 68, 92)'
-        }
-        if (val === 'no-status' || val === 'very-low') {
-            task[field] = val
-            color = 'rgb(173, 150, 122)'
-        }
+        if (val === 'done' || val === 'high') color = 'rgb(0, 200, 117)'
+        if (val === 'in-progress' || val === 'mid') color = 'rgb(253, 171, 61)'
+        if (val === 'stuck' || val === 'low') color = 'rgb(226, 68, 92)'
+        // if (val === 'no-status' || val === 'very-low') color = 'rgb(173, 150, 122)'
+        task[field] = val
         onUpdateTask(task, group.id)
         field === 'status' ? setStatusBgcColor(color) : setImportanceBgcColor(color)
     }
