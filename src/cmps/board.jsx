@@ -8,8 +8,7 @@ import { taskService } from '../services/task.service'
 import { groupService } from '../services/group.service'
 import { boardService } from '../services/board.service'
 
-export const Board = () => {
-
+export const Board = ({ isPinned }) => {
     const params = useParams()
     let { board } = useSelector((storeState) => storeState.boardModule)
     const dispatch = useDispatch()
@@ -17,23 +16,10 @@ export const Board = () => {
         dispatch(loadBoard(params.id))
     }, [])
 
-
-    // const navigate = useNavigate()
-    // const [robot, setRobot] = useState(null)
-    // // const [robot2, setRobot2] = useState(null)
-    // // const [robot3, setRobot3] = useState(null)
-
-    // const loadBoard = async () => {
-    //     const robot = await robotService.getById(params.id)
-    //     setRobot(robot)
-    // }
-
-
     const onRemoveGroup = async (groupId) => {
         await groupService.remove(groupId, board)
         dispatch(loadBoard())
     }
-
     const onAddGroup = async (group) => {
         if (group) {
             await groupService.addGroup(board, group)
@@ -43,37 +29,28 @@ export const Board = () => {
         await groupService.addGroup(board)
         dispatch(loadBoard())
     }
-
     const onAddTask = async (board, groupId, task) => {
-        console.log('onAddTask')
         dispatch(updateBoard(board, groupId, task))
-        // task = null
     }
-
     const onUpdateTask = (task, groupId) => {
-        console.log('onUpdateTask')
         dispatch(updateBoard(board, groupId, task))
     }
-
     const onRemoveTask = async (groupId, taskId) => {
         await taskService.remove(groupId, taskId, board)
         dispatch(loadBoard())
     }
-
     const onChangeFilter = (filterBy) => {
         dispatch(setFilterBy(filterBy))
     }
     const getPersons = () => {
         const persons = board.persons
-        // console.log('persons: ', persons)
     }
-
     const onSaveBoard = async (newBoard) => {
         await boardService.save(newBoard)
     }
 
     return (
-        <section className='board board-controller-pinned'>
+        <section className={ `board ${isPinned ? ' board-controller-pinned' : ''}` }>
             <div className="board-container">
                 <div className="board-wrapper flex">
                     <BoardHeader

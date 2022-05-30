@@ -1,10 +1,15 @@
+import { useState } from 'react'
+
 import { AppSideBar } from '../cmps/app-side-bar'
 import { BoardController } from '../cmps/board-controller'
 import { Board } from '../cmps/board.jsx'
 
 export const MainApp = () => {
-
-
+    const [isPinned, setIsPinned] = useState(false)
+    const onSetIsPinned = () => {
+        setIsPinned(!isPinned)
+        console.log(isPinned)
+    }
     return (
         <main className="application">
             <div className="app-wrapper">
@@ -13,8 +18,11 @@ export const MainApp = () => {
                     <div className="app-base-surface"></div>
                 </div>
                 <section className="work-space">
-                    <BoardController />
-                    <Board />
+                    <BoardController
+                        isPinned={ isPinned }
+                        onSetIsPinned={ onSetIsPinned }
+                    />
+                    <Board isPinned={ isPinned } />
                 </section>
             </div>
         </main>

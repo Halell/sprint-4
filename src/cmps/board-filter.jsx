@@ -31,7 +31,7 @@ export const BoardFilter = ({ onAddGroup, onChangeFilter, getPersons, board }) =
     }, onChangeFilter)
 
     const openModal = () => {
-        // console.log('Opening!')
+
         if (className === "open") setClassName("")
         else setClassName("open")
 

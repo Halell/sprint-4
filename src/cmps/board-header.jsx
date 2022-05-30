@@ -17,7 +17,7 @@ export function BoardHeader({ onAddGroup, onChangeFilter, getPersons, onSaveBoar
     function updateBoardDesc(el) {
         const desc = el.target.innerText
         board.desc = desc
-        // console.log(board)
+
         onSaveBoard(board)
     }
 
