@@ -1,3 +1,13 @@
+// .task-column {
+//     min-width: 140px;
+//     z-index: 15;
+
+//     .member-col {}
+// }
+
+
+
+
 .column-modal {
     background-color: white;
     width: 144px;
@@ -58,6 +68,11 @@
 
         .wrapper {
             padding: 4px 8px;
+            border-radius: 5px;
+
+            &:hover {
+                background-color: #0073ea;
+            }
 
             .add-member-box {
                 line-height: 34px;
@@ -74,9 +89,29 @@
                         border-radius: 50%;
                     }
                 }
-                .user-full-name{
+
+                .user-full-name {
                     flex: 1 1;
                 }
+            }
+
+        }
+
+        .invite {
+            color: #0073ea;
+            height: 34px;
+            padding: 8px;
+            margin: 8px;
+            font-size: .8125rem;
+            align-items: center;
+
+            &:hover {
+                background-color: #0073ea;
+                color: white;
+            }
+
+            svg {
+                margin-right: 5px;
             }
         }
     }
