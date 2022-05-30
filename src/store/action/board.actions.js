@@ -74,7 +74,6 @@ export function addBoard(board) {
 }
 
 export function updateBoard(board, groupId, task) {
-    console.log('from board action- board: ', board)
     return (dispatch) => {
         boardService.save(board, groupId, task)
             .then(savedBoard => {

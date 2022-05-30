@@ -20,17 +20,32 @@
         "persons": [
             {
                 "_id": "u101",
-                "fullname": "Tal Tarablus",
+                "fullname": "Carmel Yona",
                 "imgUrl": "https://www.facebook.com/photo/?fbid=5291191697564727&set=a.152304304786851"
             },
             {
                 "_id": "u102",
-                "fullname": "Abi Abambi",
+                "fullname": "Shani Eini",
                 "imgUrl": "https://www.google.com"
             },
             {
-                "_id": "u102",
-                "fullname": "Abi Abambi",
+                "_id": "u103",
+                "fullname": "Hallel Hofman",
+                "imgUrl": "https://www.google.com"
+            },
+            {
+                "_id": "u104",
+                "fullname": "Shlomo Lifshitz",
+                "imgUrl": "https://www.google.com"
+            },
+            {
+                "_id": "u105",
+                "fullname": "Rona Fainshtein",
+                "imgUrl": "https://www.google.com"
+            },
+            {
+                "_id": "u106",
+                "fullname": "Puki Matuki",
                 "imgUrl": "https://www.google.com"
             }
         ],
@@ -49,8 +64,7 @@
                         "date": "24/05/2022",
                         "importance": "high",
                         "persons": [
-                            "shani",
-                            "Tal Tarablus"
+                            "shani"
                         ]
                     },
                     {
