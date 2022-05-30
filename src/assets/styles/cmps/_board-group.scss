@@ -49,7 +49,7 @@
 
             .group-title {
                 outline: none;
-                
+
                 &:hover {
                     padding: 0 5px;
                     outline: dashed 1px rgb(106, 106, 106);
@@ -82,24 +82,70 @@
 }
 
 
-// .btns-modal {
-//     border: 1px solid rgb(155, 154, 154);
-//     position: absolute;
-//     padding: 10px;
-//     z-index: 100;
-//     background-color: #fff;
-//     margin-left: 144px;
-//     width: 264px;
-//     top: 80%;
-//     left: 7px;
+.btns-modal {
+    width: 264px;
+    top: 60%px;
+    left: 7px;
+    position: absolute;
+    z-index: 10000;
+    box-shadow: 0 4px 17px 6px rgb(0 0 0 / 10%);
+    background-color: #fff;
+    border-radius: 8px;
 
-//     button {
-//         border: 1px solid rgb(186, 185, 185);
-//         display: inline-block;
-//         margin-bottom: 5px;
-//         cursor: pointer;
-//     }
-// }
+    .btns-top-modal {
+        padding: 3px;
+
+        .btn-modal-top-section {
+            cursor: pointer;
+            padding: 8px 4px;
+            border-radius: 4px;
+            color: rgb(50, 51, 56);
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            font-family: Roboto;
+
+            &:hover {
+                background-color: #e6e9ef;
+            }
+        }
+    }
+
+    .btns-bottom-modal {
+        padding: 3px;
+
+        .btn-modal-color {
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 4px;
+            color: rgb(50, 51, 56);
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            font-family: Roboto;
+
+            &:hover {
+                background-color: #e6e9ef;
+            }
+        }
+
+        .btn-modal-remove {
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 4px;
+            color: rgb(50, 51, 56);
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            font-family: Roboto;
+
+            &:hover {
+                background-color: #e6e9ef;
+            }
+        }
+    }
+}
+
 
 .pulse-component-wrapper.group-footer {
     width: 100%;

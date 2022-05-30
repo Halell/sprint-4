@@ -1,43 +1,105 @@
+import { useState } from "react";
+import DatePicker from "react-datepicker"
+import "react-datepicker/dist/react-datepicker.css";
 
-export function TaskColumn({ column: boardColumn, setColumn, task, isStatusEdit, setStatus, bgColor }) {
+export function TaskColumn({ boardColumn, task, setStatus, statusBgcColor, importanceBgcColor, setTxt }) {
+
+    const [startdate, setStartDate] = useState(new Date())
+    const [isImportanceEdit, setIsImportanceEdit] = useState(false)
+    const [isStatusEdit, setIsStatusEdit] = useState(false)
+    const [isDateEdit, setIsDateEdit] = useState(false)
+
+    const setColumn = (val) => {
+        if (val === 'status') {
+            setIsStatusEdit(isStatusEdit ? false : true)
+        }
+        if (val === 'importance') {
+            setIsImportanceEdit(isImportanceEdit ? false : true)
+        }
+    }
+
+    const openDateModal = () => {
+        setIsDateEdit(isDateEdit ? false : true)
+    }
 
     return <div className="task-columns-wraper " >
         {boardColumn === 'text' && <div onClick={() => setColumn(boardColumn)} className="task-column">
-            {task.text}
+            <div
+                suppressContentEditableWarning={true}
+                contentEditable={true}
+                onBlur={setTxt}
+            >{task.text}
+            </div>
         </div>}
-        {boardColumn === 'status' && <div style={{ backgroundColor: bgColor }} onClick={() => setColumn(boardColumn)} className="task-column">
+
+
+        {/* status */}
+        {boardColumn === 'status' && <div style={{ backgroundColor: statusBgcColor }} onClick={() => setColumn(boardColumn)} className="task-column">
             {task.status}
             {isStatusEdit &&
                 <div className="column-modal">
 
-                    <div style={{ backgroundColor: 'rgb(0, 200, 117)' }} className="btn-wraper"> <div onClick={() => setStatus('done')} className="status-edit-btn status-edit-btn-done">done!</div></div>
-                    <div style={{ backgroundColor: 'rgb(253, 171, 61)' }} className="btn-wraper"> <div onClick={() => setStatus('in-progress')} className="status-edit-btn in-progress">in progress</div></div>
-                    <div style={{ backgroundColor: 'rgb(226, 68, 92)' }} className="btn-wraper"> <div onClick={() => setStatus('stuck')} className="status-edit-btn stuck">stuck</div></div>
-                    <div style={{ backgroundColor: 'grey' }} className="btn-wraper"> <div onClick={() => setStatus('no-status')} className="status-edit-btn stuck"></div>none</div>
-                    <div className="btn-wraper"> <div className="status-edit-btn add-edit-labels">Add/Edit Labels</div></div>
+                    <div style={{ backgroundColor: 'rgb(0, 200, 117)' }} className="btn-wraper"> <div onClick={() => setStatus('done', 'status')} className="status-edit-btn status-edit-btn-done">done!</div></div>
+                    <div style={{ backgroundColor: 'rgb(253, 171, 61)' }} className="btn-wraper"> <div onClick={() => setStatus('in-progress', 'status')} className="status-edit-btn in-progress">in progress</div></div>
+                    <div style={{ backgroundColor: 'rgb(226, 68, 92)' }} className="btn-wraper"> <div onClick={() => setStatus('stuck', 'status')} className="status-edit-btn stuck">stuck</div></div>
+                    <div style={{ backgroundColor: 'rgb(173, 150, 122)' }} className="btn-wraper"> <div onClick={() => setStatus('no-status', 'status')} className="status-edit-btn stuck">none</div></div>
 
-                </div>}
+                    <div className="btn-wraper">
+                        <div onClick={''} className="status-edit-btn add-edit-labels">Add/Edit Labels</div>
+
+                    </div>
+
+                </div>
+            }
         </div>
         }
-        {boardColumn === 'date' && <div onClick={() => setColumn(boardColumn)} className="task-column">
-            {task.date}
-            {isStatusEdit &&
+
+
+
+
+
+        {/* date */}
+        {boardColumn === 'date' && <div onClick={() => openDateModal(openDateModal)} className="task-column">
+            <DatePicker selected={startdate} onChange={(date) => setStartDate(date)} />
+            {/* {task.date} */}
+            {/* <div><DatePicker selected={startdate} onChange={(date) => setStartDate(date)} /></div> */}
+            {/* {isDateEdit &&
                 <div className="column-modal">
-
-                    <div style={{ backgroundColor: 'rgb(0, 200, 117)' }} className="btn-wraper"> <div onClick={() => setStatus('done')} className="status-edit-btn status-edit-btn-done">done!</div></div>
-                    <div style={{ backgroundColor: 'rgb(253, 171, 61)' }} className="btn-wraper"> <div onClick={() => setStatus('in-progress')} className="status-edit-btn in-progress">in progress</div></div>
-                    <div style={{ backgroundColor: 'rgb(226, 68, 92)' }} className="btn-wraper"> <div onClick={() => setStatus('stuck')} className="status-edit-btn stuck">stuck</div></div>
-                    <div style={{ backgroundColor: 'grey' }} className="btn-wraper"> <div onClick={() => setStatus('no-status')} className="status-edit-btn stuck"></div>none</div>
-                    <div className="btn-wraper"> <div className="status-edit-btn add-edit-labels">Add/Edit Labels</div></div>
-
-                </div>}
+                    <DatePicker selected={startdate} onChange={(date) => setStartDate(date)} />
+                </div>
+            } */}
         </div>}
+
+
+
+
+        {/* persons */}
         {boardColumn === 'persons' && <div onClick={() => setColumn(boardColumn)} className="task-column">
             {task.persons}
         </div>}
-        {boardColumn === 'importance' && <div onClick={() => setColumn(boardColumn)} className="task-column">
+
+
+
+
+        {/* importance */}
+        {boardColumn === 'importance' && <div style={{ backgroundColor: importanceBgcColor }} onClick={() => setColumn(boardColumn)} className="task-column">
             {task.importance}
+            {isImportanceEdit &&
+                <div className="column-modal">
+
+                    <div style={{ backgroundColor: 'rgb(0, 200, 117)' }} className="btn-wraper"> <div onClick={() => setStatus('high', 'importance')} className="status-edit-btn status-edit-btn-done">high</div></div>
+                    <div style={{ backgroundColor: 'rgb(253, 171, 61)' }} className="btn-wraper"> <div onClick={() => setStatus('mid', 'importance')} className="status-edit-btn in-progress">mid</div></div>
+                    <div style={{ backgroundColor: 'rgb(226, 68, 92)' }} className="btn-wraper"> <div onClick={() => setStatus('low', 'importance')} className="status-edit-btn stuck">low</div></div>
+                    <div style={{ backgroundColor: 'rgb(173, 150, 122)' }} className="btn-wraper"> <div onClick={() => setStatus('very-low', 'importance')} className="status-edit-btn stuck">none</div></div>
+                    <div className="btn-wraper"> <div className="status-edit-btn add-edit-labels">Add/Edit Labels</div></div>
+
+                </div>
+            }
         </div>}
+
+
+
+
     </div>
 
 

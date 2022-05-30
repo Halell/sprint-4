@@ -13,9 +13,9 @@
         "columns": [
             "text",
             "status",
+            "importance",
             "date",
-            "persons",
-            "importance"
+            "persons"
         ],
         "persons": [
             {
@@ -49,6 +49,7 @@
                         "text": "lets get it done",
                         "status": "done",
                         "date": "24/05/2022",
+                        "importance": "mid",
                         "persons": [
                             "halell"
                         ]
@@ -65,6 +66,7 @@
                         "text": "lets get it done",
                         "status": "done",
                         "date": "24/05/2022",
+                        "importance": "low",
                         "persons": [
                             "bob"
                         ],
@@ -75,6 +77,7 @@
                         "title": "Help me",
                         "text": "lets get it done",
                         "date": "24/05/2022",
+                        "importance": "high",
                         "persons": [
                             "shani"
                         ],

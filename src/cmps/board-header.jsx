@@ -5,7 +5,7 @@ import { ReactComponent as UserSvg } from '../assets/svg/user.svg'
 import { ReactComponent as HideSecondSvg } from '../assets/svg/hide.second.svg'
 import { FiUserPlus } from 'react-icons/fi'
 
-export function BoardHeader({ onAddGroup, onChangeFilter, getPersons, onSaveBoard, board }) {
+export function BoardHeader({ onAddGroup, onChangeFilter, getPersons, onSaveBoard, board, onAddTask, group }) {
 
 
     function updateBoardTitle(el) {
@@ -32,10 +32,10 @@ export function BoardHeader({ onAddGroup, onChangeFilter, getPersons, onSaveBoar
                                 <div className="board-name flex">
                                     <div className="board-title">
                                         <div className="board-title-name"
-                                            suppressContentEditableWarning={ true }
-                                            contentEditable={ true }
-                                            onBlur={ updateBoardTitle }
-                                        >{ board.title }</div>
+                                            suppressContentEditableWarning={true}
+                                            contentEditable={true}
+                                            onBlur={updateBoardTitle}
+                                        >{board.title}</div>
                                     </div>
                                     <div>
                                         <div className="btn-title-name" >
@@ -56,10 +56,10 @@ export function BoardHeader({ onAddGroup, onChangeFilter, getPersons, onSaveBoar
                         </div>
                         <div className="bottom-top-container">
                             <div className="desc"
-                                suppressContentEditableWarning={ true }
-                                contentEditable={ true }
-                                onBlur={ updateBoardDesc }
-                            >{ board.desc ? board.desc : 'Add board description' } </div>
+                                suppressContentEditableWarning={true}
+                                contentEditable={true}
+                                onBlur={updateBoardDesc}
+                            >{board.desc ? board.desc : 'Add board description'} </div>
                         </div>
                     </div>
                     {/* <div className="board-header-top-bottom flex" >
@@ -68,17 +68,17 @@ export function BoardHeader({ onAddGroup, onChangeFilter, getPersons, onSaveBoar
                         </div>
                     </div> */}
                 </div>
-                {/* <div className="board-header-bottom"> */ }
+                {/* <div className="board-header-bottom"> */}
                 <hr />
                 <div className="board-header-filter flex">
                     <BoardFilter
-                        onAddGroup={ onAddGroup }
-                        onChangeFilter={ onChangeFilter }
-                        getPersons={ getPersons }
-                        board={ board }
+                        onAddGroup={onAddGroup}
+                        onChangeFilter={onChangeFilter}
+                        getPersons={getPersons}
+                        board={board}
                     />
                 </div>
-                {/* </div> */ }
+                {/* </div> */}
             </div>
         </div >
     )

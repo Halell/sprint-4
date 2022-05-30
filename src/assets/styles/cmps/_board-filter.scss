@@ -223,4 +223,25 @@
             }
         }
     }
+
+    .menu-new-item-modal {
+        position: absolute;
+        top: 92%;
+        left: 8%;
+        width: 220px;
+        padding: 8px;
+        box-shadow: 0 4px 17px 6px rgb(0 0 0 / 10%);
+        background-color: #fff;
+        border-radius: 8px;
+
+        .item-modal-add-group {
+            cursor: pointer;
+            padding: 4px 8px;
+            border-radius: 4px;
+
+            &:hover {
+                background-color: #ece7e7;
+            }
+        }
+    }
 }
