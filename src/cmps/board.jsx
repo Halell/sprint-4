@@ -1,8 +1,9 @@
 import { useEffect, useState, useCallback } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+
 import { BoardHeader } from './board-header'
 import { BoardContent } from './board-group'
-import { useDispatch, useSelector } from 'react-redux'
 import { loadBoard, updateBoard, setFilterBy } from '../store/action/board.actions'
 import { taskService } from '../services/task.service'
 import { groupService } from '../services/group.service'
@@ -15,7 +16,6 @@ export const Board = ({ isPinned }) => {
 
     useEffect(() => {
         dispatch(loadBoard(params.id))
-        console.log(params.id)
     }, [params.id])
 
     const onRemoveGroup = async (groupId) => {

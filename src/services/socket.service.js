@@ -1,5 +1,5 @@
 import io from 'socket.io-client'
-import { userService } from './user.service'
+import { userService } from './user.service-old'
 
 export const SOCKET_EVENT_ADD_MSG = 'chat-add-msg'
 export const SOCKET_EMIT_SEND_MSG = 'chat-send-msg'
@@ -24,7 +24,7 @@ socketService.setup()
 
 
 function createSocketService() {
-    var socket = null;
+    var socket = null
     const socketService = {
         setup() {
             socket = io(baseUrl)
@@ -37,7 +37,7 @@ function createSocketService() {
             socket.on(eventName, cb)
         },
         off(eventName, cb = null) {
-            if (!socket) return;
+            if (!socket) return
             if (!cb) socket.removeAllListeners(eventName)
             else socket.off(eventName, cb)
         },
@@ -91,7 +91,7 @@ function createDummySocketService() {
             this.emit('chat addMsg', { from: 'Someone', txt: 'Aha it worked!' })
         },
     }
-    window.listenersMap = listenersMap;
+    window.listenersMap = listenersMap
     return socketService
 }
 

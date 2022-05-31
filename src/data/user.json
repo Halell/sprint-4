@@ -4,6 +4,16 @@
     "username": "abi@ababmi.com",
     "password": "aBambi123",
     "imgUrl": "http://some-img.jpg",
+    "boards": [
+        {
+            "_id": "b101",
+            "title": "oof gozal"
+        },
+        {
+            "_id": "b102",
+            "title": "chtoch et hashmaim"
+        }
+    ],
     "mentions": [
         {
             "id": "m101",
