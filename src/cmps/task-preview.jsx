@@ -24,7 +24,7 @@ export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask }) 
     }
 
     const handleSelect = async (date) => {
-        await boardService.setActivity(board, 'Set date ', task.date,  date.toLocaleDateString())
+        await boardService.setActivity(board, 'Set date ', task.date, date.toLocaleDateString())
         task.date = date.toLocaleDateString()
         onUpdateTask(task, group)
     }
@@ -125,6 +125,7 @@ export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask }) 
                 </div>
             }
         </div>
+
     )
 }
 

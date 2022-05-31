@@ -5,7 +5,7 @@ import { GroupFooter } from "./group-footer"
 
 import { useSelector } from 'react-redux'
 
-export function BoardContent({ group, onAddTask, onRemoveGroup, onUpdateTask, onRemoveTask, onAddGroup }) {
+export function BoardContent({ group, onAddTask, onRemoveGroup, onUpdateTask, onRemoveTask, onAddGroup, onSaveBoard }) {
 
     const { board } = useSelector((storeState) => storeState.boardModule)
     const [isBtnsModalOpen, setIsBtnsModalOpen] = useState(false)
@@ -58,11 +58,13 @@ export function BoardContent({ group, onAddTask, onRemoveGroup, onUpdateTask, on
                 isBtnsModalOpen={isBtnsModalOpen}
             />
             <TaskList
+                onSaveBoard={onSaveBoard}
                 onRemoveTask={onRemoveTask}
                 group={group}
                 onAddTask={onAddTask}
                 onUpdateTask={onUpdateTask}
                 board={board}
+                onAddGroup={onAddGroup}
             />
             <GroupFooter
                 group={group}

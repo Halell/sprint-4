@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { AppSideBar } from '../cmps/app-side-bar'
 import { BoardController } from '../cmps/board-controller'
 import { Board } from '../cmps/board.jsx'
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 
 export const MainApp = () => {
     const [isPinned, setIsPinned] = useState(false)
@@ -10,6 +11,9 @@ export const MainApp = () => {
         setIsPinned(!isPinned)
         console.log(isPinned)
     }
+
+
+
     return (
         <main className="application">
             <div className="app-wrapper">
@@ -19,10 +23,10 @@ export const MainApp = () => {
                 </div>
                 <section className="work-space">
                     <BoardController
-                        isPinned={ isPinned }
-                        onSetIsPinned={ onSetIsPinned }
+                        isPinned={isPinned}
+                        onSetIsPinned={onSetIsPinned}
                     />
-                    <Board isPinned={ isPinned } />
+                    <Board isPinned={isPinned} />
                 </section>
             </div>
         </main>

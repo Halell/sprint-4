@@ -61,7 +61,7 @@ export function TaskColumn({ board, boardColumn, task, setStatus, statusBgcColor
             </div>
         </div>}
         {/* status */}
-        {boardColumn === 'status' && <div style={{ backgroundColor: statusBgcColor }} onClick={() => setColumn(boardColumn)} className="task-column">
+        {boardColumn === 'status' && <div style={{ backgroundColor: statusBgcColor }} onClick={() => setColumn(boardColumn)} className="task-column task-column-status">
             {task.status}
             {isStatusEdit &&
                 <div className="column-modal">
@@ -157,7 +157,7 @@ export function TaskColumn({ board, boardColumn, task, setStatus, statusBgcColor
 
         {/* importance */}
         {
-            boardColumn === 'importance' && <div style={{ backgroundColor: importanceBgcColor }} onClick={() => setColumn(boardColumn)} className="task-column">
+            boardColumn === 'importance' && <div style={{ backgroundColor: importanceBgcColor }} onClick={() => setColumn(boardColumn)} className="task-column task-column-status">
                 {task.importance}
                 {isImportanceEdit &&
                     <div className="column-modal">
