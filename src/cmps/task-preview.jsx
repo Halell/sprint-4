@@ -125,6 +125,7 @@ export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask }) 
                 </div>
             }
         </div>
+
     )
 }
 

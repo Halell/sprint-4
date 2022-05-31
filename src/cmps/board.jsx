@@ -27,34 +27,41 @@ export const Board = ({ isPinned }) => {
         await groupService.remove(groupId, board)
         dispatch(loadBoard())
     }
+
     const onAddGroup = async (group) => {
         if (group) {
             await groupService.addGroup(board, group)
             dispatch(loadBoard())
             return
         }
-        await boardService.setActivity(board, 'Added board')
+        await boardService.setActivity(board, 'Added group')
         await groupService.addGroup(board)
         dispatch(loadBoard())
     }
+
     const onAddTask = async (board, groupId, task) => {
         await boardService.setActivity(board, 'Added task')
         dispatch(updateBoard(board, groupId, task))
     }
+
     const onUpdateTask = async (task, groupId) => {
         dispatch(updateBoard(board, groupId, task))
     }
+
     const onRemoveTask = async (groupId, taskId) => {
         await boardService.setActivity(board, 'Removed task')
         await taskService.remove(groupId, taskId, board)
         dispatch(loadBoard())
     }
+
     const onChangeFilter = (filterBy) => {
         dispatch(setFilterBy(filterBy))
     }
+
     const getPersons = () => {
         const persons = board.persons
     }
+
     const onSaveBoard = async (newBoard) => {
         await boardService.setActivity(board, 'Added board')
         await boardService.save(newBoard)
@@ -72,11 +79,13 @@ export const Board = ({ isPinned }) => {
                         onSaveBoard={ onSaveBoard }
                         onAddTask={ onAddTask }
                     />
+                    {/* srart sdrag here */ }
+
                     <div className="board-content">
                         <div className="board-content-container">
                             <div className="border-content-wrapper">
                                 { board && board.groups?.map((group, idx) =>
-                                    <BoardContent
+                                    < BoardContent
                                         onRemoveGroup={ onRemoveGroup }
                                         onAddTask={ onAddTask }
                                         onUpdateTask={ onUpdateTask }
@@ -85,11 +94,14 @@ export const Board = ({ isPinned }) => {
                                         columns={ board.columns }
                                         key={ idx }
                                         onAddGroup={ onAddGroup }
+                                        onSaveBoard={ onSaveBoard }
                                     />
                                 ) }
                             </div>
                         </div>
                     </div>
+
+
                 </div>
             </div>
         </section >

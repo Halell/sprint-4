@@ -7,12 +7,17 @@ import { BoardController } from '../cmps/board-controller'
 import { Board } from '../cmps/board'
 import { Workspace } from '../pages/work-space'
 
+// import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
+
 export const MainApp = () => {
     const [isPinned, setIsPinned] = useState(false)
     const onSetIsPinned = () => {
         setIsPinned(!isPinned)
         console.log(isPinned)
     }
+
+
+
     return (
         <main className="application">
             <div className="app-wrapper">
