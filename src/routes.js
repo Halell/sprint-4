@@ -10,12 +10,12 @@ export default [
     //     path: '/item/:itemId',
     //     element: <ItemDetails />
     // },
+    // {
+    //     path: '/board/:id',
+    //     element: <MainApp />,
+    // },
     {
-        path: '/board/:id',
-        element: <MainApp />,
-    },
-    {
-        path: '/board',
+        path: '/board/*',
         element: <MainApp />,
     },
     {

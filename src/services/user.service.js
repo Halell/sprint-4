@@ -18,7 +18,8 @@ export const userService = {
     getById,
     remove,
     update,
-    changeScore
+    changeScore,
+    getUserDefBoardId
 }
 
 window.userService = userService
@@ -84,6 +85,9 @@ async function changeScore(by) {
 function saveLocalUser(user) {
     sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
     return user
+}
+function getUserDefBoardId() {
+    return getLoggedinUser().boards[0]._id
 }
 function getLoggedinUser() {
     return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))

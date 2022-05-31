@@ -24,7 +24,7 @@ export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask }) 
     }
 
     const handleSelect = async (date) => {
-        await boardService.setActivity(board, 'Set date ', task.date,  date.toLocaleDateString())
+        await boardService.setActivity(board, 'Set date ', task.date, date.toLocaleDateString())
         task.date = date.toLocaleDateString()
         onUpdateTask(task, group)
     }
@@ -96,7 +96,6 @@ export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask }) 
                                 <div className="cell-component-inner">
                                     <div className={ `cell-component ${boardColumn}` } >
                                         <TaskColumn
-<<<<<<< HEAD
                                             setStatus={ setStatus }
                                             boardColumn={ boardColumn }
                                             task={ task }
@@ -105,19 +104,9 @@ export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask }) 
                                             setTxt={ setTxt }
                                             board={ board }
                                             setMember={ setMember }
-=======
-                                            setStatus={setStatus}
-                                            boardColumn={boardColumn}
-                                            task={task}
-                                            importanceBgcColor={importanceBgcColor}
-                                            statusBgcColor={statusBgcColor}
-                                            setTxt={setTxt}
-                                            board={board}
-                                            setMember={setMember}
-                                            removeMember={removeMember}
-                                            addUser={addUser}
-                                            handleSelect={handleSelect}
->>>>>>> bc5a30169d197b6d18fac0f1fdaa267d26ee00f8
+                                            removeMember={ removeMember }
+                                            addUser={ addUser }
+                                            handleSelect={ handleSelect }
                                         />
                                     </div>
                                 </div>

@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { addBoard, removeBoard, updateBoard } from '../store/action/board.actions'
+import { addBoard, removeBoard, loadBoard } from '../store/action/board.actions'
 import { onLogin, onUpdateUser } from '../store/action/user.actions'
 import { BoardList } from './board-list'
 import { ReactComponent as Plus } from '../assets/svg/plus-sign.svg'
@@ -10,25 +10,38 @@ import { ReactComponent as Magnifier } from '../assets/svg/magnifier.svg'
 import { ReactComponent as Lightning } from '../assets/svg/lightning.svg'
 
 export const BoardController = ({ onSetIsPinned, isPinned }) => {
-    let { user } = useSelector((storeState) => storeState.userModule)
-    const [isExpend, setIsExpend] = useState(false)
+    const { user } = useSelector((storeState) => storeState.userModule)
     const dispatch = useDispatch()
+    const params = useParams()
+    const navigate = useNavigate()
+
+    const { board } = useSelector((storeState) => storeState.boardModule)
     const [newBoard, setNewBoard] = useState({ title: 'My-new-Board', members: [] })
 
     useEffect(() => {
         dispatch(onLogin())
     }, [])
     const onAddBoard = async () => {
-        // console.log('kkkl')
         const updateBoard = await dispatch(addBoard(newBoard))
-        console.log(updateBoard)
-        user.boards.push({ _id: updateBoard._id, title: updateBoard.title })
+        if (updateBoard) {
+            user.boards.push({ _id: updateBoard._id, title: updateBoard.title })
+            dispatch(onUpdateUser(user))
+            navigate('/board/' + updateBoard._id)
+        }
+    }
+    const onRemoveBoard = async (boardId) => {
+        const isBoardDeleted = await dispatch(removeBoard(boardId))
+        if (isBoardDeleted) { }
+        const idx = user.boards.findIndex(board => board._id === boardId)
+        user.boards.splice(idx, 1)
         dispatch(onUpdateUser(user))
-        console.log(user)
+        console.log(user.boards)
+        if (isBoardDeleted && boardId === params.id) navigate('/board')
     }
-    const onRemoveBoard = (boardId) => {
-        dispatch(removeBoard(boardId))
-    }
+    // const onLoadBoard = async () => {
+    //     const isBoardExists = await dispatch(loadBoard(params.id))
+    //     if (!isBoardExists) navigate('/board')
+    // }
 
     if (!user) return <div>Loading...</div>
     return (

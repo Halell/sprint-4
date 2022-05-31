@@ -1,8 +1,11 @@
 import { useState } from 'react'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+
 
 import { AppSideBar } from '../cmps/app-side-bar'
 import { BoardController } from '../cmps/board-controller'
-import { Board } from '../cmps/board.jsx'
+import { Board } from '../cmps/board'
+import { Workspace } from '../pages/work-space'
 
 export const MainApp = () => {
     const [isPinned, setIsPinned] = useState(false)
@@ -22,7 +25,11 @@ export const MainApp = () => {
                         isPinned={ isPinned }
                         onSetIsPinned={ onSetIsPinned }
                     />
-                    <Board isPinned={ isPinned } />
+                    <Routes>
+                        <Route path='/:id' element={ <Board isPinned={ isPinned } /> } />
+                        <Route path='/' element={ <Workspace isPinned={ isPinned } /> } />
+
+                    </Routes>
                 </section>
             </div>
         </main>
