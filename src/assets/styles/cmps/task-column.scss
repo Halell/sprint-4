@@ -1,59 +1,80 @@
 .task-column {
     min-width: 140px;
-    z-index: 15;
+    // z-index: 15;
+    height: 34px;
+
+    &.member-col {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
 
 
     .member-col {
         overflow: hidden;
         text-overflow: ellipsis;
+
+
     }
 
     .date-picker {
-        position: absolute;
+        position: relative;
         z-index: 25;
     }
 
     position: relative;
 
-    &::before {
-        content: "";
-        transition: border-width .3s .2s ease;
-        position: absolute;
-        top: 0;
-        right: 1px;
-        border-style: solid;
-        border-color: rgba(0, 0, 0, .2) white;
-        border-width: 0;
-    }
-
-    &:hover {
+    &.task-column-status {
         &::before {
-            border-width: 0 10px 10px 0;
+            content: "";
+            transition: border-width .2s .1s ease;
+            position: absolute;
+            top: 0;
+            right: 0px;
+            border-style: solid;
+            border-color: rgba(0, 0, 0, .2) white;
+            border-width: 0;
+        }
+
+        &:hover {
+            &::before {
+                border-width: 0 10px 10px 0;
+            }
         }
     }
 }
 
+.person-display-container {
+    display: flex;
+    align-items: center;
+}
 
 
 
 .column-modal {
     background-color: white;
-    width: 144px;
-    position: fixed;
-    // top: 50%;
-    // right: 50%;
+    width: 160px;
+    padding: 5px;
+    position: relative;
+    right: 7px;
+    border-radius: 2px;
     z-index: 15;
     box-shadow: 0 4px 17px 6px rgb(0 0 0 / 10%);
 
     .status-edit-btn {
         border: none;
+        margin: 2px;
+
 
         .btn-wraper {
-            z-index: 18;
+            // z-index: 18;
+
 
 
             .status-edit-btn-done {
                 z-index: 20;
+                margin: 2px;
                 background-color: greenyellow;
             }
         }

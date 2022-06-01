@@ -1,6 +1,14 @@
 .group-header-wrapper.pulse-component-wrapper {
     background-color: white;
 
+    .cell-component {
+        border-bottom: none;
+    }
+
+    .group-title-wrapper {
+        background-color: #fff;
+    }
+
     .btn-pulse-menu-wrapper.btn-group-menu-wrapper {
         display: flex;
         cursor: pointer;
@@ -22,15 +30,7 @@
     }
 
     .title-cell.group-header {
-        // position: relative;
-        // text-align: left;
-        // font-size: 18px;
-        // flex: 1 0 308px;
-        // min-width: 0px;
-        // display: flex;
-        // align-items: center;
-        // padding-bottom: 1px;
-        // z-index: 1;
+        background-color: #fff;
 
         .drag-btn svg {
             height: 24px;
