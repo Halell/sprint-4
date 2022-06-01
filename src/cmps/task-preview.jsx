@@ -6,7 +6,7 @@ import { TaskColumn } from './task-column'
 import { boardService } from '../services/board.service'
 import { utilService } from '../services/util.service.js'
 
-export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask }) => {
+export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask, onAddTask }) => {
     const [statusBgcColor, setStatusBgcColor] = useState('')
     const [importanceBgcColor, setImportanceBgcColor] = useState('')
     const [isBtnInputOpen, setIsBtnInputOpen] = useState(true)
@@ -80,6 +80,14 @@ export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask }) 
         await boardService.setActivity(board, `Changed ${field}`, prevStatus, task[field])
     }
 
+    // const useBtn = (val, task) => {
+    //     if (val === 'duplicate') {
+    //         const duplicateTask = { ...task }
+    //         duplicateTask.id = null
+    //         onAddTask(duplicateTask)
+    //     }
+    // }
+
     return (
         <div className="pulse-component-wrapper">
             <div className="pulse-component" >
@@ -96,7 +104,6 @@ export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask }) 
                                 <div className="cell-component-inner">
                                     <div className={ `cell-component ${boardColumn}` } >
                                         <TaskColumn
-<<<<<<< HEAD
                                             setStatus={ setStatus }
                                             boardColumn={ boardColumn }
                                             task={ task }
@@ -105,19 +112,9 @@ export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask }) 
                                             setTxt={ setTxt }
                                             board={ board }
                                             setMember={ setMember }
-=======
-                                            setStatus={setStatus}
-                                            boardColumn={boardColumn}
-                                            task={task}
-                                            importanceBgcColor={importanceBgcColor}
-                                            statusBgcColor={statusBgcColor}
-                                            setTxt={setTxt}
-                                            board={board}
-                                            setMember={setMember}
-                                            removeMember={removeMember}
-                                            addUser={addUser}
-                                            handleSelect={handleSelect}
->>>>>>> bc5a30169d197b6d18fac0f1fdaa267d26ee00f8
+                                            removeMember={ removeMember }
+                                            addUser={ addUser }
+                                            handleSelect={ handleSelect }
                                         />
                                     </div>
                                 </div>

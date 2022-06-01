@@ -10,7 +10,7 @@ import { userReducer } from './reducer/user.reducer.js'
 
 const rootReducer = combineReducers({
     boardModule: boardReducer,
-    userModule: userReducer,
+    // userModule: userReducer,
     // systemModule: systemReducer,
     // reviewModule: reviewReducer,
 })

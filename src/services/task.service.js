@@ -39,7 +39,7 @@ async function saveTask(board, groupId, taskToSave) {
                 if (!taskToSave.id) {
                     taskToSave.id = utilService.makeId()
                     taskToSave.date = "24/05/2022"
-                    taskToSave.persons = ["shani", "Tal Tarablus"]
+                    taskToSave.persons = []
                     taskToSave.status = "none"
                     taskToSave.text = "lets get it done"
                     taskToSave.importance = "mid"

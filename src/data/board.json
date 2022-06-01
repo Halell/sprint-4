@@ -63,7 +63,13 @@
                         "status": "done",
                         "date": "24/05/2022",
                         "importance": "high",
-                        "persons": []
+                        "persons": [
+                            {
+                                "_id": "u101",
+                                "fullname": "Carmel Yona",
+                                "imgUrl": "https: www.facebook.com/photo/?fbid=5291191697564727&set=a.152304304786851"
+                            }
+                        ]
                     },
                     {
                         "id": "c102",
@@ -72,7 +78,13 @@
                         "status": "done",
                         "date": "24/05/2022",
                         "importance": "mid",
-                        "persons": []
+                        "persons": [
+                            {
+                                "_id": "u101",
+                                "fullname": "Carmel Yona",
+                                "imgUrl": "https: www.facebook.com/photo/?fbid=5291191697564727&set=a.152304304786851"
+                            }
+                        ]
                     }
                 ]
             },
@@ -87,7 +99,13 @@
                         "status": "done",
                         "date": "24/05/2022",
                         "importance": "low",
-                        "persons": [],
+                        "persons": [
+                            {
+                                "_id": "u102",
+                                "fullname": "Shani Eini",
+                                "imgUrl": "https: www.facebook.com/photo/?fbid=5291191697564727&set=a.152304304786851"
+                            }
+                        ],
                         "archivedAt": 1589983468418
                     },
                     {
@@ -96,7 +114,13 @@
                         "text": "lets get it done",
                         "date": "24/05/2022",
                         "importance": "high",
-                        "persons": [],
+                        "persons": [
+                            {
+                                "_id": "u102",
+                                "fullname": "Shani Eini",
+                                "imgUrl": "https: www.facebook.com/photo/?fbid=5291191697564727&set=a.152304304786851"
+                            }
+                        ],
                         "status": "in-progress",
                         "description": "description",
                         "comments": [

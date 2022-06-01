@@ -24,11 +24,13 @@ window.cs = boardService
 function getCurrBoard() {
     return gCurrBoard
 }
+
 async function query(boardId) {
-    // we going to use get by id for every query
-    const board = await storageService.get(STORAGE_KEY, boardId)
-    gCurrBoard = board
-    return gCurrBoard
+    const boards = await storageService.query(STORAGE_KEY)
+    console.log('boards: ', boards);
+    // const board = await storageService.get(STORAGE_KEY, boardId)
+    // gCurrBoard = board
+    return boards
 }
 function getById(boardId) {
     return storageService.get(STORAGE_KEY, boardId)
@@ -68,10 +70,30 @@ async function save(board, groupId, task) {
         boardChannel.postMessage(getActionUpdateBoard(savedBoard))
 
     } else {
+        const createdAt = new Date()
+        const newBoard = {
+            activities: [],
+            archivedAt: '',
+            cmpsOrder: ["status-picker", "member-picker", "date-picker"],
+            columns: ["text", "status", "importance", "date", "persons"],
+            createdAt: createdAt.toLocaleTimeString(),
+            createdBy: [],
+            groups: [{
+                id: utilService.makeId(),
+                archivedAt: 'hour ago',
+                style: {},
+                tasks: [],
+                title: 'Group 1'
+            }],
+            persons: [],
+            style: {},
+            title: 'New Board'
+        }
         // Later, owner is set by the backend
-        board.owner = userService.getLoggedinUser()
-        savedBoard = await storageService.post(STORAGE_KEY, board)
+        // board.owner = userService.getLoggedinUser()
+        savedBoard = await storageService.post(STORAGE_KEY, newBoard)
         boardChannel.postMessage(getActionAddBoard(savedBoard))
+        console.log('adding board');
     }
     return savedBoard
 }

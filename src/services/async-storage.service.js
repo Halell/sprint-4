@@ -23,10 +23,8 @@ function query(entityType, delay = 100) {
     })
 }
 function get(entityType, entityId) {
-    let defaultEntityId = (entityType === 'user') ? 'u101' : 'b101'  // for develop
-
     return query(entityType)
-        .then(entities => entities.find(entity => entity._id === defaultEntityId))
+        .then(entities => entities.find(entity => entity._id === entityId))
 }
 function post(entityType, newEntity) {
     newEntity._id = newEntity._id || _makeId()//this condition is for update a new demo user 

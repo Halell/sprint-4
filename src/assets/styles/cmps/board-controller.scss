@@ -289,6 +289,14 @@
     height: 406px;
     position: relative;
 
+
+    a:hover {
+        .board-dropdown-menu::after {
+            content: "⋯";
+        }
+
+    }
+
     a:hover:not(.active) {
         .board-preview-card {
             background-color: #e6e9ef;

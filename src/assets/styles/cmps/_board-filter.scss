@@ -244,4 +244,76 @@
             }
         }
     }
+
+    .modal-sort-menu {
+        width: 432px;
+        padding: 20px 16px 30px;
+        top: 93%;
+        left: 35%;
+        cursor: default;
+        position: absolute;
+        z-index: 10;
+        box-shadow: 0 4px 17px 6px rgb(0 0 0 / 10%);
+        background-color: #fff;
+        border-radius: 8px;
+
+        .modal-sort-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            .sort-right-header {
+                display: flex;
+
+                .clear-btn {
+                    padding: 3px 8px;
+                    cursor: pointer;
+                    border-radius: 4px;
+                }
+
+                .sort-btn {
+                    border-radius: 4px;
+                    cursor: pointer;
+                    margin-left: 8px;
+                    padding: 4px 8px;
+                    background-color: #0073ea;
+                    color: #fff;
+                }
+            }
+        }
+
+        .modal-sort-main {
+            padding: 16px;
+            display: flex;
+
+            .btn-sort-content {
+                margin-right: 8px;
+                flex: 0 1 60%;
+                position: relative;
+                height: 40px;
+                border: 1px solid #c5c7d0;
+                padding: 0 16px;
+                justify-content: space-between;
+                align-items: center;
+
+                .by-text {
+                    padding: 8px;
+                }
+
+
+            }
+
+            .by-order {
+                display: flex;
+                flex: 1 1;
+                position: relative;
+                height: 40px;
+                border: 1px solid #c5c7d0;
+                padding: 0 16px;
+                justify-content: space-between;
+                align-items: center;
+                border-radius: 4px;
+            }
+        }
+    }
 }

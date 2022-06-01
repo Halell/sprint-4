@@ -29,6 +29,7 @@ export function ActivityLog({ board, setActivityOpen }) {
                             <div>12m</div>
                         </div>
                         <div className="activity-member flex">
+                            bob
                             <img src="" alt="" />
                         </div>
                         <div className="activity flex">

@@ -1,9 +1,17 @@
 import { userService } from "../../services/user.service-old.js"
 import { boardService } from "../../services/board.service.js"
 import { filterByName } from "../../services/filter.service.js"
+import { faL } from "@fortawesome/free-solid-svg-icons"
+import { faSmile } from "@fortawesome/free-regular-svg-icons"
 
 
 // Action Creators:
+export function getActionLoadBoard(board) {
+    return {
+        type: 'SET_BOARD',
+        board
+    }
+}
 export function getActionRemoveBoard(boardId) {
     return {
         type: 'REMOVE_BOARD',
@@ -33,11 +41,26 @@ export function getActionSetBoard(board) {
 
 var subscriber
 
+// export function loadBoards() {
+//     return async () => {
+//         try {
+//             const boards = await boardService.query()
+//             console.log('boards: ', boards);
+//             return boards
+//         } catch (err) {
+//             throw err
+//         }
+//     }
+// }
+
 export function loadBoard(boardId) {
     return (dispatch) => {
-        boardService.query(boardId)
+        boardService.getById(boardId)
             .then(board => {
-                dispatch(getActionSetBoard(board))
+                dispatch({
+                    type: 'SET_BOARD',
+                    board
+                })
             })
             .catch(err => {
                 console.log('Cannot load boards', err)
@@ -47,22 +70,21 @@ export function loadBoard(boardId) {
         subscriber = (ev) => {
             dispatch(ev.data)
         }
-        boardService.subscribe(subscriber)
     }
 }
-
 export function removeBoard(boardId) {
     return async (dispatch) => {
         try {
-            const savedBoard = await boardService.remove(boardId)
+            await boardService.remove(boardId)
             console.log('Deleted Succesfully!')
             dispatch(getActionSetBoard(boardId))
+            return true
         } catch (err) {
             console.log('Cannot remove board', err)
+            return false
         }
     }
 }
-
 export function addBoard(board) {
     return async (dispatch) => {
         try {
@@ -92,11 +114,14 @@ export function updateBoard(board, groupId, task) {
 }
 
 export function setFilterBy(filterBy) {
+    console.log('filterBy: ', filterBy);
     return async (dispatch) => {
         const board = await filterByName(filterBy)
         dispatch({ type: 'SET_BOARD', board })
     }
 }
+
+
 
 // export function addToBoardt(board) {
 //     return (dispatch) => {

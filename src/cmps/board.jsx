@@ -1,38 +1,41 @@
 import { useEffect, useState, useCallback } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
-
+import { Navigate, useNavigate, useParams } from 'react-router-dom'
 import { BoardHeader } from './board-header'
 import { BoardContent } from './board-group'
 import { loadBoard, updateBoard, setFilterBy } from '../store/action/board.actions'
 import { taskService } from '../services/task.service'
 import { groupService } from '../services/group.service'
 import { boardService } from '../services/board.service'
+import { useDispatch, useSelector } from 'react-redux'
 
 export const Board = ({ isPinned }) => {
     const params = useParams()
+    const navigate = useNavigate()
     let { board } = useSelector((storeState) => storeState.boardModule)
     const dispatch = useDispatch()
-
+    console.log('board: ', board);
     useEffect(() => {
-        dispatch(loadBoard(params.id))
+        onLoadBoard()
     }, [params.id])
-
+    const onLoadBoard = async () => {
+        await dispatch(loadBoard(params.id))
+        // if (!isBoardExists) navigate('/board')
+    }
     const onRemoveGroup = async (groupId) => {
         await boardService.setActivity(board, 'Removed group')
         await groupService.remove(groupId, board)
-        dispatch(loadBoard())
+        dispatch(loadBoard(params.id))
     }
 
     const onAddGroup = async (group) => {
         if (group) {
             await groupService.addGroup(board, group)
-            dispatch(loadBoard())
+            dispatch(loadBoard(params.id))
             return
         }
         await boardService.setActivity(board, 'Added group')
         await groupService.addGroup(board)
-        dispatch(loadBoard())
+        dispatch(loadBoard(params.id))
     }
 
     const onAddTask = async (board, groupId, task) => {
@@ -47,10 +50,11 @@ export const Board = ({ isPinned }) => {
     const onRemoveTask = async (groupId, taskId) => {
         await boardService.setActivity(board, 'Removed task')
         await taskService.remove(groupId, taskId, board)
-        dispatch(loadBoard())
+        dispatch(loadBoard(params.id))
     }
 
     const onChangeFilter = (filterBy) => {
+        console.log('filter ', filterBy);
         dispatch(setFilterBy(filterBy))
     }
 
@@ -62,6 +66,7 @@ export const Board = ({ isPinned }) => {
         await boardService.setActivity(board, 'Added board')
         await boardService.save(newBoard)
     }
+
 
     return (
         <section className={`board ${isPinned ? ' board-controller-pinned' : ''}`}>

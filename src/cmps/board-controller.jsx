@@ -1,43 +1,57 @@
 import { useEffect, useState } from 'react'
-import { NavLink } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
+import { NavLink, useNavigate, useParams } from 'react-router-dom'
+import { boardService } from '../services/board.service'
+import DatePicker from "react-datepicker"
 
-import { addBoard, removeBoard, updateBoard } from '../store/action/board.actions'
+import { addBoard, removeBoard, loadBoard } from '../store/action/board.actions'
 import { onLogin, onUpdateUser } from '../store/action/user.actions'
 import { BoardList } from './board-list'
 import { ReactComponent as Plus } from '../assets/svg/plus-sign.svg'
 import { ReactComponent as Magnifier } from '../assets/svg/magnifier.svg'
 import { ReactComponent as Lightning } from '../assets/svg/lightning.svg'
+import { ReactComponent as Board } from '../assets/svg/board.svg'
 
 export const BoardController = ({ onSetIsPinned, isPinned }) => {
-    let { user } = useSelector((storeState) => storeState.userModule)
+    const params = useParams()
+    const naviget = useNavigate()
     const [isExpend, setIsExpend] = useState(false)
-    const dispatch = useDispatch()
-    const [newBoard, setNewBoard] = useState({ title: 'My-new-Board', members: [] })
+    const [boards, setBoards] = useState(null)
 
     useEffect(() => {
-        dispatch(onLogin())
+        loadBoards()
     }, [])
-    const onAddBoard = async () => {
-        // console.log('kkkl')
-        const updateBoard = await dispatch(addBoard(newBoard))
-        console.log(updateBoard)
-        user.boards.push({ _id: updateBoard._id, title: updateBoard.title })
-        dispatch(onUpdateUser(user))
-        console.log(user)
+
+    const loadBoards = async () => {
+        const boards = await boardService.query()
+        setBoards(boards)
     }
-    const onRemoveBoard = (boardId) => {
-        dispatch(removeBoard(boardId))
+    console.log('boards: ', boards);
+    const addBoard = async () => {
+        // await boardService.setActivity(board, 'Added board')
+        await boardService.save({})
+        loadBoards()
     }
 
-    if (!user) return <div>Loading...</div>
+    const removeBoard = async (boardId) => {
+        await boardService.remove(boardId)
+        loadBoards()
+        if (boardId === params.id) {
+            naviget("/")
+        }
+    }
     return (
-        <main className={ `board-controller ${isPinned ? 'pinned' : ''}` }>
-            <div className={ `controller-btn  ${isPinned ? 'pinned' : ''} ` }
-                onClick={ onSetIsPinned }>
-                { isPinned ? '<' : '>' }
+        <main
+            className={`board-controller ${isExpend ? 'expend' : ''} ${isPinned ? 'pinned' : ''}`}
+            onMouseEnter={() => setIsExpend(!isExpend,)}
+            onMouseLeave={() => setIsExpend(!isExpend)}
+        >
+            <div className={`controller-btn  ${isPinned ? 'pinned' : ''} `}
+                // onMouseOver={ () => setIsExpend(isExpend) }
+                onClick={onSetIsPinned}>
+                {isPinned ? '<' : '>'}
             </div>
-            <div className="controller-container">
+
+            <div className={`controller-container ${isExpend ? 'expend' : ''} ${isPinned ? 'pinned' : ''}`}>
                 <div className="controller-top">
                     <div className="controller-top-top">
                         <div className="dropdown-navigation-header-container">
@@ -53,7 +67,7 @@ export const BoardController = ({ onSetIsPinned, isPinned }) => {
                         </div>
                     </div>
                     <div className="controller-top-bottom">
-                        <div className="btn-add" onClick={ onAddBoard }><Plus /><span>Add</span></div>
+                        <div onClick={() => addBoard()} className="btn-add"><Plus /><span>Add</span></div>
                         <div className="board-search-box">
                             <Magnifier />
                             <input type="text" placeholder="Search" />
@@ -64,18 +78,39 @@ export const BoardController = ({ onSetIsPinned, isPinned }) => {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div >
                     <div className="spacer"></div>
-                </div>
+                </div >
                 <div className="controller-bottom">
                     <div className="board-list-container">
-                        <BoardList
-                            boards={ user.boards }
-                            onRemoveBoard={ onRemoveBoard }
-                        />
-                    </div>
-                </div>
-            </div>
+                        {
+                            boards && boards.map((board, idx) => {
+                                return <div className="boards-list-wraper flex column">
+                                    <div className="board-preview">
+                                        <NavLink style={{ backgroundColor: 'rgb(0, 200, 117)' }}
+                                            className={(navData) => (navData.isActive ? 'active' : '')}
+                                            to={`/board/${board._id}`}>
+                                            <div key={idx} className="board-preview-card-wrapper">
+                                                <div className="board-preview-card">
+                                                    <div className="board-icon"><Board /></div>
+                                                    <div className="board-title-container">
+                                                        <div className="board-title">{board.title}</div>
+                                                        <div className="board-dropdown-menu"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </NavLink>
+                                    </div>
+                                    <div onClick={() => removeBoard(board._id)} className="btn-board-remove">
+                                        remove
+                                    </div>
+                                </div>
+
+                            })
+                        }
+                    </div >
+                </div >
+            </div >
         </main >
     )
 }
