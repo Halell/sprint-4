@@ -20,10 +20,6 @@ export const BoardController = ({ onSetIsPinned, isPinned }) => {
         const boards = await boardService.query()
         setBoards(boards)
     }
-<<<<<<< HEAD
-    console.log('boards: ', boards)
-=======
->>>>>>> 65b2a5d2e6c2b5ee7fd4a9de8054f3c857160624
     const addBoard = async () => {
         // await boardService.setActivity(board, 'Added board')
         await boardService.save({})
