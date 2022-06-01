@@ -8,6 +8,7 @@ import { ReactComponent as HideSecondSvg } from '../assets/svg/hide.second.svg'
 import { FiUserPlus } from 'react-icons/fi'
 import { BiDotsHorizontalRounded } from 'react-icons/bi'
 import { boardService } from "../services/board.service"
+import { ActivityLog } from "./acttivity"
 
 
 export function BoardHeader({ onAddGroup, onChangeFilter, getPersons, onSaveBoard, board, onAddTask, group }) {
@@ -16,7 +17,7 @@ export function BoardHeader({ onAddGroup, onChangeFilter, getPersons, onSaveBoar
     const [user, setUser] = useState({ fullname: '' })
 
     function openActivty() {
-        setActivityOpen(isActivityOpen ? false : true)
+        setActivityOpen(!isActivityOpen)
     }
 
     function updateBoardTitle(el) {
@@ -76,46 +77,37 @@ export function BoardHeader({ onAddGroup, onChangeFilter, getPersons, onSaveBoar
                                 </div>
                             </div>
                             <div className="right-container">
-                                <div className="invite"><FiUserPlus />Invite/1</div>
+
+                                <div onClick={() => setInvite(isMemberInvite ? false : true)} className="invite"><FiUserPlus />Invite/1</div>
+                                {isMemberInvite &&
+                                    <div className="board-invite-modal">
+                                        <h1><FiUserPlus />Invite/1</h1>
+                                        <form onSubmit={onSubmit}>
+                                            <input
+                                                className="invite-input"
+                                                type='text'
+                                                placeholder="Invite by email"
+                                                value={user.fullname}
+                                                name='fullname'
+                                                onChange={handleChange}>
+                                            </input>
+                                        </form>
+                                    </div>
+                                }
                                 <div onClick={() => openActivty()} className="activity">
                                     Activity
-                                    <div onClick={() => setInvite(isMemberInvite ? false : true)} className="invite"><FiUserPlus />Invite/1</div>
-                                    {isMemberInvite &&
-                                        <div className="board-invite-modal">
-                                            <h1><FiUserPlus />Invite/1</h1>
-                                            <form onSubmit={onSubmit}>
-                                                <input
-                                                    className="invite-input"
-                                                    type='text'
-                                                    placeholder="Invite by email"
-                                                    value={user.fullname}
-                                                    name='fullname'
-                                                    onChange={handleChange}>
-                                                </input>
-                                            </form>
-                                        </div>
-                                    }
-                                    <div onClick={() => openActivty()} className="activity">
-                                        Activity
-                                    </div>
-                                    <div className="add-to-board">+ Add to board </div>
-                                    <div className="edit"><BiDotsHorizontalRounded /></div>
                                 </div>
+                                <div className="add-to-board">+ Add to board </div>
+                                <div className="edit"><BiDotsHorizontalRounded /></div>
+
                             </div>
                         </div>
                         <div className="bottom-top-container">
                             <div className="desc"
-<<<<<<< HEAD
-                                suppressContentEditableWarning={ true }
-                                contentEditable={ true }
-                                onBlur={ updateBoardDesc }
-                            >{ board.desc ? board.desc : 'Add board description' } </div>
-=======
                                 suppressContentEditableWarning={true}
                                 contentEditable={true}
                                 onBlur={updateBoardDesc}
                             >{board.desc ? board.desc : 'Add board description'} </div>
->>>>>>> f64d1b2d57dff61407f0ae76ae7af78fa074e1be
                         </div>
 
                     </div>
@@ -132,10 +124,7 @@ export function BoardHeader({ onAddGroup, onChangeFilter, getPersons, onSaveBoar
                     </div>
                 </div>
                 {isActivityOpen &&
-                    <div className="activity-log-pannel">
-                        <div className="">
-                        </div>
-                    </div>
+                    <ActivityLog board={board} setActivityOpen={setActivityOpen} />
                 }
             </div >
         </div>
