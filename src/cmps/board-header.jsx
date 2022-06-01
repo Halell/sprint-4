@@ -55,7 +55,7 @@ export function BoardHeader({ onAddGroup, onChangeFilter, getPersons, onSaveBoar
             <div className="board-header-content" >
                 <div className="board-header-top">
                     <div className="board-header-top-top" >
-                        <div className="top-container flex" >
+                        <div className="top-container " >
                             <div className="left-container flex">
                                 <div className="board-name flex">
                                     <div className="board-title">
@@ -75,7 +75,7 @@ export function BoardHeader({ onAddGroup, onChangeFilter, getPersons, onSaveBoar
                                     </div>
                                 </div>
                             </div>
-                            <div className="right-container flex">
+                            <div className="right-container">
                                 <div className="invite"><FiUserPlus />Invite/1</div>
                                 <div onClick={() => openActivty()} className="activity">
                                     Activity
@@ -102,13 +102,13 @@ export function BoardHeader({ onAddGroup, onChangeFilter, getPersons, onSaveBoar
                                     <div className="edit"><BiDotsHorizontalRounded /></div>
                                 </div>
                             </div>
-                            <div className="bottom-top-container">
-                                <div className="desc"
-                                    suppressContentEditableWarning={true}
-                                    contentEditable={true}
-                                    onBlur={updateBoardDesc}
-                                >{board.desc ? board.desc : 'Add board description'} </div>
-                            </div>
+                        </div>
+                        <div className="bottom-top-container">
+                            <div className="desc"
+                                suppressContentEditableWarning={true}
+                                contentEditable={true}
+                                onBlur={updateBoardDesc}
+                            >{board.desc ? board.desc : 'Add board description'} </div>
                         </div>
 
                     </div>
