@@ -1,8 +1,11 @@
 import { boardService } from "./board.service";
 
 export async function filterByName(filterBy, boardId) {
-    console.log('ddddddddddddddddddddddddddd');
+    console.log('filterBy: ', filterBy);
+    if (!boardId) boardId = filterBy.boardId
+    console.log('boardId', boardId);
     const board = await boardService.getById(boardId)
+    console.log('boardddddddddddddd: ', board);
     const groups = board.groups.map(group => {
         group.tasks = filter(filterBy, group.tasks)
         return group

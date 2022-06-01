@@ -3,19 +3,21 @@ import { TaskPreview } from './task-preview'
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 import { utilService } from '../services/util.service'
 
-export function TaskList({ board, group, onUpdateTask, onRemoveTask, onAddGroup }) {
+export function TaskList({ board, group, onUpdateTask, onRemoveTask, onAddGroup, onAddTask }) {
 
     const [dragTasks, setDragTask] = useState(group.tasks)
+    // let dargTasks = group.tasks
+
+
 
     function handleOnDragEnd(res) {
-        console.log(res)
         if (!res.destination) return
         const tasks = Array.from(dragTasks)
         const [reorederdTask] = tasks.splice(res.source.index, 1)
         tasks.splice(res.destination.index, 0, reorederdTask)
-        console.log(tasks)
-        setDragTask(tasks)
         group.tasks = tasks
+        setDragTask(tasks)
+        console.log(group.tasks)
         onAddGroup(group)
     }
 
@@ -26,7 +28,7 @@ export function TaskList({ board, group, onUpdateTask, onRemoveTask, onAddGroup 
                     <Droppable droppableId={utilService.makeId()} key={utilService.makeId()}>
                         {(provided) =>
                             <div className="task-list-drag" {...provided.droppableProps} ref={provided.innerRef} >
-                                <Draggable key={utilService.makeId()} draggableId={task.id} index={idx}>
+                                <Draggable key={task.id} draggableId={task.id} index={idx}>
                                     {(provided) =>
                                         <div {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
                                             <TaskPreview

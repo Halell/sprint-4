@@ -10,6 +10,7 @@ import { MdArrowDropDown } from 'react-icons/md';
 import { RiLineHeight } from 'react-icons/ri';
 import { CgColorBucket } from 'react-icons/cg';
 import { MdOutlineWeb } from 'react-icons/md';
+import { useParams } from 'react-router-dom'
 
 
 
@@ -20,7 +21,7 @@ export const BoardFilter = ({ onAddGroup, onChangeFilter, getPersons, onAddTask,
     const [isNewItemOpen, setIsNewItemOpen] = useState(false)
     const [isSortOpen, setIsSortOpen] = useState(false)
     const [person, setPerson] = useState(null)
-
+    const params = useParams()
     function sort(sortBy) {
         const sortedTasks = board.groups.map(group => {
             return group.tasks.srot((a, b) => {
@@ -45,6 +46,7 @@ export const BoardFilter = ({ onAddGroup, onChangeFilter, getPersons, onAddTask,
     const [register] = useFormRegister({
         filterBy: {
             title: '',
+            boardId: params.id
             // persons: '',
         },
     }, onChangeFilter)
@@ -64,7 +66,7 @@ export const BoardFilter = ({ onAddGroup, onChangeFilter, getPersons, onAddTask,
             person
         }
         console.log('board._id: ', board._id);
-        onChangeFilter(filterBy, board._id)
+        onChangeFilter(filterBy)
     }
 
     return (

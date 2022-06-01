@@ -29,8 +29,6 @@ function remove(groupId, taskId, board) {
     return boardService.save(board)
 }
 
-
-
 async function saveTask(board, groupId, taskToSave) {
     try {
         // await
@@ -45,6 +43,7 @@ async function saveTask(board, groupId, taskToSave) {
                     taskToSave.text = "lets get it done"
                     taskToSave.importance = "mid"
                     group.tasks.push(taskToSave)
+                    console.log(group)
                 } else {
                     // console.log('hi')
                     const idx = group.tasks.findIndex(task => task.id === taskToSave.id)
@@ -54,7 +53,7 @@ async function saveTask(board, groupId, taskToSave) {
             return group
         })
         board.groups = groups
-        return board
+        return boardService.save(board)
     } catch (err) {
         throw err
     }

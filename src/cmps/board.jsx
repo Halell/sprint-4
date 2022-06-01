@@ -19,7 +19,6 @@ export const Board = ({ isPinned }) => {
     }, [params.id])
     const onLoadBoard = async () => {
         await dispatch(loadBoard(params.id))
-        // if (!isBoardExists) navigate('/board')
     }
     const onRemoveGroup = async (groupId) => {
         await boardService.setActivity(board, 'Removed group')
@@ -30,17 +29,16 @@ export const Board = ({ isPinned }) => {
     const onAddGroup = async (group) => {
         if (group) {
             await boardService.setActivity(board, 'Updated group')
-            await groupService.addGroup(board, group)
+            await groupService.saveGroup(board, group)
             dispatch(loadBoard(params.id))
             return
         }
         await boardService.setActivity(board, 'Added group')
-        await groupService.addGroup(board)
+        await groupService.saveGroup(board)
         dispatch(loadBoard(params.id))
     }
 
     const onAddTask = async (board, groupId, task) => {
-        // dispatch(updateBoard(board, groupId, task))
         await boardService.setActivity(board, 'Added task')
         await taskService.saveTask(board, groupId, task)
         dispatch(loadBoard(params.id))
@@ -48,7 +46,6 @@ export const Board = ({ isPinned }) => {
 
     const onUpdateTask = async (task, groupId) => {
         await boardService.setActivity(board, 'Added task')
-        // dispatch(updateBoard(board, groupId, task))
         await taskService.saveTask(board, groupId, task)
         dispatch(loadBoard(params.id))
     }
@@ -59,8 +56,8 @@ export const Board = ({ isPinned }) => {
         dispatch(loadBoard(params.id))
     }
 
-    const onChangeFilter = (filterBy, boardId) => {
-        dispatch(setFilterBy(filterBy, boardId))
+    const onChangeFilter = (filterBy) => {
+        dispatch(setFilterBy(filterBy, params.id))
     }
 
     const getPersons = () => {
@@ -106,8 +103,6 @@ export const Board = ({ isPinned }) => {
                             </div>
                         </div>
                     </div>
-
-
                 </div>
             </div>
         </section >
