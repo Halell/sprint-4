@@ -6,8 +6,14 @@
 
 }
 
+.cell-component-inner {
+    // background-color: chartreuse;
+}
+
 .cell-component {
-    overflow: hidden;
+    height: 35px;
+    background-color: #f5f6f8;
+    // overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     text-align: center;
@@ -15,12 +21,40 @@
     font-weight: 400;
     border-right: 1px solid;
     border-right-color: #fff;
+    border-bottom: 1px solid #d0d4e4;
+    border-top: 1px solid #ffffff;
     min-width: 140px;
     color: #323338;
     color: var(--primary-text-color);
     position: relative;
 
+    &.title-cell {
+        background-color: #ffffff00;
+    }
+
     &.date {
         overflow: visible;
     }
+
+    &.group-column {
+        background-color: #fff;
+    }
+
+    &.status {
+        background-color: rgb(255, 255, 255);
+        border-color: rgba(0, 128, 0, 0);
+        overflow: visible;
+    }
+
+    &.importance {
+        border-color: rgba(0, 128, 0, 0);
+    }
+
+    .task-columns-wraper {
+        height: 33px;
+    }
+}
+
+.add-member {
+    align-items: center;
 }
