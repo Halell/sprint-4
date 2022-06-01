@@ -4,11 +4,23 @@
     background-color: #f5f6f8;
 
     &:hover:not(.group-footer, .group-header-wrapper) {
+        .task-column {
+            background-color: rgb(230, 233, 239);
+        }
+
+        .title-inner-container {
+            background-color: rgb(230, 233, 239);
+        }
+
         background-color: rgb(230, 233, 239);
 
         .btn-pulse-menu {
             display: block;
         }
+    }
+
+    #root>main>div>section>section>div>div>div.board-content>div>div>div:nth-child(2)>div:nth-child(1)>div>div>div>div.cells-row-container>div>div:nth-child(2)>div>div>div>div {
+        background-color: aquamarine;
     }
 
     .pulse-component {
