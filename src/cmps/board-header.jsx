@@ -105,17 +105,10 @@ export function BoardHeader({ onAddGroup, onChangeFilter, getPersons, onSaveBoar
                         </div>
                         <div className="bottom-top-container">
                             <div className="desc"
-<<<<<<< HEAD
-                                suppressContentEditableWarning={ true }
-                                contentEditable={ true }
-                                onBlur={ updateBoardDesc }
-                            >{ board.desc ? board.desc : 'Add board description' } </div>
-=======
                                 suppressContentEditableWarning={true}
                                 contentEditable={true}
                                 onBlur={updateBoardDesc}
                             >{board.desc ? board.desc : 'Add board description'} </div>
->>>>>>> f64d1b2d57dff61407f0ae76ae7af78fa074e1be
                         </div>
 
                     </div>
