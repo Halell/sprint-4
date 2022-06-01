@@ -13,6 +13,8 @@
 
             .board-header-top-top {
                 .top-container {
+                    display: flex;
+                    justify-content: space-between;
 
                     .left-container {
                         .board-name {
@@ -59,9 +61,10 @@
                     }
 
                     .right-container {
-                        position: absolute;
-                        top: 26px;
-                        right: 20px;
+                        display: flex;
+                        // position: absolute;
+                        // top: 26px;
+                        // right: 20px;
                         justify-content: center;
                         align-items: center;
 
@@ -77,6 +80,7 @@
                         }
 
                         .activity {
+                            display: flex;
                             padding: 4px 8px;
                             margin-left: 16px;
                             cursor: pointer;
