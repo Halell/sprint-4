@@ -6,6 +6,7 @@ import { LabelsModal } from "./labels-modal"
 import { ReactComponent as InviteSvg } from '../assets/svg/invite.svg'
 import { ReactComponent as RemoveSvg } from '../assets/svg/remove.svg'
 import { ReactComponent as UserSvg } from '../assets/svg/user.svg'
+import userImg from '../assets/img/carmel.png'
 
 export function TaskColumn({ board, boardColumn, task, setStatus, statusBgcColor, importanceBgcColor, setTxt, setMember, removeMember, addUser, handleSelect }) {
 
@@ -103,7 +104,7 @@ export function TaskColumn({ board, boardColumn, task, setStatus, statusBgcColor
                                 < div onClick={() => setMember(person)} className="wrapper" key={idx}>
                                     <div className="add-member-box flex">
                                         <div className="img-user flex">
-                                            <img src="src/assets/img/carmel.png" />
+                                            <img src={userImg} />
                                         </div>
                                         <div className="user-full-name flex">{person.fullname}</div>
                                     </div>

@@ -52,8 +52,8 @@ export function GroupFooter({ group, onAddTask }) {
                     </div>
                 </div>
                 <div className="footer-spacer">
-                    <div></div>
                 </div>
+                    <div></div>
             </div>
         </div>
     )

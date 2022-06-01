@@ -1,11 +1,6 @@
 import { useEffect, useState } from 'react'
 import { NavLink, useNavigate, useParams } from 'react-router-dom'
 import { boardService } from '../services/board.service'
-import DatePicker from "react-datepicker"
-
-import { addBoard, removeBoard, loadBoard } from '../store/action/board.actions'
-import { onLogin, onUpdateUser } from '../store/action/user.actions'
-import { BoardList } from './board-list'
 import { ReactComponent as Plus } from '../assets/svg/plus-sign.svg'
 import { ReactComponent as Magnifier } from '../assets/svg/magnifier.svg'
 import { ReactComponent as Lightning } from '../assets/svg/lightning.svg'
@@ -25,7 +20,6 @@ export const BoardController = ({ onSetIsPinned, isPinned }) => {
         const boards = await boardService.query()
         setBoards(boards)
     }
-    console.log('boards: ', boards);
     const addBoard = async () => {
         // await boardService.setActivity(board, 'Added board')
         await boardService.save({})

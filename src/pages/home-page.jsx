@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux"
 import { Link } from 'react-router-dom'
-import { onLogin, onSignup } from '../store/action/user.actions'
-import { userService } from "../services/user.service"
+// import { onLogin, onSignup } from '../store/action/user.actions'
+// import { userService } from "../services/user.service"
 
 export const HomePage = () => {
 

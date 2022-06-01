@@ -1,13 +1,7 @@
 import { useState } from 'react'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-
-
 import { AppSideBar } from '../cmps/app-side-bar'
 import { BoardController } from '../cmps/board-controller'
 import { Board } from '../cmps/board'
-import { Workspace } from '../pages/work-space'
-
-// import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 
 export const MainApp = () => {
     const [isPinned, setIsPinned] = useState(false)

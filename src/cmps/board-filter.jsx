@@ -1,7 +1,6 @@
 import { useState } from "react"
 import { useFormRegister } from "../hooks/useFormRegister"
 import { ReactComponent as ArrowSvg } from '../assets/svg/arrow.svg'
-import { ReactComponent as UserSvg } from '../assets/svg/user.svg'
 import { FiFilter } from 'react-icons/fi';
 import { FaRegUserCircle } from 'react-icons/fa';
 import { AiOutlinePushpin } from 'react-icons/ai';

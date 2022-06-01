@@ -1,9 +1,6 @@
-import { Link } from "react-router-dom"
 import { useState } from "react"
-import { updateBoard } from "../store/action/board.actions"
 import { BoardFilter } from "./board-filter"
 import { ReactComponent as StarSvg } from '../assets/svg/star.svg'
-import { ReactComponent as UserSvg } from '../assets/svg/user.svg'
 import { ReactComponent as HideSecondSvg } from '../assets/svg/hide.second.svg'
 import { FiUserPlus } from 'react-icons/fi'
 import { BiDotsHorizontalRounded } from 'react-icons/bi'

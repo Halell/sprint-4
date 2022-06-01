@@ -37,6 +37,7 @@ export function TaskList({ board, group, onUpdateTask, onRemoveTask, onAddGroup,
                                                 onUpdateTask={onUpdateTask}
                                                 task={task}
                                                 board={board}
+                                                onAddGroup={onAddGroup}
                                             />
                                         </div>
                                     }

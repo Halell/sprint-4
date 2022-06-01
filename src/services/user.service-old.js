@@ -6,7 +6,6 @@ import { socketService, SOCKET_EVENT_USER_UPDATED, SOCKET_EMIT_USER_WATCH } from
 
 const gUser = require('../data/user.json')
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
-// var gWatchedUser = null;
 
 export const userService = {
     login,
