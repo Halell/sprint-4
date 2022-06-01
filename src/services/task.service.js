@@ -37,6 +37,7 @@ async function saveTask(board, groupId, taskToSave) {
         const groups = board.groups.map(group => {
             if (group.id === groupId) {
                 if (!taskToSave.id) {
+                    console.log('hi')
                     taskToSave.id = utilService.makeId()
                     taskToSave.date = "24/05/2022"
                     taskToSave.persons = []

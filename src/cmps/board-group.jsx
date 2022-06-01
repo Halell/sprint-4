@@ -61,7 +61,6 @@ export function BoardContent({ group, onAddTask, onRemoveGroup, onUpdateTask, on
                 onSaveBoard={onSaveBoard}
                 onRemoveTask={onRemoveTask}
                 group={group}
-                onAddTask={onAddTask}
                 onUpdateTask={onUpdateTask}
                 board={board}
                 onAddGroup={onAddGroup}
