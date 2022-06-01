@@ -149,3 +149,34 @@
         outline: dashed 1px rgb(180, 180, 180);
     }
 }
+
+.board-invite-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    inset: 50% auto auto 50%;
+    border: 1px solid rgb(204, 204, 204);
+    overflow: hidden;
+    border-radius: 8px;
+    outline: none;
+    padding: 0px;
+    height: auto;
+    width: 530px;
+    transform: translate(-50%, -50%);
+    transition: all 0.4s ease 0s;
+    box-shadow: rgb(0 0 0) 0px 6px 20px 0px;
+    z-index: 40;
+    padding: 24px 32px 8px 32px;
+
+    .invite-input {
+        height: 30px;
+        width: 100%;
+        background-color: #f2f2f2;
+        border-radius: 10px;
+        margin-bottom: 60px;
+
+        &:hover {
+            background-color: #c6c6c6;
+        }
+    }
+}

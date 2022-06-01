@@ -16,14 +16,17 @@ export function filter(filterBy, tasks) {
     if (filterBy) {
         var { title, person } = filterBy
         console.log('person: ', person);
-        // maxBatteryStatus = maxBatteryStatus || Infinity
-        // minBatteryStatus = minBatteryStatus || 0
         if (title) {
             tasksToReturn = tasks.filter(task => task.title.toLowerCase().includes(title.toLowerCase())
             )
         } else if (person) {
-            tasksToReturn = tasks.filter(task => task.persons.map(person => person.fullname.includes(person)))
+            console.log('tasks: ', tasks);
+            tasksToReturn = tasks.filter(task => {
+                const tasksByMember = task.persons.filter(member => member.fullname.includes(person.fullname))
+                if (tasksByMember.length) return true //true
+            })
         }
+        console.log('task: ', tasksToReturn);
 
         //  && robot.model.toLowerCase().includes(model.toLowerCase())
         // && (robot.batteryStatus < maxBatteryStatus)

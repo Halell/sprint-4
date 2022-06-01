@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { Navigate, useNavigate, useParams } from 'react-router-dom'
 import { BoardHeader } from './board-header'
 import { BoardContent } from './board-group'
 import { useDispatch, useSelector } from 'react-redux'
@@ -12,14 +12,14 @@ export const Board = ({ isPinned }) => {
     const params = useParams()
     let { board } = useSelector((storeState) => storeState.boardModule)
     const dispatch = useDispatch()
-    // const { groups } = board
-
+    console.log('board: ', board);
     useEffect(() => {
         dispatch(loadBoard(params.id))
         console.log(params.id)
     }, [params.id])
 
     const onRemoveGroup = async (groupId) => {
+        await boardService.setActivity(board, 'Removed group')
         await groupService.remove(groupId, board)
         dispatch(loadBoard())
     }
@@ -29,16 +29,19 @@ export const Board = ({ isPinned }) => {
             dispatch(loadBoard())
             return
         }
+        await boardService.setActivity(board, 'Added board')
         await groupService.addGroup(board)
         dispatch(loadBoard())
     }
     const onAddTask = async (board, groupId, task) => {
+        await boardService.setActivity(board, 'Added task')
         dispatch(updateBoard(board, groupId, task))
     }
-    const onUpdateTask = (task, groupId) => {
+    const onUpdateTask = async (task, groupId) => {
         dispatch(updateBoard(board, groupId, task))
     }
     const onRemoveTask = async (groupId, taskId) => {
+        await boardService.setActivity(board, 'Removed task')
         await taskService.remove(groupId, taskId, board)
         dispatch(loadBoard())
     }
@@ -50,8 +53,10 @@ export const Board = ({ isPinned }) => {
         const persons = board.persons
     }
     const onSaveBoard = async (newBoard) => {
+        await boardService.setActivity(board, 'Added board')
         await boardService.save(newBoard)
     }
+
 
     return (
         <section className={`board ${isPinned ? ' board-controller-pinned' : ''}`}>

@@ -26,9 +26,21 @@ export function getActionUpdateBoard(board) {
 
 var subscriber
 
+// export function loadBoards() {
+//     return async () => {
+//         try {
+//             const boards = await boardService.query()
+//             console.log('boards: ', boards);
+//             return boards
+//         } catch (err) {
+//             throw err
+//         }
+//     }
+// }
+
 export function loadBoard(boardId) {
     return (dispatch) => {
-        boardService.query(boardId)
+        boardService.getById(boardId)
             .then(board => {
                 dispatch({
                     type: 'SET_BOARD',
@@ -91,6 +103,8 @@ export function setFilterBy(filterBy) {
         dispatch({ type: 'SET_BOARD', board })
     }
 }
+
+
 
 // export function addToBoardt(board) {
 //     return (dispatch) => {

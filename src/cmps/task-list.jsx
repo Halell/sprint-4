@@ -1,20 +1,22 @@
-import { Fragment } from 'react'
+import { Fragment, useState } from 'react'
 
 import { TaskPreview } from './task-preview'
 
-export function TaskList({ board, group, onUpdateTask, onRemoveTask }) {
+export function TaskList({ board, group, onUpdateTask, onRemoveTask, onAddTask }) {
+
 
     return (
         <Fragment>
-            { group.tasks.map((task, idx) =>
+            {group.tasks.map((task, idx) =>
                 <TaskPreview
-                    onRemoveTask={ onRemoveTask }
-                    group={ group }
-                    onUpdateTask={ onUpdateTask }
-                    task={ task }
-                    key={ idx }
-                    board={ board }
-                />) }
+                    onRemoveTask={onRemoveTask}
+                    group={group}
+                    onUpdateTask={onUpdateTask}
+                    task={task}
+                    key={idx}
+                    board={board}
+                    onAddTask={onAddTask}
+                />)}
         </Fragment>
     )
 }

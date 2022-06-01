@@ -7,6 +7,11 @@
         overflow: hidden;
         text-overflow: ellipsis;
     }
+
+    .date-picker {
+        position: absolute;
+        z-index: 25;
+    }
 }
 
 

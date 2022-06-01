@@ -5,11 +5,15 @@ import { ReactComponent as UserSvg } from '../assets/svg/user.svg'
 import { ReactComponent as HideSecondSvg } from '../assets/svg/hide.second.svg'
 import { FiUserPlus } from 'react-icons/fi'
 import { ReactComponent as ActivitySvg } from '../assets/svg/activity.svg'
-import { Link } from "react-router-dom"
 import { useState } from "react"
+import { ActivityLog } from "./acttivity"
+import { boardService } from "../services/board.service"
+
 
 export function BoardHeader({ onAddGroup, onChangeFilter, getPersons, onSaveBoard, board, onAddTask, group }) {
     const [isActivityOpen, setActivityOpen] = useState(false)
+    const [isMemberInvite, setInvite] = useState(false)
+    const [user, setUser] = useState({ fullname: '' })
 
     function openActivty() {
         setActivityOpen(isActivityOpen ? false : true)
@@ -25,6 +29,24 @@ export function BoardHeader({ onAddGroup, onChangeFilter, getPersons, onSaveBoar
         const desc = el.target.innerText
         board.desc = desc
         onSaveBoard(board)
+    }
+
+    const handleChange = ({ target }) => {
+        const field = target.name
+        const { value } = target
+        setUser({ ...user, [field]: value })
+    }
+
+    async function addMember(member) {
+        board.persons.push(member)
+        await boardService.setActivity(board, 'Added member')
+        onSaveBoard(board)
+    }
+
+    const onSubmit = (el) => {
+        el.preventDefault()
+        const name = { ...user.fullname.split('@') }
+        addMember(name[0])
     }
 
 
@@ -54,7 +76,22 @@ export function BoardHeader({ onAddGroup, onChangeFilter, getPersons, onSaveBoar
                                 </div>
                             </div>
                             <div className="right-container flex">
-                                <div className="invite"><FiUserPlus />Invite/1</div>
+                                <div onClick={() => setInvite(isMemberInvite ? false : true)} className="invite"><FiUserPlus />Invite/1</div>
+                                {isMemberInvite &&
+                                    <div className="board-invite-modal">
+                                        <h1><FiUserPlus />Invite/1</h1>
+                                        <form onSubmit={onSubmit}>
+                                            <input
+                                                className="invite-input"
+                                                type='text'
+                                                placeholder="Invite by email"
+                                                value={user.fullname}
+                                                name='fullname'
+                                                onChange={handleChange}>
+                                            </input>
+                                        </form>
+                                    </div>
+                                }
                                 <div onClick={() => openActivty()} className="activity">
                                     <ActivitySvg /> Activity
                                 </div>
@@ -91,14 +128,7 @@ export function BoardHeader({ onAddGroup, onChangeFilter, getPersons, onSaveBoar
             </div>
 
             {isActivityOpen &&
-
-                <div className="activity-log-pannel">
-                    <div className="">
-
-                    </div>
-
-                </div>
-
+                <ActivityLog board={board} setActivityOpen={setActivityOpen} />
             }
         </div >
     )

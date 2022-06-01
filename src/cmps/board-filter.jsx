@@ -6,6 +6,7 @@ import { FiFilter } from 'react-icons/fi';
 import { FaRegUserCircle } from 'react-icons/fa';
 import { AiOutlinePushpin } from 'react-icons/ai';
 import { BsArrowDownUp, BsEyeSlash } from 'react-icons/bs';
+import { MdArrowDropDown } from 'react-icons/md';
 import { RiLineHeight } from 'react-icons/ri';
 import { CgColorBucket } from 'react-icons/cg';
 import { MdOutlineWeb } from 'react-icons/md';
@@ -19,6 +20,16 @@ export const BoardFilter = ({ onAddGroup, onChangeFilter, getPersons, onAddTask,
     const [isNewItemOpen, setIsNewItemOpen] = useState(false)
     const [isSortOpen, setIsSortOpen] = useState(false)
     const [person, setPerson] = useState(null)
+
+    function sort(sortBy) {
+        const sortedTasks = board.groups.map(group => {
+            return group.tasks.srot((a, b) => {
+                return a.title - b.title
+            })
+        })
+        console.log(sortedTasks)
+    }
+
     const toggle = (val) => {
         if (val === 'person-modal') {
             setIsModalOpen(isModalOpen ? false : true)
@@ -50,7 +61,7 @@ export const BoardFilter = ({ onAddGroup, onChangeFilter, getPersons, onAddTask,
 
     const getPerson = (person) => {
         const filterBy = {
-            person: person.fullname
+            person
         }
         onChangeFilter(filterBy)
     }
@@ -110,14 +121,14 @@ export const BoardFilter = ({ onAddGroup, onChangeFilter, getPersons, onAddTask,
                         Sort by
                         <div className="sort-right-header">
                             <div className="clear-btn">Reset sort</div>
-                            <div className="sort-btn">Sort</div>
+                            <div onClick={() => sort()} className="sort-btn">Sort</div>
                         </div>
                     </div>
                     <div className="modal-sort-main">
                         <div className="btn-sort-content">
-                            <div className="by-text">Text</div>
+                            <div className="by-text">Text <MdArrowDropDown /></div>
                         </div>
-                        <div className="by-order"> Acending</div>
+                        <div className="by-order"> Acending<MdArrowDropDown /></div>
                     </div>
                 </div>
             }
