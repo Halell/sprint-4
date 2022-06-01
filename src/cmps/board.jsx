@@ -29,6 +29,7 @@ export const Board = ({ isPinned }) => {
 
     const onAddGroup = async (group) => {
         if (group) {
+            await boardService.setActivity(board, 'Updated group')
             await groupService.addGroup(board, group)
             dispatch(loadBoard(params.id))
             return
@@ -39,12 +40,17 @@ export const Board = ({ isPinned }) => {
     }
 
     const onAddTask = async (board, groupId, task) => {
+        // dispatch(updateBoard(board, groupId, task))
         await boardService.setActivity(board, 'Added task')
-        dispatch(updateBoard(board, groupId, task))
+        await taskService.saveTask(board, groupId, task)
+        dispatch(loadBoard(params.id))
     }
 
     const onUpdateTask = async (task, groupId) => {
-        dispatch(updateBoard(board, groupId, task))
+        await boardService.setActivity(board, 'Added task')
+        // dispatch(updateBoard(board, groupId, task))
+        await taskService.saveTask(board, groupId, task)
+        dispatch(loadBoard(params.id))
     }
 
     const onRemoveTask = async (groupId, taskId) => {

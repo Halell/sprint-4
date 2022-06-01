@@ -64,7 +64,7 @@ async function setActivity(board, txt, from, to) {
 }
 
 async function save(board, groupId, task) {
-    var savedBoard = (task) ? taskService.saveTask(board, groupId, task) : null
+    var savedBoard //= (task) ? taskService.saveTask(board, groupId, task) : null
     if (board._id) {
         savedBoard = await storageService.put(STORAGE_KEY, board)
         boardChannel.postMessage(getActionUpdateBoard(savedBoard))

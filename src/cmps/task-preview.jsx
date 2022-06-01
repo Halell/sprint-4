@@ -19,7 +19,7 @@ export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask, on
 
     const toggle = (val) => {
         if (val === 'btn-input') {
-            setIsBtnInputOpen(isBtnInputOpen ? false : true)
+            setIsBtnInputOpen(!isBtnInputOpen)
         }
     }
 
@@ -92,43 +92,43 @@ export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask, on
         <div className="pulse-component-wrapper">
             <div className="pulse-component" >
                 <TitleCell
-                    onSetIsModalOpen={ onSetIsModalOpen }
-                    task={ task }
-                    onUpdateTask={ onUpdateTask }
-                    group={ group }
+                    onSetIsModalOpen={onSetIsModalOpen}
+                    task={task}
+                    onUpdateTask={onUpdateTask}
+                    group={group}
                 />
                 <div className="cells-row-container">
                     <div className="cells-row-component">
-                        { board.columns && board.columns.map((boardColumn, idx) =>
-                            <div className="cell-component-wrapper" key={ idx }>
+                        {board.columns && board.columns.map((boardColumn, idx) =>
+                            <div className="cell-component-wrapper" key={idx}>
                                 <div className="cell-component-inner">
-                                    <div className={ `cell-component ${boardColumn}` } >
+                                    <div className={`cell-component ${boardColumn}`} >
                                         <TaskColumn
-                                            setStatus={ setStatus }
-                                            boardColumn={ boardColumn }
-                                            task={ task }
-                                            importanceBgcColor={ importanceBgcColor }
-                                            statusBgcColor={ statusBgcColor }
-                                            setTxt={ setTxt }
-                                            board={ board }
-                                            setMember={ setMember }
-                                            removeMember={ removeMember }
-                                            addUser={ addUser }
-                                            handleSelect={ handleSelect }
+                                            setStatus={setStatus}
+                                            boardColumn={boardColumn}
+                                            task={task}
+                                            importanceBgcColor={importanceBgcColor}
+                                            statusBgcColor={statusBgcColor}
+                                            setTxt={setTxt}
+                                            board={board}
+                                            setMember={setMember}
+                                            removeMember={removeMember}
+                                            addUser={addUser}
+                                            handleSelect={handleSelect}
                                         />
                                     </div>
                                 </div>
                             </div>
-                        ) }
+                        )}
                     </div>
                 </div>
                 <div className="column-wrapper-add"></div>
             </div>
-            { isModalOpen &&
+            {isModalOpen &&
                 <div className='task-modal-menu'>
                     <div color='task-btns-modal-open'>
                         <div className='task-btn-crud'><HiOutlineDocumentDuplicate />Duplicate</div>
-                        <div onClick={ () => onRemoveTask(group.id, task.id) } className='task-btn-crud'><AiOutlineDelete />Delete</div>
+                        <div onClick={() => onRemoveTask(group.id, task.id)} className='task-btn-crud'><AiOutlineDelete />Delete</div>
                     </div>
                 </div>
             }
