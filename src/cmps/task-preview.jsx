@@ -80,14 +80,6 @@ export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask, on
         await boardService.setActivity(board, `Changed ${field}`, prevStatus, task[field])
     }
 
-    // const useBtn = (val, task) => {
-    //     if (val === 'duplicate') {
-    //         const duplicateTask = { ...task }
-    //         duplicateTask.id = null
-    //         onAddTask(duplicateTask)
-    //     }
-    // }
-
     return (
         <div className="pulse-component-wrapper">
             <div className="pulse-component" >

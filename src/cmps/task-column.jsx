@@ -99,7 +99,6 @@ export function TaskColumn({ board, boardColumn, task, setStatus, statusBgcColor
                     {board.persons && board.persons.map((person, idx) => {
                         {
                             const taskPersons = Array.from(task.persons.map(person => person.fullname))
-                            // const boardPersons =Array.from
                             return !taskPersons.includes(person.fullname) &&
                                 < div onClick={() => setMember(person)} className="wrapper" key={idx}>
                                     <div className="add-member-box flex">
