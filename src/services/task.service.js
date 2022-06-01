@@ -29,8 +29,6 @@ function remove(groupId, taskId, board) {
     return boardService.save(board)
 }
 
-
-
 async function saveTask(board, groupId, taskToSave) {
     try {
         // await

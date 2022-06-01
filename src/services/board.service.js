@@ -25,11 +25,9 @@ function getCurrBoard() {
     return gCurrBoard
 }
 
-async function query(boardId) {
+async function query() {
     const boards = await storageService.query(STORAGE_KEY)
     console.log('boards: ', boards);
-    // const board = await storageService.get(STORAGE_KEY, boardId)
-    // gCurrBoard = board
     return boards
 }
 function getById(boardId) {
@@ -97,20 +95,13 @@ async function save(board, groupId, task) {
     }
     return savedBoard
 }
-// function getEmptyBoard() {
-//     return {
-//         vendor: 'Susita-' + (Date.now() % 1000),
-//         price: utilService.getRandomIntInclusive(1000, 9000),
-//     }
-// }
+
 function subscribe(listener) {
     boardChannel.addEventListener('message', listener)
 }
 function unsubscribe(listener) {
     boardChannel.removeEventListener('message', listener)
 }
-// TEST DATA
-// storageService.post(STORAGE_KEY, {vendor: 'Subali Rahok 2', price: 980}).then(x => console.log(x))
 
 
 

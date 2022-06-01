@@ -34,7 +34,7 @@ export const Board = ({ isPinned }) => {
             return
         }
         await boardService.setActivity(board, 'Added group')
-        await groupService.addGroup(board)
+        await groupService.saveGroup(board)
         dispatch(loadBoard(params.id))
     }
 

@@ -5,19 +5,25 @@ import { utilService } from '../services/util.service'
 
 export function TaskList({ board, group, onUpdateTask, onRemoveTask, onAddGroup }) {
 
+    const [dragTasks, setDragTask] = useState(group.tasks)
+    // let dargTasks = group.tasks
+
+
+
     function handleOnDragEnd(res) {
         if (!res.destination) return
-        const tasks = Array.from(group.tasks)
+        const tasks = Array.from(dragTasks)
         const [reorederdTask] = tasks.splice(res.source.index, 1)
         tasks.splice(res.destination.index, 0, reorederdTask)
         group.tasks = tasks
+        setDragTask(tasks)
         console.log(group.tasks)
         onAddGroup(group)
     }
 
     return (
         <DragDropContext onDragEnd={handleOnDragEnd}>
-            {group.tasks.map((task, idx) => {
+            {dragTasks.map((task, idx) => {
                 return (
                     <Droppable droppableId={utilService.makeId()} key={utilService.makeId()}>
                         {(provided) =>
