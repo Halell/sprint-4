@@ -78,13 +78,8 @@ export function BoardHeader({ onAddGroup, onChangeFilter, getPersons, onSaveBoar
                             </div>
                             <div className="right-container">
 
-<<<<<<< HEAD
                                 <div onClick={() => setInvite(!isMemberInvite)} className="invite"><FiUserPlus />Invite/1</div>
                                 {isMemberInvite &&
-=======
-                                <div onClick={ () => setInvite(isMemberInvite ? false : true) } className="invite"><FiUserPlus />Invite/1</div>
-                                { isMemberInvite &&
->>>>>>> b461b88f586fbd53c30961c20a3fded88b04ff71
                                     <div className="board-invite-modal">
                                         <div onClick={() => setInvite(!isMemberInvite)}>x</div>
                                         <h1><FiUserPlus />Invite/1</h1>
