@@ -1,4 +1,4 @@
-const fs = require('fs')
+// const fs = require('fs')
 const gBoard = require('../data/board.json')
 const gUser = require('../data/user.json')
 export const storageService = {
@@ -12,7 +12,8 @@ export const storageService = {
 
 
 function query(entityType, delay = 100) {
-    var entities = JSON.parse(localStorage.getItem(entityType)) || gBoard
+    let defaultEntity = (entityType === 'user') ? [] : gBoard  // for develop
+    var entities = JSON.parse(localStorage.getItem(entityType)) || defaultEntity
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             // reject('OOOOPs')
@@ -21,22 +22,22 @@ function query(entityType, delay = 100) {
         }, delay)
     })
 }
-function get(entityType, entityId = "b101") {
+function get(entityType, entityId) {
     return query(entityType)
         .then(entities => entities.find(entity => entity._id === entityId))
 }
 function post(entityType, newEntity) {
-    newEntity._id = _makeId()
+    newEntity._id = newEntity._id || _makeId()//this condition is for update a new demo user 
     return query(entityType)
         .then(entities => {
             entities.push(newEntity)
-
             _save(entityType, entities)
             return newEntity
         })
 }
 
 function put(entityType, updatedEntity) {
+    // console.log('upda: ', updatedEntity)
     return query(entityType)
         .then(entities => {
             const idx = entities.findIndex(entity => entity._id === updatedEntity._id)

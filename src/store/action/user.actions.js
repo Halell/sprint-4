@@ -1,4 +1,4 @@
-// import { userService } from "../../services/user.service.js";
+// import { userService } from "../../services/user.service.js"
 
 
 // export function loadUsers() {
@@ -14,7 +14,6 @@
 //         }
 //     }
 // }
-
 // export function removeUser(userId) {
 //     return async dispatch => {
 //         try {
@@ -25,11 +24,11 @@
 //         }
 //     }
 // }
-
 // export function onLogin(credentials) {
 //     return async (dispatch) => {
 //         try {
 //             const user = await userService.login(credentials)
+
 //             dispatch({
 //                 type: 'SET_USER',
 //                 user
@@ -39,8 +38,6 @@
 //         }
 //     }
 // }
-
-
 // export function onSignup(credentials) {
 //     return async (dispatch) => {
 //         try {
@@ -51,6 +48,20 @@
 //             })
 //         } catch (err) {
 //             console.log('Cannot signup', err)
+//         }
+
+//     }
+// }
+// export function onUpdateUser(user) {
+//     return async (dispatch) => {
+//         try {
+//             const updatedUser = await userService.update(user)
+//             dispatch({
+//                 type: 'SET_USER',
+//                 user: updatedUser
+//             })
+//         } catch (err) {
+//             console.log('Cannot update the user', err)
 //         }
 
 //     }
@@ -73,7 +84,7 @@
 // export function loadUser(userId) {
 //     return async (dispatch) => {
 //         try {
-//             const user = await userService.getById(userId);
+//             const user = await userService.getById(userId)
 //             dispatch({ type: 'SET_WATCHED_USER', user })
 //         } catch (err) {
 //             console.log('Cannot load user', err)

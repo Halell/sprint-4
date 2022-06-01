@@ -12,13 +12,15 @@ export function GroupFooter({ group, onAddTask }) {
         const task = {
             title: ev.target.innerText
         }
-        if (task.title) onAddTask(board, group.id, task)
+        if (task.title) {
+            onAddTask(board, group.id, task)
+            
+        }
         setIsNewTaskEdit(!isNewTaskEdit)
     }
 
     const handleKeyPressAddTask = (event) => {
         if (event.key === 'Enter') {
-
             onSaveTask(event)
         }
     }
