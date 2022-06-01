@@ -113,10 +113,9 @@ export function updateBoard(board, groupId, task) {
     }
 }
 
-export function setFilterBy(filterBy) {
-    console.log('filterBy: ', filterBy);
+export function setFilterBy(filterBy, boardId) {
     return async (dispatch) => {
-        const board = await filterByName(filterBy)
+        const board = await filterByName(filterBy, boardId)
         dispatch({ type: 'SET_BOARD', board })
     }
 }
