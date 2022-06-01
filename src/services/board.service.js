@@ -44,6 +44,7 @@ async function remove(boardId) {
 }
 
 async function setActivity(board, txt, from, to) {
+    const createdAt = new Date()
     const activity = {
         byMember: {
             fullname: "guest",
@@ -54,7 +55,8 @@ async function setActivity(board, txt, from, to) {
         from,
         to,
         id: utilService.makeId(),
-        txt
+        txt,
+        createdAt: createdAt.toLocaleTimeString(),
     }
     board.activities.push(activity)
     save(board)
