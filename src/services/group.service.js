@@ -3,13 +3,13 @@ import { utilService } from "./util.service"
 import { loadBoard } from "../store/action/board.actions"
 
 export const groupService = {
-    addGroup,
+     saveGroup,
     remove,
     // query,
     // getById,
 }
 
-async function addGroup(board, updateGroup) {
+async function saveGroup(board, updateGroup) {
     let newGroup
     if (updateGroup) {
         if (!updateGroup.id) {
