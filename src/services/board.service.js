@@ -1,9 +1,7 @@
 
 import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
-import { userService } from './user.service-old.js'
 import { getActionRemoveBoard, getActionAddBoard, getActionUpdateBoard } from '../store/action/board.actions'
-import { taskService } from './task.service'
 
 const STORAGE_KEY = 'board'
 const boardChannel = new BroadcastChannel('boardChannel')
@@ -26,15 +24,18 @@ function getCurrBoard() {
 }
 
 async function query() {
+    // return httpService.get(`/board`)
     const boards = await storageService.query(STORAGE_KEY)
     console.log('boards: ', boards);
     return boards
 }
 function getById(boardId) {
+    // return httpService.get(`board/:boardId`)
     return storageService.get(STORAGE_KEY, boardId)
     // return axios.get(`/api/board/${boardId}`)
 }
 async function remove(boardId) {
+    // return httpService.delete(`/board/boardId`)
     // return new Promise((resolve, reject) => {
     //     setTimeout(reject, 2000)
     // })
@@ -44,6 +45,8 @@ async function remove(boardId) {
 }
 
 async function setActivity(board, txt, from, to) {
+
+    const createdAt = new Date()
     const activity = {
         byMember: {
             fullname: "guest",
@@ -54,19 +57,21 @@ async function setActivity(board, txt, from, to) {
         from,
         to,
         id: utilService.makeId(),
-        txt
+        txt,
+        createdAt: createdAt.toLocaleTimeString(),
     }
     board.activities.push(activity)
     save(board)
+    // return httpService.put(`/board/boardId`)
     return board
 }
 
-async function save(board, groupId, task) {
+async function save(board) {
     var savedBoard //= (task) ? taskService.saveTask(board, groupId, task) : null
     if (board._id) {
         savedBoard = await storageService.put(STORAGE_KEY, board)
         boardChannel.postMessage(getActionUpdateBoard(savedBoard))
-
+        // return httpService.put(`/board/boardId`)
     } else {
         const createdAt = new Date()
         const newBoard = {
@@ -87,12 +92,11 @@ async function save(board, groupId, task) {
             style: {},
             title: 'New Board'
         }
-        // Later, owner is set by the backend
-        // board.owner = userService.getLoggedinUser()
         savedBoard = await storageService.post(STORAGE_KEY, newBoard)
         boardChannel.postMessage(getActionAddBoard(savedBoard))
         console.log('adding board');
     }
+    // return httpService.post(`/board`)
     return savedBoard
 }
 

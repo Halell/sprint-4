@@ -1,9 +1,6 @@
-import { useEffect, useState } from 'react'
-import { NavLink } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
+import {  useState } from 'react'
+import { useDispatch } from 'react-redux'
 
-import { addBoard, removeBoard, updateBoard } from '../store/action/board.actions'
-import { onLogin, onUpdateUser } from '../store/action/user.actions'
 // import { BoardList } from './board-list'
 // import { ReactComponent as Plus } from '../assets/svg/plus-sign.svg'
 // import { ReactComponent as Magnifier } from '../assets/svg/magnifier.svg'

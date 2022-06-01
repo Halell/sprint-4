@@ -1,9 +1,6 @@
-import { Link } from "react-router-dom"
 import { useState } from "react"
-import { updateBoard } from "../store/action/board.actions"
 import { BoardFilter } from "./board-filter"
 import { ReactComponent as StarSvg } from '../assets/svg/star.svg'
-import { ReactComponent as UserSvg } from '../assets/svg/user.svg'
 import { ReactComponent as HideSecondSvg } from '../assets/svg/hide.second.svg'
 import { FiUserPlus } from 'react-icons/fi'
 import { BiDotsHorizontalRounded } from 'react-icons/bi'
@@ -35,11 +32,13 @@ export function BoardHeader({ onAddGroup, onChangeFilter, getPersons, onSaveBoar
     const handleChange = ({ target }) => {
         const field = target.name
         const { value } = target
+        console.log(value)
         setUser({ ...user, [field]: value })
     }
 
     async function addMember(member) {
         board.persons.push(member)
+        console.log(member)
         await boardService.setActivity(board, 'Added member')
         onSaveBoard(board)
     }
@@ -61,10 +60,10 @@ export function BoardHeader({ onAddGroup, onChangeFilter, getPersons, onSaveBoar
                                 <div className="board-name flex">
                                     <div className="board-title">
                                         <div className="board-title-name"
-                                            suppressContentEditableWarning={ true }
-                                            contentEditable={ true }
-                                            onBlur={ updateBoardTitle }
-                                        >{ board.title }</div>
+                                            suppressContentEditableWarning={true}
+                                            contentEditable={true}
+                                            onBlur={updateBoardTitle}
+                                        >{board.title}</div>
                                     </div>
                                     <div>
                                         <div className="btn-title-name" >
@@ -78,23 +77,24 @@ export function BoardHeader({ onAddGroup, onChangeFilter, getPersons, onSaveBoar
                             </div>
                             <div className="right-container">
 
-                                <div onClick={ () => setInvite(isMemberInvite ? false : true) } className="invite"><FiUserPlus />Invite/1</div>
-                                { isMemberInvite &&
+                                <div onClick={() => setInvite(!isMemberInvite)} className="invite"><FiUserPlus />Invite/{board.persons && board.persons.length}</div>
+                                {isMemberInvite &&
                                     <div className="board-invite-modal">
-                                        <h1><FiUserPlus />Invite/1</h1>
-                                        <form onSubmit={ onSubmit }>
+                                        <div onClick={() => setInvite(!isMemberInvite)}>x</div>
+                                        <h1><FiUserPlus />Invite/{board.persons.length}</h1>
+                                        <form onSubmit={onSubmit}>
                                             <input
                                                 className="invite-input"
                                                 type='text'
                                                 placeholder="Invite by email"
-                                                value={ user.fullname }
+                                                value={user.fullname}
                                                 name='fullname'
-                                                onChange={ handleChange }>
+                                                onChange={handleChange}>
                                             </input>
                                         </form>
                                     </div>
                                 }
-                                <div onClick={ () => openActivty() } className="activity">
+                                <div onClick={() => openActivty()} className="activity">
                                     Activity
                                 </div>
                                 <div className="add-to-board">+ Add to board </div>
@@ -104,10 +104,10 @@ export function BoardHeader({ onAddGroup, onChangeFilter, getPersons, onSaveBoar
                         </div>
                         <div className="bottom-top-container">
                             <div className="desc"
-                                suppressContentEditableWarning={ true }
-                                contentEditable={ true }
-                                onBlur={ updateBoardDesc }
-                            >{ board.desc ? board.desc : 'Add board description' } </div>
+                                suppressContentEditableWarning={true}
+                                contentEditable={true}
+                                onBlur={updateBoardDesc}
+                            >{board.desc ? board.desc : 'Add board description'} </div>
                         </div>
 
                     </div>
@@ -115,16 +115,16 @@ export function BoardHeader({ onAddGroup, onChangeFilter, getPersons, onSaveBoar
                     <hr />
                     <div className="board-header-filter flex">
                         <BoardFilter
-                            onAddGroup={ onAddGroup }
-                            onChangeFilter={ onChangeFilter }
-                            getPersons={ getPersons }
-                            board={ board }
-                            onAddTask={ onAddTask }
+                            onAddGroup={onAddGroup}
+                            onChangeFilter={onChangeFilter}
+                            getPersons={getPersons}
+                            board={board}
+                            onAddTask={onAddTask}
                         />
                     </div>
                 </div>
-                { isActivityOpen &&
-                    <ActivityLog board={ board } setActivityOpen={ setActivityOpen } />
+                {isActivityOpen &&
+                    <ActivityLog board={board} setActivityOpen={setActivityOpen} />
                 }
             </div >
         </div>

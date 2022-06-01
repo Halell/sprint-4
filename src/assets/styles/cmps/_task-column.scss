@@ -26,6 +26,22 @@
     position: relative;
 
     &.task-column-status {
+        &.green {
+            background-color: rgb(0, 200, 117);
+        }
+
+        &.orange {
+            background-color: rgb(253, 171, 61);
+        }
+
+        &.red {
+            background-color: rgb(226, 68, 92);
+        }
+
+        &.grey {
+            background-color: rgb(173, 150, 122);
+        }
+
         &::before {
             content: "";
             transition: border-width .2s .1s ease;
@@ -94,6 +110,7 @@
         width: 264px;
         top: 100%;
         right: 0;
+        z-index: 35;
 
         .item-member-list {
             justify-content: flex-start;

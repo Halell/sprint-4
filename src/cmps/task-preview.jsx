@@ -6,7 +6,7 @@ import { TaskColumn } from './task-column'
 import { boardService } from '../services/board.service'
 import { utilService } from '../services/util.service.js'
 
-export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask, onAddTask }) => {
+export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask, onAddTask, onAddGroup }) => {
     const [statusBgcColor, setStatusBgcColor] = useState('')
     const [importanceBgcColor, setImportanceBgcColor] = useState('')
     const [isBtnInputOpen, setIsBtnInputOpen] = useState(true)
@@ -17,10 +17,21 @@ export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask, on
         setStatus(task.status, 'status', 'loading') //ask rona
     }, [])
 
-    const toggle = (val) => {
-        if (val === 'btn-input') {
-            setIsBtnInputOpen(!isBtnInputOpen)
+    const calcProgress = () => {
+        let progress = {
+            done: 0,
+            inProgress: 0,
+            stuck: 0,
+            none: 0
         }
+        group.tasks.map(task => {
+            if (task.status === 'done') progress.done += 1
+            if (task.status === 'in-progress') progress.inProgress += 1
+            if (task.status === 'stuck') progress.stuck += 1
+            if (task.status === 'none') progress.none += 1
+        })
+        group.progress = progress
+        onAddGroup(group)
     }
 
     const handleSelect = async (date) => {
@@ -74,19 +85,11 @@ export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask, on
         task[field] = val
         field === 'status' ? setStatusBgcColor(color) : setImportanceBgcColor(color)
         task.style = { backgroundColor: color }
-
         if (loading) return
+        calcProgress()
         onUpdateTask(task, group.id)
         await boardService.setActivity(board, `Changed ${field}`, prevStatus, task[field])
     }
-
-    // const useBtn = (val, task) => {
-    //     if (val === 'duplicate') {
-    //         const duplicateTask = { ...task }
-    //         duplicateTask.id = null
-    //         onAddTask(duplicateTask)
-    //     }
-    // }
 
     return (
         <div className="pulse-component-wrapper">

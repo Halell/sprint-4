@@ -26,10 +26,10 @@ export function ActivityLog({ board, setActivityOpen }) {
                     <div className="activity-box flex">
                         <div className="activity-time flex">
                             <Time />
-                            <div>12m</div>
+                            <div>{activity.createdAt}</div>
                         </div>
                         <div className="activity-member flex">
-                            bob
+                           {activity.byMember.fullname}
                             <img src="" alt="" />
                         </div>
                         <div className="activity flex">
