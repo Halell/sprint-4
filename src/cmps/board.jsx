@@ -59,9 +59,8 @@ export const Board = ({ isPinned }) => {
         dispatch(loadBoard(params.id))
     }
 
-    const onChangeFilter = (filterBy) => {
-        console.log('filter ', filterBy);
-        dispatch(setFilterBy(filterBy))
+    const onChangeFilter = (filterBy, boardId) => {
+        dispatch(setFilterBy(filterBy, boardId))
     }
 
     const getPersons = () => {

@@ -63,7 +63,8 @@ export const BoardFilter = ({ onAddGroup, onChangeFilter, getPersons, onAddTask,
         const filterBy = {
             person
         }
-        onChangeFilter(filterBy)
+        console.log('board._id: ', board._id);
+        onChangeFilter(filterBy, board._id)
     }
 
     return (
