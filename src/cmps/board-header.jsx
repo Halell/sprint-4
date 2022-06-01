@@ -60,10 +60,10 @@ export function BoardHeader({ onAddGroup, onChangeFilter, getPersons, onSaveBoar
                                 <div className="board-name flex">
                                     <div className="board-title">
                                         <div className="board-title-name"
-                                            suppressContentEditableWarning={true}
-                                            contentEditable={true}
-                                            onBlur={updateBoardTitle}
-                                        >{board.title}</div>
+                                            suppressContentEditableWarning={ true }
+                                            contentEditable={ true }
+                                            onBlur={ updateBoardTitle }
+                                        >{ board.title }</div>
                                     </div>
                                     <div>
                                         <div className="btn-title-name" >
@@ -77,38 +77,38 @@ export function BoardHeader({ onAddGroup, onChangeFilter, getPersons, onSaveBoar
                             </div>
                             <div className="right-container">
                                 <div className="invite"><FiUserPlus />Invite/1</div>
-                                <div onClick={() => openActivty()} className="activity">
+                                <div onClick={ () => openActivty() } className="activity">
                                     Activity
-                                    <div onClick={() => setInvite(isMemberInvite ? false : true)} className="invite"><FiUserPlus />Invite/1</div>
-                                    {isMemberInvite &&
+                                    <div onClick={ () => setInvite(isMemberInvite ? false : true) } className="invite"><FiUserPlus />Invite/1</div>
+                                    { isMemberInvite &&
                                         <div className="board-invite-modal">
                                             <h1><FiUserPlus />Invite/1</h1>
-                                            <form onSubmit={onSubmit}>
+                                            <form onSubmit={ onSubmit }>
                                                 <input
                                                     className="invite-input"
                                                     type='text'
                                                     placeholder="Invite by email"
-                                                    value={user.fullname}
+                                                    value={ user.fullname }
                                                     name='fullname'
-                                                    onChange={handleChange}>
+                                                    onChange={ handleChange }>
                                                 </input>
                                             </form>
                                         </div>
                                     }
-                                    <div onClick={() => openActivty()} className="activity">
+                                    <div onClick={ () => openActivty() } className="activity">
                                         Activity
                                     </div>
-                                    <div className="add-to-board">+ Add to board </div>
-                                    <div className="edit"><BiDotsHorizontalRounded /></div>
                                 </div>
+                                <div className="add-to-board">+ Add to board </div>
+                                <div className="edit"><BiDotsHorizontalRounded /></div>
                             </div>
                         </div>
                         <div className="bottom-top-container">
                             <div className="desc"
-                                suppressContentEditableWarning={true}
-                                contentEditable={true}
-                                onBlur={updateBoardDesc}
-                            >{board.desc ? board.desc : 'Add board description'} </div>
+                                suppressContentEditableWarning={ true }
+                                contentEditable={ true }
+                                onBlur={ updateBoardDesc }
+                            >{ board.desc ? board.desc : 'Add board description' } </div>
                         </div>
 
                     </div>
@@ -116,15 +116,15 @@ export function BoardHeader({ onAddGroup, onChangeFilter, getPersons, onSaveBoar
                     <hr />
                     <div className="board-header-filter flex">
                         <BoardFilter
-                            onAddGroup={onAddGroup}
-                            onChangeFilter={onChangeFilter}
-                            getPersons={getPersons}
-                            board={board}
-                            onAddTask={onAddTask}
+                            onAddGroup={ onAddGroup }
+                            onChangeFilter={ onChangeFilter }
+                            getPersons={ getPersons }
+                            board={ board }
+                            onAddTask={ onAddTask }
                         />
                     </div>
                 </div>
-                {isActivityOpen &&
+                { isActivityOpen &&
                     <div className="activity-log-pannel">
                         <div className="">
                         </div>
