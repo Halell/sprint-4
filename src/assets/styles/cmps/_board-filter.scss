@@ -189,7 +189,14 @@
             align-items: center;
             justify-content: center;
             font-size: 14px;
+
             // font-family: Roboto; // rubik
+            span {
+                font-weight: 400;
+                margin: 0;
+                font-family: Roboto;
+                padding-left: 8px;
+            }
 
             &:hover {
                 background-color: #ece7e7;

@@ -1,5 +1,8 @@
 .home-container {
-    background: url();
+    height: 100vh;
+    width: 100%;
+    background: linear-gradient(#031326, #031326, #072B59);
+    // change to animation wite stars
 
     .main-header {
         margin: 0 auto;
@@ -23,9 +26,22 @@
                 display: flex;
 
                 .logo {
+                    display: flex;
+                    flex-direction: row;
                     color: inherit;
                     text-decoration: none;
                     line-height: 1;
+                    align-items: center;
+
+                    .logo-title {
+                        font-size: 50px;
+                        font-family: Roboto-Bold;
+                    }
+
+                    .logo-img {
+                        width: 50px;
+                        margin-right: 16px;
+                    }
                 }
 
                 .nav-btn {
@@ -47,6 +63,7 @@
 
                 .login {
                     color: inherit;
+                    font-family: Roboto;
                     text-decoration: none;
                     line-height: 1
                 }
@@ -55,11 +72,13 @@
                     color: #fff;
                     background-color: #4353ff;
                     border-radius: 40px;
+                    font-family: Roboto-Bold;
                     border: none;
                     padding: 8px 16px;
                     margin-left: 32px;
                     transition: all .3s ease;
                     cursor: pointer;
+
 
                     &:hover {
                         filter: brightness(85%);
@@ -88,22 +107,33 @@
                     .head-line-title {
                         font-size: 4.5rem;
                         line-height: 72px;
-                        font-family: Roboto;
+                        font-family: Roboto-Bold-light; //sofia
+                        color: #323338;
+                        padding-bottom: 30px;
                         word-break: break-word;
                         margin-bottom: 16px;
                         text-align: center;
                         font-weight: 400;
                         margin: 0;
+                        font-size: 72px;
+                        background: -webkit-linear-gradient(#eee, #333);
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;
                     }
 
                     .head-line-title-sub {
-                        font-family: sofia-thin;
+                        font-family: Roboto-light; // sofia
                         font-size: 24px;
                         line-height: 40px;
+                        color: #323338;
+                        padding-bottom: 30px;
                         word-break: break-word;
                         text-align: center;
                         font-weight: 400;
                         margin: 0;
+                        background: -webkit-linear-gradient(#eee, #333);
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;
                     }
 
 
@@ -111,14 +141,18 @@
 
                 .get-started-btn {
                     color: #fff;
-                    background-color: #4353ff;
+                    // background-color: #4353ff;
                     border-radius: 40px;
                     border: none;
+                    font-family: Roboto-Bold;
                     padding: 11px 48px;
                     transition: all .3s ease;
                     display: flex;
                     justify-content: center;
                     align-items: center;
+                    background: linear-gradient(90deg, #5034FF 25.69%, #B4B4FF 100%);
+                    --background-hover: linear-gradient(90deg, #432cd5 25.69%, #9797d5 100%);
+                    --text-color: #ffffff;
 
                     &:hover {
                         filter: brightness(85%);

@@ -4,7 +4,7 @@ import { ReactComponent as ArrowSvg } from '../assets/svg/arrow.svg'
 import { ReactComponent as UserSvg } from '../assets/svg/user.svg'
 import { FiFilter } from 'react-icons/fi';
 import { FaRegUserCircle } from 'react-icons/fa';
-import { AiOutlinePushpin } from 'react-icons/ai';
+import { AiOutlinePushpin, AiOutlineSearch } from 'react-icons/ai';
 import { BsArrowDownUp, BsEyeSlash } from 'react-icons/bs';
 import { MdArrowDropDown } from 'react-icons/md';
 import { RiLineHeight } from 'react-icons/ri';
@@ -85,16 +85,17 @@ export const BoardFilter = ({ onAddGroup, onChangeFilter, getPersons, onAddTask,
             }
 
             <div className="search-wrapper">
+                {/* <AiOutlineSearch /> */}
                 <input className="search-input" placeholder=" search"  {...register('title')} />
             </div>
             <div className="filter-wrapper">
-                <div className="filter-btn" onClick={() => toggle('person-modal')}><FaRegUserCircle />persons</div>
+                <div className="filter-btn" onClick={() => toggle('person-modal')}><FaRegUserCircle /> <span>persons</span> </div>
             </div>
             <div className="filter-wrapper">
-                <div className="filter-btn"><FiFilter /> Filter</div>
+                <div className="filter-btn"><FiFilter /> <span> Filter</span></div>
             </div>
             <div className="filter-wrapper" >
-                <div className="filter-btn" onClick={() => toggle('sort-modal')}><BsArrowDownUp />Sort</div>
+                <div className="filter-btn" onClick={() => toggle('sort-modal')}><BsArrowDownUp /> <span>Sort</span> </div>
             </div>
             <div className="filter-wrapper-small" >
                 <div className="small-btn"><AiOutlinePushpin /></div>
@@ -106,7 +107,7 @@ export const BoardFilter = ({ onAddGroup, onChangeFilter, getPersons, onAddTask,
                 <div className="small-btn"><RiLineHeight /></div>
             </div>
             <div className="filter-wrapper-small" >
-                <div className="small-btn"><CgColorBucket />/2</div>
+                <div className="small-btn"><CgColorBucket /></div>
             </div>
             {isModalOpen &&
                 <div className="person-modal" onBlur={() => toggle('person-modal')}>
