@@ -39,11 +39,11 @@ export function ActivityLog({ board, setActivityOpen }) {
                         </div>
                         {activity.from &&
                             <div className="activity-info flex" >
-                                <div className="from flex" style={{ backgroundColor: activity.style.from }}>
+                                <div className="from flex" style={activity.style && { backgroundColor: activity.style.from }}>
                                     {activity.from}
                                 </div>
                                 {'>'}
-                                <div className="to flex" style={{ backgroundColor: activity.style.to }}>
+                                <div className="to flex" style={activity.style && { backgroundColor: activity.style.to }}>
                                     {activity.to}
                                 </div>
                             </div>
