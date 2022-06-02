@@ -8,6 +8,8 @@
 
 .cell-component-inner {
     // background-color: chartreuse;
+
+
 }
 
 .cell-component {
@@ -28,6 +30,7 @@
     color: var(--primary-text-color);
     position: relative;
 
+
     &.title-cell {
         background-color: #ffffff00;
     }
@@ -38,6 +41,10 @@
 
     &.group-column {
         background-color: #fff;
+
+        &:hover {
+            background-color: #e7e7e7;
+        }
     }
 
     &.status {

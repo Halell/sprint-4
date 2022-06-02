@@ -1,0 +1,134 @@
+.activity-log-panel {
+    flex-wrap: nowrap;
+    width: 560px;
+    flex-direction: column;
+    height: 100vh;
+    width: 560px;
+    position: fixed;
+    right: 0;
+    top: 0;
+    box-shadow: 0 4px 17px 6px rgb(0 0 0 / 10%);
+    background-color: #ffffff;
+    z-index: 10;
+
+    // .slide-log-panel {
+
+
+    .activity-log-header {
+        padding: 20px;
+        flex: 0 1 auto;
+
+        .activity-log-close-btn {
+            cursor: pointer;
+        }
+
+        .activity-title {
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin-bottom: 6px;
+            line-height: 26px;
+            min-height: 25px;
+            cursor: default;
+        }
+
+        .tabs-wrapper {
+            align-items: center;
+            border-bottom: 1px solid #efefef;
+
+            .activity-tab {
+                margin-right: 10px;
+                padding: 0 8px 8px;
+                font-size: .875rem;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .activity-log-wrapper {
+        padding: 0 25px;
+        overflow-y: scroll;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+
+        .single-activity {
+            width: 100%;
+            align-items: center;
+
+            .activity-box {
+                width: 100%;
+                height: 39px;
+                font-size: .875rem;
+                padding: 0 8px 0 16px;
+                margin: 4px 0;
+                justify-content: flex-start;
+                position: relative;
+                align-items: center;
+
+                .activity-time {
+                    flex-basis: 56px;
+                    color: #676879;
+                    grid-gap: 3px;
+                    gap: 3px;
+                    align-items: center;
+                }
+
+                .activity-member {
+                    flex: 0.8 0;
+                    grid-gap: 8px;
+                    gap: 8px;
+                    align-items: center;
+
+                    img {
+                        width: 30px;
+                        height: 30px;
+                        border-radius: 50%;
+                    }
+                }
+
+                .activity {
+                    flex: 1.5 0;
+                    grid-gap: 15px;
+                    gap: 15px;
+                }
+
+                .activity-info {
+                    height: 100%;
+                    flex: 1 1 auto;
+                    justify-content: center;
+                    align-items: center;
+
+                    .from {
+                        color: rgb(89, 89, 89);
+                        width: 70px;
+                        height: 40px;
+                        text-overflow: ellipsis;
+                        overflow: hidden;
+                        white-space: nowrap;
+                        align-items: center;
+                        justify-content: center;
+                    }
+
+                    .to {
+                        color: rgb(96, 96, 96);
+                        width: 70px;
+                        height: 40px;
+                        text-overflow: ellipsis;
+                        overflow: hidden;
+                        white-space: nowrap;
+                        align-items: center;
+                        justify-content: center;
+                    }
+                }
+            }
+        }
+
+    }
+
+
+    // }
+}
+
+// #root>main>div>section>section>div>div>div.board-header>div.activity-log-panel.flex>div.activity-log-wrapper.flex.column {
+//     background-color: aqua;
+// }

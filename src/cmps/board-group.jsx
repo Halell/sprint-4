@@ -18,8 +18,6 @@ export function BoardContent({ group, onAddTask, onRemoveGroup, onUpdateTask, on
         }
     }
 
-
-
     const onUseBtn = (val, group) => {
         if (val === 'remove') onRemoveGroup(group.id)
         if (val === 'add') onAddGroup()
@@ -61,6 +59,7 @@ export function BoardContent({ group, onAddTask, onRemoveGroup, onUpdateTask, on
         console.log(group.tasks)
         onAddGroup(group)
     }
+
     return (
         <Fragment>
             <GroupHeader

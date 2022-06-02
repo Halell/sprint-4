@@ -4,7 +4,7 @@ import { ReactComponent as Time } from '../assets/svg/time.svg'
 export function ActivityLog({ board, setActivityOpen }) {
 
 
-    return <div className="activity-log-panel  flex">
+    return <div className="activity-log-panel flex">
 
         <div className="activity-log-header ">
             <div onClick={() => setActivityOpen(false)} className="activity-log-close-btn">
@@ -29,22 +29,23 @@ export function ActivityLog({ board, setActivityOpen }) {
                             <div>{activity.createdAt}</div>
                         </div>
                         <div className="activity-member flex">
-                           {activity.byMember.fullname}
+                            {activity.byMember.fullname}
                             <img src="" alt="" />
                         </div>
                         <div className="activity flex">
                             {activity.txt}
                         </div>
-                        <div className="activity-info flex">
-                            <div className="from flex">
-                                {activity.from}
+                        {activity.from &&
+                            <div className="activity-info flex" >
+                                <div className="from flex" style={{ backgroundColor: board.activities.styleFrom }}>
+                                    {activity.from}
+                                </div>
+                                {'>'}
+                                <div className="to flex" style={{ backgroundColor: board.activities.styleTo }}>
+                                    {activity.to}
+                                </div>
                             </div>
-                            {'>'}
-                            <div className="to flex">
-                                {activity.to}
-                            </div>
-
-                        </div>
+                        }
                     </div>
                 </div>
             })}
