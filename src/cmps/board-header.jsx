@@ -68,7 +68,7 @@ export function BoardHeader({ onAddGroup, onChangeFilter, getPersons, onSaveBoar
                                             suppressContentEditableWarning={true}
                                             contentEditable={true}
                                             onBlur={updateBoardTitle}
-                                        >{board.title}</div>
+                                        > <h1>{board.title}</h1></div>
                                     </div>
                                     <div>
                                         <div className="btn-title-name" >

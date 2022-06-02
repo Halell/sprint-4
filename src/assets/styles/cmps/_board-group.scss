@@ -159,7 +159,7 @@
         .title-container {}
 
         .title-cell-component.group-footer {
-            width: 100%;
+            width: 280px;
             padding: 0px;
             display: flex;
             background-color: #ffffff;
@@ -180,7 +180,7 @@
         }
 
         .footer-spacer {
-            flex-grow: 1;
+            width: 100%;
             border: 1px solid rgb(220, 220, 220);
             border-left: none;
         }

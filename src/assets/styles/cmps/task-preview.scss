@@ -1,4 +1,12 @@
 .task-preview {
+    .column-wrapper-add {
+        width: 8px;
+        height: 100%;
+        margin-left: 32px;
+        background-color: rgb(87, 155, 252);
+        color: rgb(87, 155, 252);
+
+    }
 
     .edit-btn {
         border: none;
@@ -46,4 +54,30 @@
     font-size: 13px;
 
     font-weight: 400;
+}
+
+.cells-row-container {
+    // max-width: 1000px;
+    // flex-basis: 700px;
+    flex-shrink: 0;
+    // width: 100%;
+    position: relative;
+    height: 100%;
+    display: flex;
+
+    .cell-component-wrapper {}
+}
+
+.column-wrapper-add {
+    width: 8px;
+    height: 100%;
+    margin-left: 32px;
+    background-color:  rgb(206, 206, 206);
+    // color: rgb(170, 170, 170);
+}
+
+.group-header-wrapper {
+    .column-wrapper-add {
+        background-color: rgba(0, 128, 0, 0);
+    }
 }

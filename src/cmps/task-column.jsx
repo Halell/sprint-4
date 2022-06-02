@@ -1,4 +1,4 @@
-import { useState, useRef } from "react"
+import { useState, useRef, Fragment } from "react"
 import 'react-date-range/dist/styles.css'
 import 'react-date-range/dist/theme/default.css'
 import { Calendar } from 'react-date-range'
@@ -44,7 +44,7 @@ export function TaskColumn({ board, boardColumn, task, setStatus, statusBgcColor
         setUser({ ...user, [field]: value })
     }
 
-    return <div className="task-columns-wraper " >
+    return <Fragment>
         {boardColumn === 'text' && <div onClick={() => setColumn(boardColumn)} className="task-column">
             <div
                 suppressContentEditableWarning={true}
@@ -83,7 +83,7 @@ export function TaskColumn({ board, boardColumn, task, setStatus, statusBgcColor
         {/* persons */}
         {boardColumn === 'persons' && <div ref={parentRef} onClick={() => setColumn('persons')} className="task-column member-col">
             <div className="add-member flex">
-                {(task.persons.length > 2) ?
+                {task.persons && (task.persons.length > 2) ?
                     <div className="person-display-container">{task.persons.length}</div>
                     :
                     <div className="person-display-container"><UserSvg /></div>
@@ -102,9 +102,7 @@ export function TaskColumn({ board, boardColumn, task, setStatus, statusBgcColor
                             </div>
                         })}
                     </div>
-
                     <div className="search-persons"><input type="text" placeholder="Enter name" /></div>
-
                     <div className="divider"></div>
                     {board.persons && board.persons.map((person, idx) => {
                         {
@@ -161,5 +159,5 @@ export function TaskColumn({ board, boardColumn, task, setStatus, statusBgcColor
                 }
             </div>
         }
-    </div >
+    </Fragment>
 }

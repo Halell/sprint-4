@@ -71,7 +71,7 @@ export const BoardController = ({ onSetIsPinned, isPinned }) => {
                     <div className="board-list-container">
                         {
                             boards && boards.map((board, idx) => {
-                                return <div className="boards-list-wraper flex column">
+                                return <div className="boards-list-wraper flex column" key={idx}>
                                     <BoardPreview board={board} idx={idx} removeBoard={removeBoard} />
                                 </div>
                             })
