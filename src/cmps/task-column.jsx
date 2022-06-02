@@ -45,77 +45,77 @@ export function TaskColumn({ board, boardColumn, task, setStatus, statusBgcColor
     }
 
     return <div className="task-columns-wraper " >
-        { boardColumn === 'text' && <div onClick={ () => setColumn(boardColumn) } className="task-column">
+        {boardColumn === 'text' && <div onClick={() => setColumn(boardColumn)} className="task-column">
             <div
-                suppressContentEditableWarning={ true }
-                contentEditable={ true }
-                onBlur={ setTxt }
-            >{ task.text }
+                suppressContentEditableWarning={true}
+                contentEditable={true}
+                onBlur={setTxt}
+            >{task.text}
             </div>
-        </div> }
+        </div>}
 
-        {/* status */ }
-        { boardColumn === 'status' && <div ref={ parentRef } style={ { backgroundColor: statusBgcColor } } onClick={ () => setColumn(boardColumn) } className="task-column task-column-status">
-            { task.status }
-            { isStatusEdit &&
+        {/* status */}
+        {boardColumn === 'status' && <div ref={parentRef} style={{ backgroundColor: statusBgcColor }} onClick={() => setColumn(boardColumn)} className="task-column task-column-status">
+            {task.status}
+            {isStatusEdit &&
                 <div className="column-modal">
                     <LabelsModal
-                        parentRef={ parentRef }
-                        setStatus={ setStatus }
-                        field={ 'status' }
-                        closeModal={ setColumn }
+                        parentRef={parentRef}
+                        setStatus={setStatus}
+                        field={'status'}
+                        closeModal={setColumn}
                     />
                 </div>
             }
         </div>
         }
 
-        {/* date */ }
-        { boardColumn === 'date' && <div onClick={ () => openDateModal(openDateModal) } className="task-column">
-            <div onClick={ () => setIsDateEdit(isDateEdit ? false : true) }>{ task.date }</div>
-            { isDateEdit &&
+        {/* date */}
+        {boardColumn === 'date' && <div onClick={() => openDateModal(openDateModal)} className="task-column">
+            <div onClick={() => setIsDateEdit(isDateEdit ? false : true)}>{task.date}</div>
+            {isDateEdit &&
                 <div className="date-picker">
-                    <Calendar date={ new Date() }
-                        onChange={ handleSelect } />
+                    <Calendar date={new Date()}
+                        onChange={handleSelect} />
                 </div>
             }
-        </div> }
-        {/* persons */ }
-        { boardColumn === 'persons' && <div ref={ parentRef } onClick={ () => setColumn('persons') } className="task-column member-col">
+        </div>}
+        {/* persons */}
+        {boardColumn === 'persons' && <div ref={parentRef} onClick={() => setColumn('persons')} className="task-column member-col">
             <div className="add-member flex">
-                { (task.persons.length > 2) ?
-                    <div className="person-display-container">{ task.persons.length }</div>
+                {(task.persons.length > 2) ?
+                    <div className="person-display-container">{task.persons.length}</div>
                     :
                     <div className="person-display-container"><UserSvg /></div>
                 }
             </div>
-        </div> }
-        { isPersonsModal &&
-            <div ref={ wrapperRef } className="person-menu menu-modal flex column">
+        </div>}
+        {isPersonsModal &&
+            <div ref={wrapperRef} className="person-menu menu-modal flex column">
                 <div className="person-menu flex column">
                     <div className="item-member-list flex">
-                        { task.persons.map((person, idx) => {
-                            return <div key={ idx } className="member-box flex ">
-                                <img src="" alt="" />
-                                { person.fullname }
-                                <div onClick={ () => removeMember(idx) } className="svg flex"> <RemoveSvg /></div>
+                        {task.persons.map((person, idx) => {
+                            return <div key={idx} className="member-box flex ">
+                                <img src={userImg} />
+                                {person.fullname}
+                                <div onClick={() => removeMember(idx)} className="svg flex"> <RemoveSvg /></div>
                             </div>
-                        }) }
+                        })}
                     </div>
 
                     <div className="search-persons"><input type="text" placeholder="Enter name" /></div>
 
                     <div className="divider"></div>
-                    { board.persons && board.persons.map((person, idx) => {
+                    {board.persons && board.persons.map((person, idx) => {
                         {
                             const taskPersons = Array.from(task.persons.map(person => person.fullname))
                             return !taskPersons.includes(person.fullname) &&
-                                < div onClick={ () => setMember(person) } className="wrapper" key={ idx }>
+                                < div onClick={(ev) => setMember(ev, person)} className="wrapper" key={idx}>
                                     <div className="add-member-box flex">
                                         <div className="img-user flex">
-                                            <img src={ userImg } />
+                                            <img src={userImg} />
                                         </div>
-                                        <div className="user-full-name flex">{ person.fullname }</div>
+                                        <div className="user-full-name flex">{person.fullname}</div>
                                     </div>
                                 </div>
                         }
@@ -123,20 +123,20 @@ export function TaskColumn({ board, boardColumn, task, setStatus, statusBgcColor
 
                     }
                     <div
-                        onClick={ () => setopenInput(isInputOpen ? false : true) }
+                        onClick={() => setopenInput(!isInputOpen)}
                         className="invite flex">
                         <InviteSvg />
                         Invite a new member by username
                     </div>
-                    { isInputOpen &&
+                    {isInputOpen &&
                         <div className="invite-modal">
-                            <form onSubmit={ onSubmit }>
+                            <form onSubmit={onSubmit}>
                                 <input
                                     type='text'
                                     placeholder="Invite by email"
-                                    value={ user.fullname }
+                                    value={user.fullname}
                                     name='fullname'
-                                    onChange={ handleChange }>
+                                    onChange={handleChange}>
                                 </input>
                             </form>
                         </div>
@@ -145,17 +145,17 @@ export function TaskColumn({ board, boardColumn, task, setStatus, statusBgcColor
             </div>
         }
 
-        {/* importance */ }
+        {/* importance */}
         {
-            boardColumn === 'importance' && <div ref={ parentRef } style={ { backgroundColor: importanceBgcColor } } onClick={ () => setColumn(boardColumn) } className="task-column task-column-status">
-                { task.importance }
-                { isImportanceEdit &&
+            boardColumn === 'importance' && <div ref={parentRef} style={{ backgroundColor: importanceBgcColor }} onClick={() => setColumn(boardColumn)} className="task-column task-column-status">
+                {task.importance}
+                {isImportanceEdit &&
                     <div className="column-modal">
                         <LabelsModal
-                            parentRef={ parentRef }
-                            setStatus={ setStatus }
-                            field={ 'importance' }
-                            closeModal={ setColumn }
+                            parentRef={parentRef}
+                            setStatus={setStatus}
+                            field={'importance'}
+                            closeModal={setColumn}
                         />
                     </div>
                 }

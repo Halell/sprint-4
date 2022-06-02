@@ -65,7 +65,7 @@ export const Board = ({ isPinned }) => {
     }
 
     const onSaveBoard = async (newBoard) => {
-        await boardService.setActivity(board, 'Added board')
+        // await boardService.setActivity(board, 'Added board')
         await boardService.save(newBoard)
     }
 

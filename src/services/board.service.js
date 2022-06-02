@@ -44,7 +44,7 @@ async function remove(boardId) {
     boardChannel.postMessage(getActionRemoveBoard(boardId))
 }
 
-async function setActivity(board, txt, from, to) {
+async function setActivity(board, txt, from, to, style) {
 
     const createdAt = new Date()
     const activity = {
@@ -59,6 +59,7 @@ async function setActivity(board, txt, from, to) {
         id: utilService.makeId(),
         txt,
         createdAt: createdAt.toLocaleTimeString(),
+        style
     }
     board.activities.push(activity)
     save(board)
