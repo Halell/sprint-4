@@ -1,9 +1,6 @@
-import { userService } from "../../services/user.service-old.js"
+// import { userService } from "../../services/user.service-old.js"
 import { boardService } from "../../services/board.service.js"
 import { filterByName } from "../../services/filter.service.js"
-import { faL } from "@fortawesome/free-solid-svg-icons"
-import { faSmile } from "@fortawesome/free-regular-svg-icons"
-
 
 // Action Creators:
 export function getActionLoadBoard(board) {
@@ -12,27 +9,29 @@ export function getActionLoadBoard(board) {
         board
     }
 }
+
 export function getActionRemoveBoard(boardId) {
     return {
         type: 'REMOVE_BOARD',
         boardId
     }
 }
+
 export function getActionAddBoard(board) {
     return {
         type: 'ADD_BOARD',
         board
     }
 }
+
 export function getActionUpdateBoard(board) {
-    // console.log('from action get up')
     return {
         type: 'UPDATE_BOARD',
         board
     }
 }
+
 export function getActionSetBoard(board) {
-    // console.log('from action get up')
     return {
         type: 'UPDATE_BOARD',
         board
@@ -40,18 +39,6 @@ export function getActionSetBoard(board) {
 }
 
 var subscriber
-
-// export function loadBoards() {
-//     return async () => {
-//         try {
-//             const boards = await boardService.query()
-//             console.log('boards: ', boards);
-//             return boards
-//         } catch (err) {
-//             throw err
-//         }
-//     }
-// }
 
 export function loadBoard(boardId) {
     return (dispatch) => {
@@ -72,6 +59,7 @@ export function loadBoard(boardId) {
         }
     }
 }
+
 export function removeBoard(boardId) {
     return async (dispatch) => {
         try {
@@ -85,6 +73,7 @@ export function removeBoard(boardId) {
         }
     }
 }
+
 export function addBoard(board) {
     return async (dispatch) => {
         try {
@@ -119,65 +108,11 @@ export function setFilterBy(filterBy, boardId) {
         dispatch({ type: 'SET_BOARD', board })
     }
 }
+
 export function setOnScreenClick(isOnScreenClick) {
     return (dispatch) => {
-        // const board = await filterByName(filterBy, boardId)
         dispatch({ type: 'SET_IS_ON_SCREEN_CLICK', isOnScreenClick })
     }
 }
 
 
-
-// export function addToBoardt(board) {
-//     return (dispatch) => {
-//         dispatch({
-//             type: 'ADD_TO_CART',
-//             board
-//         })
-//     }
-// }
-// export function removeFromBoardt(boardId) {
-//     return (dispatch) => {
-//         dispatch({
-//             type: 'REMOVE_FROM_CART',
-//             boardId
-//         })
-//     }
-// }
-// export function checkout() {
-//     return async (dispatch, getState) => {
-//         try {
-//             const state = getState()
-//             const total = state.boardModule.boardt.reduce((acc, board) => acc + board.price, 0)
-//             const score = await userService.changeScore(-total)
-//             dispatch({ type: 'SET_SCORE', score })
-//             dispatch({ type: 'CLEAR_CART' })
-//         } catch (err) {
-//             console.log('BoardActions: err in checkout', err)
-//         }
-//     }
-// }
-
-
-// Demo for Optimistic Mutation (IOW - Assuming the server call will work, so updating the UI first)
-// export function onRemoveBoardOptimistic(boardId) {
-
-//     return (dispatch, getState) => {
-
-//         dispatch({
-//             type: 'REMOVE_CAR',
-//             boardId
-//         })
-
-//         boardService.remove(boardId)
-//             .then(() => {
-//                 console.log('Server Reported - Deleted Succesfully')
-//             })
-//             .catch(err => {
-//                 console.log('Cannot load boards', err)
-//                 dispatch({
-//                     type: 'UNDO_REMOVE_CAR',
-//                 })
-//             })
-//     }
-// }

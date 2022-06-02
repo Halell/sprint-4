@@ -1,5 +1,6 @@
 import { HomePage } from './pages/home-page'
 import { MainApp } from './pages/main-app'
+import { LoginSignup } from './cmps/login-signup'
 
 export default [
     // {
@@ -17,6 +18,10 @@ export default [
     {
         path: '/board/',
         element: <MainApp />,
+    },
+    {
+        path: '/login',
+        element: <LoginSignup />,
     },
     {
         path: '/',

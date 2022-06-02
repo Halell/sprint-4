@@ -2,24 +2,25 @@ import { useEffect, useState, useCallback } from 'react'
 import { Navigate, useNavigate, useParams } from 'react-router-dom'
 import { BoardHeader } from './board-header'
 import { BoardContent } from './board-group'
-import { loadBoard, updateBoard, setFilterBy } from '../store/action/board.actions'
+import { loadBoard, setFilterBy } from '../store/action/board.actions'
 import { taskService } from '../services/task.service'
 import { groupService } from '../services/group.service'
 import { boardService } from '../services/board.service'
 import { useDispatch, useSelector } from 'react-redux'
+import { socketService } from '../services/socket.service'
 
 export const Board = ({ isPinned }) => {
     const params = useParams()
-    const navigate = useNavigate()
     let { board } = useSelector((storeState) => storeState.boardModule)
     const dispatch = useDispatch()
-    console.log('board: ', board);
     useEffect(() => {
         onLoadBoard()
     }, [params.id])
+
     const onLoadBoard = async () => {
         await dispatch(loadBoard(params.id))
     }
+
     const onRemoveGroup = async (groupId) => {
         await boardService.setActivity(board, 'Removed group')
         await groupService.remove(groupId, board)
@@ -65,8 +66,8 @@ export const Board = ({ isPinned }) => {
     }
 
     const onSaveBoard = async (newBoard) => {
-        // await boardService.setActivity(board, 'Added board')
         await boardService.save(newBoard)
+        socketService.emit('add board', newBoard)
     }
 
 
