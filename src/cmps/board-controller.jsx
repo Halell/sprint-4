@@ -6,6 +6,8 @@ import { ReactComponent as Magnifier } from '../assets/svg/magnifier.svg'
 import { ReactComponent as Lightning } from '../assets/svg/lightning.svg'
 import { ReactComponent as Board } from '../assets/svg/board.svg'
 
+
+
 export const BoardController = ({ onSetIsPinned, isPinned }) => {
     const params = useParams()
     const naviget = useNavigate()
@@ -105,6 +107,7 @@ export const BoardController = ({ onSetIsPinned, isPinned }) => {
                     </div >
                 </div >
             </div >
+
         </main >
     )
 }

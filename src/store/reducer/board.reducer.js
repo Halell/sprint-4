@@ -1,11 +1,13 @@
 const initialState = {
     board: {},
     lastRemovedBoard: null,
-    filterBy: null
+    filterBy: null,
+    isOnScreenClick: false
 }
 export function boardReducer(state = initialState, action) {
     var newState = state
     var board
+    var isOnScreenClick
     switch (action.type) {
         case 'SET_BOARD':
             newState = { ...state, board: action.board }
@@ -24,6 +26,9 @@ export function boardReducer(state = initialState, action) {
             // same as SET_BOARD!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             // board = state.board.map(board => (board._id === action.board._id) ? action.board : board)
             newState = { ...state, board: action.board }
+            break
+        case 'SET_IS_ON_SCREEN_CLICK':
+            newState = { ...state, isOnScreenClick: [...state.isOnScreenClick, action.isOnScreenClick] }
             break
         default:
     }
