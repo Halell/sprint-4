@@ -3,30 +3,39 @@ import { utilService } from "./util.service"
 import { boardService } from "./board.service"
 
 const STORAGE_KEY = 'board'
-
-
 export const taskService = {
-    // query,
-    // getById,
+    setActivity,
     remove,
     saveTask,
 }
-
-// function query() {
-//     return storageService.query(STORAGE_KEY)
-// }
-
-// function getById(taskId) {
-//     return storageService.get(STORAGE_KEY, taskId)
-//     // return axios.get(`/api/board/${boardId}`)
-// }
 
 function remove(groupId, taskId, board) {
     const groupIdx = board.groups.findIndex(group => group.id === groupId)
     const taskIdx = board.groups[groupIdx].tasks.map(task => task.id === taskId)
     board.groups[groupIdx].tasks.splice(taskIdx, 1)
-    // console.log(board.groups[groupIdx].tasks)
     return boardService.save(board)
+}
+
+
+async function setActivity(task, txt, from, to, style) {
+    console.log(task)
+    const createdAt = new Date()
+    const activity = {
+        byMember: {
+            fullname: "guest",
+            imgUrl: "",
+            _id: "userId",
+            createdAt: new Date(),
+        },
+        id: utilService.makeId(),
+        txt,
+        createdAt: createdAt.toLocaleTimeString(),
+        from,
+        to,
+        style
+    }
+    task.activities.push(activity)
+    return task
 }
 
 async function saveTask(board, groupId, taskToSave) {

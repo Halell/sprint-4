@@ -8,7 +8,7 @@ import { Droppable } from 'react-beautiful-dnd'
 import { utilService } from '../services/util.service'
 import { ProgressBar } from './progress-bar'
 
-export function BoardContent({ group, onAddTask, onRemoveGroup, onUpdateTask, onRemoveTask, onAddGroup, onSaveBoard }) {
+export function BoardContent({ group, onAddTask, onRemoveGroup, onUpdateTask, onRemoveTask, onAddGroup, onSaveBoard, idx, provided }) {
 
     const { board } = useSelector((storeState) => storeState.boardModule)
     const [isBtnsModalOpen, setIsBtnsModalOpen] = useState(false)
@@ -49,16 +49,14 @@ export function BoardContent({ group, onAddTask, onRemoveGroup, onUpdateTask, on
         onAddGroup(group)
     }
 
-    function handleOnDragEnd(res) {
-        if (!res.destination) return
-        const tasks = Array.from(group.tasks)
-        const [reorederdTask] = tasks.splice(res.source.index, 1)
-        tasks.splice(res.destination.index, 0, reorederdTask)
-        group.tasks = tasks
-        // dargTasks = tasks
-        console.log(group.tasks)
-        onAddGroup(group)
-    }
+    // function handleOnDragEnd(res) {
+    //     if (!res.destination) return
+    //     const tasks = Array.from(group.tasks)
+    //     const [reorederdTask] = tasks.splice(res.source.index, 1)
+    //     tasks.splice(res.destination.index, 0, reorederdTask)
+    //     group.tasks = tasks
+    //     onAddGroup(group)
+    // }
 
     return (
         <Fragment>
@@ -72,22 +70,14 @@ export function BoardContent({ group, onAddTask, onRemoveGroup, onUpdateTask, on
                 toggle={toggle}
                 isBtnsModalOpen={isBtnsModalOpen}
             />
-            <DragDropContext onDragEnd={handleOnDragEnd}>
-                <Droppable droppableId={utilService.makeId()} key={utilService.makeId()}>
-                    {(provided) =>
-                        <div className="task-list-drag" {...provided.droppableProps} ref={provided.innerRef} >
-                            <TaskList
-                                onSaveBoard={onSaveBoard}
-                                onRemoveTask={onRemoveTask}
-                                group={group}
-                                onUpdateTask={onUpdateTask}
-                                board={board}
-                                onAddGroup={onAddGroup}
-                            />
-                        </div>
-                    }
-                </Droppable>
-            </DragDropContext>
+            <TaskList
+                onSaveBoard={onSaveBoard}
+                onRemoveTask={onRemoveTask}
+                group={group}
+                onUpdateTask={onUpdateTask}
+                board={board}
+                onAddGroup={onAddGroup}
+            />
             <GroupFooter
                 group={group}
                 onAddTask={onAddTask}

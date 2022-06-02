@@ -146,9 +146,9 @@
 }
 
 .detailes-main-modal-wrapper {
+    display: flex;
     position: fixed;
     flex-wrap: nowrap;
-    display: flex;
     flex-direction: column;
     background-color: rgb(255, 255, 255);
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 17px 6px;
@@ -157,6 +157,7 @@
     right: 0;
     top: 0;
     width: 560px;
+    z-index: 500;
 
     .activity-header {
         padding: 20px;

@@ -44,7 +44,7 @@ async function remove(boardId) {
     // httpService.delete(`board/${boardId}`)
 }
 
-async function setActivity(board, txt, from, to) {
+async function setActivity(board, txt, from, to, style) {
 
     const createdAt = new Date()
     const activity = {
@@ -59,8 +59,9 @@ async function setActivity(board, txt, from, to) {
         id: utilService.makeId(),
         txt,
         createdAt: createdAt.toLocaleTimeString(),
+        style
     }
-    board.activities.unShift(activity)
+    board.activities.unshift(activity)
     save(board)
     // return httpService.put(`/board/boardId`)
     return board

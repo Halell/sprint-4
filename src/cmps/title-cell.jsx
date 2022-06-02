@@ -1,6 +1,7 @@
 import { TaskEdit } from './task-edit'
 import { useState } from 'react'
 import { GrClose } from 'react-icons/gr'
+import { ActivityModal } from './modal-cmp'
 
 export function TitleCell({ task, onUpdateTask, group, onSetIsModalOpen }) {
 
@@ -9,11 +10,11 @@ export function TitleCell({ task, onUpdateTask, group, onSetIsModalOpen }) {
 
     const toggle = (val) => {
         if (val === 'btn-input') {
-            setIsBtnInputOpen(isBtnInputOpen ? false : true)
+            setIsBtnInputOpen(!isBtnInputOpen)
         }
         if (val === 'details-modal') {
             console.log(': ffrgrth')
-            setIsDetailesModalOpen(isDetailesModalOpen ? false : true)
+            setIsDetailesModalOpen(!isDetailesModalOpen)
         }
     }
 
@@ -26,22 +27,8 @@ export function TitleCell({ task, onUpdateTask, group, onSetIsModalOpen }) {
             <div className="title-inner-container">
                 <div className="title-inner-wrapper">
                     <div className="cell-component title-cell" >
-                        <div className="title-cell-component" >
-                            {isDetailesModalOpen &&
-                                <div className='detailes-main-modal-wrapper'>
-                                    <div className='activity-header'>
-                                        <div className='activity-close-btn'><GrClose /></div>
-                                        <div className='activity-title'>New item</div>
-                                        <div className='activity-btns'>
-                                            <div className='activity-btn-update'>Update</div>
-                                            <div className='activity-btn-log'>Activity Log</div>
-                                        </div>
-                                    </div>
-                                    <div className='main-body-modal'>
-                                        <div className='item-update-content'></div>
-                                    </div>
-                                </div>
-                            }
+                        <div className="title-cell-component" onClick={() => toggle('details-modal')}>
+
                             <div className="pulse-left-indicator"/*{ enter color obj here } */></div>
                             <div className="title-cell-text">
                                 <div className="title-component">
@@ -71,7 +58,22 @@ export function TitleCell({ task, onUpdateTask, group, onSetIsModalOpen }) {
                     </div>
                 </div>
             </div>
+            {isDetailesModalOpen &&
+                <div className="activity-log-panel flex">
+                    <div className="activity-log-header ">
+                        <div onClick={() => toggle('details-modal')} className="activity-log-close-btn"><GrClose /></div>
+                        <div className="activity-title flex">{task.title} log</div>
+                        <div className="tabs-wrapper flex">
+                            <div className="activity-tab ">Activity</div>
+                            <div className="activity-tab">Updates</div>
+                        </div>
+                    </div>
+                    {task.activities && task.activities.map((activity, idx) => {
+                        return <ActivityModal activity={activity} key={idx} />
+                    })
+                    }
+                </div>
+            }
         </div >
     )
 }
- //onClick={ () => toggle('details-modal') }>
