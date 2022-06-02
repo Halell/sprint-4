@@ -4,6 +4,8 @@ import { boardService } from '../services/board.service'
 import { BoardPreview } from './board-preview-contoller'
 import { BoardTopController } from './board-top-controller'
 
+
+
 export const BoardController = ({ onSetIsPinned, isPinned }) => {
     const params = useParams()
     const naviget = useNavigate()
@@ -78,6 +80,7 @@ export const BoardController = ({ onSetIsPinned, isPinned }) => {
                 </div >
 
             </div >
+
         </main >
     )
 }
