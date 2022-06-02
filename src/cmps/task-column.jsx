@@ -53,6 +53,7 @@ export function TaskColumn({ board, boardColumn, task, setStatus, statusBgcColor
             >{ task.text }
             </div>
         </div> }
+
         {/* status */ }
         { boardColumn === 'status' && <div ref={ parentRef } style={ { backgroundColor: statusBgcColor } } onClick={ () => setColumn(boardColumn) } className="task-column task-column-status">
             { task.status }
@@ -68,6 +69,7 @@ export function TaskColumn({ board, boardColumn, task, setStatus, statusBgcColor
             }
         </div>
         }
+
         {/* date */ }
         { boardColumn === 'date' && <div onClick={ () => openDateModal(openDateModal) } className="task-column">
             <div onClick={ () => setIsDateEdit(isDateEdit ? false : true) }>{ task.date }</div>
@@ -94,7 +96,7 @@ export function TaskColumn({ board, boardColumn, task, setStatus, statusBgcColor
                     <div className="item-member-list flex">
                         { task.persons.map((person, idx) => {
                             return <div key={ idx } className="member-box flex ">
-                                <img src="" alt="" />
+                                <img src={ userImg } />
                                 { person.fullname }
                                 <div onClick={ () => removeMember(idx) } className="svg flex"> <RemoveSvg /></div>
                             </div>
@@ -106,7 +108,7 @@ export function TaskColumn({ board, boardColumn, task, setStatus, statusBgcColor
                         {
                             const taskPersons = Array.from(task.persons.map(person => person.fullname))
                             return !taskPersons.includes(person.fullname) &&
-                                < div onClick={ () => setMember(person) } className="wrapper" key={ idx }>
+                                < div onClick={ (ev) => setMember(ev, person) } className="wrapper" key={ idx }>
                                     <div className="add-member-box flex">
                                         <div className="img-user flex">
                                             <img src={ userImg } />
@@ -119,7 +121,7 @@ export function TaskColumn({ board, boardColumn, task, setStatus, statusBgcColor
 
                     }
                     <div
-                        onClick={ () => setopenInput(isInputOpen ? false : true) }
+                        onClick={ () => setopenInput(!isInputOpen) }
                         className="invite flex">
                         <InviteSvg />
                         Invite a new member by username
@@ -140,6 +142,7 @@ export function TaskColumn({ board, boardColumn, task, setStatus, statusBgcColor
                 </div>
             </div>
         }
+
         {/* importance */ }
         {
             boardColumn === 'importance' && <div ref={ parentRef } style={ { backgroundColor: importanceBgcColor } } onClick={ () => setColumn(boardColumn) } className="task-column task-column-status">

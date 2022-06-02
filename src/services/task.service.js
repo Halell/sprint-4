@@ -6,20 +6,20 @@ const STORAGE_KEY = 'board'
 
 
 export const taskService = {
-    query,
-    getById,
+    // query,
+    // getById,
     remove,
     saveTask,
 }
 
-function query() {
-    return storageService.query(STORAGE_KEY)
-}
+// function query() {
+//     return storageService.query(STORAGE_KEY)
+// }
 
-function getById(taskId) {
-    return storageService.get(STORAGE_KEY, taskId)
-    // return axios.get(`/api/board/${boardId}`)
-}
+// function getById(taskId) {
+//     return storageService.get(STORAGE_KEY, taskId)
+//     // return axios.get(`/api/board/${boardId}`)
+// }
 
 function remove(groupId, taskId, board) {
     const groupIdx = board.groups.findIndex(group => group.id === groupId)

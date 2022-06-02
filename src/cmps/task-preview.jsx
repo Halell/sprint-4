@@ -62,7 +62,8 @@ export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask, on
         setIsModalOpen(!isModalOpen)
     }
 
-    const setMember = async (member) => {
+    const setMember = async (ev, member) => {
+        ev.stopPropagation()
         task.persons.push(member)
         onUpdateTask(task, group.id)
         await boardService.setActivity(board, 'Added member')
@@ -76,8 +77,10 @@ export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask, on
     const setStatus = async (val, field, loading) => {
         var color = 'rgb(173, 150, 122)'
         const prevStatus = task[field]
-
-        board.activities.styleFrom = statusBgcColor
+        var style = {
+            from: statusBgcColor,
+            to: ''
+        }
         console.log(board.activities.styleFrom)
         if (val === 'done' || val === 'high') color = 'rgb(0, 200, 117)'
         if (val === 'in-progress' || val === 'mid') color = 'rgb(253, 171, 61)'
@@ -86,13 +89,12 @@ export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask, on
         task[field] = val
         field === 'status' ? setStatusBgcColor(color) : setImportanceBgcColor(color)
         task.style = { backgroundColor: color }
+        style.to = color
         if (loading) return
         calcProgress()
-        board.activities.styleTo = color
-        console.log(board.activities.styleTo)
         onUpdateTask(task, group.id)
         onSaveBoard(board)
-        await boardService.setActivity(board, `Changed ${field}`, prevStatus, task[field])
+        await boardService.setActivity(board, `Changed ${field}`, prevStatus, task[field], style)
     }
 
     return (

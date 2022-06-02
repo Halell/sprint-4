@@ -127,8 +127,16 @@
                 height: 22px;
                 background-color: #cce5ff;
                 border-radius: 24px;
-                align-items: center;
                 justify-content: center;
+                align-items: center;
+
+                img {
+                    align-items: center;
+                    justify-content: center;
+                    width: 22px;
+                    margin-right: 4px;
+                    border-radius: 50%;
+                }
 
                 .svg {
                     background-color: inherit;
