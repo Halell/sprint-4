@@ -2,11 +2,11 @@ import { useState, Fragment } from 'react'
 import { TaskList } from "./task-list"
 import { GroupHeader } from "./group-header"
 import { GroupFooter } from "./group-footer"
-
 import { useSelector } from 'react-redux'
 import { DragDropContext } from 'react-beautiful-dnd'
 import { Droppable } from 'react-beautiful-dnd'
 import { utilService } from '../services/util.service'
+import { ProgressBar } from './progress-bar'
 
 export function BoardContent({ group, onAddTask, onRemoveGroup, onUpdateTask, onRemoveTask, onAddGroup, onSaveBoard }) {
 
@@ -59,6 +59,7 @@ export function BoardContent({ group, onAddTask, onRemoveGroup, onUpdateTask, on
         console.log(group.tasks)
         onAddGroup(group)
     }
+
     return (
         <Fragment>
             <GroupHeader
@@ -91,6 +92,11 @@ export function BoardContent({ group, onAddTask, onRemoveGroup, onUpdateTask, on
                 group={group}
                 onAddTask={onAddTask}
             />
+            <div className="group-progress flex">
+                <div className="empty-cell"></div>
+                <ProgressBar group={group} />
+                <div className="empty-cell"></div>
+            </div>
         </Fragment >
     )
 

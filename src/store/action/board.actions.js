@@ -119,6 +119,12 @@ export function setFilterBy(filterBy, boardId) {
         dispatch({ type: 'SET_BOARD', board })
     }
 }
+export function setOnScreenClick(isOnScreenClick) {
+    return (dispatch) => {
+        // const board = await filterByName(filterBy, boardId)
+        dispatch({ type: 'SET_IS_ON_SCREEN_CLICK', isOnScreenClick })
+    }
+}
 
 
 

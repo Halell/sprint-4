@@ -3,7 +3,7 @@ import { TaskPreview } from './task-preview'
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 import { utilService } from '../services/util.service'
 
-export function TaskList({ board, group, onUpdateTask, onRemoveTask, onAddGroup, onAddTask }) {
+export function TaskList({ board, group, onUpdateTask, onRemoveTask, onAddGroup, onAddTask, onSaveBoard }) {
 
     const [dragTasks, setDragTask] = useState(group.tasks)
     // let dargTasks = group.tasks
@@ -37,6 +37,8 @@ export function TaskList({ board, group, onUpdateTask, onRemoveTask, onAddGroup,
                                                 onUpdateTask={onUpdateTask}
                                                 task={task}
                                                 board={board}
+                                                onAddGroup={onAddGroup}
+                                                onSaveBoard={onSaveBoard}
                                             />
                                         </div>
                                     }

@@ -26,7 +26,7 @@ export const Board = ({ isPinned }) => {
         dispatch(loadBoard(params.id))
     }
 
-    const onAddGroup = async (group) => {
+    const onAddGroup = async (group) => { //onSaveGroup!!
         if (group) {
             await boardService.setActivity(board, 'Updated group')
             await groupService.saveGroup(board, group)

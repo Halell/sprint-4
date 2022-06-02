@@ -20,14 +20,14 @@ export function TitleCell({ task, onUpdateTask, group, onSetIsModalOpen }) {
     return (
         <div className="title-container">
             <div className="btn-pulse-menu-wrapper">
-                <div onClick={ onSetIsModalOpen } className="btn-pulse-menu">
+                <div onClick={onSetIsModalOpen} className="btn-pulse-menu">
                 </div>
             </div>
             <div className="title-inner-container">
                 <div className="title-inner-wrapper">
                     <div className="cell-component title-cell" >
-                        <div onClick={ () => toggle('details-modal') } className="title-cell-component">
-                            { isDetailesModalOpen &&
+                        <div className="title-cell-component" >
+                            {isDetailesModalOpen &&
                                 <div className='detailes-main-modal-wrapper'>
                                     <div className='activity-header'>
                                         <div className='activity-close-btn'><GrClose /></div>
@@ -45,22 +45,22 @@ export function TitleCell({ task, onUpdateTask, group, onSetIsModalOpen }) {
                             <div className="pulse-left-indicator"/*{ enter color obj here } */></div>
                             <div className="title-cell-text">
                                 <div className="title-component">
-                                    { isBtnInputOpen ?
+                                    {isBtnInputOpen ?
                                         <div className="title-component">
                                             <div className="edit-icon-wrapper">
-                                                <button className="btn  edit-icon" onClick={ () => toggle('btn-input') } >Edit</button>
+                                                <button className="btn  edit-icon" onClick={() => toggle('btn-input')} >Edit</button>
                                             </div>
                                             < div className='btn-input'>
-                                                { task && task.title }
+                                                {task && task.title}
                                             </div>
                                         </div>
                                         :
                                         < div className='btn-input' >
                                             <TaskEdit
-                                                group={ group }
-                                                task={ task }
-                                                onUpdateTask={ onUpdateTask }
-                                                toggle={ toggle }
+                                                group={group}
+                                                task={task}
+                                                onUpdateTask={onUpdateTask}
+                                                toggle={toggle}
                                             />
                                         </div>
                                     }
@@ -74,3 +74,4 @@ export function TitleCell({ task, onUpdateTask, group, onSetIsModalOpen }) {
         </div >
     )
 }
+ //onClick={ () => toggle('details-modal') }>

@@ -1,15 +1,10 @@
 import { useEffect, useState } from 'react'
 import { NavLink, useNavigate, useParams } from 'react-router-dom'
 import { boardService } from '../services/board.service'
-import DatePicker from "react-datepicker"
+import { BoardPreview } from './board-preview-contoller'
+import { BoardTopController } from './board-top-controller'
 
-import { addBoard, removeBoard, loadBoard } from '../store/action/board.actions'
-import { onLogin, onUpdateUser } from '../store/action/user.actions'
-import { BoardList } from './board-list'
-import { ReactComponent as Plus } from '../assets/svg/plus-sign.svg'
-import { ReactComponent as Magnifier } from '../assets/svg/magnifier.svg'
-import { ReactComponent as Lightning } from '../assets/svg/lightning.svg'
-import { ReactComponent as Board } from '../assets/svg/board.svg'
+
 
 export const BoardController = ({ onSetIsPinned, isPinned }) => {
     const params = useParams()
@@ -25,9 +20,7 @@ export const BoardController = ({ onSetIsPinned, isPinned }) => {
         const boards = await boardService.query()
         setBoards(boards)
     }
-    console.log('boards: ', boards);
     const addBoard = async () => {
-        // await boardService.setActivity(board, 'Added board')
         await boardService.save({})
         loadBoards()
     }
@@ -58,6 +51,7 @@ export const BoardController = ({ onSetIsPinned, isPinned }) => {
                             <span className="title">Workspace</span>
                             <div className="dropdown-navigation">⋯</div>
                         </div>
+
                         <div className="work-space-dropdown">
                             <div className="name-container">
                                 <div className="work-space-avatar">M</div>
@@ -65,52 +59,28 @@ export const BoardController = ({ onSetIsPinned, isPinned }) => {
                             </div>
                             <div className="open-drop-down" >&lt;</div>
                         </div>
+
                     </div>
                     <div className="controller-top-bottom">
-                        <div onClick={() => addBoard()} className="btn-add"><Plus /><span>Add</span></div>
-                        <div className="board-search-box">
-                            <Magnifier />
-                            <input type="text" placeholder="Search" />
-
-                            <div className="lightning-img-container">
-                                <div className="lightning-img-wrapper">
-                                    <Lightning />
-                                </div>
-                            </div>
-                        </div>
+                        <BoardTopController addBoard={addBoard}/>
                     </div >
                     <div className="spacer"></div>
                 </div >
+
                 <div className="controller-bottom">
                     <div className="board-list-container">
                         {
                             boards && boards.map((board, idx) => {
                                 return <div className="boards-list-wraper flex column">
-                                    <div className="board-preview">
-                                        <NavLink style={{ backgroundColor: 'rgb(0, 200, 117)' }}
-                                            className={(navData) => (navData.isActive ? 'active' : '')}
-                                            to={`/board/${board._id}`}>
-                                            <div key={idx} className="board-preview-card-wrapper">
-                                                <div className="board-preview-card">
-                                                    <div className="board-icon"><Board /></div>
-                                                    <div className="board-title-container">
-                                                        <div className="board-title">{board.title}</div>
-                                                        <div className="board-dropdown-menu"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </NavLink>
-                                    </div>
-                                    <div onClick={() => removeBoard(board._id)} className="btn-board-remove">
-                                        remove
-                                    </div>
+                                    <BoardPreview board={board} idx={idx} removeBoard={removeBoard} />
                                 </div>
-
                             })
                         }
                     </div >
                 </div >
+
             </div >
+
         </main >
     )
 }

@@ -1,7 +1,6 @@
 
 import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
-import { userService } from './user.service-old.js'
 import { getActionRemoveBoard, getActionAddBoard, getActionUpdateBoard } from '../store/action/board.actions'
 import { taskService } from './task.service'
 import { httpService } from './http.service'
@@ -39,6 +38,7 @@ function getById(boardId) {
     return httpService.get(`board/${boardId}`)
 }
 async function remove(boardId) {
+    // return httpService.delete(`/board/boardId`)
     // return new Promise((resolve, reject) => {
     //     setTimeout(reject, 2000)
     // })
@@ -49,6 +49,7 @@ async function remove(boardId) {
 }
 
 async function setActivity(board, txt, from, to) {
+
     const createdAt = new Date()
     const activity = {
         byMember: {
@@ -65,10 +66,11 @@ async function setActivity(board, txt, from, to) {
     }
     board.activities.push(activity)
     save(board)
+    // return httpService.put(`/board/boardId`)
     return board
 }
 
-async function save(board, groupId, task) {
+async function save(board) {
     var savedBoard //= (task) ? taskService.saveTask(board, groupId, task) : null
     if (board._id) {
         // savedBoard = await storageService.put(STORAGE_KEY, board)
@@ -101,6 +103,7 @@ async function save(board, groupId, task) {
         // console.log('adding board');
         savedBoard = await httpService.post('board', newBoard)
     }
+    // return httpService.post(`/board`)
     return savedBoard
     // httpService.post(`board`, board)
 }
