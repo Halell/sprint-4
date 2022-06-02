@@ -1,5 +1,7 @@
 import { ReactComponent as CloseBtn } from '../assets/svg/close.svg'
 import { ReactComponent as Time } from '../assets/svg/time.svg'
+import { ReactComponent as User } from '../assets/svg/user.svg'
+import userImg from '../assets/img/carmel.png'
 
 export function ActivityLog({ board, setActivityOpen }) {
 
@@ -30,18 +32,18 @@ export function ActivityLog({ board, setActivityOpen }) {
                         </div>
                         <div className="activity-member flex">
                             {activity.byMember.fullname}
-                            <img src="" alt="" />
+                            <img src={userImg} />
                         </div>
                         <div className="activity flex">
                             {activity.txt}
                         </div>
                         {activity.from &&
                             <div className="activity-info flex" >
-                                <div className="from flex" style={{ backgroundColor: board.activities.styleFrom }}>
+                                <div className="from flex" style={{ backgroundColor: activity.style.from }}>
                                     {activity.from}
                                 </div>
                                 {'>'}
-                                <div className="to flex" style={{ backgroundColor: board.activities.styleTo }}>
+                                <div className="to flex" style={{ backgroundColor: activity.style.to }}>
                                     {activity.to}
                                 </div>
                             </div>

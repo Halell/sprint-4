@@ -6,6 +6,7 @@ import { FiUserPlus } from 'react-icons/fi'
 import { BiDotsHorizontalRounded } from 'react-icons/bi'
 import { boardService } from "../services/board.service"
 import { ActivityLog } from "./acttivity"
+import { utilService } from "../services/util.service"
 
 
 export function BoardHeader({ onAddGroup, onChangeFilter, getPersons, onSaveBoard, board, onAddTask, group }) {
@@ -32,19 +33,23 @@ export function BoardHeader({ onAddGroup, onChangeFilter, getPersons, onSaveBoar
     const handleChange = ({ target }) => {
         const field = target.name
         const { value } = target
-        console.log(value)
         setUser({ ...user, [field]: value })
     }
 
-    async function addMember(member) {
+    async function addMember(fullname) {
+        const member = {
+            fullname,
+            imgUrl: '',
+            _id: utilService.makeId(3)
+        }
         board.persons.push(member)
         console.log(member)
         await boardService.setActivity(board, 'Added member')
         onSaveBoard(board)
     }
 
-    const onSubmit = (el) => {
-        el.preventDefault()
+    const onSubmit = (ev) => {
+        ev.preventDefault()
         const name = { ...user.fullname.split('@') }
         addMember(name[0])
     }
@@ -80,7 +85,7 @@ export function BoardHeader({ onAddGroup, onChangeFilter, getPersons, onSaveBoar
                                 <div onClick={() => setInvite(!isMemberInvite)} className="invite"><FiUserPlus /> <span>Invite/</span> {board.persons && board.persons.length}</div>
                                 {isMemberInvite &&
                                     <div className="board-invite-modal">
-                                        <div onClick={() => setInvite(!isMemberInvite)}>x</div>
+                                        <div className="close-modal-invite" onClick={() => setInvite(!isMemberInvite)}>x</div>
                                         <h1><FiUserPlus />Invite/{board.persons.length}</h1>
                                         <form onSubmit={onSubmit}>
                                             <input
