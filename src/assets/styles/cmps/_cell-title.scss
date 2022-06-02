@@ -1,5 +1,5 @@
 .title-container {
-    flex-basis: 237px; //263px;
+    flex-grow: 1;
     flex-shrink: 0;
     position: sticky;
     left: 46px;
@@ -58,7 +58,7 @@
         padding: 0px 3px;
         content: '▾';
         border-radius: 5px;
-        margin-left: 6px; 
+        margin-left: 6px;
     }
 
 }
@@ -70,7 +70,7 @@
     height: 100%;
     text-align: left;
     font-weight: bold;
-    
+
     .pulse-left-indicator {
         background-color: rgb(87, 155, 252);
         color: rgb(87, 155, 252);
@@ -79,7 +79,7 @@
         transition: flex-basis .1s ease-in;
         position: relative;
     }
-    
+
     .title-component {
         height: 24px;
         display: flex;

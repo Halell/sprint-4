@@ -2,11 +2,8 @@
 import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
 import { getActionRemoveBoard, getActionAddBoard, getActionUpdateBoard } from '../store/action/board.actions'
-import { taskService } from './task.service'
-import { httpService } from './http.service'
 
 const STORAGE_KEY = 'board'
-const BASE_URL = 'http://localhost:3030/api/board'
 const boardChannel = new BroadcastChannel('boardChannel')
 var gCurrBoard
 
@@ -27,6 +24,7 @@ function getCurrBoard() {
 }
 
 async function query() {
+<<<<<<< HEAD
     const boards = await storageService.query(STORAGE_KEY)
     return boards
     // return httpService.get('board')
@@ -35,6 +33,17 @@ function getById(boardId) {
     return storageService.get(STORAGE_KEY, boardId)
     // return axios.get(`/api/board/${boardId}`)
     // return httpService.get(`board/${boardId}`)
+=======
+    // return httpService.get(`/board`)
+    const boards = await storageService.query(STORAGE_KEY)
+    console.log('boards: ', boards);
+    return boards
+}
+function getById(boardId) {
+    // return httpService.get(`board/:boardId`)
+    return storageService.get(STORAGE_KEY, boardId)
+    // return axios.get(`/api/board/${boardId}`)
+>>>>>>> 1aba0c4e06aa80e711f5d060fe6600bab5611168
 }
 async function remove(boardId) {
     // return httpService.delete(`/board/boardId`)
@@ -44,10 +53,13 @@ async function remove(boardId) {
     // return Promise.reject('Not now!');
     await storageService.remove(STORAGE_KEY, boardId)
     boardChannel.postMessage(getActionRemoveBoard(boardId))
+<<<<<<< HEAD
     // httpService.delete(`board/${boardId}`)
+=======
+>>>>>>> 1aba0c4e06aa80e711f5d060fe6600bab5611168
 }
 
-async function setActivity(board, txt, from, to, style) {
+async function setActivity(board, txt, from, to) {
 
     const createdAt = new Date()
     const activity = {
@@ -62,7 +74,6 @@ async function setActivity(board, txt, from, to, style) {
         id: utilService.makeId(),
         txt,
         createdAt: createdAt.toLocaleTimeString(),
-        style
     }
     board.activities.unShift(activity)
     save(board)
@@ -74,8 +85,13 @@ async function save(board) {
     var savedBoard //= (task) ? taskService.saveTask(board, groupId, task) : null
     if (board._id) {
         savedBoard = await storageService.put(STORAGE_KEY, board)
+<<<<<<< HEAD
         // boardChannel.postMessage(getActionUpdateBoard(savedBoard))
         // return httpService.put(`board/:${board._id}`, board)
+=======
+        boardChannel.postMessage(getActionUpdateBoard(savedBoard))
+        // return httpService.put(`/board/boardId`)
+>>>>>>> 1aba0c4e06aa80e711f5d060fe6600bab5611168
     } else {
         const createdAt = new Date()
         const newBoard = {
@@ -97,8 +113,13 @@ async function save(board) {
             title: 'New Board'
         }
         savedBoard = await storageService.post(STORAGE_KEY, newBoard)
+<<<<<<< HEAD
         // boardChannel.postMessage(getActionAddBoard(savedBoard))
         // savedBoard = await httpService.post('board', newBoard)
+=======
+        boardChannel.postMessage(getActionAddBoard(savedBoard))
+        console.log('adding board');
+>>>>>>> 1aba0c4e06aa80e711f5d060fe6600bab5611168
     }
     // return httpService.post(`/board`)
     return savedBoard
