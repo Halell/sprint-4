@@ -1,11 +1,20 @@
+import { useEffect, useState } from "react"
 import { useDispatch } from "react-redux"
 import { Link } from 'react-router-dom'
+import { boardService } from '../services/board.service.js'
 // import { userService } from "../services/user.service"
 
 export const HomePage = () => {
+    const [boards, setBoards] = useState(null)
 
-    // const dispatch = useDispatch()
+    useEffect(() => {
+        loadBoards()
+    }, [])
 
+    const loadBoards = async () => {
+        const boards = await boardService.query()
+        setBoards(boards)
+    }
 
     return (
         <div className="home-container">
@@ -23,7 +32,7 @@ export const HomePage = () => {
                     </div>
                     <div className="right-content">
                         <Link to={'/login'}> <a className="login" href="">Log in</a></Link>
-                        <Link to={`/board/b101`}> <div className="started-btn">Get Started</div></Link>
+                        {boards && <Link to={`/board/${boards[0]._id}`}> <div className="started-btn">Get Started</div></Link>}
                     </div>
                 </div>
             </div>
@@ -34,7 +43,7 @@ export const HomePage = () => {
                             <h1 className="head-line-title">Work Without Limits</h1>
                             <h2 className="head-line-title-sub">Easily build, run, and scale your dream workflows on one platform. what would you like to manage with us?</h2>
                         </div>
-                        <Link to={`/board/b101`}> <div className="get-started-btn">GetStarted</div></Link>
+                        {boards && <Link to={`/board/${boards[0]._id}`}> <div className="get-started-btn">GetStarted</div></Link>}
                     </div>
                 </div>
             </main>
