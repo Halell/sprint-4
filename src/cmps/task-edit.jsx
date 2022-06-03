@@ -20,7 +20,7 @@ export function TaskEdit({ task, onUpdateTask, group, toggle }) {
 
     return (
         <form onSubmit={onSaveTask}>
-            <input type="text" name="title" onChange={handleChange} onBlur={() => toggle('btn-input')} />
+            <input onClick={(ev) => toggle('', ev)} type="text" name="title" onChange={handleChange} />
         </form>
     )
 }

@@ -8,7 +8,8 @@ export function TitleCell({ task, onUpdateTask, group, onSetIsModalOpen }) {
     const [isBtnInputOpen, setIsBtnInputOpen] = useState(true)
     const [isDetailesModalOpen, setIsDetailesModalOpen] = useState(false)
 
-    const toggle = (val) => {
+    const toggle = (val, ev) => {
+        if (ev) ev.stopPropagation()
         if (val === 'btn-input') {
             setIsBtnInputOpen(!isBtnInputOpen)
         }
@@ -36,7 +37,7 @@ export function TitleCell({ task, onUpdateTask, group, onSetIsModalOpen }) {
                                         {isBtnInputOpen ?
                                             <div className="title-component">
                                                 <div className="edit-icon-wrapper">
-                                                    <button className="btn  edit-icon" onClick={() => toggle('btn-input')} >Edit</button>
+                                                    <button className="btn  edit-icon" onClick={(ev) => toggle('btn-input', ev)} >Edit</button>
                                                 </div>
                                                 < div className='btn-input'>
                                                     {task && task.title}
@@ -60,24 +61,24 @@ export function TitleCell({ task, onUpdateTask, group, onSetIsModalOpen }) {
                     </div>
                 </div>
             </div >
-                {isDetailesModalOpen &&
-                    <div className="activity-log-panel flex">
-                        <div className="activity-log-header ">
-                            <div onClick={() => toggle('details-modal')} className="activity-log-close-btn"><GrClose /></div>
-                            <div className="activity-title flex">{task.title} log</div>
-                            <div className="tabs-wrapper flex">
-                                <div className="activity-tab ">Activity</div>
-                                <div className="activity-tab">Updates</div>
-                            </div>
-                        </div>
-                        <div className="activity-log-wrapper flex column">
-                            {task.activities && task.activities.map((activity, idx) => {
-                                return <ActivityModal activity={activity} key={idx} />
-                            })
-                            }
+            {isDetailesModalOpen &&
+                <div className="activity-log-panel flex">
+                    <div className="activity-log-header ">
+                        <div onClick={() => toggle('details-modal')} className="activity-log-close-btn"><GrClose /></div>
+                        <div className="activity-title flex">{task.title} log</div>
+                        <div className="tabs-wrapper flex">
+                            <div className="activity-tab ">Activity</div>
+                            <div className="activity-tab">Updates</div>
                         </div>
                     </div>
-                }
+                    <div className="activity-log-wrapper flex column">
+                        {task.activities && task.activities.map((activity, idx) => {
+                            return <ActivityModal activity={activity} key={idx} />
+                        })
+                        }
+                    </div>
+                </div>
+            }
         </>
     )
 }

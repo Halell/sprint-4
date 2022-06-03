@@ -3,7 +3,7 @@ import { utilService } from "./util.service"
 import { loadBoard } from "../store/action/board.actions"
 
 export const groupService = {
-     saveGroup,
+    saveGroup,
     remove,
     // query,
     // getById,
@@ -15,6 +15,7 @@ async function saveGroup(board, updateGroup) {
         if (!updateGroup.id) {
             updateGroup.title += ' copy'
             updateGroup.id = utilService.makeId()
+            updateGroup.tasks.map(task => task.id = utilService.makeId())
             board.groups.unshift(updateGroup)
         }
         const idx = board.groups.findIndex(group => group.id === updateGroup.id)

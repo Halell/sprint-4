@@ -14,7 +14,7 @@ export function BoardContent({ group, onAddTask, onRemoveGroup, onUpdateTask, on
     const [isBtnsModalOpen, setIsBtnsModalOpen] = useState(false)
     const toggle = (val) => {
         if (val === 'btns-modal') {
-            setIsBtnsModalOpen(isBtnsModalOpen ? false : true)
+            setIsBtnsModalOpen(!isBtnsModalOpen)
         }
     }
 
@@ -31,14 +31,15 @@ export function BoardContent({ group, onAddTask, onRemoveGroup, onUpdateTask, on
     }
 
     const onchangeColor = (group) => {
-        group.style = { backgroundColor: 'rgb(0, 200, 117)' }
+        group.style = 'rgb(0, 200, 117)'
+        console.log( group.style)
         onAddGroup(group)
     }
 
     const onUpdateColumns = (el) => {
         const idx = el.target.getAttribute('idx')
         board.columns[idx] = el.target.innerText
-        onAddGroup(group) //suposed to be updateBoard()
+        onAddGroup(group) 
     }
 
     const onSaveGroup = (el) => {
@@ -61,30 +62,30 @@ export function BoardContent({ group, onAddTask, onRemoveGroup, onUpdateTask, on
     return (
         <Fragment>
             <GroupHeader
-                onSaveGroup={ onSaveGroup }
-                onRemoveGroup={ onRemoveGroup }
-                group={ group }
-                board={ board }
-                onUpdateColumns={ onUpdateColumns }
-                onUseBtn={ onUseBtn }
-                toggle={ toggle }
-                isBtnsModalOpen={ isBtnsModalOpen }
+                onSaveGroup={onSaveGroup}
+                onRemoveGroup={onRemoveGroup}
+                group={group}
+                board={board}
+                onUpdateColumns={onUpdateColumns}
+                onUseBtn={onUseBtn}
+                toggle={toggle}
+                isBtnsModalOpen={isBtnsModalOpen}
             />
             <TaskList
-                onSaveBoard={ onSaveBoard }
-                onRemoveTask={ onRemoveTask }
-                group={ group }
-                onUpdateTask={ onUpdateTask }
-                board={ board }
-                onAddGroup={ onAddGroup }
+                onSaveBoard={onSaveBoard}
+                onRemoveTask={onRemoveTask}
+                group={group}
+                onUpdateTask={onUpdateTask}
+                board={board}
+                onAddGroup={onAddGroup}
             />
             <GroupFooter
-                group={ group }
-                onAddTask={ onAddTask }
+                group={group}
+                onAddTask={onAddTask}
             />
             <div className="group-progress">
                 <div className="empty-cell"></div>
-                <ProgressBar group={ group } />
+                <ProgressBar group={group} />
                 <div className="empty-cell"></div>
             </div>
         </Fragment >
