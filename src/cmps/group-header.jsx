@@ -67,14 +67,16 @@ export function GroupHeader({ board, group, onUseBtn, onSaveGroup, onUpdateColum
                 isBtnsModalOpen &&
                 <div className='btns-modal'>
                     <div className='btns-top-modal'>
-                        <div className='btn-modal-top-section' onClick={() => onUseBtn('add')}><RiAddCircleLine /> Add group</div>
-                        <div className='btn-modal-top-section' onClick={() => onUseBtn('duplicate', group)}><HiOutlineDocumentDuplicate />Duplicate this group</div>
-                        <hr />
+                        <div className='btn-modal-top-section' onClick={() => onUseBtn('add')}><RiAddCircleLine />
+                            <span> Add group</span>
+                        </div>
+                        <div className='btn-modal-top-section' onClick={() => onUseBtn('duplicate', group)}><HiOutlineDocumentDuplicate /> <span> Duplicate this group</span></div>
+                        <div className='border'></div>
                     </div>
                     <div className='btns-bottom-modal'>
-                        <div className='btn-modal-color' onClick={() => onUseBtn('color', group)}><GoPrimitiveDot />Change group color</div>
-                        <hr />
-                        <div className='btn-modal-remove' onClick={() => onUseBtn('remove', group)}><AiOutlineDelete />Remove group</div>
+                        <div className='btn-modal-color' onClick={() => onUseBtn('color', group)}> <div className='color-pick'></div> <span>Change group color</span> </div>
+                        <div className='border'></div>
+                        <div className='btn-modal-remove' onClick={() => onUseBtn('remove', group)}><AiOutlineDelete /> <span>Remove group</span> </div>
                     </div>
                 </div>
             }

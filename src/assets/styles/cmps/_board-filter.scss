@@ -87,17 +87,20 @@
             color: #323338;
             cursor: pointer;
             text-decoration: none;
-
+            align-items: center;
+            border-top: 0.5px solid rgb(221, 222, 231);
+            padding: 5px;
 
             .person-img {
                 width: 30px;
                 height: 30px;
-                border-radius: 4px 0 0 4px;
-                margin: 0;
+                border-radius: 50%;
+                margin-right: 2px;
                 padding: 0;
                 border: 0;
                 font-size: 100%;
                 vertical-align: baseline;
+
             }
         }
     }
