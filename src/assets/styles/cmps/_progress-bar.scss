@@ -1,6 +1,7 @@
 .group-progress {
     height: 40px;
     padding-left: 30px;
+    // position: absolute;
 
     .empty-cell {
         height: 100%;
@@ -10,7 +11,8 @@
         left: 0;
         z-index: 2;
         background-color: rgba(253, 253, 250, .95);
-        min-width: 180px;
+        // min-width: 180px;
+        min-width: 737px;
     }
 
     .progress-display {

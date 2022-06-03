@@ -1,12 +1,10 @@
 import { useDispatch } from "react-redux"
 import { Link } from 'react-router-dom'
-import { onLogin, onSignup } from '../store/action/user.actions'
-import { userService } from "../services/user.service"
-import { Logo } from "../assets/img/logo1.png"
+// import { userService } from "../services/user.service"
 
 export const HomePage = () => {
 
-    const dispatch = useDispatch()
+    // const dispatch = useDispatch()
 
 
     return (
@@ -24,7 +22,7 @@ export const HomePage = () => {
                         <div className="nav-btn">Pricing</div> */}
                     </div>
                     <div className="right-content">
-                        <a className="login" href="">Log in</a>
+                        <Link to={'/login'}> <a className="login" href="">Log in</a></Link>
                         <Link to={`/board/b101`}> <div className="started-btn">Get Started</div></Link>
                     </div>
                 </div>

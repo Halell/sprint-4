@@ -30,17 +30,17 @@
                                 margin-right: 4px;
                                 box-sizing: border-box;
 
-                                .board-title-name {
+                                .board-title-name h1 {
                                     border-radius: 4px;
+                                    font-size: 1.5rem;
                                     line-height: 32px;
                                     overflow: hidden;
                                     white-space: normal;
                                     line-height: 52px;
-                                    // font-family: Roboto;
-                                    font-weight: 500;
-                                    font-size: 24px;
-                                    margin: 0;
+                                    font-family: Roboto-bold,sans-serif;
+                                    color: #323338;
                                 }
+                                
 
                             }
 

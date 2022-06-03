@@ -1,6 +1,6 @@
 export const ProgressBar = ({ group, colIdx }) => {
     const progress = group.progress
-    console.log(progress)
+    // console.log(progress)
     return <section className="progress-display flex ">
         <div className="progress-bar flex ">
             {progress && progress?.done && <div className="progress-indicator" style={{ backgroundColor: '#00C875', width: (100 * (progress.done / group.tasks.length) + '%') }} title={'Done: ' + 100 * (progress.done / group.tasks.length) + '%'}></div>}
