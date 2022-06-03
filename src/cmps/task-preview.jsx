@@ -26,7 +26,7 @@ export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask, on
         }
         group.tasks.map(task => {
             if (task.status === 'done') progress.done += 1
-            if (task.status === 'in-progress') progress.inProgress += 1
+            if (task.status === 'working on it') progress.inProgress += 1
             if (task.status === 'stuck') progress.stuck += 1
             if (task.status === 'none') progress.none += 1
         })
@@ -36,8 +36,40 @@ export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask, on
 
     const handleSelect = async (date) => {
         await boardService.setActivity(board, 'Set date ', task.date, date.toLocaleDateString())
-        task.date = date.toLocaleDateString()
-        onUpdateTask(task, group)
+        let month = date.toLocaleDateString('he-IL', { month: '2-digit' })
+        const day = date.toLocaleDateString('he-IL', { day: '2-digit' })
+        switch (month) {
+            case '01': month = 'Jan'
+                break;
+            case '02': month = 'Feb'
+                break;
+            case '03': month = 'Mar'
+                break;
+            case '04': month = 'Apr'
+                break;
+            case '05': month = 'May'
+                break;
+            case '06': month = 'Jun'
+                break;
+            case '07': month = 'Jul'
+                break;
+            case '08': month = 'Aug'
+                break;
+            case '09': month = 'Sep'
+                break;
+            case '10': month = 'Oct'
+                break;
+            case '11': month = 'Nov'
+                break;
+            case '12': month = 'Dec'
+                break;
+            default:
+                console.log('def')
+        }
+        const newDate = month + ' ' + day
+        task.date = newDate
+        console.log(task.date)
+        onUpdateTask(task, group.id)
     }
 
     const addUser = async (fullname) => {
@@ -88,7 +120,7 @@ export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask, on
             to: ''
         }
         if (val === 'done' || val === 'high') color = 'rgb(0, 200, 117)'
-        if (val === 'in-progress' || val === 'mid') color = 'rgb(253, 171, 61)'
+        if (val === 'working on it' || val === 'mid') color = 'rgb(253, 171, 61)'
         if (val === 'stuck' || val === 'low') color = 'rgb(226, 68, 92)'
 
         task[field] = val

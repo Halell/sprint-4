@@ -10,8 +10,8 @@ export function ActivityModal({ activity, }) {
                 <div>{activity.createdAt}</div>
             </div>
             <div className="activity-member flex">
-                {activity.byMember.fullname}
                 <img src={userImg} />
+                {activity.byMember.fullname}
             </div>
             <div className="activity flex">
                 {activity.txt}

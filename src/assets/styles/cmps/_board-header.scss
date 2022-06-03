@@ -12,6 +12,8 @@
             width: 100%;
 
             .board-header-top-top {
+                border-bottom: 1px solid #e6e9ef;
+
                 .top-container {
                     display: flex;
                     justify-content: space-between;
@@ -32,15 +34,15 @@
 
                                 .board-title-name h1 {
                                     border-radius: 4px;
-                                    font-size: 1.5rem;
+                                    font-size: 1.9rem;
                                     line-height: 32px;
                                     overflow: hidden;
                                     white-space: normal;
-                                    line-height: 52px;
-                                    font-family: Roboto-bold,sans-serif;
+                                    line-height: 35px;
+                                    font-family: Roboto-bold, sans-serif;
                                     color: #323338;
                                 }
-                                
+
 
                             }
 
@@ -153,8 +155,8 @@
     outline-style: none;
     max-width: 70%;
     font-size: 14px;
-
-    font-weight: 400;
+    margin-bottom: 5px;
+    font-weight: 500;
 
     &:hover {
         outline: dashed 1px rgb(180, 180, 180);
@@ -179,7 +181,7 @@
     background-color: white;
     z-index: 30;
 
-    h1{
+    h1 {
         margin-top: 10px;
     }
 
@@ -195,11 +197,12 @@
             background-color: #c6c6c6;
         }
 
-        &:active{
+        &:active {
             background-color: #676879;
         }
     }
-    .close-modal-invite{
+
+    .close-modal-invite {
         cursor: pointer;
         padding: 5px;
     }

@@ -116,8 +116,6 @@ export function BoardHeader({ onAddGroup, onChangeFilter, getPersons, onSaveBoar
                         </div>
 
                     </div>
-
-                    <hr />
                     <div className="board-header-filter flex">
                         <BoardFilter
                             onAddGroup={onAddGroup}
