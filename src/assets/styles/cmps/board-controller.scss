@@ -287,10 +287,13 @@
         }
 
         .board-dropdown-menu::after {
+
             content: "⋯";
-            position: absolute;
+            // position: absolute;
         }
     }
+
+    .board-dropdown-menu {}
 
     .board-preview-card-wrapper {
         height: 34px;
@@ -334,6 +337,12 @@
                     padding-right: 29px;
                     line-height: 27px;
                     font-weight: 900;
+                    border-radius: 50px;
+
+
+                    &:hover {
+                        color: #7299ff;
+                    }
                 }
             }
         }

@@ -61,30 +61,30 @@ export function BoardContent({ group, onAddTask, onRemoveGroup, onUpdateTask, on
     return (
         <Fragment>
             <GroupHeader
-                onSaveGroup={onSaveGroup}
-                onRemoveGroup={onRemoveGroup}
-                group={group}
-                board={board}
-                onUpdateColumns={onUpdateColumns}
-                onUseBtn={onUseBtn}
-                toggle={toggle}
-                isBtnsModalOpen={isBtnsModalOpen}
+                onSaveGroup={ onSaveGroup }
+                onRemoveGroup={ onRemoveGroup }
+                group={ group }
+                board={ board }
+                onUpdateColumns={ onUpdateColumns }
+                onUseBtn={ onUseBtn }
+                toggle={ toggle }
+                isBtnsModalOpen={ isBtnsModalOpen }
             />
             <TaskList
-                onSaveBoard={onSaveBoard}
-                onRemoveTask={onRemoveTask}
-                group={group}
-                onUpdateTask={onUpdateTask}
-                board={board}
-                onAddGroup={onAddGroup}
+                onSaveBoard={ onSaveBoard }
+                onRemoveTask={ onRemoveTask }
+                group={ group }
+                onUpdateTask={ onUpdateTask }
+                board={ board }
+                onAddGroup={ onAddGroup }
             />
             <GroupFooter
-                group={group}
-                onAddTask={onAddTask}
+                group={ group }
+                onAddTask={ onAddTask }
             />
-            <div className="group-progress flex">
+            <div className="group-progress">
                 <div className="empty-cell"></div>
-                <ProgressBar group={group} />
+                <ProgressBar group={ group } />
                 <div className="empty-cell"></div>
             </div>
         </Fragment >

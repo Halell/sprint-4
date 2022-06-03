@@ -12,8 +12,9 @@ export function BoardPreview({ board, idx, removeBoard }) {
                         <div className="board-icon"><Board /></div>
                         <div className="board-title-container">
                             <div className="board-title">{ board.title }</div>
-                            <div className="board-dropdown-menu">
-                                <div onClick={ (ev) => removeBoard(board._id, ev.preventDefault()) } className="btn-board-remove"></div>
+                            <div className="board-dropdown-menu"
+                                onClick={ (ev) => removeBoard(board._id, ev.preventDefault()) }>
+                                <div className="btn-board-remove"></div>
                             </div>
                         </div>
                     </div>
