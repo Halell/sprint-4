@@ -30,7 +30,6 @@
 
     &.pinned {
         width: 255px;
-
     }
 
     .controller-btn {
@@ -126,7 +125,6 @@
         }
 
         .work-space-dropdown {
-            // background-color: #0085ff;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -160,8 +158,6 @@
                 transform: rotate(270deg);
             }
         }
-
-
     }
 
     .controller-top-bottom {
@@ -173,14 +169,12 @@
             align-items: center;
             padding-left: 6px;
 
-
             span {
                 font-size: 14px;
                 margin: 0 8px;
                 font-weight: 600;
             }
         }
-
 
         .controller-add-btn {
             font-size: .875rem;
@@ -227,7 +221,6 @@
             }
 
             .lightning-img-container {
-                // background-color: #676879;
                 display: flex;
                 visibility: hidden;
                 align-items: center;
@@ -280,33 +273,22 @@
     height: 406px;
     position: relative;
 
-    .board-preview:hover {
-        .board-dropdown-menu::after {
-            content: "⋯";
+    .board-preview {
+        .active {
+            .board-preview-card {
+                background-color: #e5f4ff;
+            }
         }
     }
 
-    a:hover:not(.active) {
-        .board-preview-card {
+    .board-preview:hover {
+        .board-preview-card:not(.active) {
             background-color: #e6e9ef;
         }
 
         .board-dropdown-menu::after {
             content: "⋯";
-        }
-    }
-
-    .active {
-        .board-preview-card {
-            color: #323338;
-            background-color: #e5f4ff;
-            position: relative;
-        }
-
-        .board-preview-card:hover {
-            color: #323338;
-            background-color: #e5f4ff;
-            position: relative;
+            position: absolute;
         }
     }
 
