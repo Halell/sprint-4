@@ -74,21 +74,16 @@ export const Board = ({ isPinned }) => {
 
     const newBoard = JSON.parse(JSON.stringify(board))
     function handleOnDragEnd(res) {
-        console.log('res from board', res)
         if (!res.destination) return
         const groupSource = newBoard.groups.find(group => group.id === res.source.droppableId)
-        console.log('group source', groupSource)
         if (res.destination.droppableId !== res.source.droppableId) {
-            console.log('diff groups')
             const groupDestination = newBoard.groups.find(group => group.id === res.destination.droppableId)
-            console.log('groupDes', groupDestination)
             const [task] = groupSource.tasks.splice(res.source.index, 1)
             groupDestination.tasks.splice(res.destination.index, 0, task)
         } else {
             const [task] = groupSource.tasks.splice(res.source.index, 1)
             groupSource.tasks.splice(res.destination.index, 0, task)
         }
-        console.log('newBoard', newBoard)
         onSaveBoard(newBoard)
     }
     if (!newBoard) return <div>loading..</div>

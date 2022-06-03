@@ -29,12 +29,14 @@ async function setActivity(task, txt, from, to, style) {
         },
         id: utilService.makeId(),
         txt,
-        createdAt: createdAt.toLocaleTimeString(),
+        createdAt: createdAt.toLocaleTimeString('he-IL', {hour: '2-digit', minute: '2-digit'}),
         from,
         to,
         style
     }
-    task.activities.push(activity)
+    if (!task.activities) task.activities = [activity]
+    else task.activities.push(activity)
+
     return task
 }
 

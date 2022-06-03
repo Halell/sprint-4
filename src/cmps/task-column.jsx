@@ -5,7 +5,7 @@ import { Calendar } from 'react-date-range'
 import { LabelsModal } from "./labels-modal"
 import { ReactComponent as InviteSvg } from '../assets/svg/invite.svg'
 import { ReactComponent as RemoveSvg } from '../assets/svg/remove.svg'
-import { ReactComponent as UserSvg } from '../assets/svg/user.svg'
+import { ReactComponent as Person } from '../assets/svg/person-column.svg'
 import userImg from '../assets/img/carmel.png'
 import { useOutsideAlerter } from '../hooks/useClickOutsideParent'
 
@@ -72,7 +72,7 @@ export function TaskColumn({ board, boardColumn, task, setStatus, statusBgcColor
 
         {/* date */}
         {boardColumn === 'date' && <div onClick={() => openDateModal(openDateModal)} className="task-column">
-            <div onClick={() => setIsDateEdit(isDateEdit ? false : true)}>{task.date}</div>
+            <div onClick={() => setIsDateEdit(!isDateEdit)}>{task.date}</div>
             {isDateEdit &&
                 <div className="date-picker">
                     <Calendar date={new Date()}
@@ -83,10 +83,14 @@ export function TaskColumn({ board, boardColumn, task, setStatus, statusBgcColor
         {/* persons */}
         {boardColumn === 'persons' && <div ref={parentRef} onClick={() => setColumn('persons')} className="task-column member-col">
             <div className="add-member flex">
-                {task.persons && (task.persons.length > 2) ?
-                    <div className="person-display-container">{task.persons.length}</div>
+                {task.persons && (task.persons.length > 1) ?
+                    <div className="person-display-container">
+                        <img src={require(`../assets/img/carmel.png`)} />
+                        <div className="person-icon flex">+ {task.persons.length}</div>
+                    </div>
                     :
-                    <div className="person-display-container"><UserSvg /></div>
+                    // <img class="profile-icon" src={require("../ass`ets/svg/person-column.svg")} ></img>
+                    <div className="profile-icon flex"><Person /></div>
                 }
             </div>
         </div>}
@@ -96,7 +100,7 @@ export function TaskColumn({ board, boardColumn, task, setStatus, statusBgcColor
                     <div className="item-member-list flex">
                         {task.persons.map((person, idx) => {
                             return <div key={idx} className="member-box flex ">
-                                <img src={userImg} />
+                                <img src={require(`../assets/img/carmel.png`)} />
                                 {person.fullname}
                                 <div onClick={() => removeMember(idx)} className="svg flex"> <RemoveSvg /></div>
                             </div>
