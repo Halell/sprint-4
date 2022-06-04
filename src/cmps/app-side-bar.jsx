@@ -4,6 +4,10 @@ import { ReactComponent as BellSvg } from '../assets/svg/bell.svg'
 import { ReactComponent as InboxSvg } from '../assets/svg/inbox.svg'
 import { ReactComponent as WorkSvg } from '../assets/svg/work.svg'
 import { ReactComponent as StarSvg } from '../assets/svg/star.svg'
+import { ReactComponent as DotSvg } from '../assets/svg/dots.svg'
+import { ReactComponent as MarkerSvg } from '../assets/svg/marker.svg'
+import { ReactComponent as MagenSvg } from '../assets/svg/magen.svg'
+import { ReactComponent as UserSvg } from '../assets/svg/user2.svg'
 
 
 export const AppSideBar = () => {
@@ -28,13 +32,16 @@ export const AppSideBar = () => {
 
                     </div>
                     <div className="bottom">
-                        {/* <div className="search-all-container"></div> */}
+                        <div className="btn-rout-wrapper"><div className="btn-rout"><UserSvg /></div></div>
+                        <div className="btn-rout-wrapper"><div className="btn-rout"><MagenSvg /></div></div>
+                        <div className="btn-rout-wrapper"><div className="btn-rout"><MarkerSvg /></div></div>
                     </div>
                 </div>
                 <div className="footer">
                     <div className="sep"> </div>
                     <div className="avatar-menu-component-wrapper" >
                         <div className="footer-navigation-items-area">
+                            <div className="dots"><DotSvg /></div>
                             <div className="avatar-menu-component">
                                 <div className="avatar-img"></div>
                             </div>

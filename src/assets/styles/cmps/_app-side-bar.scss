@@ -92,7 +92,33 @@
                 }
             }
 
-            // .bottom {}
+            .bottom {
+                .btn-rout-wrapper {
+                    position: relative;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    margin-bottom: 8px;
+
+                    .btn-rout {
+                        color: white;
+                        height: 36px;
+                        width: 36px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        border-radius: 8px;
+                        position: relative;
+                        cursor: pointer;
+                        outline: none;
+                        margin-top: 10px;
+
+                        &:hover {
+                            background-color: rgba(0, 0, 0, 0.427);
+                        }
+                    }
+                }
+            }
         }
 
         .avatar-menu-component-wrapper {
@@ -100,6 +126,12 @@
             display: flex;
             justify-content: center;
             margin-bottom: 16px;
+
+            .dots {
+                margin-top: 5px;
+                margin-left: 5px;
+                color: white;
+            }
 
             .avatar-menu-component {
                 height: 44px;

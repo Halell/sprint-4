@@ -164,10 +164,21 @@
         padding: 0 16px 16px 14px;
 
         .btn-add {
+            margin: 0;
+            font-size: 14px;
+            color: #323338;
             display: flex;
-            justify-content: start;
             align-items: center;
-            padding-left: 6px;
+            border-radius: 4px;
+            height: 34px;
+            padding: 0 6px;
+            font-weight: 400;
+            padding-right: 3px;
+            cursor: pointer;
+
+            &:hover {
+                background-color: #e6e9ef;
+            }
 
             span {
                 font-size: 14px;
