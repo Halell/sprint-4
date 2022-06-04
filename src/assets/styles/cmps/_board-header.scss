@@ -34,12 +34,12 @@
 
                                 .board-title-name h1 {
                                     border-radius: 4px;
-                                    font-size: 1.9rem;
+                                    font-size: 24px;
                                     line-height: 32px;
                                     overflow: hidden;
                                     white-space: normal;
                                     line-height: 35px;
-                                    font-family: Roboto-bold, sans-serif;
+                                    font-family: Roboto-Bold-light;
                                     color: #323338;
                                 }
 
@@ -71,9 +71,15 @@
                         align-items: center;
 
                         .invite {
+                            display: flex;
                             padding: 4px 8px;
                             cursor: pointer;
                             color: #323338;
+                            font-size: 14px;
+                            font-family: Roboto;
+                            margin-right: -10px;
+                            justify-content: center;
+                            align-items: center;
 
                             span {
                                 font-weight: 400;
@@ -89,24 +95,39 @@
                             }
                         }
 
-                        .activity {
-                            display: flex;
-                            padding: 4px 8px;
-                            margin-left: 16px;
-                            cursor: pointer;
-                            color: #323338;
+                        .activity-container {
+                            margin-right: 10px;
 
 
-                            &:hover {
-                                background-color: #ece7e7;
-                                border-radius: 4px;
+                            .activity {
+                                padding: 4px 8px;
+                                margin-left: 16px;
+                                cursor: pointer;
+                                color: #323338;
+                                font-size: 14px;
+                                font-family: Roboto;
+                                justify-content: center;
+                                align-items: center;
 
+                                span {
+                                    align-items: center;
+                                    font-weight: 400;
+                                    margin: 0;
+                                    font-family: Roboto;
+                                    padding-left: 8px;
+                                }
+
+                                &:hover {
+                                    background-color: #ece7e7;
+                                    border-radius: 4px;
+
+                                }
                             }
                         }
 
                         .add-board-container {
                             margin: 0;
-                            padding: 0;
+                            padding: 3px;
                             border: 0;
                             font-size: 100%;
                             vertical-align: baseline;
@@ -114,19 +135,18 @@
                             border-radius: 5px;
 
                             .add-to-board {
-                                margin-left: 4px;
                                 padding: 3px 3px;
                                 height: 26px;
                                 cursor: pointer;
                                 border-radius: 2px;
-                                font-size: 14px;
                                 color: #323338;
-
+                                font-size: 14px;
+                                font-family: Roboto;
 
                                 &:hover {
                                     background-color: #ece7e7;
                                     border-radius: 4px;
-
+                                    padding: 3px;
                                 }
                             }
                         }

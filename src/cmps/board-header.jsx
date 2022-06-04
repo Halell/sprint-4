@@ -4,6 +4,7 @@ import { ReactComponent as StarSvg } from '../assets/svg/star.svg'
 import { ReactComponent as HideSecondSvg } from '../assets/svg/hide.second.svg'
 import { FiUserPlus } from 'react-icons/fi'
 import { BiDotsHorizontalRounded } from 'react-icons/bi'
+import { FiActivity } from 'react-icons/fi'
 import { boardService } from "../services/board.service"
 import { ActivityLog } from "./acttivity"
 import { utilService } from "../services/util.service"
@@ -99,8 +100,11 @@ export function BoardHeader({ onAddGroup, onChangeFilter, getPersons, onSaveBoar
                                         </form>
                                     </div>
                                 }
-                                <div onClick={() => openActivty()} className="activity">
-                                    Activity
+                                <div className="activity-container flex">
+                                    <div onClick={() => openActivty()} className="activity flex">
+                                        <FiActivity />
+                                        <span> Activity</span>
+                                    </div>
                                 </div>
                                 <div className="add-board-container">
                                     <div className="add-to-board">+ Add to board </div>

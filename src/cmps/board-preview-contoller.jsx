@@ -1,5 +1,7 @@
 import { NavLink } from "react-router-dom"
 import { ReactComponent as Board } from '../assets/svg/board.svg'
+import { FaTrash } from 'react-icons/fa'
+
 export function BoardPreview({ board, idx, removeBoard }) {
     return <div>
         <div className="board-preview">
