@@ -86,7 +86,7 @@ export function BoardHeader({ onAddGroup, onChangeFilter, getPersons, onSaveBoar
                                 {isMemberInvite &&
                                     <div className="board-invite-modal">
                                         <div className="close-modal-invite" onClick={() => setInvite(!isMemberInvite)}>x</div>
-                                        <h1><FiUserPlus />Invite/{board.persons.length}</h1>
+                                        <h1><FiUserPlus /> <span> Invite/{board.persons.length}</span></h1>
                                         <form onSubmit={onSubmit}>
                                             <input
                                                 className="invite-input"
@@ -102,7 +102,9 @@ export function BoardHeader({ onAddGroup, onChangeFilter, getPersons, onSaveBoar
                                 <div onClick={() => openActivty()} className="activity">
                                     Activity
                                 </div>
-                                <div className="add-to-board">+ Add to board </div>
+                                <div className="add-board-container">
+                                    <div className="add-to-board">+ Add to board </div>
+                                </div>
                                 <div className="edit"><BiDotsHorizontalRounded /></div>
 
                             </div>
