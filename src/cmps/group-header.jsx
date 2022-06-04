@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { AiOutlineDelete } from 'react-icons/ai';
 import { RiAddCircleLine } from 'react-icons/ri';
 import { HiOutlineDocumentDuplicate } from 'react-icons/hi';
-import { GoPrimitiveDot } from 'react-icons/go';
+import { BiPlusCircle } from 'react-icons/bi';
 
 
 
@@ -61,7 +61,9 @@ export function GroupHeader({ board, group, onUseBtn, onSaveGroup, onUpdateColum
                         )}
                     </div>
                 </div>
-                <div className="column-wrapper-add"></div>
+                <div className="column-wrapper-add">
+                    {/* <div><BiPlusCircle /></div> */}
+                </div>
             </div>
             {
                 isBtnsModalOpen &&
