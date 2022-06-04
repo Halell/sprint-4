@@ -1,11 +1,8 @@
 import { boardService } from "./board.service";
 
 export async function filterByName(filterBy, boardId) {
-    console.log('filterBy: ', filterBy);
     if (!boardId) boardId = filterBy.boardId
-    console.log('boardId', boardId);
     const board = await boardService.getById(boardId)
-    console.log('boardddddddddddddd: ', board);
     const groups = board.groups.map(group => {
         group.tasks = filter(filterBy, group.tasks)
         return group
@@ -37,3 +34,25 @@ export function filter(filterBy, tasks) {
     }
     return tasksToReturn
 }
+
+export function sort(groups, sortBy) {
+    let sortedGroups = groups.filter(group => {
+        let taskTextArray = group.tasks.map(task => task.text)
+        let sortText = taskTextArray.sort()
+        let sorted = group.tasks.filter(task => task.text === sortText)
+        console.log(taskTextArray);
+    })
+    console.log('sorted: ', sortedGroups);
+}
+
+// export function sort(groups, sortBy) {
+//     let sortedGroups = groups.filter(group => {
+//         console.log(group);
+//         let taskTextArray = group.tasks.map(task => task.text)
+//         let sortText = taskTextArray.sort()
+//     })
+//     console.log('sorted: ', sortedGroups);
+//     // let groupsArray = groups.map(group => group.tasks)
+//     if (sortBy === 'text') {
+//     }
+// } 

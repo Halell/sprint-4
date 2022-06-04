@@ -10,7 +10,7 @@ import { RiLineHeight } from 'react-icons/ri';
 import { CgColorBucket } from 'react-icons/cg';
 import { MdOutlineWeb } from 'react-icons/md';
 import { useParams } from 'react-router-dom'
-
+import { sort } from '../services/filter.service'
 
 
 
@@ -21,14 +21,14 @@ export const BoardFilter = ({ onAddGroup, onChangeFilter, getPersons, onAddTask,
     const [isSortOpen, setIsSortOpen] = useState(false)
     const [person, setPerson] = useState(null)
     const params = useParams()
-    function sort(sortBy) {
-        const sortedTasks = board.groups.map(group => {
-            return group.tasks.srot((a, b) => {
-                return a.title - b.title
-            })
-        })
-        console.log(sortedTasks)
-    }
+    // function sort(sortBy) {
+    //     const sortedTasks = board.groups.map(group => {
+    //         return group.tasks.srot((a, b) => {
+    //             return a.title - b.title
+    //         })
+    //     })
+    //     console.log(sortedTasks)
+    // }
 
     const toggle = (val) => {
         if (val === 'person-modal') {
@@ -39,6 +39,7 @@ export const BoardFilter = ({ onAddGroup, onChangeFilter, getPersons, onAddTask,
         }
         if (val === 'sort-modal') {
             setIsSortOpen(isSortOpen ? false : true)
+            sort(board.groups, 'text')
         }
     }
 
@@ -68,6 +69,7 @@ export const BoardFilter = ({ onAddGroup, onChangeFilter, getPersons, onAddTask,
         onChangeFilter(filterBy)
     }
 
+    // console.log('cdcdcdvd', board.groups[0].tasks[0].text);
     return (
         <div className="header-bottom-main-wrapper">
             <div className="new-item-wraper flex">
@@ -113,7 +115,7 @@ export const BoardFilter = ({ onAddGroup, onChangeFilter, getPersons, onAddTask,
                     <p className="first-txt-modal">Quick person filter</p>
                     <p className="second-txt-modal">Filter items and subitems by person</p>
                     {board.persons && board.persons.map((person, idx) => {
-                        return <div onClick={() => getPerson(person)} key={idx} className="person-link" href=""><img className="person-img" src={person.imgUrl} alt="" />{person.fullname}</div>
+                        return <div onClick={() => getPerson(person)} key={idx} className="person-link flex" href=""><img className="person-img" src={require(`../assets/img/carmel.png`)} />{person.fullname}</div>
                     })}
 
                 </div>
@@ -138,3 +140,4 @@ export const BoardFilter = ({ onAddGroup, onChangeFilter, getPersons, onAddTask,
         </div>
     )
 }
+<img src={require(`../assets/img/carmel.png`)} />

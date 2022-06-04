@@ -32,14 +32,14 @@ export function BoardContent({ group, onAddTask, onRemoveGroup, onUpdateTask, on
 
     const onchangeColor = (group) => {
         group.style = 'rgb(0, 200, 117)'
-        console.log( group.style)
+        console.log(group.style)
         onAddGroup(group)
     }
 
     const onUpdateColumns = (el) => {
         const idx = el.target.getAttribute('idx')
         board.columns[idx] = el.target.innerText
-        onAddGroup(group) 
+        onAddGroup(group)
     }
 
     const onSaveGroup = (el) => {

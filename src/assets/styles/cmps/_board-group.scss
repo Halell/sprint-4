@@ -83,7 +83,7 @@
 
 
 .btns-modal {
-    width: 264px;
+    width: 240px;
     top: 60%px;
     left: 7px;
     position: absolute;
@@ -91,24 +91,27 @@
     box-shadow: 0 4px 17px 6px rgb(0 0 0 / 10%);
     background-color: #fff;
     border-radius: 8px;
+    padding: 5px;
 
     .btns-top-modal {
         padding: 3px;
 
         .btn-modal-top-section {
             cursor: pointer;
-            padding: 8px 4px;
+            padding: 4px;
             border-radius: 4px;
             color: rgb(50, 51, 56);
             display: flex;
             align-items: center;
             font-size: 14px;
-            font-family: Roboto;
+            font-family: Roboto-thin;
 
             &:hover {
                 background-color: #e6e9ef;
             }
         }
+
+
     }
 
     .btns-bottom-modal {
@@ -116,13 +119,20 @@
 
         .btn-modal-color {
             cursor: pointer;
-            padding: 5px;
+            padding: 4px;
             border-radius: 4px;
             color: rgb(50, 51, 56);
             display: flex;
             align-items: center;
             font-size: 14px;
-            font-family: Roboto;
+            font-family: Roboto-thin;
+
+            .color-pick {
+                background-color: aqua;
+                border-radius: 50%;
+                width: 10px;
+                height: 10px;
+            }
 
             &:hover {
                 background-color: #e6e9ef;
@@ -131,13 +141,13 @@
 
         .btn-modal-remove {
             cursor: pointer;
-            padding: 8px;
+            padding: 4px;
             border-radius: 4px;
             color: rgb(50, 51, 56);
             display: flex;
             align-items: center;
             font-size: 14px;
-            font-family: Roboto;
+            font-family: Roboto-thin;
 
             &:hover {
                 background-color: #e6e9ef;
@@ -199,4 +209,15 @@
         }
 
     }
+}
+
+.border {
+    border-bottom: 0.5px solid rgb(221, 222, 231);
+}
+
+span {
+    font-weight: 400;
+    margin: 0;
+    font-family: Roboto;
+    padding-left: 8px;
 }
