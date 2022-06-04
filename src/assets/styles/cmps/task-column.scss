@@ -124,16 +124,23 @@
         border: none;
         margin: 2px;
 
+        .add-edit-btn {
+            color: #0073ea;
+            justify-content: center;
+            align-items: center;
+
+            &:hover {
+                background-color: #0073ea;
+                color: white;
+            }
+        }
+
         .none {
             height: 100%;
             width: 100%;
         }
 
         .btn-wraper {
-            // z-index: 18;
-
-
-
             .status-edit-btn-done {
                 z-index: 20;
                 margin: 2px;

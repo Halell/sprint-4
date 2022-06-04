@@ -17,8 +17,13 @@ export function TaskColumn({ board, boardColumn, task, setStatus, statusBgcColor
     const [isDateEdit, setIsDateEdit] = useState(false)
     const [isPersonsModal, setPersonsEdit] = useState(false)
     const [isInputOpen, setopenInput] = useState(false)
+    const [isChangeColor, setChangeColor] = useState(false)
     const [user, setUser] = useState({ fullname: '' })
 
+
+    const changeColor = () => {
+
+    }
 
     const setColumn = (val) => {
         if (val === 'status') setIsStatusEdit(!isStatusEdit)
@@ -159,7 +164,15 @@ export function TaskColumn({ board, boardColumn, task, setStatus, statusBgcColor
                             field={'importance'}
                             closeModal={setColumn}
                             task={task}
+                            changeColor={changeColor}
+                            setChangeColor={setChangeColor}
                         />
+                    </div>
+                }
+                {
+                    isChangeColor &&
+                    <div>
+                        changeColor
                     </div>
                 }
             </div>
