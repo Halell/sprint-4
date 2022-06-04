@@ -19,7 +19,7 @@ export function TaskColumn({ group, board, boardColumn, task, setStatus, statusB
     const [isPersonsModal, setPersonsEdit] = useState(false)
     const [isInputOpen, setopenInput] = useState(false)
     const [user, setUser] = useState({ fullname: '' })
-
+console.log(group)
 
     const setColumn = (val) => {
         if (val === 'status') setIsStatusEdit(!isStatusEdit)
