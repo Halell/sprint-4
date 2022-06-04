@@ -44,20 +44,11 @@ export function BoardContent({ group, onAddTask, onRemoveGroup, onUpdateTask, on
 
     const onSaveGroup = (el) => {
         if (el) {
-            const title = el.target.innerText
+            const title = el.target.innerText.toLowerCase()
             group.title = title
         }
         onAddGroup(group)
     }
-
-    // function handleOnDragEnd(res) {
-    //     if (!res.destination) return
-    //     const tasks = Array.from(group.tasks)
-    //     const [reorederdTask] = tasks.splice(res.source.index, 1)
-    //     tasks.splice(res.destination.index, 0, reorederdTask)
-    //     group.tasks = tasks
-    //     onAddGroup(group)
-    // }
 
     return (
         <Fragment>

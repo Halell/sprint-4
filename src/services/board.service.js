@@ -76,7 +76,7 @@ async function save(board) {
             activities: [],
             archivedAt: '',
             cmpsOrder: ["status-picker", "member-picker", "date-picker"],
-            columns: ["text", "status", "importance", "date", "persons"],
+            columns: ["text", "status", "priority", "date", "persons"],
             createdAt: createdAt.toLocaleTimeString(),
             createdBy: [],
             groups: [{

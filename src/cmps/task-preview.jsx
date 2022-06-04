@@ -9,11 +9,11 @@ import { taskService } from '../services/task.service.js'
 
 export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask, onAddTask, onAddGroup, onSaveBoard }) => {
     const [statusBgcColor, setStatusBgcColor] = useState('')
-    const [importanceBgcColor, setImportanceBgcColor] = useState('')
+    const [priorityBgcColor, setImportanceBgcColor] = useState('')
     const [isModalOpen, setIsModalOpen] = useState(false)
 
     useEffect(() => {
-        setStatus(task.importance, 'importance', 'loading')
+        setStatus(task.priority, 'priority', 'loading')
         setStatus(task.status, 'status', 'loading')
     }, [])
 
@@ -152,7 +152,7 @@ export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask, on
                                     setStatus={setStatus}
                                     boardColumn={boardColumn}
                                     task={task}
-                                    importanceBgcColor={importanceBgcColor}
+                                    priorityBgcColor={priorityBgcColor}
                                     statusBgcColor={statusBgcColor}
                                     setTxt={setTxt}
                                     board={board}

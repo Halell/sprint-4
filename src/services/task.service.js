@@ -52,7 +52,7 @@ async function saveTask(board, groupId, taskToSave) {
                     taskToSave.persons = []
                     taskToSave.status = "none"
                     taskToSave.text = "lets get it done"
-                    taskToSave.importance = "mid"
+                    taskToSave.priority = "mid"
                     group.tasks.push(taskToSave)
                     console.log(group)
                 } else {

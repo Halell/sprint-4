@@ -26,7 +26,8 @@ async function saveGroup(board, updateGroup) {
             archivedAt: 'hour ago',
             style: {},
             tasks: [],
-            title: 'Group ' + (board.groups.length + 1)
+            title: 'Group ' + (board.groups.length + 1),
+            progress: []
         }
         board.groups.unshift(newGroup)
     }

@@ -10,20 +10,21 @@ import userImg from '../assets/img/carmel.png'
 import { useOutsideAlerter } from '../hooks/useClickOutsideParent'
 import { ProgressBar } from "./progress-bar"
 
-export function TaskColumn({ group, board, boardColumn, task, setStatus, statusBgcColor, importanceBgcColor, setTxt, setMember, removeMember, addUser, handleSelect }) {
+export function TaskColumn({ group, board, boardColumn, task, setStatus, statusBgcColor, priorityBgcColor, setTxt, setMember, removeMember, addUser, handleSelect }) {
     const parentRef = useRef(null)
     const wrapperRef = useRef(null)
-    const [isImportanceEdit, setIsImportanceEdit] = useState(false)
+    const [isPriorityEdit, setPriorityEdit] = useState(false)
     const [isStatusEdit, setIsStatusEdit] = useState(false)
     const [isDateEdit, setIsDateEdit] = useState(false)
     const [isPersonsModal, setPersonsEdit] = useState(false)
     const [isInputOpen, setopenInput] = useState(false)
     const [user, setUser] = useState({ fullname: '' })
-console.log(group)
+console.log(group
+    )
 
     const setColumn = (val) => {
         if (val === 'status') setIsStatusEdit(!isStatusEdit)
-        if (val === 'importance') setIsImportanceEdit(!isImportanceEdit)
+        if (val === 'priority') setPriorityEdit(!isPriorityEdit)
         if (val === 'persons') setPersonsEdit(!isPersonsModal)
 
     }
@@ -151,16 +152,16 @@ console.log(group)
             </div>
         }
 
-        {/* importance */}
+        {/* priority */}
         {
-            boardColumn === 'importance' && <div ref={parentRef} style={{ backgroundColor: importanceBgcColor }} onClick={() => setColumn(boardColumn)} className="task-column task-column-status">
-                {task.importance !== 'none' && task.importance}
-                {isImportanceEdit &&
+            boardColumn === 'priority' && <div ref={parentRef} style={{ backgroundColor: priorityBgcColor }} onClick={() => setColumn(boardColumn)} className="task-column task-column-status">
+                {task.priority !== 'none' && task.priority}
+                {isPriorityEdit &&
                     <div className="column-modal">
                         <LabelsModal
                             parentRef={parentRef}
                             setStatus={setStatus}
-                            field={'importance'}
+                            field={'priority'}
                             closeModal={setColumn}
                             task={task}
                         />
