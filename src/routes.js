@@ -1,7 +1,7 @@
 import { HomePage } from './pages/home-page'
 import { MainApp } from './pages/main-app'
-import { LoginSignup } from './cmps/login-signup'
-
+import { Login } from './pages/login'
+import { Signup } from './pages/signup'
 export default [
     // {
     //     path: '/item/edit/:itemId?',
@@ -21,7 +21,11 @@ export default [
     },
     {
         path: '/login',
-        element: <LoginSignup />,
+        element: <Login />,
+    },
+    {
+        path: '/signup',
+        element: <Signup />
     },
     {
         path: '/',

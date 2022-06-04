@@ -31,8 +31,9 @@ export const HomePage = () => {
                         <div className="nav-btn">Pricing</div> */}
                     </div>
                     <div className="right-content">
-                        <Link to={ '/login' } className="login" href="">Log in</Link>
-                        { boards && <Link to={ `/board/${boards[0]._id}` }> <div className="started-btn">Get Started</div></Link> }
+                        <Link to={'/login'} className="login" href="">Log in</Link>
+                        <Link to={'/signup'} className="login" >Signup</Link>
+                        {boards && <Link to={`/board/${boards[0]._id}`}> <div className="started-btn">Get Started</div></Link>}
                     </div>
                 </div>
             </div>
@@ -43,7 +44,7 @@ export const HomePage = () => {
                             <h1 className="head-line-title">Work Without Limits</h1>
                             <h2 className="head-line-title-sub">Easily build, run, and scale your dream workflows on one platform. what would you like to manage with us?</h2>
                         </div>
-                        { boards && <Link to={ `/board/${boards[0]._id}` }> <div className="get-started-btn">GetStarted</div></Link> }
+                        {boards && <Link to={`/board/${boards[0]._id}`}> <div className="get-started-btn">GetStarted</div></Link>}
                     </div>
                 </div>
             </main>

@@ -34,7 +34,7 @@ function getById(boardId) {
     // return axios.get(`/api/board/${boardId}`)
 }
 async function remove(boardId) {
-    return httpService.delete(`/board/${boardId}`)
+    httpService.delete(`/board/${boardId}`)
     // return new Promise((resolve, reject) => {
     //     setTimeout(reject, 2000)
     // })
@@ -66,7 +66,7 @@ async function setActivity(board, txt, from, to, style) {
 }
 
 async function save(board) {
-    var savedBoard 
+    var savedBoard
     if (board._id) {
         boardChannel.postMessage(getActionUpdateBoard(savedBoard))
         return httpService.put(`board/:${board._id}`, board)
