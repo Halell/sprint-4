@@ -83,11 +83,6 @@ export function BoardContent({ group, onAddTask, onRemoveGroup, onUpdateTask, on
                 group={group}
                 onAddTask={onAddTask}
             />
-            <div className="group-progress">
-                <div className="empty-cell"></div>
-                <ProgressBar group={group} />
-                <div className="empty-cell"></div>
-            </div>
         </Fragment >
     )
 

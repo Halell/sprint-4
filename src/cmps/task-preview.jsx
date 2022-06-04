@@ -160,6 +160,7 @@ export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask, on
                                     removeMember={removeMember}
                                     addUser={addUser}
                                     handleSelect={handleSelect}
+                                    group={group}
                                 />
                             </div>
                         </div>

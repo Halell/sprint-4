@@ -8,8 +8,9 @@ import { ReactComponent as RemoveSvg } from '../assets/svg/remove.svg'
 import { ReactComponent as Person } from '../assets/svg/person-column.svg'
 import userImg from '../assets/img/carmel.png'
 import { useOutsideAlerter } from '../hooks/useClickOutsideParent'
+import { ProgressBar } from "./progress-bar"
 
-export function TaskColumn({ board, boardColumn, task, setStatus, statusBgcColor, importanceBgcColor, setTxt, setMember, removeMember, addUser, handleSelect }) {
+export function TaskColumn({ group, board, boardColumn, task, setStatus, statusBgcColor, importanceBgcColor, setTxt, setMember, removeMember, addUser, handleSelect }) {
     const parentRef = useRef(null)
     const wrapperRef = useRef(null)
     const [isImportanceEdit, setIsImportanceEdit] = useState(false)
@@ -17,13 +18,8 @@ export function TaskColumn({ board, boardColumn, task, setStatus, statusBgcColor
     const [isDateEdit, setIsDateEdit] = useState(false)
     const [isPersonsModal, setPersonsEdit] = useState(false)
     const [isInputOpen, setopenInput] = useState(false)
-    const [isChangeColor, setChangeColor] = useState(false)
     const [user, setUser] = useState({ fullname: '' })
 
-
-    const changeColor = () => {
-
-    }
 
     const setColumn = (val) => {
         if (val === 'status') setIsStatusEdit(!isStatusEdit)
@@ -72,6 +68,9 @@ export function TaskColumn({ board, boardColumn, task, setStatus, statusBgcColor
                     />
                 </div>
             }
+            <div className="progres-bar-position">
+                <ProgressBar group={group} />
+            </div>
         </div>
         }
 
@@ -164,15 +163,7 @@ export function TaskColumn({ board, boardColumn, task, setStatus, statusBgcColor
                             field={'importance'}
                             closeModal={setColumn}
                             task={task}
-                            changeColor={changeColor}
-                            setChangeColor={setChangeColor}
                         />
-                    </div>
-                }
-                {
-                    isChangeColor &&
-                    <div>
-                        changeColor
                     </div>
                 }
             </div>
