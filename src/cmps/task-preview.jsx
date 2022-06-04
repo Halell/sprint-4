@@ -7,7 +7,7 @@ import { boardService } from '../services/board.service'
 import { utilService } from '../services/util.service.js'
 import { taskService } from '../services/task.service.js'
 
-export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask, onAddTask, onAddGroup, onSaveBoard }) => {
+export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask, onAddTask, onAddGroup, onSaveBoard, idx }) => {
     const [statusBgcColor, setStatusBgcColor] = useState('')
     const [priorityBgcColor, setImportanceBgcColor] = useState('')
     const [isModalOpen, setIsModalOpen] = useState(false)
@@ -161,6 +161,7 @@ export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask, on
                                     addUser={addUser}
                                     handleSelect={handleSelect}
                                     group={group}
+                                    idx={idx}
                                 />
                             </div>
                         </div>

@@ -19,7 +19,7 @@ export function TaskColumn({ group, board, boardColumn, task, setStatus, statusB
     const [isPersonsModal, setPersonsEdit] = useState(false)
     const [isInputOpen, setopenInput] = useState(false)
     const [user, setUser] = useState({ fullname: '' })
-console.log(group
+    console.log(group
     )
 
     const setColumn = (val) => {
@@ -69,11 +69,9 @@ console.log(group
                     />
                 </div>
             }
-            <div className="progres-bar-position">
-                <ProgressBar group={group} />
-            </div>
         </div>
         }
+
 
         {/* date */}
         {boardColumn === 'date' && <div onClick={() => openDateModal(openDateModal)} className="task-column">

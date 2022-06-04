@@ -15,6 +15,7 @@ export function TaskList({ board, group, onUpdateTask, onRemoveTask, onAddGroup,
                                 board={board}
                                 onAddGroup={onAddGroup}
                                 onSaveBoard={onSaveBoard}
+                                idx={idx}
                             />
                             {provided.placeholder}
                         </div>

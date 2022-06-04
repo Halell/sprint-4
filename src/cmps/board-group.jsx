@@ -74,6 +74,12 @@ export function BoardContent({ group, onAddTask, onRemoveGroup, onUpdateTask, on
                 group={group}
                 onAddTask={onAddTask}
             />
+            <div className="progres-bar-position flex">
+                <div className="empty-cell"></div>
+                <div className="empty-cell-nums"></div>
+                <div className="empty-cell-date"></div>
+                <ProgressBar group={group} />
+            </div>
         </Fragment >
     )
 

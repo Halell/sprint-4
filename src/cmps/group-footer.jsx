@@ -3,6 +3,7 @@ import { TaskList } from "./task-list"
 import { GroupHeader } from "./group-header"
 
 import { useSelector } from 'react-redux'
+import { ProgressBar } from './progress-bar'
 
 export function GroupFooter({ group, onAddTask }) {
     const { board } = useSelector((storeState) => storeState.boardModule)
@@ -14,7 +15,7 @@ export function GroupFooter({ group, onAddTask }) {
         }
         if (task.title) {
             onAddTask(board, group.id, task)
-            
+
         }
         setIsNewTaskEdit(!isNewTaskEdit)
     }
@@ -53,7 +54,6 @@ export function GroupFooter({ group, onAddTask }) {
                 </div>
                 <div className="footer-spacer">
                 </div>
-                    <div></div>
             </div>
         </div>
     )
