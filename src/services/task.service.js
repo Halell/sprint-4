@@ -42,21 +42,17 @@ async function setActivity(task, txt, from, to, style) {
 
 async function saveTask(board, groupId, taskToSave) {
     try {
-        // await
         const groups = board.groups.map(group => {
             if (group.id === groupId) {
                 if (!taskToSave.id) {
-                    console.log('hi')
                     taskToSave.id = utilService.makeId()
-                    taskToSave.date = "24/05/2022"
+                    taskToSave.date = ""
                     taskToSave.persons = []
                     taskToSave.status = "none"
-                    taskToSave.text = "lets get it done"
+                    taskToSave.text = ""
                     taskToSave.priority = "mid"
                     group.tasks.push(taskToSave)
-                    console.log(group)
                 } else {
-                    // console.log('hi')
                     const idx = group.tasks.findIndex(task => task.id === taskToSave.id)
                     group.tasks[idx] = taskToSave
                 }

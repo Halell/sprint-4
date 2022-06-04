@@ -8,7 +8,6 @@ import { ReactComponent as RemoveSvg } from '../assets/svg/remove.svg'
 import { ReactComponent as Person } from '../assets/svg/person-column.svg'
 import userImg from '../assets/img/carmel.png'
 import { useOutsideAlerter } from '../hooks/useClickOutsideParent'
-import { ProgressBar } from "./progress-bar"
 
 export function TaskColumn({ group, board, boardColumn, task, setStatus, statusBgcColor, priorityBgcColor, setTxt, setMember, removeMember, addUser, handleSelect }) {
     const parentRef = useRef(null)
@@ -19,8 +18,6 @@ export function TaskColumn({ group, board, boardColumn, task, setStatus, statusB
     const [isPersonsModal, setPersonsEdit] = useState(false)
     const [isInputOpen, setopenInput] = useState(false)
     const [user, setUser] = useState({ fullname: '' })
-    console.log(group
-    )
 
     const setColumn = (val) => {
         if (val === 'status') setIsStatusEdit(!isStatusEdit)

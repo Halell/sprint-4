@@ -35,7 +35,7 @@ export function GroupFooter({ group, onAddTask }) {
                 <div className="title-container">
                     <div className="btn-pulse-menu-wrapper" ></div>
                     <div className="title-cell-component group-footer" >
-                        <div className="pulse-left-indicator"/*{ enter color obj here } */></div>
+                        <div className="pulse-left-indicator" style={{ backgroundColor: group.style, filter: ' grayScale(65%)' }}></div>
 
                         {isNewTaskEdit ? <div className="title-component "
                             ref={inputRef}

@@ -2,7 +2,17 @@ export const utilService = {
     makeId,
     makeLorem,
     getRandomIntInclusive,
-    delay
+    delay,
+    getRandomColor,
+    getColors
+}
+
+function getColors() {
+    var colors = []
+    for (var i = 0; i < 20; i++) {
+        colors.push(utilService.getRandomColor())
+    }
+    return colors
 }
 
 function makeId(length = 6) {
@@ -36,5 +46,14 @@ function delay(ms = 1500) {
     return new Promise(resolve => {
         setTimeout(resolve, ms)
     })
+}
+
+function getRandomColor() {
+    var letters = '0123456789ABCDEF'
+    var color = '#'
+    for (var i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)]
+    }
+    return color
 }
 

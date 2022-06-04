@@ -7,7 +7,6 @@ export function TitleCell({ task, onUpdateTask, group, onSetIsModalOpen }) {
 
     const [isBtnInputOpen, setIsBtnInputOpen] = useState(true)
     const [isDetailesModalOpen, setIsDetailesModalOpen] = useState(false)
-
     const toggle = (val, ev) => {
         if (ev) ev.stopPropagation()
         if (val === 'btn-input') {
@@ -31,7 +30,7 @@ export function TitleCell({ task, onUpdateTask, group, onSetIsModalOpen }) {
                         <div className="cell-component title-cell" >
                             <div className="title-cell-component" onClick={() => toggle('details-modal')}>
 
-                                <div className="pulse-left-indicator"/*{ enter color obj here } */></div>
+                                <div className="pulse-left-indicator" style={{ backgroundColor: group.style }}></div>
                                 <div className="title-cell-text">
                                     <div className="title-component">
                                         {isBtnInputOpen ?

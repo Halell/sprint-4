@@ -24,10 +24,10 @@ async function saveGroup(board, updateGroup) {
         newGroup = {
             id: utilService.makeId(),
             archivedAt: 'hour ago',
-            style: {},
+            style: utilService.getRandomColor(),
             tasks: [],
             title: 'Group ' + (board.groups.length + 1),
-            progress: []
+            progress: [],
         }
         board.groups.unshift(newGroup)
     }

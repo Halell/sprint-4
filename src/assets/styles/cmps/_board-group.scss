@@ -26,7 +26,6 @@
             font-size: 12px;
             height: 45%;
             width: 50%;
-            background-color: rgb(87, 155, 252);
             border-radius: 50%;
             color: white;
         }
@@ -117,6 +116,35 @@
 
     }
 
+    .color-pallete {
+        position: absolute;
+        box-shadow: 0 4px 17px 6px rgb(0 0 0 / 10%);
+        background-color: #fff;
+        top: 80%;
+        height: 114px;
+        width: 140px;
+
+        .color-picker-wraper {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 8px;
+            grid-gap: 6px;
+            gap: 6px;
+            cursor: pointer;
+
+            .color-picker {
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                transition: all 0.1s ease-in-out;
+
+                &:hover {
+                    filter: grayScale(100%);
+                }
+            }
+        }
+    }
+
     .btns-bottom-modal {
         padding: 3px;
 
@@ -140,6 +168,7 @@
             &:hover {
                 background-color: #e6e9ef;
             }
+
         }
 
         .btn-modal-remove {
@@ -199,7 +228,8 @@
         }
 
         .pulse-left-indicator {
-            background-color: rgb(87, 155, 252);
+            // background-color: rgb(87, 155, 252);
+
             color: rgb(87, 155, 252);
             flex: 0 0 8px;
             height: 100%;

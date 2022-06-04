@@ -87,7 +87,7 @@ async function save(board) {
                 title: 'Group 1'
             }],
             persons: [],
-            style: {},
+            labels: utilService.getColors(),
             title: 'New Board'
         }
         savedBoard = await httpService.post('board', newBoard)

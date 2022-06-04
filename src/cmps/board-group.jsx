@@ -3,15 +3,13 @@ import { TaskList } from "./task-list"
 import { GroupHeader } from "./group-header"
 import { GroupFooter } from "./group-footer"
 import { useSelector } from 'react-redux'
-import { DragDropContext } from 'react-beautiful-dnd'
-import { Droppable } from 'react-beautiful-dnd'
-import { utilService } from '../services/util.service'
 import { ProgressBar } from './progress-bar'
 
-export function BoardContent({ group, onAddTask, onRemoveGroup, onUpdateTask, onRemoveTask, onAddGroup, onSaveBoard, idx, provided }) {
+export function BoardContent({ group, onAddTask, onRemoveGroup, onUpdateTask, onRemoveTask, onAddGroup, onSaveBoard }) {
 
     const { board } = useSelector((storeState) => storeState.boardModule)
     const [isBtnsModalOpen, setIsBtnsModalOpen] = useState(false)
+    const [isChangeColor, setChangeColor] = useState(false)
     const toggle = (val) => {
         if (val === 'btns-modal') {
             setIsBtnsModalOpen(!isBtnsModalOpen)
@@ -19,21 +17,23 @@ export function BoardContent({ group, onAddTask, onRemoveGroup, onUpdateTask, on
     }
 
     const onUseBtn = (val, group) => {
+        console.log('val', val)
         if (val === 'remove') onRemoveGroup(group.id)
         if (val === 'add') onAddGroup()
-        if (val === 'color') onchangeColor(group)
+        if (val === 'color') setChangeColor(!isChangeColor)
         if (val === 'duplicate') {
             const duplicateGroup = { ...group }
             duplicateGroup.id = null
             onAddGroup(duplicateGroup)
         }
-        setIsBtnsModalOpen(isBtnsModalOpen ? false : true)
+        console.log(isChangeColor)
     }
-
-    const onchangeColor = (group) => {
-        group.style = 'rgb(0, 200, 117)'
-        console.log(group.style)
+    
+    const onchangeColor = (val, group) => {
+        group.style = val
         onAddGroup(group)
+        setIsBtnsModalOpen(!isBtnsModalOpen)
+        setChangeColor(!isChangeColor)
     }
 
     const onUpdateColumns = (el) => {
@@ -61,6 +61,8 @@ export function BoardContent({ group, onAddTask, onRemoveGroup, onUpdateTask, on
                 onUseBtn={onUseBtn}
                 toggle={toggle}
                 isBtnsModalOpen={isBtnsModalOpen}
+                onchangeColor={onchangeColor}
+                isChangeColor={isChangeColor}
             />
             <TaskList
                 onSaveBoard={onSaveBoard}
