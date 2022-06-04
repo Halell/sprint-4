@@ -68,7 +68,7 @@ export const Board = ({ isPinned }) => {
 
     const onSaveBoard = async (newBoard) => {
         await boardService.save(newBoard)
-        socketService.emit('add board', newBoard)
+        // socketService.emit('add board', newBoard)
         dispatch(loadBoard(params.id))
     }
 

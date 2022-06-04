@@ -34,7 +34,8 @@ function getById(boardId) {
     // return axios.get(`/api/board/${boardId}`)
 }
 async function remove(boardId) {
-    httpService.delete(`/board/${boardId}`)
+    console.log('boardId: ', boardId);
+    return httpService.delete(`board/${boardId}`)
     // return new Promise((resolve, reject) => {
     //     setTimeout(reject, 2000)
     // })

@@ -21,12 +21,21 @@ export function _Signup({ history, onSignup }) {
 
     const [user, setUser] = useState({})
 
-    function handleCallbackResponse(response) {
+    async function handleCallbackResponse(response) {
         console.log("Encoded JWT ID token:" + response.credential);
         let userObject = jwt_decode(response.credential);
         console.log(userObject);
+        const fName = userObject.given_name
+        const lName = userObject.family_name
+        userObject = {
+            username: userObject.name,
+            fullname: (fName + ' ' + lName),
+            imgUrl: userObject.picture,
+        }
         setUser(userObject)
         document.getElementById("signInDiv").hidden = true;
+        await onSignup(userObject)
+        history.push('/board')
     }
 
     function handleSignOut(event) {

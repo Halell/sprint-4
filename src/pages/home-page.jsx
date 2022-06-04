@@ -32,7 +32,7 @@ export const HomePage = () => {
                     </div>
                     <div className="right-content">
                         <Link to={'/login'} className="login" href="">Log in</Link>
-                        <Link to={'/signup'} className="login" >Signup</Link>
+                        <Link to={'/signup'} className="signup" >Signup</Link>
                         {boards && <Link to={`/board/${boards[0]._id}`}> <div className="started-btn">Get Started</div></Link>}
                     </div>
                 </div>
