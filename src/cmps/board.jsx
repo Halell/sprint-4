@@ -21,6 +21,7 @@ export const Board = ({ isPinned }) => {
     const onLoadBoard = async () => {
         await dispatch(loadBoard(params.id))
     }
+    console.log(board)
 
     const onRemoveGroup = async (groupId) => {
         await boardService.setActivity(board, 'Removed group')
