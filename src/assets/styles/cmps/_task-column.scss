@@ -1,7 +1,7 @@
 .task-column {
     min-width: 140px;
     // z-index: 15;
-    height: 34px;
+    height: 35.1px;
 
     &.member-col {
         display: flex;
@@ -154,13 +154,11 @@
 .menu-modal {
     position: absolute;
     z-index: 3;
-    // right: 6px;
-    // right: 24px;
-
-    width: 195px;
+    width: 278px;
     box-shadow: 0 4px 17px 6px rgb(0 0 0 / 10%);
     background-color: #fff;
     border-radius: 8px;
+    right: 20px;
 
 
     .person-menu {
@@ -175,6 +173,8 @@
             position: relative;
             width: 100%;
             flex-wrap: wrap;
+
+
 
             .member-box {
                 margin: 4px;
@@ -219,70 +219,75 @@
         .search-persons {
             height: 34px;
             width: 100%;
-
-            &input {
-                outline: none;
-                height: 100%;
-                width: 100%;
-                border: none;
-                padding: 8px;
-                background: transparent;
-            }
-        }
-
-        .divider {
-            height: 1px;
-            border-bottom: 1px solid #e6e9ef;
-            width: 100%;
-        }
-
-        .wrapper {
-            padding: 4px 8px;
-            border-radius: 5px;
-
-            &:hover {
-                background-color: #0073ea;
-            }
-
-            .add-member-box {
-                line-height: 34px;
-                font-size: .8125rem;
-
-                .img-user {
-                    justify-content: center;
-                    align-items: center;
-
-                    img {
-                        margin-right: 5px;
-                        width: 26px;
-                        height: 26px;
-                        border-radius: 50%;
-                    }
-                }
-
-                .user-full-name {
-                    flex: 1 1;
-                }
-            }
-
-        }
-
-        .invite {
-            color: #0073ea;
-            height: 34px;
-            padding: 8px;
-            margin: 8px;
-            font-size: .8125rem;
+            display: flex;
+            justify-content: flex-start;
             align-items: center;
+            margin-left: 10px;
+        
 
-            &:hover {
-                background-color: #0073ea;
-                color: white;
-            }
-
-            svg {
-                margin-right: 5px;
-            }
+        &input {
+            outline: none;
+            height: 100%;
+            width: 100%;
+            border: none;
+            padding: 8px;
+            background: transparent;
         }
     }
+
+    .divider {
+        height: 1px;
+        border-bottom: 1px solid #e6e9ef;
+        width: 100%;
+    }
+
+    .wrapper {
+        padding: 4px 8px;
+        border-radius: 5px;
+
+        &:hover {
+            background-color: #0073ea;
+        }
+
+        .add-member-box {
+            line-height: 34px;
+            font-size: .8125rem;
+
+            .img-user {
+                justify-content: center;
+                align-items: center;
+
+                img {
+                    margin-right: 5px;
+                    width: 26px;
+                    height: 26px;
+                    border-radius: 50%;
+                }
+            }
+
+            .user-full-name {
+                flex: 1 1;
+            }
+        }
+
+    }
+
+    .invite {
+        color: #0073ea;
+        height: 34px;
+        padding: 8px;
+        margin: 8px;
+        font-size: .8125rem;
+        align-items: center;
+
+        &:hover {
+            background-color: #0073ea;
+            color: white;
+        }
+
+        svg {
+            margin-right: 5px;
+        }
+    }
+}
 }

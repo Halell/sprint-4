@@ -87,6 +87,7 @@ export const Board = ({ isPinned }) => {
         }
         onSaveBoard(newBoard)
     }
+
     if (!newBoard) return <div>loading..</div>
     return (
         <section className={`board ${isPinned ? ' board-controller-pinned' : ''}`}>
