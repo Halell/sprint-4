@@ -80,6 +80,23 @@
         position: relative;
     }
 
+    .title-cell-text {
+        width: 100%;
+
+        svg {
+            color: #c5c7d0;
+            width: 24px;
+            height: 24px;
+            transition: color 0.7s;
+            color: #c4c5c6;
+
+            &:hover {
+                color: #0073ea;
+            }
+        }
+
+    }
+
     .title-component {
         height: 24px;
         display: flex;

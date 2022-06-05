@@ -12,8 +12,6 @@
     z-index: 40;
     overflow: hidden;
 
-    body {
-    }
 
     .activity-log-header {
         padding: 20px;
@@ -45,7 +43,15 @@
         }
     }
 
+    .update-wrapper {
+        padding: 20px;
+        flex: 1 1 auto;
+        overflow: hidden;
+        position: relative;
+    }
+    
     .activity-log-wrapper {
+        display: none;
         padding: 0 25px;
         overflow-y: scroll;
         width: 100%;

@@ -6,6 +6,7 @@ import { TaskColumn } from './task-column'
 import { boardService } from '../services/board.service'
 import { utilService } from '../services/util.service.js'
 import { taskService } from '../services/task.service.js'
+import { ReactComponent as Updates } from '../assets/svg/updates.svg'
 
 export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask, onAddTask, onAddGroup, onSaveBoard, idx }) => {
     const [statusBgcColor, setStatusBgcColor] = useState('')
