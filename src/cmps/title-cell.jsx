@@ -20,9 +20,10 @@ export function TitleCell({ task, onUpdateTask, group, onSetIsModalOpen }) {
             setIsDetailesModalOpen(!isDetailesModalOpen)
         }
     }
+    console.log(task.updates)
 
     const handleKeyPress = (ev) => {
-        ev.preventDefault()
+        // ev.preventDefault()
         const createdAt = new Date().toLocaleTimeString('he-IL', { hour: '2-digit', minute: '2-digit' })
         if (ev.key === 'Enter') {
             const newUpdate = {
@@ -32,12 +33,10 @@ export function TitleCell({ task, onUpdateTask, group, onSetIsModalOpen }) {
                     _id: "userId",
                     createdAt: createdAt
                 },
-                text: ev.target.value,
-                isRead: true,
+                text: ev.target.innerText,
             }
             task.updates.push(newUpdate)
-            console.log(task)
-            onUpdateTask(task)//
+            onUpdateTask(task, group.id)
         }
     }
 
@@ -110,12 +109,10 @@ export function TitleCell({ task, onUpdateTask, group, onSetIsModalOpen }) {
                             className="btn-input">
                             Write an update..
                         </div>
-                        {/* <form onSubmit={handleKeyPressAddTask}>
-                            <input type="text"placeholder=' Write an update..'/>
-                        </form> */}
+
                         <div>
-                            {task.updates.map(update =>
-                                <div>{update.text}</div>
+                            {task.updates.map((update, idx) =>
+                                <div key={idx}>{update.text}</div>
                             )}
                         </div>
                     </div>
