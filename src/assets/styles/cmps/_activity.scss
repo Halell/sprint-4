@@ -48,8 +48,23 @@
         flex: 1 1 auto;
         overflow: hidden;
         position: relative;
+
+        .btn-input {
+            width: 100%;
+            border: 1px solid #0073ea;
+            background: transparent;
+            border-radius: 8px;
+            padding: 10px 20px;
+            color: #323338;
+            cursor: text;
+            transition: color .15s ease-in-out;
+            justify-content: start;
+            text-align: left;
+            outline: none;
+            margin: 0 0 40px;
+        }
     }
-    
+
     .activity-log-wrapper {
         display: none;
         padding: 0 25px;
