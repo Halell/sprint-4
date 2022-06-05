@@ -1,6 +1,6 @@
 import { TaskPreview } from './task-preview'
 import { Draggable } from 'react-beautiful-dnd'
-export function TaskList({ board, group, onUpdateTask, onRemoveTask, onAddGroup, onAddTask, onSaveBoard }) {
+export function TaskList({ board, group, onUpdateTask, onRemoveTask, onAddGroup, onAddTask, onSaveBoard, provided }) {
     return (<>
         {group.tasks.map((task, idx) => {
             return (
