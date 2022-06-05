@@ -1,14 +1,13 @@
 import io from 'socket.io-client'
 import { userService } from './user.service'
 
-export const SOCKET_EVENT_ADD_TASK = 'add-task'
 
 const SOCKET_EMIT_LOGIN = 'set-user-socket'
 const SOCKET_EMIT_LOGOUT = 'unset-user-socket'
 
 const baseUrl = (process.env.NODE_ENV === 'production') ? '' : '//localhost:3030'
-// export const socketService = createSocketService()
-export const socketService = createDummySocketService()
+export const socketService = createSocketService()
+// export const socketService = createDummySocketService()
 
 // for debugging from console
 // window.socketService = socketService
@@ -50,41 +49,41 @@ function createSocketService() {
 }
 
 // eslint-disable-next-line
-function createDummySocketService() {
-    var listenersMap = {}
-    const socketService = {
-        listenersMap,
-        setup() {
-            listenersMap = {}
-        },
-        terminate() {
-            this.setup()
-        },
-        login() {
-        },
-        logout() {
-        },
-        on(eventName, cb) {
-            listenersMap[eventName] = [...(listenersMap[eventName]) || [], cb]
-        },
-        off(eventName, cb) {
-            if (!listenersMap[eventName]) return
-            if (!cb) delete listenersMap[eventName]
-            else listenersMap[eventName] = listenersMap[eventName].filter(l => l !== cb)
-        },
-        emit(eventName, data) {
-            if (!listenersMap[eventName]) return
-            listenersMap[eventName].forEach(listener => {
-                listener(data)
-            })
-        },
-        debugMsg() {
-            this.emit('chat addMsg', { from: 'Someone', txt: 'Aha it worked!' })
-        },
-    }
-    window.listenersMap = listenersMap
-    return socketService
-}
+// function createDummySocketService() {
+//     var listenersMap = {}
+//     const socketService = {
+//         listenersMap,
+//         setup() {
+//             listenersMap = {}
+//         },
+//         terminate() {
+//             this.setup()
+//         },
+//         login() {
+//         },
+//         logout() {
+//         },
+//         on(eventName, cb) {
+//             listenersMap[eventName] = [...(listenersMap[eventName]) || [], cb]
+//         },
+//         off(eventName, cb) {
+//             if (!listenersMap[eventName]) return
+//             if (!cb) delete listenersMap[eventName]
+//             else listenersMap[eventName] = listenersMap[eventName].filter(l => l !== cb)
+//         },
+//         emit(eventName, data) {
+//             if (!listenersMap[eventName]) return
+//             listenersMap[eventName].forEach(listener => {
+//                 listener(data)
+//             })
+//         },
+//         debugMsg() {
+//             this.emit('chat addMsg', { from: 'Someone', txt: 'Aha it worked!' })
+//         },
+//     }
+//     window.listenersMap = listenersMap
+//     return socketService
+// }
 
 // Basic Tests
 // function cb(x) {console.log('Socket Test - Expected Puk, Actual:', x)}
