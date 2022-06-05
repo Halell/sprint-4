@@ -74,8 +74,9 @@ export function TitleCell({ task, onUpdateTask, group, onSetIsModalOpen }) {
                         </div>
                     </div>
                     <div className="update-wrapper flex column">
-                        <div className="">
-
+                        <div className="btn-input">Write an update..</div>
+                        <div>
+                            
                         </div>
                     </div>
                     <div className="activity-log-wrapper flex column">
