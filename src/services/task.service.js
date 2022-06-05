@@ -29,7 +29,7 @@ async function setActivity(task, txt, from, to, style) {
         },
         id: utilService.makeId(),
         txt,
-        createdAt: createdAt.toLocaleTimeString('he-IL', {hour: '2-digit', minute: '2-digit'}),
+        createdAt: createdAt.toLocaleTimeString('he-IL', { hour: '2-digit', minute: '2-digit' }),
         from,
         to,
         style
@@ -42,6 +42,7 @@ async function setActivity(task, txt, from, to, style) {
 
 async function saveTask(board, groupId, taskToSave) {
     try {
+        const createdAt = new Date().toLocaleTimeString('he-IL', { hour: '2-digit', minute: '2-digit' })
         const groups = board.groups.map(group => {
             if (group.id === groupId) {
                 if (!taskToSave.id) {
@@ -51,6 +52,7 @@ async function saveTask(board, groupId, taskToSave) {
                     taskToSave.status = "none"
                     taskToSave.text = ""
                     taskToSave.priority = "mid"
+                    taskToSave.updates = []
                     group.tasks.push(taskToSave)
                 } else {
                     const idx = group.tasks.findIndex(task => task.id === taskToSave.id)
@@ -65,3 +67,14 @@ async function saveTask(board, groupId, taskToSave) {
         throw err
     }
 }
+
+// { //new update
+//     byMember: {
+//         fullname: "Carmel Yona",
+//         imgUrl: "",
+//         _id: "userId",
+//         createdAt: createdAt
+//     },
+//     text: `Created at ${createdAt}  `,
+//     isRead: false,
+// }
