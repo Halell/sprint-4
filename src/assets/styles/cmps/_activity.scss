@@ -39,6 +39,22 @@
                 padding: 0 8px 8px;
                 font-size: .875rem;
                 cursor: pointer;
+
+                &.shown {
+                    border-bottom: 2px solid #0073ea;
+                }
+            }
+
+            .update-tab {
+                margin-right: 10px;
+                padding: 0 8px 8px;
+                font-size: .875rem;
+                cursor: pointer;
+
+                &.shown {
+                    border-bottom: 2px solid #0073ea;
+                }
+
             }
         }
     }
@@ -48,6 +64,15 @@
         flex: 1 1 auto;
         overflow: hidden;
         position: relative;
+        display: none;
+
+        .divider {
+            border-bottom: 5px solid #0073ea;
+        }
+
+        &.shown {
+            display: block;
+        }
 
         .btn-input {
             width: 100%;
@@ -152,8 +177,12 @@
         overflow-y: scroll;
         width: 100%;
         align-items: center;
-        // overflow: hidden;
 
+        // overflow: hidden;
+        &.shown {
+            display: block;
+            color: #0073ea;
+        }
 
         .single-activity {
             width: 100%;

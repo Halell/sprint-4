@@ -10,6 +10,7 @@ export function TitleCell({ task, onUpdateTask, group, onSetIsModalOpen }) {
     const [isBtnInputOpen, setIsBtnInputOpen] = useState(true)
     const [isDetailesModalOpen, setIsDetailesModalOpen] = useState(false)
     const [isUpdateOpen, setUpdateOpen] = useState(false)
+    const [isShown, setIsShown] = useState(false)
     const newUpdates = task.updates.filter(update => update.isRead !== true)
 
     const toggle = (val, ev) => {
@@ -21,7 +22,8 @@ export function TitleCell({ task, onUpdateTask, group, onSetIsModalOpen }) {
             setIsDetailesModalOpen(!isDetailesModalOpen)
         }
     }
-    console.log(task.updates)
+
+
 
     const handleKeyPress = (ev) => {
         // ev.preventDefault()
@@ -99,11 +101,12 @@ export function TitleCell({ task, onUpdateTask, group, onSetIsModalOpen }) {
                         <div onClick={() => toggle('details-modal')} className="activity-log-close-btn"><GrClose /></div>
                         <div className="activity-title flex">{task.title} log</div>
                         <div className="tabs-wrapper flex">
-                            <div className="activity-tab ">Activity</div>
-                            <div className="activity-tab ">Updates</div>
+                            <div onClick={() => setIsShown(true)} className={`activity-tab ${isShown ? 'shown' : ''}`}>Activity</div>
+                            <div onClick={() => setIsShown(false)} className={`update-tab  ${isShown ? '' : 'shown'}`}>Updates</div>
+                            {/* <div className="divider"></div> */}
                         </div>
                     </div>
-                    <div className="update-wrapper flex column">
+                    <div className={`update-wrapper flex column  ${isShown ? '' : 'shown'} `}>
                         {isUpdateOpen ?
                             <div suppressContentEditableWarning={true}
                                 contentEditable={true}
@@ -120,14 +123,12 @@ export function TitleCell({ task, onUpdateTask, group, onSetIsModalOpen }) {
                             {task.updates.map((update, idx) =>
                                 <div className="update-card" key={idx}>
                                     <div className="update-header flex">{update.byMember.fullname}</div>
-
                                     <div className="body-text">{update.text}</div>
-
                                 </div>
                             )}
                         </div>
                     </div>
-                    <div className="activity-log-wrapper flex column">
+                    <div className={`activity-log-wrapper flex column ${isShown ? 'shown' : ''}`}>
                         {task.activities && task.activities.map((activity, idx) => {
                             return <ActivityModal activity={activity} key={idx} />
                         })
