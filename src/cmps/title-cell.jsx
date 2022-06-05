@@ -75,8 +75,19 @@ export function TitleCell({ task, onUpdateTask, group, onSetIsModalOpen }) {
                     </div>
                     <div className="update-wrapper flex column">
                         <div className="btn-input">Write an update..</div>
-                        <div>
-                            
+                        <div className='item-updates-container'>
+                            <div>
+                                <div>
+                                    <textarea style={{ display: 'none' }} name="" id="" cols="30" rows="10"></textarea>
+                                    <div className='main-input'>
+                                        <div className='text-editor-container'>
+                                            <div className='text-editor-header'>
+                                                <div className='tool-bar'></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div className="activity-log-wrapper flex column">

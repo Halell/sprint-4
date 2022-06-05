@@ -225,19 +225,22 @@
 }
 
 .task-modal-menu {
-    width: 264px;
+    width: 200px;
     // top: 67px;
     left: 5px;
     position: absolute;
     z-index: 100;
     box-shadow: 0 4px 17px 6px rgb(0 0 0 / 10%);
     background-color: #fff;
-    border-radius: 8px;
+    padding: 8px;
+    border-radius: 4px;
 
     .task-btns-modal-open {
-        padding: 8px;
 
-
+        font-weight: 400;
+        margin: 0;
+        font-family: Roboto-thin;
+        padding-left: 8px;
     }
 }
 

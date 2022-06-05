@@ -1,7 +1,7 @@
 .task-column {
     min-width: 140px;
     // z-index: 15;
-    height: 35.5px;
+    height: 35.1px;
 
     &.member-col {
         display: flex;
@@ -223,71 +223,71 @@
             justify-content: flex-start;
             align-items: center;
             margin-left: 10px;
-        
 
-        &input {
-            outline: none;
-            height: 100%;
+
+            &input {
+                outline: none;
+                height: 100%;
+                width: 100%;
+                border: none;
+                padding: 8px;
+                background: transparent;
+            }
+        }
+
+        .divider {
+            height: 1px;
+            border-bottom: 1px solid #e6e9ef;
             width: 100%;
-            border: none;
-            padding: 8px;
-            background: transparent;
-        }
-    }
-
-    .divider {
-        height: 1px;
-        border-bottom: 1px solid #e6e9ef;
-        width: 100%;
-    }
-
-    .wrapper {
-        padding: 4px 8px;
-        border-radius: 5px;
-
-        &:hover {
-            background-color: #0073ea;
         }
 
-        .add-member-box {
-            line-height: 34px;
-            font-size: .8125rem;
+        .wrapper {
+            padding: 4px 8px;
+            border-radius: 5px;
 
-            .img-user {
-                justify-content: center;
-                align-items: center;
+            &:hover {
+                background-color: #0073ea;
+            }
 
-                img {
-                    margin-right: 5px;
-                    width: 26px;
-                    height: 26px;
-                    border-radius: 50%;
+            .add-member-box {
+                line-height: 34px;
+                font-size: .8125rem;
+
+                .img-user {
+                    justify-content: center;
+                    align-items: center;
+
+                    img {
+                        margin-right: 5px;
+                        width: 26px;
+                        height: 26px;
+                        border-radius: 50%;
+                    }
+                }
+
+                .user-full-name {
+                    flex: 1 1;
                 }
             }
 
-            .user-full-name {
-                flex: 1 1;
+        }
+
+        .invite {
+            color: #0073ea;
+            height: 34px;
+            padding: 8px;
+            margin: 8px;
+            font-size: .8125rem;
+            align-items: center;
+
+            &:hover {
+                background-color: #0073ea;
+                color: white;
+            }
+
+            svg {
+                margin-right: 5px;
             }
         }
-
     }
-
-    .invite {
-        color: #0073ea;
-        height: 34px;
-        padding: 8px;
-        margin: 8px;
-        font-size: .8125rem;
-        align-items: center;
-
-        &:hover {
-            background-color: #0073ea;
-            color: white;
-        }
-
-        svg {
-            margin-right: 5px;
-        }
-    }
-}
 }

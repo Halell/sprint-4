@@ -2,6 +2,7 @@ import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
 import { getActionRemoveBoard, getActionAddBoard, getActionUpdateBoard } from '../store/action/board.actions'
 import { httpService } from './http.service.js'
+import { socketService } from './socket.service.js'
 const STORAGE_KEY = 'board'
 const boardChannel = new BroadcastChannel('boardChannel')
 var gCurrBoard
@@ -69,7 +70,9 @@ async function save(board) {
     var savedBoard
     if (board._id) {
         boardChannel.postMessage(getActionUpdateBoard(savedBoard))
-        return httpService.put(`board/:${board._id}`, board)
+        const currBoard = await httpService.put(`board/:${board._id}`, board)
+        socketService.emit('update board', currBoard)
+        return currBoard
     } else {
         const createdAt = new Date()
         const newBoard = {

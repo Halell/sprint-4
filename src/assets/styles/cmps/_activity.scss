@@ -63,6 +63,62 @@
             outline: none;
             margin: 0 0 40px;
         }
+
+        .item-updates-container {
+            .main-input {
+                height: 145px;
+
+                // .text-editor-container {
+                //     display: flex;
+                //     flex: 1 1 auto;
+                //     flex-direction: column;
+                //     overflow: hidden;
+                //     background: 0 0;
+                //     border: 0;
+                //     box-shadow: none;
+                //     float: none;
+                //     height: auto;
+                //     margin: 0;
+                //     max-width: none;
+                //     outline: 0;
+                //     padding: 0;
+                //     position: static;
+                //     width: auto;
+
+                //     .text-editor-header {
+                //         box-shadow: none;
+                //         transition: box-shadow .5s;
+                //         z-index: 1;
+                //         background: 0 0;
+                //         border: 0;
+                //         box-shadow: none;
+                //         float: none;
+                //         height: auto;
+                //         margin: 0;
+                //         max-width: none;
+                //         outline: 0;
+                //         padding: 0;
+                //         position: static;
+                //         width: auto;
+
+                //         .tool-bar {}
+
+                //         background: 0 0;
+                //         border: 0;
+                //         box-shadow: none;
+                //         float: none;
+                //         height: auto;
+                //         margin: 0;
+                //         max-width: none;
+                //         outline: 0;
+                //         padding: 0;
+                //         position: static;
+                //         width: auto;
+                //         background-color: #ffffff;
+                //     }
+                // }
+            }
+        }
     }
 
     .activity-log-wrapper {

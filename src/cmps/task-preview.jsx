@@ -173,8 +173,8 @@ export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask, on
             {isModalOpen &&
                 <div className='task-modal-menu'>
                     <div color='task-btns-modal-open'>
-                        <div className='task-btn-crud'><HiOutlineDocumentDuplicate />Duplicate</div>
-                        <div onClick={() => onRemoveTask(group.id, task.id)} className='task-btn-crud'><AiOutlineDelete />Delete</div>
+                        <div className='task-btn-crud'><HiOutlineDocumentDuplicate /> <span>Duplicate</span> </div>
+                        <div onClick={() => onRemoveTask(group.id, task.id)} className='task-btn-crud'><AiOutlineDelete /> <span>Delete</span> </div>
                     </div>
                 </div>
             }

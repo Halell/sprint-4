@@ -15,14 +15,14 @@ export const Board = ({ isPinned }) => {
     let { board } = useSelector((storeState) => storeState.boardModule)
     const dispatch = useDispatch()
     useEffect(() => {
+        socketService.off('update board')
+        socketService.on('update board', onLoadBoard)
         onLoadBoard()
     }, [params.id])
 
     const onLoadBoard = async () => {
         await dispatch(loadBoard(params.id))
     }
-    console.log(board)
-
     const onRemoveGroup = async (groupId) => {
         await boardService.setActivity(board, 'Removed group')
         await groupService.remove(groupId, board)
@@ -67,9 +67,9 @@ export const Board = ({ isPinned }) => {
         const persons = board.persons
     }
 
+    // 
     const onSaveBoard = async (newBoard) => {
         await boardService.save(newBoard)
-        // socketService.emit('add board', newBoard)
         dispatch(loadBoard(params.id))
     }
 
