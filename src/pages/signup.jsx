@@ -12,6 +12,7 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useEffect, useState } from 'react'
 import jwt_decode from 'jwt-decode'
+import { useNavigate } from 'react-router-dom';
 
 import { connect } from "react-redux";
 import { onSignup } from '../store/action/user.actions';
@@ -20,7 +21,7 @@ const theme = createTheme();
 export function _Signup({ history, onSignup }) {
 
     const [user, setUser] = useState({})
-
+    let navigate = useNavigate()
     async function handleCallbackResponse(response) {
         console.log("Encoded JWT ID token:" + response.credential);
         let userObject = jwt_decode(response.credential);
@@ -35,7 +36,7 @@ export function _Signup({ history, onSignup }) {
         setUser(userObject)
         document.getElementById("signInDiv").hidden = true;
         await onSignup(userObject)
-        history.push('/board')
+        navigate('/board')
     }
 
     function handleSignOut(event) {
@@ -69,8 +70,7 @@ export function _Signup({ history, onSignup }) {
             password: data.get('password'),
         }
         await onSignup(user)
-        history.push('/board')
-
+        navigate('/board')
 
     };
 

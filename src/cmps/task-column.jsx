@@ -128,7 +128,7 @@ export function TaskColumn({ group, board, boardColumn, task, setStatus, statusB
                         onClick={() => setopenInput(!isInputOpen)}
                         className="invite flex">
                         <InviteSvg />
-                        Invite a new member by username
+                        Invite a new member
                     </div>
                     {isInputOpen &&
                         <div className="invite-modal">

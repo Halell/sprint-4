@@ -81,13 +81,13 @@ export const BoardFilter = ({ onAddGroup, onChangeFilter, getPersons, onAddTask,
             </div >
             {isNewItemOpen &&
                 <div className="menu-new-item-modal">
-                    <div onClick={() => onAddGroup()} className="item-modal-add-group">  <MdOutlineWeb />New group of items</div>
+                    <div onClick={() => onAddGroup()} className="item-modal-add-group">  <MdOutlineWeb /> <span> New group of items</span></div>
                 </div>
             }
 
             <div className="search-wrapper">
                 {/* <AiOutlineSearch /> */}
-                <input className="search-input" placeholder=" search"  {...register('title')} />
+                <input className="search-input" placeholder=" Search"  {...register('title')} />
             </div>
             <div className="filter-wrapper">
                 <div className="filter-btn" onClick={() => toggle('person-modal')}><FaRegUserCircle /> <span>persons</span> </div>
