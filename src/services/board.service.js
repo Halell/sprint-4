@@ -51,7 +51,7 @@ async function setActivity(board, txt, from, to, style) {
             fullname: "guest",
             imgUrl: "",
             _id: "userId",
-            createdAt: new Date(),
+            createdAt: createdAt.toLocaleTimeString('he-IL', { hour: '2-digit', minute: '2-digit' }),
         },
         from,
         to,

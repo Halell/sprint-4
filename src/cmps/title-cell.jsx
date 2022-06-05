@@ -3,19 +3,41 @@ import { useState } from 'react'
 import { GrClose } from 'react-icons/gr'
 import { ActivityModal } from './modal-cmp'
 import { ReactComponent as Updates } from '../assets/svg/updates.svg'
+import { ReactComponent as Msg } from '../assets/svg/msg.svg'
 
 export function TitleCell({ task, onUpdateTask, group, onSetIsModalOpen }) {
 
     const [isBtnInputOpen, setIsBtnInputOpen] = useState(true)
     const [isDetailesModalOpen, setIsDetailesModalOpen] = useState(false)
+    const newUpdates = task.updates.filter(update => update.isRead !== true)
+
     const toggle = (val, ev) => {
         if (ev) ev.stopPropagation()
         if (val === 'btn-input') {
             setIsBtnInputOpen(!isBtnInputOpen)
         }
         if (val === 'details-modal') {
-            console.log(': ffrgrth')
             setIsDetailesModalOpen(!isDetailesModalOpen)
+        }
+    }
+
+    const handleKeyPress = (ev) => {
+        ev.preventDefault()
+        const createdAt = new Date().toLocaleTimeString('he-IL', { hour: '2-digit', minute: '2-digit' })
+        if (ev.key === 'Enter') {
+            const newUpdate = {
+                byMember: {
+                    fullname: "Carmel Yona",
+                    imgUrl: "",
+                    _id: "userId",
+                    createdAt: createdAt
+                },
+                text: ev.target.value,
+                isRead: true,
+            }
+            task.updates.push(newUpdate)
+            console.log(task)
+            onUpdateTask(task)//
         }
     }
 
@@ -55,7 +77,14 @@ export function TitleCell({ task, onUpdateTask, group, onSetIsModalOpen }) {
                                             </div>
                                         }
                                     </div>
-                                    <Updates title="Start conversation" onClick={() => toggle('details-modal')} />
+                                    {!task.updates.length ?
+                                        <Updates className="update-svg" title="Start conversation" onClick={() => toggle('details-modal')} />
+                                        :
+                                        <div className="add-update-btn-wrapper flex">
+                                            <Msg className="msg-svg" />
+                                            <div className="update-num" onClick={(ev) => toggle('details-modal')}>{newUpdates.length}</div>
+                                        </div>
+                                    }
                                 </div>
                                 <div className="conversation-indicator-component"></div>
                             </div>
@@ -74,9 +103,20 @@ export function TitleCell({ task, onUpdateTask, group, onSetIsModalOpen }) {
                         </div>
                     </div>
                     <div className="update-wrapper flex column">
-                        <div className="btn-input">Write an update..</div>
+                        <div suppressContentEditableWarning={true}
+                            contentEditable={true}
+                            onBlur={handleKeyPress}
+                            onKeyPress={handleKeyPress}
+                            className="btn-input">
+                            Write an update..
+                        </div>
+                        {/* <form onSubmit={handleKeyPressAddTask}>
+                            <input type="text"placeholder=' Write an update..'/>
+                        </form> */}
                         <div>
-                            
+                            {task.updates.map(update =>
+                                <div>{update.text}</div>
+                            )}
                         </div>
                     </div>
                     <div className="activity-log-wrapper flex column">

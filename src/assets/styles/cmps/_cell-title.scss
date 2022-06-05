@@ -83,7 +83,7 @@
     .title-cell-text {
         width: 100%;
 
-        svg {
+        .update-svg {
             color: #c5c7d0;
             width: 24px;
             height: 24px;
@@ -95,6 +95,31 @@
             }
         }
 
+        .add-update-btn-wrapper {
+            align-items: center;
+            justify-content: center;
+
+            .msg-svg {
+                color: #0073ea;
+                width: 24px;
+                height: 24px;
+            }
+
+            .update-num {
+                position: absolute;
+                background-color: #0073ea;
+                color: #fff;
+                border-radius: 10px;
+                text-align: center;
+                padding: 2px 4px;
+                // top: 18px;
+                // left: 13px;
+                margin-top: 18px;
+                margin-left: 13px;
+                line-height: 9px;
+                font-size: .625rem;
+            }
+        }
     }
 
     .title-component {
