@@ -2,6 +2,7 @@ import { TaskEdit } from './task-edit'
 import { useState } from 'react'
 import { GrClose } from 'react-icons/gr'
 import { ActivityModal } from './modal-cmp'
+import { ReactComponent as Updates } from '../assets/svg/updates.svg'
 
 export function TitleCell({ task, onUpdateTask, group, onSetIsModalOpen }) {
 
@@ -31,7 +32,8 @@ export function TitleCell({ task, onUpdateTask, group, onSetIsModalOpen }) {
                             <div className="title-cell-component" onClick={() => toggle('details-modal')}>
 
                                 <div className="pulse-left-indicator" style={{ backgroundColor: group.style }}></div>
-                                <div className="title-cell-text">
+                                <div className="title-cell-text flex">
+
                                     <div className="title-component">
                                         {isBtnInputOpen ?
                                             <div className="title-component">
@@ -53,6 +55,7 @@ export function TitleCell({ task, onUpdateTask, group, onSetIsModalOpen }) {
                                             </div>
                                         }
                                     </div>
+                                    <Updates title="Start conversation" onClick={() => toggle('details-modal')} />
                                 </div>
                                 <div className="conversation-indicator-component"></div>
                             </div>
@@ -67,7 +70,12 @@ export function TitleCell({ task, onUpdateTask, group, onSetIsModalOpen }) {
                         <div className="activity-title flex">{task.title} log</div>
                         <div className="tabs-wrapper flex">
                             <div className="activity-tab ">Activity</div>
-                            <div className="activity-tab">Updates</div>
+                            <div className="activity-tab ">Updates</div>
+                        </div>
+                    </div>
+                    <div className="update-wrapper flex column">
+                        <div className="">
+
                         </div>
                     </div>
                     <div className="activity-log-wrapper flex column">
