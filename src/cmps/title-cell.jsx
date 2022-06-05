@@ -9,6 +9,8 @@ export function TitleCell({ task, onUpdateTask, group, onSetIsModalOpen }) {
 
     const [isBtnInputOpen, setIsBtnInputOpen] = useState(true)
     const [isDetailesModalOpen, setIsDetailesModalOpen] = useState(false)
+    const [isUpdateOpen, setUpdateOpen] = useState(false)
+    const [isShown, setIsShown] = useState(false)
     const newUpdates = task.updates.filter(update => update.isRead !== true)
 
     const toggle = (val, ev) => {
@@ -21,8 +23,10 @@ export function TitleCell({ task, onUpdateTask, group, onSetIsModalOpen }) {
         }
     }
 
+
+
     const handleKeyPress = (ev) => {
-        ev.preventDefault()
+        // ev.preventDefault()
         const createdAt = new Date().toLocaleTimeString('he-IL', { hour: '2-digit', minute: '2-digit' })
         if (ev.key === 'Enter') {
             const newUpdate = {
@@ -32,12 +36,11 @@ export function TitleCell({ task, onUpdateTask, group, onSetIsModalOpen }) {
                     _id: "userId",
                     createdAt: createdAt
                 },
-                text: ev.target.value,
-                isRead: true,
+                text: ev.target.innerText,
             }
+            setUpdateOpen(false)
             task.updates.push(newUpdate)
-            console.log(task)
-            onUpdateTask(task)//
+            onUpdateTask(task, group.id)
         }
     }
 
@@ -98,28 +101,34 @@ export function TitleCell({ task, onUpdateTask, group, onSetIsModalOpen }) {
                         <div onClick={() => toggle('details-modal')} className="activity-log-close-btn"><GrClose /></div>
                         <div className="activity-title flex">{task.title} log</div>
                         <div className="tabs-wrapper flex">
-                            <div className="activity-tab ">Activity</div>
-                            <div className="activity-tab ">Updates</div>
+                            <div onClick={() => setIsShown(true)} className={`activity-tab ${isShown ? 'shown' : ''}`}>Activity</div>
+                            <div onClick={() => setIsShown(false)} className={`update-tab  ${isShown ? '' : 'shown'}`}>Updates</div>
+                            {/* <div className="divider"></div> */}
                         </div>
                     </div>
-                    <div className="update-wrapper flex column">
-                        <div suppressContentEditableWarning={true}
-                            contentEditable={true}
-                            onBlur={handleKeyPress}
-                            onKeyPress={handleKeyPress}
-                            className="btn-input">
-                            Write an update..
-                        </div>
-                        {/* <form onSubmit={handleKeyPressAddTask}>
-                            <input type="text"placeholder=' Write an update..'/>
-                        </form> */}
-                        <div>
-                            {task.updates.map(update =>
-                                <div>{update.text}</div>
+                    <div className={`update-wrapper flex column  ${isShown ? '' : 'shown'} `}>
+                        {isUpdateOpen ?
+                            <div suppressContentEditableWarning={true}
+                                contentEditable={true}
+                                onBlur={handleKeyPress}
+                                onKeyPress={handleKeyPress}
+                                className="btn-input">
+                            </div>
+                            :
+                            <div className="btn-input" onClick={() => setUpdateOpen(true)}>
+                                Write an update..
+                            </div>}
+
+                        <div className="updates-wrapper-cards flex column">
+                            {task.updates.map((update, idx) =>
+                                <div className="update-card" key={idx}>
+                                    <div className="update-header flex">{update.byMember.fullname}</div>
+                                    <div className="body-text">{update.text}</div>
+                                </div>
                             )}
                         </div>
                     </div>
-                    <div className="activity-log-wrapper flex column">
+                    <div className={`activity-log-wrapper flex column ${isShown ? 'shown' : ''}`}>
                         {task.activities && task.activities.map((activity, idx) => {
                             return <ActivityModal activity={activity} key={idx} />
                         })

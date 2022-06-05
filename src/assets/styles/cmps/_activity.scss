@@ -39,6 +39,22 @@
                 padding: 0 8px 8px;
                 font-size: .875rem;
                 cursor: pointer;
+
+                &.shown {
+                    border-bottom: 2px solid #0073ea;
+                }
+            }
+
+            .update-tab {
+                margin-right: 10px;
+                padding: 0 8px 8px;
+                font-size: .875rem;
+                cursor: pointer;
+
+                &.shown {
+                    border-bottom: 2px solid #0073ea;
+                }
+
             }
         }
     }
@@ -48,6 +64,15 @@
         flex: 1 1 auto;
         overflow: hidden;
         position: relative;
+        display: none;
+
+        .divider {
+            border-bottom: 5px solid #0073ea;
+        }
+
+        &.shown {
+            display: block;
+        }
 
         .btn-input {
             width: 100%;
@@ -62,6 +87,31 @@
             text-align: left;
             outline: none;
             margin: 0 0 40px;
+        }
+
+        .updates-wrapper-cards {
+            .update-card {
+                position: relative;
+                overflow: visible;
+                font-size: 16px;
+                line-height: 20px;
+                font-weight: 300;
+                color: #323338;
+                border: 1px solid #e6e9ef;
+                margin-bottom: 16px;
+                border-radius: 8px;
+
+                .update-header {
+                    align-items: center;
+                    padding: 15px;
+                    font-weight: 700;
+                }
+
+                .body-text {
+                    padding: 0 15px 15px;
+                    min-height: 60px;
+                }
+            }
         }
 
         .item-updates-container {
@@ -127,8 +177,12 @@
         overflow-y: scroll;
         width: 100%;
         align-items: center;
-        // overflow: hidden;
 
+        // overflow: hidden;
+        &.shown {
+            display: block;
+            color: #0073ea;
+        }
 
         .single-activity {
             width: 100%;
