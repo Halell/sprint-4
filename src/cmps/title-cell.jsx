@@ -9,6 +9,7 @@ export function TitleCell({ task, onUpdateTask, group, onSetIsModalOpen }) {
 
     const [isBtnInputOpen, setIsBtnInputOpen] = useState(true)
     const [isDetailesModalOpen, setIsDetailesModalOpen] = useState(false)
+    const [isUpdateOpen, setUpdateOpen] = useState(false)
     const newUpdates = task.updates.filter(update => update.isRead !== true)
 
     const toggle = (val, ev) => {
@@ -35,6 +36,7 @@ export function TitleCell({ task, onUpdateTask, group, onSetIsModalOpen }) {
                 },
                 text: ev.target.innerText,
             }
+            setUpdateOpen(false)
             task.updates.push(newUpdate)
             onUpdateTask(task, group.id)
         }
@@ -102,17 +104,26 @@ export function TitleCell({ task, onUpdateTask, group, onSetIsModalOpen }) {
                         </div>
                     </div>
                     <div className="update-wrapper flex column">
-                        <div suppressContentEditableWarning={true}
-                            contentEditable={true}
-                            onBlur={handleKeyPress}
-                            onKeyPress={handleKeyPress}
-                            className="btn-input">
-                            Write an update..
-                        </div>
+                        {isUpdateOpen ?
+                            <div suppressContentEditableWarning={true}
+                                contentEditable={true}
+                                onBlur={handleKeyPress}
+                                onKeyPress={handleKeyPress}
+                                className="btn-input">
+                            </div>
+                            :
+                            <div className="btn-input" onClick={() => setUpdateOpen(true)}>
+                                Write an update..
+                            </div>}
 
-                        <div>
+                        <div className="updates-wrapper-cards flex column">
                             {task.updates.map((update, idx) =>
-                                <div key={idx}>{update.text}</div>
+                                <div className="update-card" key={idx}>
+                                    <div className="update-header flex">{update.byMember.fullname}</div>
+
+                                    <div className="body-text">{update.text}</div>
+
+                                </div>
                             )}
                         </div>
                     </div>

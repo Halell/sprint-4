@@ -64,6 +64,31 @@
             margin: 0 0 40px;
         }
 
+        .updates-wrapper-cards {
+            .update-card {
+                position: relative;
+                overflow: visible;
+                font-size: 16px;
+                line-height: 20px;
+                font-weight: 300;
+                color: #323338;
+                border: 1px solid #e6e9ef;
+                margin-bottom: 16px;
+                border-radius: 8px;
+
+                .update-header {
+                    align-items: center;
+                    padding: 15px;
+                    font-weight: 700;
+                }
+
+                .body-text {
+                    padding: 0 15px 15px;
+                    min-height: 60px;
+                }
+            }
+        }
+
         .item-updates-container {
             .main-input {
                 height: 145px;
