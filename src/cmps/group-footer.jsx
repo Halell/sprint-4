@@ -48,7 +48,7 @@ export function GroupFooter({ group, onAddTask }) {
                             : <div className="title-component "
                                 onClick={() => setIsNewTaskEdit(!isNewTaskEdit, inputRef())}
 
-                            >+Add Item</div>
+                            >+ Add Item</div>
                         }
                     </div>
                 </div>
