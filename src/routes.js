@@ -16,7 +16,7 @@ export default [
         element: <MainApp />,
     },
     {
-        path: '/board/',
+        path: '/board',
         element: <MainApp />,
     },
     {

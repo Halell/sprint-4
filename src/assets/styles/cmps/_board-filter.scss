@@ -238,7 +238,7 @@
         position: absolute;
         top: 92%;
         left: 8%;
-        width: 220px;
+        width: 176px;
         padding: 8px;
         box-shadow: 0 4px 17px 6px rgb(0 0 0 / 10%);
         background-color: #fff;
@@ -248,6 +248,16 @@
             cursor: pointer;
             padding: 4px 8px;
             border-radius: 4px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            span {
+                font-weight: 400;
+                margin: 0;
+                font-family: Roboto;
+                padding-left: 8px;
+            }
 
             &:hover {
                 background-color: #ece7e7;

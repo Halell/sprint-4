@@ -12,7 +12,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-
+import { useNavigate } from 'react-router-dom';
 import { connect } from "react-redux";
 import { onLogin } from '../store/action/user.actions';
 
@@ -20,7 +20,7 @@ const theme = createTheme();
 
 
 export function _Login({ history, onLogin }) {
-
+    let navigate = useNavigate()
     const handleSubmit = async (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
@@ -31,8 +31,7 @@ export function _Login({ history, onLogin }) {
         }
         console.log(credentials);
         await onLogin(credentials)
-        history.push('/toy')
-
+        navigate('/board')
     };
 
     return (
