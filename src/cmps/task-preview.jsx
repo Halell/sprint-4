@@ -144,6 +144,7 @@ export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask, on
                     task={task}
                     onUpdateTask={onUpdateTask}
                     group={group}
+                    board={board}
                 />
                 <div className="cells-row-container">
                     {board.columns && board.columns.map((boardColumn, idx) =>

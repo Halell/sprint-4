@@ -67,7 +67,7 @@ export const Board = ({ isPinned }) => {
         const persons = board.persons
     }
 
-    // 
+    
     const onSaveBoard = async (newBoard) => {
         await boardService.save(newBoard)
         dispatch(loadBoard(params.id))
