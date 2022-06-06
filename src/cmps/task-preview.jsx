@@ -140,42 +140,42 @@ export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask, on
         <div className="pulse-component-wrapper">
             <div className="pulse-component" >
                 <TitleCell
-                    onSetIsModalOpen={ onSetIsModalOpen }
-                    task={ task }
-                    onUpdateTask={ onUpdateTask }
-                    group={ group }
-                    board={ board }
+                    onSetIsModalOpen={onSetIsModalOpen}
+                    task={task}
+                    onUpdateTask={onUpdateTask}
+                    group={group}
+                    board={board}
                 />
                 <div className="cells-row-container">
-                    { board.columns && board.columns.map((boardColumn, idx) =>
-                        <div className="cell-component-wrapper" key={ idx }>
-                            <div className={ `cell-component ${boardColumn}` } >
+                    {board.columns && board.columns.map((boardColumn, idx) =>
+                        <div className="cell-component-wrapper" key={idx}>
+                            <div className={`cell-component ${boardColumn}`} >
                                 <TaskColumn
-                                    setStatus={ setStatus }
-                                    boardColumn={ boardColumn }
-                                    task={ task }
-                                    priorityBgcColor={ priorityBgcColor }
-                                    statusBgcColor={ statusBgcColor }
-                                    setTxt={ setTxt }
-                                    board={ board }
-                                    setMember={ setMember }
-                                    removeMember={ removeMember }
-                                    addUser={ addUser }
-                                    handleSelect={ handleSelect }
-                                    group={ group }
-                                    idx={ idx }
+                                    setStatus={setStatus}
+                                    boardColumn={boardColumn}
+                                    task={task}
+                                    priorityBgcColor={priorityBgcColor}
+                                    statusBgcColor={statusBgcColor}
+                                    setTxt={setTxt}
+                                    board={board}
+                                    setMember={setMember}
+                                    removeMember={removeMember}
+                                    addUser={addUser}
+                                    handleSelect={handleSelect}
+                                    group={group}
+                                    idx={idx}
                                 />
                             </div>
                         </div>
-                    ) }
+                    )}
                 </div>
                 <div className="column-wrapper-add"></div>
             </div>
-            { isModalOpen &&
+            {isModalOpen &&
                 <div className='task-modal-menu'>
                     <div color='task-btns-modal-open'>
                         <div className='task-btn-crud'><HiOutlineDocumentDuplicate /> <span>Duplicate</span> </div>
-                        <div onClick={ () => onRemoveTask(group.id, task.id) } className='task-btn-crud'><AiOutlineDelete /> <span>Delete</span> </div>
+                        <div onClick={() => onRemoveTask(group.id, task.id, task)} className='task-btn-crud'><AiOutlineDelete /> <span>Delete</span> </div>
                     </div>
                 </div>
             }

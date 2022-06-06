@@ -53,9 +53,11 @@ export const Board = ({ isPinned }) => {
         dispatch(loadBoard(params.id))
     }
 
-    const onRemoveTask = async (groupId, taskId) => {
+    const onRemoveTask = async (groupId, taskId, task) => {
+        console.log('task: ', task);
         await boardService.setActivity(board, 'Removed task')
         await taskService.remove(groupId, taskId, board)
+        console.log('board: ', board);
         dispatch(loadBoard(params.id))
     }
 
@@ -67,7 +69,7 @@ export const Board = ({ isPinned }) => {
         const persons = board.persons
     }
 
-    
+
     const onSaveBoard = async (newBoard) => {
         await boardService.save(newBoard)
         dispatch(loadBoard(params.id))
