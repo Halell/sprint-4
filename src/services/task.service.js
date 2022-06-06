@@ -10,6 +10,7 @@ export const taskService = {
 }
 
 function remove(groupId, taskId, board) {
+    console.log(taskId)
     const groupIdx = board.groups.findIndex(group => group.id === groupId)
     const taskIdx = board.groups[groupIdx].tasks.map(task => task.id === taskId)
     board.groups[groupIdx].tasks.splice(taskIdx, 1)
