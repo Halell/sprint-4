@@ -82,6 +82,7 @@ export function TaskColumn({ group, board, boardColumn, task, setStatus, statusB
         </div> }
         {/* persons */ }
         { boardColumn === 'persons' && <div ref={ parentRef } onClick={ () => setColumn('persons') } className="task-column member-col">
+            { console.log(boardColumn) }
             <div className="add-member flex">
                 { task.persons && (task.persons.length > 1) ?
                     <div className="person-display-container">
