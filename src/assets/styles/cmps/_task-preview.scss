@@ -1,27 +1,4 @@
 .task-preview {
-    .column-wrapper-add {
-        width: 8px;
-        height: 100%;
-        margin-left: 32px;
-        background-color: rgb(87, 155, 252);
-        color: rgb(87, 155, 252);
-
-    }
-
-    .edit-btn {
-        border: none;
-        background-color: inherit;
-        color: rgb(104, 104, 104);
-        display: none;
-        cursor: pointer;
-
-        &:hover {
-            background-color: rgb(255, 255, 255);
-        }
-    }
-
-
-
     .btn-side-task {
         width: 18px;
         height: 18px;
@@ -47,12 +24,10 @@
             display: inline-block;
         }
     }
-
 }
 
 .btn-input {
     font-size: 13px;
-
     font-weight: 400;
 }
 
@@ -64,16 +39,24 @@
     position: relative;
     height: 100%;
     display: flex;
-
-    .cell-component-wrapper {}
 }
 
 .column-wrapper-add {
     width: 8px;
+    display: flex;
+    align-items: center;
     height: 100%;
     margin-left: 32px;
-    background-color:  rgb(206, 206, 206);
-    // color: rgb(170, 170, 170);
+    background-color: rgb(206, 206, 206);
+
+    &:not(.header)::before {
+        content: "";
+        position: absolute;
+        right: 8px;
+        width: 32px;
+        height: 34px;
+        border-bottom: 1px solid #d0d4e4;
+    }
 }
 
 .group-header-wrapper {

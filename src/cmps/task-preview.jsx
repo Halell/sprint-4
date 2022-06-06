@@ -41,29 +41,29 @@ export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask, on
         const day = date.toLocaleDateString('he-IL', { day: '2-digit' })
         switch (month) {
             case '01': month = 'Jan'
-                break;
+                break
             case '02': month = 'Feb'
-                break;
+                break
             case '03': month = 'Mar'
-                break;
+                break
             case '04': month = 'Apr'
-                break;
+                break
             case '05': month = 'May'
-                break;
+                break
             case '06': month = 'Jun'
-                break;
+                break
             case '07': month = 'Jul'
-                break;
+                break
             case '08': month = 'Aug'
-                break;
+                break
             case '09': month = 'Sep'
-                break;
+                break
             case '10': month = 'Oct'
-                break;
+                break
             case '11': month = 'Nov'
-                break;
+                break
             case '12': month = 'Dec'
-                break;
+                break
             default:
                 console.log('def')
         }
@@ -114,7 +114,7 @@ export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask, on
         await boardService.setActivity(board, 'Update task text')
     }
     const setStatus = async (val, field, loading) => {
-        var color = 'rgb(173, 150, 122)'
+        var color = 'rgb(196, 196, 196)'
         const prevStatus = task[field]
         var style = {
             from: statusBgcColor,
@@ -140,41 +140,41 @@ export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask, on
         <div className="pulse-component-wrapper">
             <div className="pulse-component" >
                 <TitleCell
-                    onSetIsModalOpen={onSetIsModalOpen}
-                    task={task}
-                    onUpdateTask={onUpdateTask}
-                    group={group}
+                    onSetIsModalOpen={ onSetIsModalOpen }
+                    task={ task }
+                    onUpdateTask={ onUpdateTask }
+                    group={ group }
                 />
                 <div className="cells-row-container">
-                    {board.columns && board.columns.map((boardColumn, idx) =>
-                        <div className="cell-component-wrapper" key={idx}>
-                            <div className={`cell-component ${boardColumn}`} >
+                    { board.columns && board.columns.map((boardColumn, idx) =>
+                        <div className="cell-component-wrapper" key={ idx }>
+                            <div className={ `cell-component ${boardColumn}` } >
                                 <TaskColumn
-                                    setStatus={setStatus}
-                                    boardColumn={boardColumn}
-                                    task={task}
-                                    priorityBgcColor={priorityBgcColor}
-                                    statusBgcColor={statusBgcColor}
-                                    setTxt={setTxt}
-                                    board={board}
-                                    setMember={setMember}
-                                    removeMember={removeMember}
-                                    addUser={addUser}
-                                    handleSelect={handleSelect}
-                                    group={group}
-                                    idx={idx}
+                                    setStatus={ setStatus }
+                                    boardColumn={ boardColumn }
+                                    task={ task }
+                                    priorityBgcColor={ priorityBgcColor }
+                                    statusBgcColor={ statusBgcColor }
+                                    setTxt={ setTxt }
+                                    board={ board }
+                                    setMember={ setMember }
+                                    removeMember={ removeMember }
+                                    addUser={ addUser }
+                                    handleSelect={ handleSelect }
+                                    group={ group }
+                                    idx={ idx }
                                 />
                             </div>
                         </div>
-                    )}
+                    ) }
                 </div>
                 <div className="column-wrapper-add"></div>
             </div>
-            {isModalOpen &&
+            { isModalOpen &&
                 <div className='task-modal-menu'>
                     <div color='task-btns-modal-open'>
                         <div className='task-btn-crud'><HiOutlineDocumentDuplicate /> <span>Duplicate</span> </div>
-                        <div onClick={() => onRemoveTask(group.id, task.id)} className='task-btn-crud'><AiOutlineDelete /> <span>Delete</span> </div>
+                        <div onClick={ () => onRemoveTask(group.id, task.id) } className='task-btn-crud'><AiOutlineDelete /> <span>Delete</span> </div>
                     </div>
                 </div>
             }

@@ -13,7 +13,7 @@ export const storageService = {
 function query(entityType, delay = 100) {
     let defaultEntity = (entityType === 'user') ? [] : gBoard  // for develop
     let dataFromStorage = (JSON.parse(localStorage.getItem(entityType)))
-    dataFromStorage = (dataFromStorage[0]) ? dataFromStorage : null
+    dataFromStorage = (!dataFromStorage || dataFromStorage[0]) ? dataFromStorage : null
     var entities = dataFromStorage || defaultEntity
     return new Promise((resolve, reject) => {
         setTimeout(() => {
