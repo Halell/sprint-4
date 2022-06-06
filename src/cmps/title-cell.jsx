@@ -5,7 +5,7 @@ import { ActivityModal } from './modal-cmp'
 import { ReactComponent as Updates } from '../assets/svg/updates.svg'
 import { ReactComponent as Msg } from '../assets/svg/msg.svg'
 
-export function TitleCell({ task, onUpdateTask, group, onSetIsModalOpen }) {
+export function TitleCell({ task, onUpdateTask, group, onSetIsModalOpen, board }) {
 
     const [isBtnInputOpen, setIsBtnInputOpen] = useState(true)
     const [isDetailesModalOpen, setIsDetailesModalOpen] = useState(false)
@@ -23,8 +23,6 @@ export function TitleCell({ task, onUpdateTask, group, onSetIsModalOpen }) {
         }
     }
 
-
-
     const handleKeyPress = (ev) => {
         // ev.preventDefault()
         const createdAt = new Date().toLocaleTimeString('he-IL', { hour: '2-digit', minute: '2-digit' })
@@ -40,6 +38,7 @@ export function TitleCell({ task, onUpdateTask, group, onSetIsModalOpen }) {
             }
             setUpdateOpen(false)
             task.updates.push(newUpdate)
+            board.updates ? board.updates.push(newUpdate) : board.updates = [newUpdate]
             onUpdateTask(task, group.id)
         }
     }
