@@ -36,7 +36,7 @@ function setActivity(task, txt, from, to, style) {
         style
     }
     if (!task.activities) task.activities = [activity]
-    else task.activities.push(activity)
+    else task.activities.unshift(activity)
 
     return task
 }

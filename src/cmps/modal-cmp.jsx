@@ -11,8 +11,8 @@ export function ActivityModal({ activity, }) {
             </div>
             <div className="activity-member flex">
                 <img src={userImg} />
-                {'Carmel'}
-                {/* {activity.byMember.fullname} */}
+                {/* {'Carmel'} */}
+                {activity.byMember.fullname}
             </div>
             <div className="activity flex">
                 {activity.txt}
@@ -22,7 +22,7 @@ export function ActivityModal({ activity, }) {
                     <div className="from flex" style={activity.style && { backgroundColor: activity.style.from }}>
                         {activity.from}
                     </div>
-                    {'>'}
+                    <div className="arrow-to">{'>'}</div>
                     <div className="to flex" style={activity.style && { backgroundColor: activity.style.to }}>
                         {activity.to}
                     </div>

@@ -17,7 +17,7 @@ export const HomePage = () => {
     }
 
     return (
-        <div className="home-container">
+        <div className="home-container stars-outer" id="stars-sky">
             <div className="main-header">
                 <div className="header-content">
                     <div className="left-content">

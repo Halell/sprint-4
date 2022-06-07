@@ -81,10 +81,14 @@ export function BoardContent({ group, onAddTask, onRemoveGroup, onUpdateTask, on
                 onAddTask={onAddTask}
             />
             <div className="progres-bar-position flex">
-                <div className="empty-cell"></div>
-                <div className="empty-cell-nums"></div>
-                <div className="empty-cell-date"></div>
-                <ProgressBar group={group} />
+                <div className="empty-cell title-container flex"></div>
+                {
+                    board.columns.map((column, idx) => {
+                        if (column.toLowerCase() === 'status') return <ProgressBar group={group} key={idx} />
+                        else return <div key={idx} className={`empty-cell-${column.toLowerCase()}`}></div>
+                    })
+                }
+                <div className="empty-cell-box"></div>
             </div>
         </Fragment >
     )

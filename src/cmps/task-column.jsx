@@ -54,7 +54,7 @@ export function TaskColumn({ group, board, boardColumn, task, setStatus, statusB
         </div> }
 
         {/* status */ }
-        { boardColumn === 'status' && <div ref={ parentRef } style={ { backgroundColor: statusBgcColor } } onClick={ () => setColumn(boardColumn) } className="task-column task-column-status">
+        { boardColumn === 'status' && <div ref={ parentRef } style={ { backgroundColor: task.style.status } } onClick={ () => setColumn(boardColumn) } className="task-column task-column-status">
             { task.status !== 'none' && task.status }
             { isStatusEdit &&
                 <div className="column-modal">
@@ -84,10 +84,10 @@ export function TaskColumn({ group, board, boardColumn, task, setStatus, statusB
         { boardColumn === 'persons' && <div ref={ parentRef } onClick={ () => setColumn('persons') } className="task-column member-col">
             { console.log(boardColumn) }
             <div className="add-member flex">
-                { task.persons && (task.persons.length > 1) ?
+                { task.persons && (task.persons.length > 0) ?
                     <div className="person-display-container">
-                        <img src={ require(`../assets/img/carmel.png`) } />
-                        <div className="person-icon flex">+ { task.persons.length }</div>
+                        <img src={ task.persons[task.persons.length - 1].imgUrl } />
+                        { task.persons.length > 1 && <div className="person-icon flex">+ { task.persons.length - 1 }</div> }
                     </div>
                     :
                     // <img class="profile-icon" src={require("../ass`ets/svg/person-column.svg")} ></img>
@@ -101,7 +101,7 @@ export function TaskColumn({ group, board, boardColumn, task, setStatus, statusB
                     <div className="item-member-list flex">
                         { task.persons.map((person, idx) => {
                             return <div key={ idx } className="member-box flex ">
-                                <img src={ require(`../assets/img/carmel.png`) } />
+                                <img src={ person.imgUrl } />
                                 { person.fullname }
                                 <div onClick={ () => removeMember(idx) } className="svg flex"> <RemoveSvg /></div>
                             </div>
@@ -116,7 +116,7 @@ export function TaskColumn({ group, board, boardColumn, task, setStatus, statusB
                                 < div onClick={ (ev) => setMember(ev, person) } className="wrapper" key={ idx }>
                                     <div className="add-member-box flex">
                                         <div className="img-user flex">
-                                            <img src={ userImg } />
+                                            <img src={ person.imgUrl } />
                                         </div>
                                         <div className="user-full-name flex">{ person.fullname }</div>
                                     </div>
@@ -147,10 +147,9 @@ export function TaskColumn({ group, board, boardColumn, task, setStatus, statusB
                 </div>
             </div>
         }
-
         {/* priority */ }
         {
-            boardColumn === 'priority' && <div ref={ parentRef } style={ { backgroundColor: priorityBgcColor } } onClick={ () => setColumn(boardColumn) } className="task-column task-column-status">
+            boardColumn === 'priority' && <div ref={ parentRef } style={ { backgroundColor: task.style.priority } } onClick={ () => setColumn(boardColumn) } className="task-column task-column-status">
                 { task.priority !== 'none' && task.priority }
                 { isPriorityEdit &&
                     <div className="column-modal">

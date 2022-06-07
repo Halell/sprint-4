@@ -15,18 +15,21 @@ export const Board = ({ isPinned }) => {
     let { board } = useSelector((storeState) => storeState.boardModule)
     const dispatch = useDispatch()
     useEffect(() => {
-        socketService.off('update board')
+        socketService.off('update board', onLoadBoard)
         socketService.on('update board', onLoadBoard)
         onLoadBoard()
+        return (() => {
+            socketService.off('update board', onLoadBoard)
+        })
     }, [params.id])
 
     const onLoadBoard = async () => {
         await dispatch(loadBoard(params.id))
     }
 
-    const calcProgress = () => {
-        console.log('progress ')
+    const calcProgress = (newBoard) => {
         let progress
+        board = newBoard ? newBoard : board
         board.groups.map(group => {
             progress = group.tasks.reduce((acc, task) => {
                 if (acc[task.status]) acc[task.status] += 1
@@ -34,43 +37,36 @@ export const Board = ({ isPinned }) => {
                 return acc
             }, {})
             group.progress = progress
-            onAddGroup(group)
+            // onAddGroup(group)
         })
-        console.log('progress: ', progress)
+        return progress
     }
 
     const onRemoveGroup = async (groupId) => {
         const updateBoard = boardService.setActivity(board, 'Removed group')
         await groupService.remove(groupId, updateBoard)
-        // dispatch(loadBoard(params.id))
     }
 
     const onAddGroup = async (group) => {
         if (group) {
             const updateBoard = boardService.setActivity(board, 'Updated group')
-            // calcProgress()
             await groupService.saveGroup(updateBoard, group)
-            // dispatch(loadBoard(params.id))
             return
         }
         const updateBoard = boardService.setActivity(board, 'Added group')
-        // calcProgress()
         await groupService.saveGroup(updateBoard)
-        // dispatch(loadBoard(params.id))
     }
 
     const onAddTask = async (board, groupId, task) => {
         const updateBoard = boardService.setActivity(board, 'Added task')
         calcProgress()
         await taskService.saveTask(updateBoard, groupId, task)
-        // dispatch(loadBoard(params.id))
     }
 
     const onUpdateTask = async (task, groupId, board) => {
         const updateBoard = boardService.setActivity(board, 'Updated task')
         await taskService.saveTask(updateBoard, groupId, task)
         calcProgress()
-        // dispatch(loadBoard(params.id))
     }
 
     const onRemoveTask = async (groupId, taskId) => {
@@ -78,7 +74,6 @@ export const Board = ({ isPinned }) => {
         await taskService.remove(groupId, taskId, updateBoard)
         calcProgress()
         console.log('board: ', board)
-        // dispatch(loadBoard(params.id))
     }
 
     const onChangeFilter = (filterBy) => {
@@ -92,11 +87,9 @@ export const Board = ({ isPinned }) => {
 
     const onSaveBoard = async (newBoard) => {
         await boardService.save(newBoard)
+        calcProgress(newBoard)
         // dispatch(loadBoard(params.id))
     }
-
-
-
 
 
     const newBoard = JSON.parse(JSON.stringify(board))
