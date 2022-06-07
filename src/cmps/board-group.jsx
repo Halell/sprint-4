@@ -49,7 +49,7 @@ export function BoardContent({ group, onAddTask, onRemoveGroup, onUpdateTask, on
         }
         onAddGroup(group)
     }
-
+    console.log('board group');
     return (
         <Fragment>
             <GroupHeader
@@ -63,7 +63,7 @@ export function BoardContent({ group, onAddTask, onRemoveGroup, onUpdateTask, on
                 isBtnsModalOpen={isBtnsModalOpen}
                 onchangeColor={onchangeColor}
                 isChangeColor={isChangeColor}
-                />
+            />
             <TaskList
                 onSaveBoard={onSaveBoard}
                 onRemoveTask={onRemoveTask}
@@ -72,12 +72,12 @@ export function BoardContent({ group, onAddTask, onRemoveGroup, onUpdateTask, on
                 board={board}
                 onAddGroup={onAddGroup}
                 provided={provided}
-                />
-                {provided.placeholder}
+            />
+            {provided.placeholder}
             <GroupFooter
                 group={group}
                 onAddTask={onAddTask}
-                />
+            />
             <div className="progres-bar-position flex">
                 <div className="empty-cell"></div>
                 <div className="empty-cell-nums"></div>

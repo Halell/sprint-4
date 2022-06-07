@@ -19,7 +19,7 @@ function remove(groupId, taskId, board, task) {
 }
 
 
-async function setActivity(task, txt, from, to, style) {
+function setActivity(task, txt, from, to, style) {
     console.log(task)
     const createdAt = new Date()
     const activity = {

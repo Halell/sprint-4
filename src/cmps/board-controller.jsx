@@ -34,15 +34,15 @@ export const BoardController = ({ onSetIsPinned, isPinned }) => {
     }
     return (
         <main
-            className={ `board-controller ${isExpend ? 'expend' : ''} ${isPinned ? 'pinned' : ''}` }
-            onMouseEnter={ () => setIsExpend(!isExpend,) }
-            onMouseLeave={ () => setIsExpend(!isExpend) }
+            className={`board-controller ${isExpend ? 'expend' : ''} ${isPinned ? 'pinned' : ''}`}
+            onMouseEnter={() => setIsExpend(!isExpend,)}
+            onMouseLeave={() => setIsExpend(!isExpend)}
         >
-            <div className={ `controller-btn  ${isPinned ? 'pinned' : ''} ` }
-                onClick={ onSetIsPinned }>
-                { isPinned ? '<' : '>' }
+            <div className={`controller-btn  ${isPinned ? 'pinned' : ''} `}
+                onClick={onSetIsPinned}>
+                {isPinned ? '<' : '>'}
             </div>
-            <div className={ `controller-container ${isExpend ? 'expend' : ''} ${isPinned ? 'pinned' : ''}` }>
+            <div className={`controller-container ${isExpend ? 'expend' : ''} ${isPinned ? 'pinned' : ''}`}>
                 <div className="controller-top">
                     <div className="controller-top-top">
                         <div className="dropdown-navigation-header-container">
@@ -58,7 +58,7 @@ export const BoardController = ({ onSetIsPinned, isPinned }) => {
                         </div>
                     </div>
                     <div className="controller-top-bottom">
-                        <BoardTopController addBoard={ addBoard } />
+                        <BoardTopController addBoard={addBoard} />
                     </div >
                     <div className="spacer"></div>
                 </div >
@@ -66,8 +66,8 @@ export const BoardController = ({ onSetIsPinned, isPinned }) => {
                     <div className="board-list-container">
                         {
                             boards && boards.map((board, idx) => {
-                                return <div className="boards-list-wraper flex column" key={ idx }>
-                                    <BoardPreview board={ board } idx={ idx } removeBoard={ removeBoard } />
+                                return <div className="boards-list-wraper flex column" key={idx}>
+                                    <BoardPreview board={board} idx={idx} removeBoard={removeBoard} />
                                 </div>
                             })
                         }

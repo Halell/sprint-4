@@ -37,7 +37,7 @@ export function BoardHeader({ onAddGroup, onChangeFilter, getPersons, onSaveBoar
         setUser({ ...user, [field]: value })
     }
 
-    async function addMember(fullname) {
+    function addMember(fullname) {
         const member = {
             fullname,
             imgUrl: '',
@@ -45,8 +45,8 @@ export function BoardHeader({ onAddGroup, onChangeFilter, getPersons, onSaveBoar
         }
         board.persons.push(member)
         console.log(member)
-        await boardService.setActivity(board, 'Added member')
-        onSaveBoard(board)
+        const updatedBoard = boardService.setActivity(board, 'Added member')
+        onSaveBoard(updatedBoard)
     }
 
     const onSubmit = (ev) => {

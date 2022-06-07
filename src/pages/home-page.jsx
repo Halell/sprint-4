@@ -44,7 +44,7 @@ export const HomePage = () => {
                             <h1 className="head-line-title">Work Without Limits</h1>
                             <h2 className="head-line-title-sub">Easily build, run, and scale your dream workflows on one platform. what would you like to manage with us?</h2>
                         </div>
-                        {boards && <Link to={`/board/${boards[0]._id}`}> <div className="get-started-btn">GetStarted</div></Link>}
+                        {boards && <Link to={`/board/${boards[0]._id}`}> <div className="get-started-btn">Get Started</div></Link>}
                     </div>
                 </div>
             </main>

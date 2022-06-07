@@ -16,27 +16,46 @@ export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask, on
     useEffect(() => {
         setStatus(task.priority, 'priority', 'loading')
         setStatus(task.status, 'status', 'loading')
+        // calcProgress()
     }, [])
 
     const calcProgress = () => {
-        let progress = {
-            done: 0,
-            inProgress: 0,
-            stuck: 0,
-            none: 0
-        }
-        group.tasks.map(task => {
-            if (task.status === 'done') progress.done += 1
-            if (task.status === 'working on it') progress.inProgress += 1
-            if (task.status === 'stuck') progress.stuck += 1
-            if (task.status === 'none') progress.none += 1
-        })
+        console.log('progress ');
+        // let progress = {
+        //     done: '',
+        //     inProgress: '',
+        //     stuck: '',
+        //     none: ''
+        // }
+        const progress = group.tasks.reduce((acc, task) => {
+            if (acc[task.status]) acc[task.status] += 1
+            else acc[task.status] = 1
+            return acc
+        }, {})
+        console.log('progress: ', progress);
         group.progress = progress
         onAddGroup(group)
     }
 
-    const handleSelect = async (date) => {
-        await boardService.setActivity(board, 'Set date ', task.date, date.toLocaleDateString())
+    // function getProgress(group) {
+    //     let colIdxs = []
+    //     group.tasks[0].columns.forEach((col, idx) => {
+    //         if (col.type === 'status') colIdxs.push(idx)
+    //     })
+    //     group.progress = []
+    //     colIdxs.forEach(colIdx => {
+    //         const value = group.tasks.reduce((acc, task) => {
+    //             if (acc[task.columns[colIdx].value.title]) acc[task.columns[colIdx].value.title] += 1
+    //             else acc[task.columns[colIdx].value.title] = 1
+    //             return acc
+    //         }, {})
+    //         group.progress.push({ colIdx, value })
+    //     })
+    //     return group.progress
+    // }
+
+    const handleSelect = (date) => {
+        const updateBoard = boardService.setActivity(board, 'Set date ', task.date, date.toLocaleDateString())
         let month = date.toLocaleDateString('he-IL', { month: '2-digit' })
         const day = date.toLocaleDateString('he-IL', { day: '2-digit' })
         switch (month) {
@@ -70,7 +89,7 @@ export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask, on
         const newDate = month + ' ' + day
         task.date = newDate
         console.log(task.date)
-        onUpdateTask(task, group.id)
+        onUpdateTask(task, group.id, updateBoard)
     }
 
     const addUser = async (fullname) => {
@@ -82,36 +101,36 @@ export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask, on
         task.persons.push(user)
         board.persons.push(user)
         console.log('ya')
-        const newTask = await taskService.setActivity(task, 'Invited member')
-        onUpdateTask(newTask, group.id)
-        await boardService.setActivity(board, 'Invited member')
+        const newTask = taskService.setActivity(task, 'Invited member')
+        const updateBoard = boardService.setActivity(board, 'Invited member')
+        onUpdateTask(newTask, group.id, updateBoard)
     }
 
-    const removeMember = async (member) => {
+    const removeMember = (member) => {
         const idx = task.persons.findIndex(person => person.id === member.id)
         task.persons.splice(idx, 1)
-        const newTask = await taskService.setActivity(task, 'Removed member')
-        onUpdateTask(newTask, group.id)
-        await boardService.setActivity(board, 'Removed member')
+        const newTask = taskService.setActivity(task, 'Removed member')
+        const updateBoard = boardService.setActivity(board, 'Removed member')
+        onUpdateTask(newTask, group.id, updateBoard)
     }
 
     const onSetIsModalOpen = () => {
         setIsModalOpen(!isModalOpen)
     }
 
-    const setMember = async (ev, member) => {
+    const setMember = (ev, member) => {
         ev.stopPropagation()
         task.persons.push(member)
-        task = await taskService.setActivity(task, 'Added member')
-        await boardService.setActivity(board, 'Added member')
-        onUpdateTask(task, group.id)
+        task = taskService.setActivity(task, 'Added member')
+        const updateBoard = boardService.setActivity(board, 'Added member')
+        onUpdateTask(task, group.id, updateBoard)
     }
 
-    const setTxt = async (el) => {
+    const setTxt = (el) => {
         task.text = el.target.innerText
-        onUpdateTask(task, group.id)
-        task = await taskService.setActivity(task, 'Edited text')
-        await boardService.setActivity(board, 'Update task text')
+        task = taskService.setActivity(task, 'Edited text')
+        const updateBoard = boardService.setActivity(board, 'Update task text')
+        onUpdateTask(task, group.id, updateBoard)
     }
     const setStatus = async (val, field, loading) => {
         var color = 'rgb(196, 196, 196)'
@@ -130,10 +149,10 @@ export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask, on
         style.to = color
         if (loading) return
         calcProgress()
-        task = await taskService.setActivity(task, `Changed ${field}`, prevStatus, task[field], style)
-        onUpdateTask(task, group.id)
-        onSaveBoard(board)
-        await boardService.setActivity(board, `Changed ${field}`, prevStatus, task[field], style)
+        const newTask = taskService.setActivity(task, `Changed ${field}`, prevStatus, task[field], style)
+        const updateBoard = boardService.setActivity(board, `Changed ${field}`, prevStatus, task[field], style)
+        onUpdateTask(newTask, group.id, updateBoard)
+        // onSaveBoard(board)
     }
 
     return (

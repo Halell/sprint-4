@@ -24,41 +24,41 @@ export const Board = ({ isPinned }) => {
         await dispatch(loadBoard(params.id))
     }
     const onRemoveGroup = async (groupId) => {
-        await boardService.setActivity(board, 'Removed group')
-        await groupService.remove(groupId, board)
-        dispatch(loadBoard(params.id))
+        const updateBoard = boardService.setActivity(board, 'Removed group')
+        await groupService.remove(groupId, updateBoard)
+        // dispatch(loadBoard(params.id))
     }
 
     const onAddGroup = async (group) => {
         if (group) {
-            await boardService.setActivity(board, 'Updated group')
-            await groupService.saveGroup(board, group)
-            dispatch(loadBoard(params.id))
+            const updateBoard = boardService.setActivity(board, 'Updated group')
+            await groupService.saveGroup(updateBoard, group)
+            // dispatch(loadBoard(params.id))
             return
         }
-        await boardService.setActivity(board, 'Added group')
-        await groupService.saveGroup(board)
-        dispatch(loadBoard(params.id))
+        const updateBoard = boardService.setActivity(board, 'Added group')
+        await groupService.saveGroup(updateBoard)
+        // dispatch(loadBoard(params.id))
     }
 
     const onAddTask = async (board, groupId, task) => {
-        await boardService.setActivity(board, 'Added task')
-        await taskService.saveTask(board, groupId, task)
-        dispatch(loadBoard(params.id))
+        const updateBoard = boardService.setActivity(board, 'Added task')
+        await taskService.saveTask(updateBoard, groupId, task)
+        // dispatch(loadBoard(params.id))
     }
 
-    const onUpdateTask = async (task, groupId) => {
-        await boardService.setActivity(board, 'Updated task')
-        await taskService.saveTask(board, groupId, task)
-        dispatch(loadBoard(params.id))
+    const onUpdateTask = async (task, groupId, board) => {
+        const updateBoard = boardService.setActivity(board, 'Updated task')
+        await taskService.saveTask(updateBoard, groupId, task)
+        // dispatch(loadBoard(params.id))
     }
 
     const onRemoveTask = async (groupId, taskId, task) => {
         console.log('task: ', task);
-        await boardService.setActivity(board, 'Removed task')
-        await taskService.remove(groupId, taskId, board)
+        const updateBoard = boardService.setActivity(board, 'Removed task')
+        await taskService.remove(groupId, taskId, updateBoard)
         console.log('board: ', board);
-        dispatch(loadBoard(params.id))
+        // dispatch(loadBoard(params.id))
     }
 
     const onChangeFilter = (filterBy) => {
@@ -72,8 +72,12 @@ export const Board = ({ isPinned }) => {
 
     const onSaveBoard = async (newBoard) => {
         await boardService.save(newBoard)
-        dispatch(loadBoard(params.id))
+        // dispatch(loadBoard(params.id))
     }
+
+
+
+
 
     const newBoard = JSON.parse(JSON.stringify(board))
     function handleOnDragEnd(res) {
@@ -89,6 +93,17 @@ export const Board = ({ isPinned }) => {
         }
         onSaveBoard(newBoard)
     }
+
+
+
+
+
+
+
+
+
+
+
 
     if (!newBoard) return <div>loading..</div>
     return (
