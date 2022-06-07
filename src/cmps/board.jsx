@@ -73,6 +73,8 @@ export const Board = ({ isPinned }) => {
         dispatch(loadBoard(params.id))
     }
 
+    
+
     const newBoard = JSON.parse(JSON.stringify(board))
     function handleOnDragEnd(res) {
         if (!res.destination) return
@@ -87,6 +89,8 @@ export const Board = ({ isPinned }) => {
         }
         onSaveBoard(newBoard)
     }
+
+
 
     if (!newBoard) return <div>loading..</div>
     return (
