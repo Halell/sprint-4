@@ -26,10 +26,15 @@
     }
 }
 
-.btn-input {
-    font-size: 13px;
-    font-weight: 400;
+.title-component {
+    .input-edit-state {
+        font-size: 13px;
+        font-weight: 400;
+        background-color: white;
+        outline: 1px solid #0073ea;
+    }
 }
+
 
 .cells-row-container {
     // max-width: 1000px;
