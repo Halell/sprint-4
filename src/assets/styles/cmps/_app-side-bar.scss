@@ -145,15 +145,18 @@
 
                 .avatar-img {
                     background-color: #ff0d8b;
-                    border: 2px solid #fff;
+                    border: 3px solid #fff;
                     height: 44px;
                     width: 44px;
                     position: relative;
                     display: flex;
                     border-radius: 50%;
-                    width: 25px;
-                    height: 25px;
                     flex-shrink: 0;
+                    color: white;
+                    font-size: 26px;
+                    font-weight: 700;
+                    align-items: center;
+                    justify-content: center;
                 }
             }
         }
