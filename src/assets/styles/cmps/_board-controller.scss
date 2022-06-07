@@ -268,13 +268,10 @@
     }
 
     .controller-bottom {
-
-        padding-top: 16px;
+        padding-top: 6px;
         height: 100%;
         width: 100%;
         flex-grow: 1;
-        // overflow-y: auto;
-        // overflow-x: hidden;
         position: relative;
     }
 }
@@ -324,6 +321,7 @@
 
             .board-icon {
                 display: flex;
+                padding-bottom: 2px;
                 align-items: center;
                 color: #323338;
             }
@@ -342,6 +340,7 @@
 
                 .board-dropdown-menu {
                     text-align: center;
+                    position: relative;
                     border-radius: 4px;
                     width: 26px;
                     height: 26px;
