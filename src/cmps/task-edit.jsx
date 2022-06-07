@@ -3,14 +3,14 @@ import { updateBoard } from '../store/action/board.actions'
 
 
 
-export function TaskEdit({ task, onUpdateTask, group, toggle }) {
+export function TaskEdit({ task, onUpdateTask, group, toggle, board }) {
     let title = ''
     const groupId = group.id
 
     const onSaveTask = (ev) => {
         ev.preventDefault()
         task.title = title
-        onUpdateTask(task, groupId)
+        onUpdateTask(task, groupId, board)
         toggle('btn-input')
     }
 

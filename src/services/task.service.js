@@ -9,8 +9,7 @@ export const taskService = {
     saveTask,
 }
 
-function remove(groupId, taskId, board, task) {
-    console.log(task)
+function remove(groupId, taskId, board) {
     const groupIdx = board.groups.findIndex(group => group.id === groupId)
     const taskIdx = board.groups[groupIdx].tasks.findIndex(task => task.id === taskId)
     console.log('taskIdx: ', taskIdx);

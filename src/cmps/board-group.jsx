@@ -38,13 +38,15 @@ export function BoardContent({ group, onAddTask, onRemoveGroup, onUpdateTask, on
 
     const onUpdateColumns = (el) => {
         const idx = el.target.getAttribute('idx')
-        board.columns[idx] = el.target.innerText
+        board.columns[idx] = el.target.innerText.toLowerCase()
+        console.log('board: ', board);
         onAddGroup(group)
     }
 
     const onSaveGroup = (el) => {
         if (el) {
             const title = el.target.innerText.toLowerCase()
+            console.log('title: ', title);
             group.title = title
         }
         onAddGroup(group)

@@ -23,6 +23,22 @@ export const Board = ({ isPinned }) => {
     const onLoadBoard = async () => {
         await dispatch(loadBoard(params.id))
     }
+
+    const calcProgress = () => {
+        console.log('progress ');
+        let progress
+        board.groups.map(group => {
+            progress = group.tasks.reduce((acc, task) => {
+                if (acc[task.status]) acc[task.status] += 1
+                else acc[task.status] = 1
+                return acc
+            }, {})
+            group.progress = progress
+            onAddGroup(group)
+        })
+        console.log('progress: ', progress);
+    }
+
     const onRemoveGroup = async (groupId) => {
         const updateBoard = boardService.setActivity(board, 'Removed group')
         await groupService.remove(groupId, updateBoard)
@@ -32,17 +48,20 @@ export const Board = ({ isPinned }) => {
     const onAddGroup = async (group) => {
         if (group) {
             const updateBoard = boardService.setActivity(board, 'Updated group')
+            // calcProgress()
             await groupService.saveGroup(updateBoard, group)
             // dispatch(loadBoard(params.id))
             return
         }
         const updateBoard = boardService.setActivity(board, 'Added group')
+        // calcProgress()
         await groupService.saveGroup(updateBoard)
         // dispatch(loadBoard(params.id))
     }
 
     const onAddTask = async (board, groupId, task) => {
         const updateBoard = boardService.setActivity(board, 'Added task')
+        calcProgress()
         await taskService.saveTask(updateBoard, groupId, task)
         // dispatch(loadBoard(params.id))
     }
@@ -50,13 +69,14 @@ export const Board = ({ isPinned }) => {
     const onUpdateTask = async (task, groupId, board) => {
         const updateBoard = boardService.setActivity(board, 'Updated task')
         await taskService.saveTask(updateBoard, groupId, task)
+        calcProgress()
         // dispatch(loadBoard(params.id))
     }
 
-    const onRemoveTask = async (groupId, taskId, task) => {
-        console.log('task: ', task);
+    const onRemoveTask = async (groupId, taskId) => {
         const updateBoard = boardService.setActivity(board, 'Removed task')
         await taskService.remove(groupId, taskId, updateBoard)
+        calcProgress()
         console.log('board: ', board);
         // dispatch(loadBoard(params.id))
     }

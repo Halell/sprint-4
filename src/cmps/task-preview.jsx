@@ -19,23 +19,23 @@ export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask, on
         // calcProgress()
     }, [])
 
-    const calcProgress = () => {
-        console.log('progress ');
-        // let progress = {
-        //     done: '',
-        //     inProgress: '',
-        //     stuck: '',
-        //     none: ''
-        // }
-        const progress = group.tasks.reduce((acc, task) => {
-            if (acc[task.status]) acc[task.status] += 1
-            else acc[task.status] = 1
-            return acc
-        }, {})
-        console.log('progress: ', progress);
-        group.progress = progress
-        onAddGroup(group)
-    }
+    // const calcProgress = () => {
+    //     console.log('progress ');
+    //     // let progress = {
+    //     //     done: '',
+    //     //     inProgress: '',
+    //     //     stuck: '',
+    //     //     none: ''
+    //     // }
+    //     const progress = group.tasks.reduce((acc, task) => {
+    //         if (acc[task.status]) acc[task.status] += 1
+    //         else acc[task.status] = 1
+    //         return acc
+    //     }, {})
+    //     console.log('progress: ', progress);
+    //     group.progress = progress
+    //     onAddGroup(group)
+    // }
 
     // function getProgress(group) {
     //     let colIdxs = []
@@ -148,7 +148,7 @@ export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask, on
         task.style = { backgroundColor: color }
         style.to = color
         if (loading) return
-        calcProgress()
+        // calcProgress()
         const newTask = taskService.setActivity(task, `Changed ${field}`, prevStatus, task[field], style)
         const updateBoard = boardService.setActivity(board, `Changed ${field}`, prevStatus, task[field], style)
         onUpdateTask(newTask, group.id, updateBoard)
