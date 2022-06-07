@@ -15,9 +15,12 @@ export const Board = ({ isPinned }) => {
     let { board } = useSelector((storeState) => storeState.boardModule)
     const dispatch = useDispatch()
     useEffect(() => {
-        socketService.off('update board')
+        socketService.off('update board', onLoadBoard)
         socketService.on('update board', onLoadBoard)
         onLoadBoard()
+        return (() => {
+            socketService.off('update board', onLoadBoard)
+        })
     }, [params.id])
 
     const onLoadBoard = async () => {
@@ -35,9 +38,9 @@ export const Board = ({ isPinned }) => {
                 return acc
             }, {})
             group.progress = progress
-            onAddGroup(group)
+            // onAddGroup(group)
         })
-        console.log('progress: ', progress);
+        return progress
     }
 
     const onRemoveGroup = async (groupId) => {
@@ -96,9 +99,6 @@ export const Board = ({ isPinned }) => {
         calcProgress(newBoard)
         // dispatch(loadBoard(params.id))
     }
-
-
-
 
 
     const newBoard = JSON.parse(JSON.stringify(board))

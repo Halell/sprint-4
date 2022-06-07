@@ -1,5 +1,10 @@
 export const ProgressBar = ({ group, colIdx }) => {
-    const progress = group.progress
+    // const progress = group.progress
+    const progress = group.tasks.reduce((acc, task) => {
+        if (acc[task.status]) acc[task.status] += 1
+        else acc[task.status] = 1
+        return acc
+    }, {})
     console.log('progress: ', progress);
     return <section className="progress-display flex ">
         <div className="progress-bar flex ">
