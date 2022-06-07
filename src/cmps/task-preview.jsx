@@ -16,43 +16,7 @@ export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask, on
     useEffect(() => {
         setStatus(task.priority, 'priority', 'loading')
         setStatus(task.status, 'status', 'loading')
-        // calcProgress()
     }, [])
-
-    // const calcProgress = () => {
-    //     console.log('progress ');
-    //     // let progress = {
-    //     //     done: '',
-    //     //     inProgress: '',
-    //     //     stuck: '',
-    //     //     none: ''
-    //     // }
-    //     const progress = group.tasks.reduce((acc, task) => {
-    //         if (acc[task.status]) acc[task.status] += 1
-    //         else acc[task.status] = 1
-    //         return acc
-    //     }, {})
-    //     console.log('progress: ', progress);
-    //     group.progress = progress
-    //     onAddGroup(group)
-    // }
-
-    // function getProgress(group) {
-    //     let colIdxs = []
-    //     group.tasks[0].columns.forEach((col, idx) => {
-    //         if (col.type === 'status') colIdxs.push(idx)
-    //     })
-    //     group.progress = []
-    //     colIdxs.forEach(colIdx => {
-    //         const value = group.tasks.reduce((acc, task) => {
-    //             if (acc[task.columns[colIdx].value.title]) acc[task.columns[colIdx].value.title] += 1
-    //             else acc[task.columns[colIdx].value.title] = 1
-    //             return acc
-    //         }, {})
-    //         group.progress.push({ colIdx, value })
-    //     })
-    //     return group.progress
-    // }
 
     const handleSelect = (date) => {
         const updateBoard = boardService.setActivity(board, 'Set date ', task.date, date.toLocaleDateString())
@@ -145,14 +109,13 @@ export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask, on
 
         task[field] = val
         field === 'status' ? setStatusBgcColor(color) : setImportanceBgcColor(color)
-        task.style = { backgroundColor: color }
+        task.style[field] = color
         style.to = color
+        console.log('task: ', task);
         if (loading) return
-        // calcProgress()
         const newTask = taskService.setActivity(task, `Changed ${field}`, prevStatus, task[field], style)
         const updateBoard = boardService.setActivity(board, `Changed ${field}`, prevStatus, task[field], style)
         onUpdateTask(newTask, group.id, updateBoard)
-        // onSaveBoard(board)
     }
 
     return (

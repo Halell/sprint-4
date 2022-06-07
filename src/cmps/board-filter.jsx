@@ -115,7 +115,7 @@ export const BoardFilter = ({ onAddGroup, onChangeFilter, getPersons, onAddTask,
                     <p className="first-txt-modal">Quick person filter</p>
                     <p className="second-txt-modal">Filter items and subitems by person</p>
                     {board.persons && board.persons.map((person, idx) => {
-                        return <div onClick={() => getPerson(person)} key={idx} className="person-link flex" href=""><img className="person-img" src={require(`../assets/img/carmel.png`)} />{person.fullname}</div>
+                        return <div onClick={() => getPerson(person)} key={idx} className="person-link flex" href=""><img className="person-img" src={person.imgUrl} />{person.fullname}</div>
                     })}
 
                 </div>

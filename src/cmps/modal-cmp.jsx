@@ -11,8 +11,8 @@ export function ActivityModal({ activity, }) {
             </div>
             <div className="activity-member flex">
                 <img src={userImg} />
-                {'Carmel'}
-                {/* {activity.byMember.fullname} */}
+                {/* {'Carmel'} */}
+                {activity.byMember.fullname}
             </div>
             <div className="activity flex">
                 {activity.txt}
