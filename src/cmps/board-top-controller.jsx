@@ -23,7 +23,7 @@ export function BoardTopController({ addBoard }) {
             isAddModalOpen &&
             <div className="board-add-modal">
                 <div className="btns-top-add-modal">
-                    <div className="btn-modal-top-add-section" onClick={() => addBoard()}>
+                    <div className="btn-modal-top-add-section" onClick={addBoard}>
                         <BoardSvg />
                         <span> New Board</span>
                     </div>

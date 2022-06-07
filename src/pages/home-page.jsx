@@ -13,6 +13,11 @@ export const HomePage = () => {
 
     const loadBoards = async () => {
         const boards = await boardService.query()
+        if (!boards.length) {
+            await boardService.save({})
+            loadBoards()
+        }
+        console.log('boards: ', boards);
         setBoards(boards)
     }
 
