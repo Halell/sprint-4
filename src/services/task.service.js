@@ -54,7 +54,7 @@ async function saveTask(board, groupId, taskToSave) {
                     taskToSave.text = ""
                     taskToSave.priority = "mid"
                     taskToSave.updates = []
-                    taskToSave.style = { status: '', priority: '' }
+                    taskToSave.style = { status: 'none', priority: 'mid' }
                     group.tasks.push(taskToSave)
                 } else {
                     const idx = group.tasks.findIndex(task => task.id === taskToSave.id)
