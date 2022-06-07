@@ -1,18 +1,16 @@
-import { useState } from "react"
+import { useState, useRef } from "react"
 import { NavLink } from "react-router-dom"
 
+import { useOutsideClick } from '../hooks/useClickOutsideParent'
+
 import { ReactComponent as Board } from '../assets/svg/board.svg'
-import { FaTrash } from 'react-icons/fa'
-// import { AiOutlineDelete } from 'react-icons/ai'
 
 export function BoardPreview({ board, idx, removeBoard }) {
-    const [isRemoveModalOpen, setIsRemoveModalOpen] = useState(false)
+    const [isAddModalOpen, setIsAddModalOpen] = useState(false)
+    const wrapperRef = useRef(null)
+    const parentRef = useRef(null)
+    useOutsideClick(wrapperRef, setIsAddModalOpen, null, parentRef)
 
-    const toggle = (val) => {
-        if (val === 'remove-modal') {
-            setIsRemoveModalOpen(!isRemoveModalOpen)
-        }
-    }
     return <div>
         <div className="board-preview">
 
@@ -24,9 +22,9 @@ export function BoardPreview({ board, idx, removeBoard }) {
                         <div className="board-icon"><Board /></div>
                         <div className="board-title-container">
                             <div className="board-title">{ board.title }</div>
-                            <div className="board-dropdown-menu" onClick={ () => toggle('remove-modal') }>
-                                { isRemoveModalOpen &&
-                                    <div className="board-add-modal">
+                            <div ref={ parentRef } className="board-dropdown-menu" onClick={ () => setIsAddModalOpen(!isAddModalOpen) }>
+                                { isAddModalOpen &&
+                                    <div ref={ wrapperRef } className="board-add-modal">
                                         <div className="btns-top-add-modal">
                                             <div className="btn-modal-top-add-section" >
                                                 <span onClick={ (ev) => removeBoard(board._id, ev.preventDefault()) }> {/* <AiOutlineDelete /> */ }Delete</span>
@@ -41,7 +39,6 @@ export function BoardPreview({ board, idx, removeBoard }) {
                                         </div>
                                     </div>
                                 }
-                                {/* onClick={(ev) => removeBoard(board._id, ev.preventDefault())}> */ }
                                 <div className="btn-board-remove"></div>
                             </div>
                         </div>
