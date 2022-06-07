@@ -54,9 +54,9 @@ export function TitleCell({ task, onUpdateTask, group, onSetIsModalOpen, board }
                                     { !task.updates.length ?
                                         <Updates className="update-svg" title="Start conversation" onClick={ () => setIsDetailsModalOpen(!isDetailsModalOpen) } />
                                         :
-                                        <div className="add-update-btn-wrapper flex">
+                                        <div onClick={ () => setIsDetailsModalOpen(!isDetailsModalOpen) } className="add-update-btn-wrapper flex">
                                             <Msg className="msg-svg" />
-                                            <div className="update-num" onClick={ () => setIsDetailsModalOpen(!isDetailsModalOpen) }>{ newUpdates.length }</div>
+                                            <div className="update-num" >{ newUpdates.length }</div>
                                         </div>
                                     }
                                 </div>
