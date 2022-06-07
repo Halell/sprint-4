@@ -1,6 +1,13 @@
+.board-dropdown-menu {
+    .board-add-modal {
+        top: 0;
+    }
+}
+
 .board-add-modal {
     width: 240px;
     left: 244px;
+    top: 99px;
     position: absolute;
     z-index: 10000;
     box-shadow: 0 4px 17px 6px rgb(0 0 0 / 10%);

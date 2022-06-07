@@ -16,7 +16,7 @@ export const AppSideBar = () => {
             <div className="app-side-bar-wrapper">
                 <div className="logo-container">
                     <div className="logo-wrapper">
-                        <Link to={'/'} className="routs-link ">
+                        <Link to={ '/' } className="routs-link ">
                             <img className="surface-item-image" src="https://cdn.monday.com/images/logos/monday_logo_icon.png" />
                         </Link>
                     </div>
@@ -43,7 +43,7 @@ export const AppSideBar = () => {
                         <div className="footer-navigation-items-area">
                             <div className="dots"><DotSvg /></div>
                             <div className="avatar-menu-component">
-                                <div className="avatar-img"></div>
+                                <div className="avatar-img">S</div>
                             </div>
                         </div>
                     </div>
