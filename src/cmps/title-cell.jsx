@@ -43,7 +43,6 @@ export function TitleCell({ task, onUpdateTask, group, onSetIsModalOpen, board }
                     <div className="title-inner-wrapper">
                         <div className="cell-component title-cell" >
                             <div className="title-cell-component" >
-
                                 <div className="pulse-left-indicator" style={ { backgroundColor: group.style } }></div>
                                 <div className="title-cell-text flex">
                                     <TaskEdit
@@ -86,11 +85,11 @@ export function TitleCell({ task, onUpdateTask, group, onSetIsModalOpen, board }
                                 className="btn-input">
                             </div>
                             :
-                            <div className="btn-input" onClick={ () => setUpdateOpen(true) }>
+                            <div className="btn-input" onClick={ () => setUpdateOpen(!isUpdateOpen) }>
                                 Write an update..
                             </div> }
 
-                        <div className="updates-wrapper-cards flex column">
+                        <div onClick={ () => setUpdateOpen(!isUpdateOpen) } className="updates-wrapper-cards flex column">
                             { task.updates.map((update, idx) =>
                                 <div className="update-card" key={ idx }>
                                     <div className="update-header flex">{ update.byMember.fullname }</div>
