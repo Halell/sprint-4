@@ -1,6 +1,5 @@
 .activity-log-panel {
     flex-wrap: nowrap;
-    width: 560px;
     flex-direction: column;
     height: 100vh;
     width: 560px;
@@ -187,6 +186,7 @@
         .single-activity {
             width: 100%;
             align-items: center;
+            border-bottom: 1px solid rgb(219, 218, 218);
 
             .activity-box {
                 color: #676879;
@@ -226,9 +226,10 @@
 
                 .activity-info {
                     height: 100%;
-                    flex: 1 1 auto;
+                    // flex: 1 1 auto;
                     justify-content: center;
                     align-items: center;
+                    text-transform: capitalize;
 
                     .from {
                         color: rgb(89, 89, 89);
@@ -241,7 +242,11 @@
                         justify-content: center;
                         border-radius: 3px;
                         color: rgb(255, 255, 255);
-                        font-size: 13px;
+                        font-size: 11px;
+                    }
+
+                    .arrow-to {
+                        padding: 3px;
                     }
 
                     .to {
@@ -255,7 +260,8 @@
                         justify-content: center;
                         border-radius: 3px;
                         color: rgb(255, 255, 255);
-                        font-size: 13px;
+                        font-size: 11px;
+                        // text-transform: capitalize;
                     }
                 }
             }

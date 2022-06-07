@@ -24,9 +24,10 @@ export const Board = ({ isPinned }) => {
         await dispatch(loadBoard(params.id))
     }
 
-    const calcProgress = () => {
+    const calcProgress = (newBoard) => {
         console.log('progress ');
         let progress
+        board = newBoard ? newBoard : board
         board.groups.map(group => {
             progress = group.tasks.reduce((acc, task) => {
                 if (acc[task.status]) acc[task.status] += 1
@@ -92,6 +93,7 @@ export const Board = ({ isPinned }) => {
 
     const onSaveBoard = async (newBoard) => {
         await boardService.save(newBoard)
+        calcProgress(newBoard)
         // dispatch(loadBoard(params.id))
     }
 

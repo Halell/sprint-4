@@ -22,7 +22,7 @@ export function ActivityModal({ activity, }) {
                     <div className="from flex" style={activity.style && { backgroundColor: activity.style.from }}>
                         {activity.from}
                     </div>
-                    {'>'}
+                    <div className="arrow-to">{'>'}</div>
                     <div className="to flex" style={activity.style && { backgroundColor: activity.style.to }}>
                         {activity.to}
                     </div>
