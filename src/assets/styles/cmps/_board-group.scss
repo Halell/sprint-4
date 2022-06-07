@@ -212,6 +212,7 @@
                 height: 100%;
                 border: 1px solid rgb(220, 220, 220);
                 border-right: none;
+                border-top: none;
                 line-height: 30px;
             }
 
@@ -224,12 +225,11 @@
         .footer-spacer {
             width: 100%;
             border: 1px solid rgb(220, 220, 220);
+            border-top: none;
             border-left: none;
         }
 
         .pulse-left-indicator {
-            // background-color: rgb(87, 155, 252);
-
             color: rgb(87, 155, 252);
             flex: 0 0 8px;
             height: 100%;
@@ -240,8 +240,21 @@
         .add-task {
             padding-left: 8px;
         }
-
     }
+}
+
+.btn-add-column {
+    display: flex;
+    border-radius: 50%;
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    right: 13px;
+    border: 1px solid #3233386b;
+    color: #323338ad;
+    background: white;
+    align-items: center;
+    justify-content: center;
 }
 
 .border {

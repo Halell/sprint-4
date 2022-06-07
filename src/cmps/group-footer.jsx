@@ -35,19 +35,19 @@ export function GroupFooter({ group, onAddTask }) {
                 <div className="title-container">
                     <div className="btn-pulse-menu-wrapper" ></div>
                     <div className="title-cell-component group-footer" >
-                        <div className="pulse-left-indicator" style={{ backgroundColor: group.style, filter: ' grayScale(65%)' }}></div>
+                        <div className="pulse-left-indicator footer" style={ { backgroundColor: group.style, opacity: 0.5 } }></div>
 
-                        {isNewTaskEdit ?
+                        { isNewTaskEdit ?
                             <div className="title-component "
-                                ref={inputRef}
-                                suppressContentEditableWarning={true}
-                                contentEditable={true}
-                                onBlur={onSaveTask}
-                                onKeyPress={handleKeyPressAddTask}
+                                ref={ inputRef }
+                                suppressContentEditableWarning={ true }
+                                contentEditable={ true }
+                                onBlur={ onSaveTask }
+                                onKeyPress={ handleKeyPressAddTask }
                             >
                             </div>
                             : <div className="title-component "
-                                onClick={() => setIsNewTaskEdit(!isNewTaskEdit, inputRef())}
+                                onClick={ () => setIsNewTaskEdit(!isNewTaskEdit, inputRef()) }
                             >+ Add Item</div>
                         }
                     </div>

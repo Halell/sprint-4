@@ -16,43 +16,72 @@
 
     .empty-cell-nums {
         height: 100%;
-        min-width: 150px;
+        // min-width: 10px;
     }
 
     .empty-cell-date {
         height: 100%;
-        min-width: 120px;
+        min-width: 100px;
     }
 
+    // .progress-display {
+    //     width: 150px;
+    //     height: auto;
+    //     height: 100%;
+    //     background-color: #f1f1f1;
+    //     border-radius: 0 0 4px 4px;
+    //     justify-content: center;
+    //     align-items: center;
+
+    //     .progress-bar {
+    //         height: 100%;
+    //         width: 100%;
+    //         margin: 0 8px;
+    //         justify-content: center;
+    //         align-items: center;
+
+    //         .progress-indicator {
+    //             position: relative;
+    //             height: 24px;
+    //             transition: all .1s ease-in-out;
+
+    //             &:hover {
+    //                 height: 70%;
+    //                 width: 100%;
+    //                 border-radius: 4px;
+    //             }
+    //         }
+
+    //     }
+    // }
     .progress-display {
-        width: 150px;
-        height: auto;
+        background-color: #f5f6f8;
+        width: 100%;
         height: 100%;
-        background-color: #f1f1f1;
-        border-radius: 0 0 4px 4px;
-        justify-content: center;
+        display: flex;
         align-items: center;
+        justify-content: center;
+    }
 
-        .progress-bar {
-            height: 100%;
-            width: 100%;
-            margin: 0 8px;
-            justify-content: center;
-            align-items: center;
+    .progress-bar {
+        width: 100%;
+        height: 25px;
+        width: 115px;
+        background-color: rgb(158, 158, 158);
+        display: flex;
+    }
 
-            .progress-indicator {
-                position: relative;
-                height: 24px;
-                transition: all .1s ease-in-out;
+    .progress-indicator {
+        cursor: pointer;
+        transition: height .3s;
 
-                &:hover {
-                    height: 70%;
-                    width: 100%;
-                    border-radius: 4px;
-                }
-            }
-
+        &:hover {
+            height: 28px;
+            position: relative;
+            bottom: 5%;
+            border-radius: 3px;
         }
     }
+
 
 }

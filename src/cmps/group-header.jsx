@@ -1,9 +1,10 @@
 import { useState } from 'react'
-import { AiOutlineDelete } from 'react-icons/ai';
-import { RiAddCircleLine } from 'react-icons/ri';
-import { HiOutlineDocumentDuplicate } from 'react-icons/hi';
-import { utilService } from '../services/util.service';
-import { color } from '@mui/system';
+import { AiOutlineDelete } from 'react-icons/ai'
+import { RiAddCircleLine } from 'react-icons/ri'
+import { HiOutlineDocumentDuplicate } from 'react-icons/hi'
+import { utilService } from '../services/util.service'
+import { color } from '@mui/system'
+import { ReactComponent as TraingleSvg } from '../assets/svg/traingle.svg'
 
 
 
@@ -16,7 +17,7 @@ export function GroupHeader({ board, group, onUseBtn, onSaveGroup, onUpdateColum
                 <div className="title-container group-title-wrapper">
                     <div className="btn-pulse-menu-wrapper btn-group-menu-wrapper"
                         onClick={() => toggle('btns-modal')}>
-                        <div className="btn-group-menu" style={{ backgroundColor: group.style }}>▼</div>
+                        <div className="btn-group-menu" style={{ backgroundColor: group.style }}><TraingleSvg /></div>
                     </div>
                     <div className="title-inner-container group-header">
                         <div className="title-inner-wrapper group-header">
@@ -63,7 +64,7 @@ export function GroupHeader({ board, group, onUseBtn, onSaveGroup, onUpdateColum
                         )}
                     </div>
                 </div>
-                <div className="column-wrapper-add">
+                <div className="column-wrapper-add header"><div className="btn-add-column">+</div>
                 </div>
             </div>
             {

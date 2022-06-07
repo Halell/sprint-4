@@ -9,16 +9,17 @@ export const taskService = {
     saveTask,
 }
 
-function remove(groupId, taskId, board) {
-    console.log(taskId)
+function remove(groupId, taskId, board, task) {
+    console.log(task)
     const groupIdx = board.groups.findIndex(group => group.id === groupId)
-    const taskIdx = board.groups[groupIdx].tasks.map(task => task.id === taskId)
+    const taskIdx = board.groups[groupIdx].tasks.findIndex(task => task.id === taskId)
+    console.log('taskIdx: ', taskIdx);
     board.groups[groupIdx].tasks.splice(taskIdx, 1)
     return boardService.save(board)
 }
 
 
-async function setActivity(task, txt, from, to, style) {
+function setActivity(task, txt, from, to, style) {
     console.log(task)
     const createdAt = new Date()
     const activity = {

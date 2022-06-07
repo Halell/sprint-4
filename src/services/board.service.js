@@ -30,6 +30,7 @@ async function query() {
     // return boards
 }
 function getById(boardId) {
+    console.log('i went to bring new board by Id');
     return httpService.get(`board/${boardId}`)
     // return storageService.get(STORAGE_KEY, boardId)
     // return axios.get(`/api/board/${boardId}`)
@@ -44,7 +45,7 @@ async function remove(boardId) {
     // boardChannel.postMessage(getActionRemoveBoard(boardId))
 }
 
-async function setActivity(board, txt, from, to, style) {
+function setActivity(board, txt, from, to, style) {
 
     const createdAt = new Date()
     const activity = {
@@ -62,7 +63,7 @@ async function setActivity(board, txt, from, to, style) {
         style
     }
     board.activities.push(activity)
-    save(board)
+    // save(board)
     return board
 }
 

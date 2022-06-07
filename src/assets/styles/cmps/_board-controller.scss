@@ -183,7 +183,6 @@
             span {
                 color: #323338;
                 font-size: 14px;
-                margin: 0 8px;
                 font-weight: 600;
                 font-family: Roboto-thin;
             }
@@ -274,8 +273,8 @@
         height: 100%;
         width: 100%;
         flex-grow: 1;
-        overflow-y: auto;
-        overflow-x: hidden;
+        // overflow-y: auto;
+        // overflow-x: hidden;
         position: relative;
     }
 }
