@@ -123,7 +123,6 @@ export function TaskColumn({ group, board, boardColumn, task, setStatus, statusB
                                 </div>
                         }
                     })
-
                     }
                     <div
                         onClick={ () => setopenInput(!isInputOpen) }
