@@ -19,11 +19,11 @@ export function BoardTopController({ addBoard }) {
 
     return (
         <>
-            <div ref={ parentRef } onClick={ () => setIsAddModalOpen(!isAddModalOpen) } className="btn-add"><Plus /><span>Add</span> {
+            <div ref={parentRef} onClick={() => setIsAddModalOpen(!isAddModalOpen)} className="btn-add"><Plus /><span>Add</span> {
                 isAddModalOpen &&
-                <div ref={ wrapperRef } className="board-add-modal">
+                <div ref={wrapperRef} className="board-add-modal">
                     <div className="btns-top-add-modal">
-                        <div className="btn-modal-top-add-section" onClick={ () => addBoard() }>
+                        <div className="btn-modal-top-add-section" onClick={() => addBoard()}>
                             <BoardSvg />
                             <span> New Board</span>
                         </div>
