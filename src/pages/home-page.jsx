@@ -18,6 +18,9 @@ export const HomePage = () => {
 
     return (
         <div className="home-container">
+            {/* <div class="stars-outer">
+                <div id="stars-sky" />
+            </div> */}
             <div className="main-header">
                 <div className="header-content">
                     <div className="left-content">

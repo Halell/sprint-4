@@ -62,7 +62,7 @@ function setActivity(board, txt, from, to, style) {
         createdAt: createdAt.toLocaleTimeString('he-IL', { hour: '2-digit', minute: '2-digit' }),
         style
     }
-    board.activities.push(activity)
+    board.activities.unshift(activity)
     // save(board)
     return board
 }
