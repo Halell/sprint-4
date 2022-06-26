@@ -13,11 +13,17 @@ export const HomePage = () => {
 
     const loadBoards = async () => {
         const boards = await boardService.query()
+        if (!boards.length) {
+            await boardService.save({})
+            loadBoards()
+        }
+        console.log('boards: ', boards);
         setBoards(boards)
     }
 
+
     return (
-        <div className="home-container stars-outer" id="stars-sky">
+        <div className="home-container" >
             <div className="main-header">
                 <div className="header-content">
                     <div className="left-content">

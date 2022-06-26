@@ -158,12 +158,9 @@
     box-shadow: 0 4px 17px 6px rgb(0 0 0 / 10%);
     background-color: #fff;
     border-radius: 8px;
-    right: 20px;
-
+    right: -145px;
 
     .person-menu {
-        // position: absolute;
-        // width: 264px;
         top: 100%;
         right: 0;
         z-index: 35;
@@ -173,8 +170,6 @@
             position: relative;
             width: 100%;
             flex-wrap: wrap;
-
-
 
             .member-box {
                 margin: 4px;
@@ -223,7 +218,6 @@
             justify-content: flex-start;
             align-items: center;
             margin-left: 10px;
-
 
             &input {
                 outline: none;

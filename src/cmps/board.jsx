@@ -28,7 +28,6 @@ export const Board = ({ isPinned }) => {
     }
 
     const calcProgress = (newBoard) => {
-        console.log('progress ');
         let progress
         board = newBoard ? newBoard : board
         board.groups.map(group => {
@@ -46,43 +45,35 @@ export const Board = ({ isPinned }) => {
     const onRemoveGroup = async (groupId) => {
         const updateBoard = boardService.setActivity(board, 'Removed group')
         await groupService.remove(groupId, updateBoard)
-        // dispatch(loadBoard(params.id))
     }
 
     const onAddGroup = async (group) => {
         if (group) {
             const updateBoard = boardService.setActivity(board, 'Updated group')
-            // calcProgress()
             await groupService.saveGroup(updateBoard, group)
-            // dispatch(loadBoard(params.id))
             return
         }
         const updateBoard = boardService.setActivity(board, 'Added group')
-        // calcProgress()
         await groupService.saveGroup(updateBoard)
-        // dispatch(loadBoard(params.id))
     }
 
     const onAddTask = async (board, groupId, task) => {
         const updateBoard = boardService.setActivity(board, 'Added task')
         calcProgress()
         await taskService.saveTask(updateBoard, groupId, task)
-        // dispatch(loadBoard(params.id))
     }
 
     const onUpdateTask = async (task, groupId, board) => {
         const updateBoard = boardService.setActivity(board, 'Updated task')
         await taskService.saveTask(updateBoard, groupId, task)
         calcProgress()
-        // dispatch(loadBoard(params.id))
     }
 
     const onRemoveTask = async (groupId, taskId) => {
         const updateBoard = boardService.setActivity(board, 'Removed task')
         await taskService.remove(groupId, taskId, updateBoard)
         calcProgress()
-        console.log('board: ', board);
-        // dispatch(loadBoard(params.id))
+        console.log('board: ', board)
     }
 
     const onChangeFilter = (filterBy) => {
@@ -129,44 +120,44 @@ export const Board = ({ isPinned }) => {
 
     if (!newBoard) return <div>loading..</div>
     return (
-        <section className={`board ${isPinned ? ' board-controller-pinned' : ''}`}>
+        <section className={ `board ${isPinned ? ' board-controller-pinned' : ''}` }>
             <div className="board-container">
                 <div className="board-wrapper flex">
                     <BoardHeader
-                        onAddGroup={onAddGroup}
-                        onChangeFilter={onChangeFilter}
-                        getPersons={getPersons}
-                        board={board}
-                        onSaveBoard={onSaveBoard}
-                        onAddTask={onAddTask}
+                        onAddGroup={ onAddGroup }
+                        onChangeFilter={ onChangeFilter }
+                        getPersons={ getPersons }
+                        board={ board }
+                        onSaveBoard={ onSaveBoard }
+                        onAddTask={ onAddTask }
                     />
-                    {/* srart sdrag here */}
+                    {/* srart sdrag here */ }
 
                     <div className="board-content">
                         <div className="board-content-container">
                             <div className="border-content-wrapper">
-                                <DragDropContext onDragEnd={handleOnDragEnd} id={board._id}>
-                                    {newBoard && newBoard.groups?.map((group, idx) =>
-                                        <Droppable droppableId={group.id} key={group.id} index={idx} type="gro">
-                                            {(provided) =>
-                                                <div key={group.id} className="task-list-drag" {...provided.droppableProps} ref={provided.innerRef} >
+                                <DragDropContext onDragEnd={ handleOnDragEnd } id={ board._id }>
+                                    { newBoard && newBoard.groups?.map((group, idx) =>
+                                        <Droppable droppableId={ group.id } key={ group.id } index={ idx } type="gro">
+                                            { (provided) =>
+                                                <div key={ group.id } className="task-list-drag" { ...provided.droppableProps } ref={ provided.innerRef } >
                                                     < BoardContent
-                                                        onRemoveGroup={onRemoveGroup}
-                                                        onAddTask={onAddTask}
-                                                        onUpdateTask={onUpdateTask}
-                                                        onRemoveTask={onRemoveTask}
-                                                        group={group}
-                                                        columns={board.columns}
-                                                        key={idx}
-                                                        onAddGroup={onAddGroup}
-                                                        onSaveBoard={onSaveBoard}
-                                                        provided={provided}
+                                                        onRemoveGroup={ onRemoveGroup }
+                                                        onAddTask={ onAddTask }
+                                                        onUpdateTask={ onUpdateTask }
+                                                        onRemoveTask={ onRemoveTask }
+                                                        group={ group }
+                                                        columns={ board.columns }
+                                                        key={ idx }
+                                                        onAddGroup={ onAddGroup }
+                                                        onSaveBoard={ onSaveBoard }
+                                                        provided={ provided }
                                                     />
-                                                    {provided.placeholder}
+                                                    { provided.placeholder }
                                                 </div>
                                             }
                                         </Droppable>
-                                    )}
+                                    ) }
                                 </DragDropContext>
                             </div>
                         </div>
