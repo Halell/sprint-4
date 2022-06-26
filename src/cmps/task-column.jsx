@@ -54,7 +54,7 @@ export function TaskColumn({ group, board, boardColumn, task, setStatus, statusB
         </div>}
 
         {/* status */}
-        {boardColumn === 'status' && <div ref={parentRef} style={{ backgroundColor: task.style.status }} onClick={() => setColumn(boardColumn)} className="task-column task-column-status">
+        {boardColumn === 'status' && <div ref={parentRef} style={task.style.status && { backgroundColor: task.style.status }} onClick={() => setColumn(boardColumn)} className="task-column task-column-status">
             {task.status !== 'none' && task.status}
             {isStatusEdit &&
                 <div className="column-modal">
