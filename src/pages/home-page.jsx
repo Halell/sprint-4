@@ -21,8 +21,9 @@ export const HomePage = () => {
         setBoards(boards)
     }
 
+
     return (
-        <div className="home-container stars-outer" id="stars-sky">
+        <div className="home-container" >
             <div className="main-header">
                 <div className="header-content">
                     <div className="left-content">
