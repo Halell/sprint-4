@@ -22,18 +22,6 @@ export function ActivityLog({ board, setActivityOpen }) {
 
 
         <div className={`update-wrapper flex column  ${isShown ? '' : 'shown'} `}>
-            {/* {isUpdateOpen ?
-                <div suppressContentEditableWarning={true}
-                    contentEditable={true}
-                    onBlur={handleKeyPress}
-                    onKeyPress={handleKeyPress}
-                    className="btn-input">
-                </div>
-                :
-                <div className="btn-input" onClick={() => setUpdateOpen(true)}>
-                    Write an update..
-                </div>} */}
-
             <div className="updates-wrapper-cards flex column">
                 {board.updates && board.updates.map((update, idx) =>
                     <div className="update-card" key={idx}>

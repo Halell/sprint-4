@@ -92,7 +92,7 @@ export const BoardFilter = ({ onAddGroup, onChangeFilter, getPersons, onAddTask,
             <div className="filter-wrapper">
                 <div className="filter-btn" onClick={() => toggle('person-modal')}><FaRegUserCircle /> <span>persons</span> </div>
             </div>
-            <div className="filter-wrapper">
+            {/* <div className="filter-wrapper">
                 <div className="filter-btn"><FiFilter /> <span> Filter</span></div>
             </div>
             <div className="filter-wrapper" >
@@ -109,7 +109,7 @@ export const BoardFilter = ({ onAddGroup, onChangeFilter, getPersons, onAddTask,
             </div>
             <div className="filter-wrapper-small" >
                 <div className="small-btn"><CgColorBucket /></div>
-            </div>
+            </div> */}
             {isModalOpen &&
                 <div className="person-modal" onBlur={() => toggle('person-modal')}>
                     <p className="first-txt-modal">Quick person filter</p>

@@ -16,11 +16,13 @@
     color: #323338;
     background-color: rgb(246, 247, 251);
 
-    &:hover {
-        width: 255px;
+    @media (min-width : 550px) {
+        &:hover {
+            width: 255px;
 
-        .controller-container {
-            display: block;
+            .controller-container {
+                display: block;
+            }
         }
     }
 
@@ -69,8 +71,11 @@
         }
     }
 
-
+    .footer-wrapper {
+        display: none;
+    }
 }
+
 
 .board-controller .controller-container {
     width: 100%;

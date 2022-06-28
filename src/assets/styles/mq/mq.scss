@@ -1,0 +1,203 @@
+// HOME PAGE
+@media (max-width : 550px) {
+    .left-content {
+        height: 100%;
+
+        .logo {
+            .logo-title {
+                font-size: 22px !important;
+            }
+        }
+    }
+
+    .right-content {
+        .started-btn {
+            display: none;
+        }
+    }
+
+    .head-line-title {
+        font-size: 2.5rem !important;
+    }
+
+    .head-line-title-sub {
+        font-size: 18px !important;
+    }
+
+    .application {
+        height: 100%;
+
+        .app-wrapper {
+            .base-layer {
+                position: relative;
+                height: 59px;
+                width: 100%;
+
+                .app-side-bar-container {
+                    .app-side-bar-wrapper>:not(:first-child) {
+                        display: none;
+                    }
+                }
+            }
+
+            .work-space {
+                position: relative;
+
+                .board-controller {
+                    position: fixed;
+                    bottom: 0;
+                    left: 0;
+                    height: 50px;
+                    width: 100%;
+                    border-top: 1px solid rgba(128, 128, 128, 0.395);
+
+                    .controller-btn {
+                        display: none;
+                    }
+
+                    .footer-wrapper {
+                        display: block;
+                        display: flex;
+                        width: 100%;
+                        flex-direction: row;
+                        align-items: center;
+                        justify-content: space-around;
+                        font-size: 10px;
+                        z-index: 40;
+
+                        .home-btn {
+                            width: 25px;
+                            // align-items: center;
+
+                            .home-img {
+                                height: 100%;
+                                width: 100%;
+                                align-items: center;
+                            }
+
+                        }
+
+                        .my-work-btn {
+                            align-items: center;
+                        }
+
+                        .activity-btn {
+                            font-family: Roboto;
+                            justify-content: center;
+                            align-items: center;
+
+                            .activity-icon {
+                                font-size: 18px;
+                            }
+                        }
+                    }
+
+                    .activity-log-panel {
+                        height: 100%;
+                        width: 100%;
+                    }
+
+                }
+
+                .expend {
+                    height: 100%;
+                    width: 100%;
+                    flex-direction: column;
+
+                    .controller-container {
+                        display: block;
+                    }
+                }
+
+                .board {
+                    position: fixed;
+                    top: 60px;
+                    left: 0;
+                    margin: 0;
+                }
+            }
+
+        }
+    }
+
+    .activity-container {
+        display: none;
+    }
+
+    .add-board-container {
+        display: none;
+    }
+
+    .edit {
+        display: none;
+    }
+
+
+    .activity-log-panel {
+        height: 100%;
+        width: 100%;
+
+        .activity-log-header {
+            padding: 20px 20px 0px 20px;
+        }
+
+        .activity-log-wrapper {
+            padding: 0 10px 0 10px;
+
+            .single-activity .activity-box {
+                justify-content: space-between;
+
+                .activity {
+                    margin: 20px 10px 20px 10px;
+                    height: 100%;
+                }
+            }
+        }
+    }
+
+}
+
+
+.board-invite-modal {
+    width: 275px;
+}
+
+.pulse-component-wrapper {
+    min-width: 940px;
+
+    .title-inner-container {
+        min-width: 165px;
+    }
+}
+
+.progres-bar-position {
+
+    .empty-cell {
+        min-width: 165px;
+    }
+}
+
+.task-column {
+    .date-picker {
+        top: 35px;
+        right: 0px;
+    }
+}
+
+.menu-modal {
+    z-index: 40;
+    right: 0px;
+}
+
+.header-bottom-main-wrapper .person-modal {
+    top: 137px;
+    left: 100px;
+}
+
+.btn-pulse-menu-wrapper .btn-pulse-menu {
+    display: block;
+
+    &::before {
+        background-color: inherit !important;
+    }
+}
