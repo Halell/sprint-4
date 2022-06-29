@@ -44,7 +44,6 @@ export function BoardHeader({ onAddGroup, onChangeFilter, getPersons, onSaveBoar
             _id: utilService.makeId(3)
         }
         board.persons.push(member)
-        console.log(member)
         const updatedBoard = boardService.setActivity(board, 'Added member')
         onSaveBoard(updatedBoard)
     }

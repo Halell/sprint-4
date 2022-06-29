@@ -36,7 +36,6 @@ class _LoginSignup extends Component {
         this.setState({ isSignup: !this.state.isSignup })
     }
     render() {
-        console.log('hello from login');
         const { username, password, fullname } = this.state.credentials;
         const { isSignup } = this.state;
         const { onLogin, onSignup } = this.props

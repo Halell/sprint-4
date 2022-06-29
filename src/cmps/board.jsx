@@ -9,11 +9,14 @@ import { boardService } from '../services/board.service'
 import { useDispatch, useSelector } from 'react-redux'
 import { socketService } from '../services/socket.service'
 import { DragDropContext, Droppable } from 'react-beautiful-dnd'
+// import { userService } from '../services/user.service'
 
 export const Board = ({ isPinned }) => {
     const params = useParams()
     let { board } = useSelector((storeState) => storeState.boardModule)
     const dispatch = useDispatch()
+    // const user = userService.getLoggedinUser()
+    // console.log('user: ', user);
     useEffect(() => {
         socketService.off('update board', onLoadBoard)
         socketService.on('update board', onLoadBoard)
@@ -73,7 +76,6 @@ export const Board = ({ isPinned }) => {
         const updateBoard = boardService.setActivity(board, 'Removed task')
         await taskService.remove(groupId, taskId, updateBoard)
         calcProgress()
-        console.log('board: ', board)
     }
 
     const onChangeFilter = (filterBy) => {
@@ -120,44 +122,44 @@ export const Board = ({ isPinned }) => {
 
     if (!newBoard) return <div>loading..</div>
     return (
-        <section className={ `board ${isPinned ? ' board-controller-pinned' : ''}` }>
+        <section className={`board ${isPinned ? ' board-controller-pinned' : ''}`}>
             <div className="board-container">
                 <div className="board-wrapper flex">
                     <BoardHeader
-                        onAddGroup={ onAddGroup }
-                        onChangeFilter={ onChangeFilter }
-                        getPersons={ getPersons }
-                        board={ board }
-                        onSaveBoard={ onSaveBoard }
-                        onAddTask={ onAddTask }
+                        onAddGroup={onAddGroup}
+                        onChangeFilter={onChangeFilter}
+                        getPersons={getPersons}
+                        board={board}
+                        onSaveBoard={onSaveBoard}
+                        onAddTask={onAddTask}
                     />
-                    {/* srart sdrag here */ }
+                    {/* srart sdrag here */}
 
                     <div className="board-content">
                         <div className="board-content-container">
                             <div className="border-content-wrapper">
-                                <DragDropContext onDragEnd={ handleOnDragEnd } id={ board._id }>
-                                    { newBoard && newBoard.groups?.map((group, idx) =>
-                                        <Droppable droppableId={ group.id } key={ group.id } index={ idx } type="gro">
-                                            { (provided) =>
-                                                <div key={ group.id } className="task-list-drag" { ...provided.droppableProps } ref={ provided.innerRef } >
+                                <DragDropContext onDragEnd={handleOnDragEnd} id={board._id}>
+                                    {newBoard && newBoard.groups?.map((group, idx) =>
+                                        <Droppable droppableId={group.id} key={group.id} index={idx} type="gro">
+                                            {(provided) =>
+                                                <div key={group.id} className="task-list-drag" {...provided.droppableProps} ref={provided.innerRef} >
                                                     < BoardContent
-                                                        onRemoveGroup={ onRemoveGroup }
-                                                        onAddTask={ onAddTask }
-                                                        onUpdateTask={ onUpdateTask }
-                                                        onRemoveTask={ onRemoveTask }
-                                                        group={ group }
-                                                        columns={ board.columns }
-                                                        key={ idx }
-                                                        onAddGroup={ onAddGroup }
-                                                        onSaveBoard={ onSaveBoard }
-                                                        provided={ provided }
+                                                        onRemoveGroup={onRemoveGroup}
+                                                        onAddTask={onAddTask}
+                                                        onUpdateTask={onUpdateTask}
+                                                        onRemoveTask={onRemoveTask}
+                                                        group={group}
+                                                        columns={board.columns}
+                                                        key={idx}
+                                                        onAddGroup={onAddGroup}
+                                                        onSaveBoard={onSaveBoard}
+                                                        provided={provided}
                                                     />
-                                                    { provided.placeholder }
+                                                    {provided.placeholder}
                                                 </div>
                                             }
                                         </Droppable>
-                                    ) }
+                                    )}
                                 </DragDropContext>
                             </div>
                         </div>

@@ -23,9 +23,7 @@ export function _Signup({ history, onSignup }) {
     const [user, setUser] = useState({})
     let navigate = useNavigate()
     async function handleCallbackResponse(response) {
-        console.log("Encoded JWT ID token:" + response.credential);
         let userObject = jwt_decode(response.credential);
-        console.log(userObject);
         const fName = userObject.given_name
         const lName = userObject.family_name
         userObject = {

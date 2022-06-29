@@ -24,12 +24,10 @@ export function _Login({ history, onLogin }) {
     const handleSubmit = async (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
-        console.log('event??', event, event.currentTarget)
         const credentials = {
             username: data.get('email'),
             password: data.get('password'),
         }
-        console.log(credentials);
         await onLogin(credentials)
         navigate('/board')
     };

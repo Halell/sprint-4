@@ -10,7 +10,6 @@ export const MainApp = () => {
     const [isScreenClick, setIsScreenClick] = useState(false)
     const onSetIsPinned = () => {
         setIsPinned(!isPinned)
-        console.log(isPinned)
     }
 
 

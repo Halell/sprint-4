@@ -21,14 +21,6 @@ export const BoardFilter = ({ onAddGroup, onChangeFilter, getPersons, onAddTask,
     const [isSortOpen, setIsSortOpen] = useState(false)
     const [person, setPerson] = useState(null)
     const params = useParams()
-    // function sort(sortBy) {
-    //     const sortedTasks = board.groups.map(group => {
-    //         return group.tasks.srot((a, b) => {
-    //             return a.title - b.title
-    //         })
-    //     })
-    //     console.log(sortedTasks)
-    // }
 
     const toggle = (val) => {
         if (val === 'person-modal') {
@@ -65,11 +57,9 @@ export const BoardFilter = ({ onAddGroup, onChangeFilter, getPersons, onAddTask,
         const filterBy = {
             person
         }
-        console.log('board._id: ', board._id);
         onChangeFilter(filterBy)
     }
 
-    // console.log('cdcdcdvd', board.groups[0].tasks[0].text);
     return (
         <div className="header-bottom-main-wrapper">
             <div className="new-item-wraper flex">

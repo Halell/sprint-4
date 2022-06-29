@@ -42,27 +42,26 @@ export function TaskColumn({ group, board, boardColumn, task, setStatus, statusB
         const { value } = target
         setUser({ ...user, [field]: value })
     }
-    // console.log('checking ');
     return <>
-        { boardColumn === 'text' && <div onClick={ () => setColumn(boardColumn) } className="task-column">
+        {boardColumn === 'text' && <div onClick={() => setColumn(boardColumn)} className="task-column">
             <div
-                suppressContentEditableWarning={ true }
-                contentEditable={ true }
-                onBlur={ setTxt }
-            >{ task.text }
+                suppressContentEditableWarning={true}
+                contentEditable={true}
+                onBlur={setTxt}
+            >{task.text}
             </div>
-        </div> }
+        </div>}
 
-        {/* status */ }
-        { boardColumn === 'status' && <div ref={ parentRef } style={ { backgroundColor: task.style.status } } onClick={ () => setColumn(boardColumn) } className="task-column task-column-status">
-            { task.status !== 'none' && task.status }
-            { isStatusEdit &&
+        {/* status */}
+        {boardColumn === 'status' && <div ref={parentRef} style={{ backgroundColor: task.style.status }} onClick={() => setColumn(boardColumn)} className="task-column task-column-status">
+            {task.status !== 'none' && task.status}
+            {isStatusEdit &&
                 <div className="column-modal">
                     <LabelsModal
-                        parentRef={ parentRef }
-                        setStatus={ setStatus }
-                        field={ 'status' }
-                        closeModal={ setColumn }
+                        parentRef={parentRef}
+                        setStatus={setStatus}
+                        field={'status'}
+                        closeModal={setColumn}
                     />
                 </div>
             }
@@ -70,75 +69,74 @@ export function TaskColumn({ group, board, boardColumn, task, setStatus, statusB
         }
 
 
-        {/* date */ }
-        { boardColumn === 'date' && <div onClick={ () => openDateModal(openDateModal) } className="task-column">
-            <div onClick={ () => setIsDateEdit(!isDateEdit) }>{ task.date }</div>
-            { isDateEdit &&
+        {/* date */}
+        {boardColumn === 'date' && <div onClick={() => openDateModal(openDateModal)} className="task-column">
+            <div onClick={() => setIsDateEdit(!isDateEdit)}>{task.date}</div>
+            {isDateEdit &&
                 <div className="date-picker">
-                    <Calendar date={ new Date() }
-                        onChange={ handleSelect } />
+                    <Calendar date={new Date()}
+                        onChange={handleSelect} />
                 </div>
             }
-        </div> }
-        {/* persons */ }
-        { boardColumn === 'persons' && <div ref={ parentRef } onClick={ () => setColumn('persons') } className="task-column member-col">
-            { console.log(boardColumn) }
+        </div>}
+        {/* persons */}
+        {boardColumn === 'persons' && <div ref={parentRef} onClick={() => setColumn('persons')} className="task-column member-col">
             <div className="add-member flex">
-                { task.persons && (task.persons.length > 0) ?
+                {task.persons && (task.persons.length > 0) ?
                     <div className="person-display-container">
-                        <img src={ task.persons[task.persons.length - 1].imgUrl } />
-                        { task.persons.length > 1 && <div className="person-icon flex">+ { task.persons.length - 1 }</div> }
+                        <img src={task.persons[task.persons.length - 1].imgUrl} />
+                        {task.persons.length > 1 && <div className="person-icon flex">+ {task.persons.length - 1}</div>}
                     </div>
                     :
                     // <img class="profile-icon" src={require("../ass`ets/svg/person-column.svg")} ></img>
                     <div className="profile-icon flex"><Person /></div>
                 }
             </div>
-        </div> }
-        { isPersonsModal &&
-            <div ref={ wrapperRef } className="person-menu menu-modal flex column">
+        </div>}
+        {isPersonsModal &&
+            <div ref={wrapperRef} className="person-menu menu-modal flex column">
                 <div className="person-menu flex column">
                     <div className="item-member-list flex">
-                        { task.persons.map((person, idx) => {
-                            return <div key={ idx } className="member-box flex ">
-                                <img src={ person.imgUrl } />
-                                { person.fullname }
-                                <div onClick={ () => removeMember(idx) } className="svg flex"> <RemoveSvg /></div>
+                        {task.persons.map((person, idx) => {
+                            return <div key={idx} className="member-box flex ">
+                                <img src={person.imgUrl} />
+                                {person.fullname}
+                                <div onClick={() => removeMember(idx)} className="svg flex"> <RemoveSvg /></div>
                             </div>
-                        }) }
+                        })}
                     </div>
                     <div className="search-persons"><input type="text" placeholder="Enter name" /></div>
                     <div className="divider"></div>
-                    { board.persons && board.persons.map((person, idx) => {
+                    {board.persons && board.persons.map((person, idx) => {
                         {
                             const taskPersons = Array.from(task.persons.map(person => person.fullname))
                             return !taskPersons.includes(person.fullname) &&
-                                < div onClick={ (ev) => setMember(ev, person) } className="wrapper" key={ idx }>
+                                < div onClick={(ev) => setMember(ev, person)} className="wrapper" key={idx}>
                                     <div className="add-member-box flex">
                                         <div className="img-user flex">
-                                            <img src={ person.imgUrl } />
+                                            <img src={person.imgUrl} />
                                         </div>
-                                        <div className="user-full-name flex">{ person.fullname }</div>
+                                        <div className="user-full-name flex">{person.fullname}</div>
                                     </div>
                                 </div>
                         }
                     })
                     }
                     <div
-                        onClick={ () => setopenInput(!isInputOpen) }
+                        onClick={() => setopenInput(!isInputOpen)}
                         className="invite flex">
                         <InviteSvg />
                         Invite a new member by username
                     </div>
-                    { isInputOpen &&
+                    {isInputOpen &&
                         <div className="invite-modal">
-                            <form onSubmit={ onSubmit }>
+                            <form onSubmit={onSubmit}>
                                 <input
                                     type='text'
                                     placeholder="Invite by email"
-                                    value={ user.fullname }
+                                    value={user.fullname}
                                     name='fullname'
-                                    onChange={ handleChange }>
+                                    onChange={handleChange}>
                                 </input>
                             </form>
                         </div>
@@ -146,18 +144,18 @@ export function TaskColumn({ group, board, boardColumn, task, setStatus, statusB
                 </div>
             </div>
         }
-        {/* priority */ }
+        {/* priority */}
         {
-            boardColumn === 'priority' && <div ref={ parentRef } style={ { backgroundColor: task.style.priority } } onClick={ () => setColumn(boardColumn) } className="task-column task-column-status">
-                { task.priority !== 'none' && task.priority }
-                { isPriorityEdit &&
+            boardColumn === 'priority' && <div ref={parentRef} style={{ backgroundColor: task.style.priority }} onClick={() => setColumn(boardColumn)} className="task-column task-column-status">
+                {task.priority !== 'none' && task.priority}
+                {isPriorityEdit &&
                     <div className="column-modal">
                         <LabelsModal
-                            parentRef={ parentRef }
-                            setStatus={ setStatus }
-                            field={ 'priority' }
-                            closeModal={ setColumn }
-                            task={ task }
+                            parentRef={parentRef}
+                            setStatus={setStatus}
+                            field={'priority'}
+                            closeModal={setColumn}
+                            task={task}
                         />
                     </div>
                 }

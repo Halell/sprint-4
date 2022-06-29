@@ -53,11 +53,9 @@ export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask, on
             case '12': month = 'Dec'
                 break
             default:
-                console.log('def')
         }
         const newDate = month + ' ' + day
         task.date = newDate
-        console.log(task.date)
         onUpdateTask(task, group.id, updateBoard)
     }
 
@@ -69,7 +67,6 @@ export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask, on
         }
         task.persons.push(user)
         board.persons.push(user)
-        console.log('ya')
         const newTask = taskService.setActivity(task, 'Invited member')
         const updateBoard = boardService.setActivity(board, 'Invited member')
         onUpdateTask(newTask, group.id, updateBoard)
@@ -116,7 +113,6 @@ export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask, on
         field === 'status' ? setStatusBgcColor(color) : setImportanceBgcColor(color)
         task.style[field] = color
         style.to = color
-        console.log('task: ', task)
         if (loading) return
         const newTask = taskService.setActivity(task, `Changed ${field}`, prevStatus, task[field], style)
         const updateBoard = boardService.setActivity(board, `Changed ${field}`, prevStatus, task[field], style)
@@ -127,42 +123,42 @@ export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask, on
         <div className="pulse-component-wrapper">
             <div className="pulse-component" >
                 <TitleCell
-                    onSetIsModalOpen={ onSetIsModalOpen }
-                    task={ task }
-                    onUpdateTask={ onUpdateTask }
-                    group={ group }
-                    board={ board }
+                    onSetIsModalOpen={onSetIsModalOpen}
+                    task={task}
+                    onUpdateTask={onUpdateTask}
+                    group={group}
+                    board={board}
                 />
                 <div className="cells-row-container">
-                    { board.columns && board.columns.map((boardColumn, idx) =>
-                        <div className="cell-component-wrapper" key={ idx }>
-                            <div className={ `cell-component ${boardColumn}` } >
+                    {board.columns && board.columns.map((boardColumn, idx) =>
+                        <div className="cell-component-wrapper" key={idx}>
+                            <div className={`cell-component ${boardColumn}`} >
                                 <TaskColumn
-                                    setStatus={ setStatus }
-                                    boardColumn={ boardColumn }
-                                    task={ task }
-                                    priorityBgcColor={ priorityBgcColor }
-                                    statusBgcColor={ statusBgcColor }
-                                    setTxt={ setTxt }
-                                    board={ board }
-                                    setMember={ setMember }
-                                    removeMember={ removeMember }
-                                    addUser={ addUser }
-                                    handleSelect={ handleSelect }
-                                    group={ group }
-                                    idx={ idx }
+                                    setStatus={setStatus}
+                                    boardColumn={boardColumn}
+                                    task={task}
+                                    priorityBgcColor={priorityBgcColor}
+                                    statusBgcColor={statusBgcColor}
+                                    setTxt={setTxt}
+                                    board={board}
+                                    setMember={setMember}
+                                    removeMember={removeMember}
+                                    addUser={addUser}
+                                    handleSelect={handleSelect}
+                                    group={group}
+                                    idx={idx}
                                 />
                             </div>
                         </div>
-                    ) }
+                    )}
                 </div>
                 <div className="column-wrapper-add"></div>
             </div>
-            { isModalOpen &&
-                <div ref={ wrapperRef } className='task-modal-menu'>
+            {isModalOpen &&
+                <div ref={wrapperRef} className='task-modal-menu'>
                     <div color='task-btns-modal-open'>
                         <div className='task-btn-crud'><HiOutlineDocumentDuplicate /> <span>Duplicate</span> </div>
-                        <div onClick={ () => onRemoveTask(group.id, task.id, task) } className='task-btn-crud'><AiOutlineDelete /> <span>Delete</span> </div>
+                        <div onClick={() => onRemoveTask(group.id, task.id, task)} className='task-btn-crud'><AiOutlineDelete /> <span>Delete</span> </div>
                     </div>
                 </div>
             }

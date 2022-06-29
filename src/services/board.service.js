@@ -3,6 +3,7 @@ import { utilService } from './util.service.js'
 import { getActionRemoveBoard, getActionAddBoard, getActionUpdateBoard } from '../store/action/board.actions'
 import { httpService } from './http.service.js'
 import { socketService } from './socket.service.js'
+import { userService } from './user.service.js'
 const STORAGE_KEY = 'board'
 const boardChannel = new BroadcastChannel('boardChannel')
 var gCurrBoard
@@ -30,17 +31,12 @@ async function query() {
     // return boards
 }
 function getById(boardId) {
-    console.log('i went to bring new board by Id');
     return httpService.get(`board/${boardId}`)
     // return storageService.get(STORAGE_KEY, boardId)
     // return axios.get(`/api/board/${boardId}`)
 }
 async function remove(boardId) {
     httpService.delete(`board/${boardId}`)
-    // return new Promise((resolve, reject) => {
-    //     setTimeout(reject, 2000)
-    // })
-    // return Promise.reject('Not now!');
     // await storageService.remove(STORAGE_KEY, boardId)
     // boardChannel.postMessage(getActionRemoveBoard(boardId))
 }
