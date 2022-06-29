@@ -34,18 +34,19 @@ async function query() {
     // console.log('boards: ', boards)
     // return boards
 }
+<<<<<<< HEAD
 async function getById(boardId) {
     console.log('i went to bring new board by Id');
     return await httpService.get(`board/${boardId}`)
+=======
+function getById(boardId) {
+    return httpService.get(`board/${boardId}`)
+>>>>>>> e99572e36ee70d806b3a82c656269a7374df97ac
     // return storageService.get(STORAGE_KEY, boardId)
     // return axios.get(`/api/board/${boardId}`)
 }
 async function remove(boardId) {
     httpService.delete(`board/${boardId}`)
-    // return new Promise((resolve, reject) => {
-    //     setTimeout(reject, 2000)
-    // })
-    // return Promise.reject('Not now!');
     // await storageService.remove(STORAGE_KEY, boardId)
     // boardChannel.postMessage(getActionRemoveBoard(boardId))
 }

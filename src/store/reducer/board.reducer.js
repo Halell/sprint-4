@@ -13,18 +13,12 @@ export function boardReducer(state = initialState, action) {
             newState = { ...state, board: action.board }
             break
         case 'REMOVE_BOARD':
-            // const lastRemovedBoard = state.board.find(board => board._id === action.boardId)
-            // board = state.board.filter(board => board._id !== action.boardId)
-            // newState = { ...state, board, lastRemovedBoard }
             newState = { ...state, board: null }
-
             break
         case 'ADD_BOARD':
             newState = { ...state, board: [...state.board, action.board] }
             break
         case 'UPDATE_BOARD':
-            // same as SET_BOARD!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            // board = state.board.map(board => (board._id === action.board._id) ? action.board : board)
             newState = { ...state, board: action.board }
             break
         case 'SET_IS_ON_SCREEN_CLICK':

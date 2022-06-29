@@ -19,7 +19,6 @@ function remove(groupId, taskId, board) {
 
 
 function setActivity(task, txt, from, to, style) {
-    console.log(task)
     const createdAt = new Date()
     const activity = {
         byMember: {

@@ -5,7 +5,6 @@ import { ActivityModal } from './modal-cmp'
 
 export function ActivityLog({ board, setActivityOpen }) {
     const [isShown, setIsShown] = useState(false)
-    console.log(board)
 
     return <div className="activity-log-panel flex">
 

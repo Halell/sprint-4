@@ -53,6 +53,7 @@
                                 display: flex;
                                 align-items: center;
                                 justify-content: center;
+                                cursor: not-allowed;
 
                                 svg {
                                     height: 16px;
@@ -134,21 +135,15 @@
                             border: 1px solid #c5c7d0;
                             border-radius: 5px;
                             min-width: 110px;
+                            cursor: not-allowed;
 
                             .add-to-board {
                                 padding: 3px 3px;
                                 height: 26px;
-                                cursor: pointer;
                                 border-radius: 2px;
                                 color: #323338;
                                 font-size: 14px;
                                 font-family: Roboto;
-
-                                &:hover {
-                                    background-color: #ece7e7;
-                                    border-radius: 4px;
-                                    padding: 3px;
-                                }
                             }
                         }
 
@@ -156,7 +151,7 @@
                             padding: 4px 8px;
                             margin-left: 16px;
                             color: #323338;
-
+                            cursor: not-allowed;
                         }
                     }
                 }

@@ -17,7 +17,6 @@ export function BoardContent({ group, onAddTask, onRemoveGroup, onUpdateTask, on
     }
 
     const onUseBtn = (val, group) => {
-        console.log('val', val)
         if (val === 'remove') onRemoveGroup(group.id)
         if (val === 'add') onAddGroup()
         if (val === 'color') setChangeColor(!isChangeColor)
@@ -26,7 +25,6 @@ export function BoardContent({ group, onAddTask, onRemoveGroup, onUpdateTask, on
             duplicateGroup.id = null
             onAddGroup(duplicateGroup)
         }
-        console.log(isChangeColor)
     }
 
     const onchangeColor = (val, group) => {
@@ -39,19 +37,16 @@ export function BoardContent({ group, onAddTask, onRemoveGroup, onUpdateTask, on
     const onUpdateColumns = (el) => {
         const idx = el.target.getAttribute('idx')
         board.columns[idx] = el.target.innerText.toLowerCase()
-        console.log('board: ', board);
         onAddGroup(group)
     }
 
     const onSaveGroup = (el) => {
         if (el) {
             const title = el.target.innerText.toLowerCase()
-            console.log('title: ', title);
             group.title = title
         }
         onAddGroup(group)
     }
-    console.log('board group');
     return (
         <Fragment>
             <GroupHeader

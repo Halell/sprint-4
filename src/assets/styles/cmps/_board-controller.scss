@@ -113,10 +113,9 @@
                 padding-right: 29px;
                 line-height: 22px;
                 font-weight: 900;
+                cursor: not-allowed;
 
-                &:hover {
-                    background-color: #e6e9ef;
-                }
+
             }
         }
 
@@ -131,6 +130,7 @@
             font-family: Roboto-Bold;
             border: 1px solid;
             border-color: #676879;
+            cursor: not-allowed;
 
             .name-container {
                 display: flex;
@@ -204,6 +204,7 @@
             padding: 0 6px;
             font-weight: 400;
             padding-right: 3px;
+            cursor: not-allowed;
 
             &:hover {
                 background-color: #e6e9ef;

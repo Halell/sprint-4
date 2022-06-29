@@ -14,7 +14,6 @@ export function TaskEdit({ task, onUpdateTask, group, toggle, board }) {
     const onSaveTask = () => {
         task.title = NewTitle
         onUpdateTask(task, group.id, board)
-        console.log(NewTitle)
         setIsNewTaskEdit(false)
     }
     useOutsideClick(wrapperRef, onSaveTask, NewTitle, null)
@@ -27,31 +26,31 @@ export function TaskEdit({ task, onUpdateTask, group, toggle, board }) {
     }
     return (
         <div className="title-component">
-            { !isNewTaskEdit ?
+            {!isNewTaskEdit ?
                 <>
-                    <div ref={ parentRef } className="edit-icon-wrapper">
+                    <div ref={parentRef} className="edit-icon-wrapper">
                         <button
                             className="btn  edit-icon"
-                            onClick={ (ev) => setIsNewTaskEdit(!isNewTaskEdit) } >
+                            onClick={(ev) => setIsNewTaskEdit(!isNewTaskEdit)} >
                             Edit
                         </button>
                     </div>
                     <div>
                         <div className="btn-input">
-                            { task.title }
+                            {task.title}
                         </div>
                     </div>
                 </>
                 :
                 <form
-                    ref={ wrapperRef }
+                    ref={wrapperRef}
                     className="input-edit-state"
-                    onSubmit={ (e) => onSaveTask(e.preventDefault()) }>
-                    <input ref={ inputRef } onKeyPress={ handleKeyPressAddTask }
+                    onSubmit={(e) => onSaveTask(e.preventDefault())}>
+                    <input ref={inputRef} onKeyPress={handleKeyPressAddTask}
                         type="text"
                         name="title"
-                        onChange={ handleChange }
-                        value={ NewTitle }
+                        onChange={handleChange}
+                        value={NewTitle}
                     />
                 </form>
             }
