@@ -155,49 +155,49 @@
         }
     }
 
-}
 
 
-.board-invite-modal {
-    width: 275px;
-}
-
-.pulse-component-wrapper {
-    min-width: 940px;
-
-    .title-inner-container {
-        min-width: 165px;
+    .board-invite-modal {
+        width: 275px;
     }
-}
 
-.progres-bar-position {
+    .pulse-component-wrapper {
+        min-width: 940px;
 
-    .empty-cell {
-        min-width: 165px;
+        .title-inner-container {
+            min-width: 165px;
+        }
     }
-}
 
-.task-column {
-    .date-picker {
-        top: 35px;
+    .progres-bar-position {
+
+        .empty-cell {
+            min-width: 165px;
+        }
+    }
+
+    .task-column {
+        .date-picker {
+            top: 35px;
+            right: 0px;
+        }
+    }
+
+    .menu-modal {
+        z-index: 40;
         right: 0px;
     }
-}
 
-.menu-modal {
-    z-index: 40;
-    right: 0px;
-}
+    .header-bottom-main-wrapper .person-modal {
+        top: 137px;
+        left: 100px;
+    }
 
-.header-bottom-main-wrapper .person-modal {
-    top: 137px;
-    left: 100px;
-}
+    .btn-pulse-menu-wrapper .btn-pulse-menu {
+        display: block;
 
-.btn-pulse-menu-wrapper .btn-pulse-menu {
-    display: block;
-
-    &::before {
-        background-color: inherit !important;
+        &::before {
+            background-color: inherit !important;
+        }
     }
 }

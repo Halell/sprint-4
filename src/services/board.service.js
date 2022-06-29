@@ -3,6 +3,7 @@ import { utilService } from './util.service.js'
 import { getActionRemoveBoard, getActionAddBoard, getActionUpdateBoard } from '../store/action/board.actions'
 import { httpService } from './http.service.js'
 import { socketService } from './socket.service.js'
+import { userService } from './user.service.js'
 const STORAGE_KEY = 'board'
 const boardChannel = new BroadcastChannel('boardChannel')
 var gCurrBoard
@@ -24,14 +25,18 @@ function getCurrBoard() {
 }
 
 async function query() {
-    return httpService.get('board')
+    const user = userService.getLoggedinUser()
+    console.log(user)
+    const board = await httpService.get('board')
+    console.log(board)
+    return board
     // const boards = await storageService.query(STORAGE_KEY)
     // console.log('boards: ', boards)
     // return boards
 }
-function getById(boardId) {
+async function getById(boardId) {
     console.log('i went to bring new board by Id');
-    return httpService.get(`board/${boardId}`)
+    return await httpService.get(`board/${boardId}`)
     // return storageService.get(STORAGE_KEY, boardId)
     // return axios.get(`/api/board/${boardId}`)
 }
