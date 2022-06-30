@@ -1,6 +1,6 @@
 import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
-import { getActionRemoveBoard, getActionAddBoard, getActionUpdateBoard } from '../store/action/board.actions'
+import { getActionUpdateBoard } from '../store/action/board.actions'
 import { httpService } from './http.service.js'
 import { socketService } from './socket.service.js'
 import { userService } from './user.service.js'
@@ -15,20 +15,23 @@ export const boardService = {
     remove,
     subscribe,
     unsubscribe,
-    getCurrBoard,
-    setActivity
+    setActivity,
+    _buildBoard
 }
 window.cs = boardService
 
-function getCurrBoard() {
-    return gCurrBoard
-}
-
 async function query() {
-    return httpService.get('board')
-    // const boards = await storageService.query(STORAGE_KEY)
-    // console.log('boards: ', boards)
-    // return boards
+    const user = userService.getLoggedinUser()
+    let boards = await httpService.get('board')
+    if (!user) {
+        boards = boards.filter(board => !board.ownerId)
+        console.log('guestBoards', boards)
+        return boards
+    } else {
+        boards = boards.filter(board => board.ownerId === user._id)
+        console.log('userBoards:', boards)
+        return boards
+    }
 }
 function getById(boardId) {
     return httpService.get(`board/${boardId}`)
@@ -71,26 +74,13 @@ async function save(board) {
         socketService.emit('update board', currBoard)
         return currBoard
     } else {
-        const createdAt = new Date()
-        const newBoard = {
-            activities: [],
-            archivedAt: '',
-            cmpsOrder: ["status-picker", "member-picker", "date-picker"],
-            columns: ["text", "status", "priority", "date", "persons"],
-            createdAt: createdAt.toLocaleTimeString(),
-            createdBy: [],
-            groups: [{
-                id: utilService.makeId(),
-                archivedAt: 'hour ago',
-                style: {},
-                tasks: [],
-                title: 'Group 1'
-            }],
-            persons: [],
-            labels: utilService.getColors(),
-            title: 'New Board'
-        }
+        const newBoard = _buildBoard()
+        const user = userService.getLoggedinUser()
         savedBoard = await httpService.post('board', newBoard)
+        if (user) {
+            user.boards.push(savedBoard._id)
+            await userService.update(user)
+        }
         // boardChannel.postMessage(getActionAddBoard(savedBoard))
     }
     return savedBoard
@@ -101,4 +91,139 @@ function subscribe(listener) {
 }
 function unsubscribe(listener) {
     boardChannel.removeEventListener('message', listener)
+}
+
+
+function _buildBoard() {
+    const owner = userService.getLoggedinUser()
+    const createdAt = new Date()
+    const board = {
+        ownerId: owner ? owner._id : null,
+        activities: [],
+        archivedAt: '',
+        cmpsOrder: ["status-picker", "member-picker", "date-picker"],
+        columns: ["text", "status", "priority", "date", "persons"],
+        createdAt: createdAt.toLocaleTimeString(),
+        createdBy: [],
+        groups: [{
+            id: utilService.makeId(),
+            style: utilService.getRandomColor(),
+            tasks: [{
+                id: utilService.makeId(),
+                title: "New item",
+                text: "",
+                status: "done",
+                date: "",
+                priority: "high",
+                style: {
+                    status: "rgb(0, 200, 117)",
+                    priority: "rgb(0, 200, 117)"
+                },
+                updates: [{
+                    byMember: {
+                        fullname: "Carmel Yona",
+                        imgUrl: "",
+                        _id: "userId",
+                        createdAt: createdAt
+                    },
+                    text: `Created at ${createdAt}  `,
+                    isRead: false,
+                }],
+                persons: []
+            }, {
+                id: utilService.makeId(),
+                title: "New item",
+                text: "",
+                status: "done",
+                date: "",
+                priority: "high",
+                style: {
+                    status: "rgb(0, 200, 117)",
+                    priority: "rgb(0, 200, 117)"
+                },
+                updates: [{
+                    byMember: {
+                        fullname: "Carmel Yona",
+                        imgUrl: "",
+                        _id: "userId",
+                        createdAt: createdAt
+                    },
+                    text: `Created at ${createdAt}  `,
+                    isRead: false,
+                }],
+                persons: []
+            }],
+            title: 'Group 1'
+        },
+        {
+            id: utilService.makeId(),
+            style: utilService.getRandomColor(),
+            tasks: [{
+                id: utilService.makeId(),
+                title: "New item",
+                text: "",
+                status: "done",
+                date: "",
+                priority: "high",
+                style: {
+                    status: "rgb(0, 200, 117)",
+                    priority: "rgb(0, 200, 117)"
+                },
+                updates: [{
+                    byMember: {
+                        fullname: "Carmel Yona",
+                        imgUrl: "",
+                        _id: "userId",
+                        createdAt: createdAt
+                    },
+                    text: `Created at ${createdAt}  `,
+                    isRead: false,
+                }],
+                persons: []
+            }, {
+                id: utilService.makeId(),
+                title: "New item",
+                text: "",
+                status: "done",
+                date: "",
+                priority: "high",
+                style: {
+                    status: "rgb(0, 200, 117)",
+                    priority: "rgb(0, 200, 117)"
+                },
+                updates: [{
+                    byMember: {
+                        fullname: "Carmel Yona",
+                        imgUrl: "",
+                        _id: "userId",
+                        createdAt: createdAt
+                    },
+                    text: `Created at ${createdAt}  `,
+                    isRead: false,
+                }],
+                persons: []
+            }],
+            title: 'Group 2'
+        }],
+        persons: [
+            {
+                id: "u101",
+                fullname: "Carmel Yona",
+                imgUrl: "https://ca.slack-edge.com/T02SFLQBMS9-U02TP754YHH-119f03fb57ec-512"
+            },
+            {
+                id: "u102",
+                fullname: "Shani Eini",
+                imgUrl: "https://ca.slack-edge.com/T02SFLQBMS9-U03273X77HS-f54656e9e28d-48"
+            },
+            {
+                id: "u103",
+                fullname: "Hallel Hofman",
+                imgUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Hoeffler_H.svg/1024px-Hoeffler_H.svg.png"
+            }
+        ],
+        labels: utilService.getColors(),
+        title: 'New Board'
+    }
+    return board
 }

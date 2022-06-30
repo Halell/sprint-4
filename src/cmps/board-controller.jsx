@@ -50,10 +50,7 @@ export const BoardController = ({ onSetIsPinned, isPinned }) => {
 
     return (
         <main
-            className={`board-controller ${isExpend ? 'expend' : ''} ${isPinned ? 'pinned' : ''}`}
-            onMouseEnter={() => setIsExpend(!isExpend)}
-            onMouseLeave={() => setIsExpend(!isExpend)}
-        >
+            className={`board-controller ${isExpend ? 'expend' : ''} ${isPinned ? 'pinned' : ''}`}>
             <div className={`controller-btn  ${isPinned ? 'pinned' : ''} `}
                 onClick={onSetIsPinned}>
                 {isPinned ? '<' : '>'}
@@ -93,7 +90,6 @@ export const BoardController = ({ onSetIsPinned, isPinned }) => {
 
             {/* MQ 550px*/}
             <div className="footer-wrapper ">
-
 
                 <div onClick={toHomePage} className="home-btn flex column">
                     <img className="home-img" src={home} />

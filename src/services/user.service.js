@@ -1,6 +1,7 @@
 import { storageService } from './async-storage.service.js'
 import { httpService } from './http.service.js'
 import axios from 'axios'
+import { boardService } from './board.service.js'
 
 const STORAGE_KEY = 'userDB'
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
@@ -28,9 +29,10 @@ function remove(userId) {
 }
 
 async function update(user) {
-    user = await httpService.put(`user/${user._id}`, user)
-    if (getLoggedinUser()._id === user._id) saveLocalUser(user)
-    return user;
+    console.log(user)
+    const savedUser = await httpService.put(`user/${user._id}`, user)
+    if (getLoggedinUser()._id === savedUser._id) saveLocalUser(savedUser)
+    return savedUser;
 }
 
 async function getById(userId) {
@@ -43,7 +45,12 @@ async function login(userCred) {
     if (user) return saveLocalUser(user)
 }
 async function signup(userCred) {
+    const board = await boardService.save([])
+    console.log(board)
+    userCred.boards.push(board._id)
     const user = await httpService.post('auth/signup', userCred)
+    board.ownerId = user._id
+    await boardService.save(board)
     return saveLocalUser(user)
 }
 async function logout() {

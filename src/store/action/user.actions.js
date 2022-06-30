@@ -49,7 +49,6 @@ export function onSignup(credentials) {
         } catch (err) {
             console.log('Cannot signup', err)
         }
-
     }
 }
 export function onUpdateUser(user) {
