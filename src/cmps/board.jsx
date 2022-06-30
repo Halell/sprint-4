@@ -9,7 +9,7 @@ import { boardService } from '../services/board.service'
 import { useDispatch, useSelector } from 'react-redux'
 import { socketService } from '../services/socket.service'
 import { DragDropContext, Droppable } from 'react-beautiful-dnd'
-// import { userService } from '../services/user.service'
+import { userService } from '../services/user.service'
 
 export const Board = ({ isPinned }) => {
     const params = useParams()
