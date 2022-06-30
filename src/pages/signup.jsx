@@ -16,6 +16,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { connect } from "react-redux";
 import { onSignup } from '../store/action/user.actions';
+import { boardService } from '../services/board.service';
 const theme = createTheme();
 
 export function _Signup({ history, onSignup }) {
@@ -30,11 +31,14 @@ export function _Signup({ history, onSignup }) {
             username: userObject.name,
             fullname: (fName + ' ' + lName),
             imgUrl: userObject.picture,
+            boards: []
         }
         setUser(userObject)
         document.getElementById("signInDiv").hidden = true;
         await onSignup(userObject)
-        navigate('/board')
+        const boards = await boardService.query()
+        console.log(boards)
+        navigate(`/board/${boards[0]._id}`)
     }
 
     function handleSignOut(event) {
@@ -66,10 +70,12 @@ export function _Signup({ history, onSignup }) {
             username: data.get('email'),
             fullname: (fName + ' ' + lName),
             password: data.get('password'),
+            boards: []
         }
         await onSignup(user)
-        navigate('/board')
-
+        const boards = await boardService.query()
+        console.log(boards)
+        navigate(`/board/${boards[0]._id}`)
     };
 
 

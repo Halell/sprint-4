@@ -124,36 +124,54 @@
             margin-bottom: 16px;
             margin-left: -4px;
 
-            .dots {
-                margin-top: 5px;
-                margin-left: 5px;
-                color: white;
-            }
-
-            .avatar-menu-component {
-                height: 44px;
-                width: 44px;
-                border-radius: 50%;
-                display: flex;
+            .footer-navigation-items-area {
                 align-items: center;
-                justify-content: center;
-                cursor: pointer;
 
-                .avatar-img {
-                    background-color: #ff0d8b;
-                    border: 3px solid #fff;
+                .logout {
+                    padding: 5px;
+                    color: white;
+                    align-items: center;
+                    cursor: pointer;
+
+                    svg {
+                        height: 35px;
+                        width: 35px;
+                        margin-left: 5px;
+                        border-radius: 8px;
+                        &:hover {
+                            background-color: rgba(0, 0, 0, 0.427);
+                        }
+                    }
+                }
+
+                .avatar-menu-component {
                     height: 44px;
                     width: 44px;
-                    position: relative;
-                    display: flex;
                     border-radius: 50%;
-                    flex-shrink: 0;
-                    color: white;
-                    font-size: 26px;
-                    font-weight: 700;
+                    display: flex;
                     align-items: center;
                     justify-content: center;
+                    cursor: pointer;
+                    z-index: 1000;
+
+                    .avatar-img {
+                        background-color: #ff0d8b;
+                        border: 3px solid #fff;
+                        height: 44px;
+                        width: 44px;
+                        position: relative;
+                        display: flex;
+                        border-radius: 50%;
+                        flex-shrink: 0;
+                        color: white;
+                        font-size: 26px;
+                        font-weight: 700;
+                        align-items: center;
+                        justify-content: center;
+                    }
+
                 }
+
             }
         }
     }

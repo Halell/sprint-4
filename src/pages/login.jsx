@@ -1,5 +1,3 @@
-
-
 import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
@@ -15,6 +13,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
 import { connect } from "react-redux";
 import { onLogin } from '../store/action/user.actions';
+import { boardService } from '../services/board.service';
 
 const theme = createTheme();
 
@@ -29,7 +28,9 @@ export function _Login({ history, onLogin }) {
             password: data.get('password'),
         }
         await onLogin(credentials)
-        navigate('/board')
+        const boards = await boardService.query()
+        console.log(boards)
+        navigate(`/board/${boards[0]._id}`)
     };
 
     return (

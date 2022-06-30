@@ -16,6 +16,16 @@
     color: #323338;
     background-color: rgb(246, 247, 251);
 
+    @media (min-width : 550px) {
+        &:hover {
+            width: 255px;
+
+            .controller-container {
+                display: block;
+            }
+        }
+    }
+
 
     &:hover:not(.pinned) {
         box-shadow: 0px 6px 20px rgb(0 0 0 / 20%);

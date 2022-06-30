@@ -34,8 +34,35 @@
                 width: 100%;
 
                 .app-side-bar-container {
-                    .app-side-bar-wrapper>:not(:first-child) {
-                        display: none;
+                    width: 100%;
+
+                    .app-side-bar-wrapper {
+                        flex-direction: row;
+                        justify-content: space-between;
+                        align-items: baseline;
+                        padding: 0 25px 0 25px;
+
+                        .scrollable-navigation-items-area {
+                            display: none;
+                        }
+
+                        .sep {
+                            display: none;
+                        }
+
+                        .footer {
+                            display: flex;
+                            flex-direction: row;
+
+                            .sep {
+                                display: none;
+                            }
+
+                            .footer-navigation-items-area {
+                                flex-direction: row;
+
+                            }
+                        }
                     }
                 }
             }
@@ -50,6 +77,40 @@
                     height: 50px;
                     width: 100%;
                     border-top: 1px solid rgba(128, 128, 128, 0.395);
+
+                    .controller-top {
+                        .controller-top-bottom {
+                            .btn-add {
+                                .board-add-modal {
+                                    left: 100px;
+                                    top: 130px;
+                                }
+                            }
+                        }
+                    }
+
+                    .controller-bottom {
+                        .board-list-container {
+                            .boards-list-wraper {
+                                .board-preview {
+                                    a {
+                                        .board-preview-card-wrapper {
+                                            .board-preview-card {
+                                                .board-title-container {
+                                                    .board-dropdown-menu {
+                                                        .board-add-modal {
+                                                            top: 30px;
+                                                            left: -230px;
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
 
                     .controller-btn {
                         display: none;
@@ -200,4 +261,6 @@
             background-color: inherit !important;
         }
     }
+
+
 }
