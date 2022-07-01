@@ -9,7 +9,6 @@ import { TaskColumn } from './task-column'
 import { boardService } from '../services/board.service'
 import { utilService } from '../services/util.service.js'
 import { taskService } from '../services/task.service.js'
-import { ReactComponent as Updates } from '../assets/svg/updates.svg'
 
 export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask, onAddTask, onAddGroup, onSaveBoard, idx }) => {
     const [statusBgcColor, setStatusBgcColor] = useState('')
@@ -117,6 +116,7 @@ export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask, on
         const newTask = taskService.setActivity(task, `Changed ${field}`, prevStatus, task[field], style)
         const updateBoard = boardService.setActivity(board, `Changed ${field}`, prevStatus, task[field], style)
         onUpdateTask(newTask, group.id, updateBoard)
+        console.log(task)
     }
 
     const duplicateTask = (task) => {

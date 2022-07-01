@@ -25,11 +25,9 @@ async function query() {
     let boards = await httpService.get('board')
     if (!user) {
         boards = boards.filter(board => !board.ownerId)
-        console.log('guestBoards', boards)
         return boards
     } else {
         boards = boards.filter(board => board.ownerId === user._id)
-        console.log('userBoards:', boards)
         return boards
     }
 }
