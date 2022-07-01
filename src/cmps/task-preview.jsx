@@ -119,6 +119,11 @@ export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask, on
         onUpdateTask(newTask, group.id, updateBoard)
     }
 
+    const duplicateTask = (task) => {
+        const duplicateTask = { ...task }
+        duplicateTask.id = null
+        onAddTask(board, group.id, duplicateTask)
+    }
     return (
         <div className="pulse-component-wrapper">
             <div className="pulse-component" >
@@ -157,7 +162,7 @@ export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask, on
             {isModalOpen &&
                 <div ref={wrapperRef} className='task-modal-menu'>
                     <div color='task-btns-modal-open'>
-                        <div className='task-btn-crud'><HiOutlineDocumentDuplicate /> <span>Duplicate</span> </div>
+                        <div className='task-btn-crud' onClick={() => duplicateTask(task)}><HiOutlineDocumentDuplicate /> <span>Duplicate</span> </div>
                         <div onClick={() => onRemoveTask(group.id, task.id, task)} className='task-btn-crud'><AiOutlineDelete /> <span>Delete</span> </div>
                     </div>
                 </div>
