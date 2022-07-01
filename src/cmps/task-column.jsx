@@ -1,4 +1,4 @@
-import { useState, useRef, Fragment } from "react"
+import { useState, useRef } from "react"
 import 'react-date-range/dist/styles.css'
 import 'react-date-range/dist/theme/default.css'
 import { Calendar } from 'react-date-range'
@@ -6,10 +6,9 @@ import { LabelsModal } from "./labels-modal"
 import { ReactComponent as InviteSvg } from '../assets/svg/invite.svg'
 import { ReactComponent as RemoveSvg } from '../assets/svg/remove.svg'
 import { ReactComponent as Person } from '../assets/svg/person-column.svg'
-import userImg from '../assets/img/carmel.png'
 import { useOutsideClick } from '../hooks/useClickOutsideParent'
 
-export function TaskColumn({ group, board, boardColumn, task, setStatus, statusBgcColor, priorityBgcColor, setTxt, setMember, removeMember, addUser, handleSelect }) {
+export function TaskColumn({ board, boardColumn, task, setStatus, statusBgcColor, priorityBgcColor, setTxt, setMember, removeMember, addUser, handleSelect }) {
     const parentRef = useRef(null)
     const wrapperRef = useRef(null)
     const [isPriorityEdit, setPriorityEdit] = useState(false)
@@ -155,7 +154,6 @@ export function TaskColumn({ group, board, boardColumn, task, setStatus, statusB
                             setStatus={setStatus}
                             field={'priority'}
                             closeModal={setColumn}
-                            task={task}
                         />
                     </div>
                 }

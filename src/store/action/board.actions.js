@@ -72,7 +72,6 @@ export function loadBoards() {
         try {
             const boards = await boardService.query()
             dispatch(getActionLoadBoards(boards))
-            console.log('boards: ', boards);
             return boards
         } catch (err) {
             console.log('Cannot load boards', err)
@@ -115,10 +114,8 @@ export function addBoard(board) {
 export function updateBoard(board) {
     return async (dispatch) => {
         try {
-            console.log('board: ', board);
             const savedBoard = await boardService.save(board)
             dispatch(getActionSetBoard(savedBoard))
-            console.log('savedBoard: ', savedBoard);
             return savedBoard
         }
         catch (err) {

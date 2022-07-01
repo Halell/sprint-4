@@ -19,7 +19,6 @@ export const BoardController = ({ onSetIsPinned, isPinned }) => {
     const [isActivityOpen, setActivityOpen] = useState(false)
     const [board, setBoard] = useState(null)
     let { boards } = useSelector((storeState) => storeState.boardModule)
-    console.log('boards: ', boards);
     useEffect(() => {
         onLoadBoards()
         loadBoard()
@@ -27,7 +26,6 @@ export const BoardController = ({ onSetIsPinned, isPinned }) => {
 
     const onLoadBoards = async () => {
         await dispatch(loadBoards())
-        console.log('boards: ', boards);
     }
     const loadBoard = async () => {
         const board = await boardService.getById(params.id)

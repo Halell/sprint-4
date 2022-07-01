@@ -1,4 +1,4 @@
-import { Fragment, useRef } from "react"
+import { useRef } from "react"
 import { useOutsideClick } from '../hooks/useClickOutsideParent'
 import { ReactComponent as EditColor } from '../assets/svg/edit.colors.svg'
 
