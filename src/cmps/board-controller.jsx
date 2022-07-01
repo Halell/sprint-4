@@ -7,25 +7,27 @@ import home from '../assets/img/home.png'
 import { ReactComponent as MyWork } from '../assets/svg/my-work.svg'
 import { FiActivity } from 'react-icons/fi'
 import { ActivityLog } from './acttivity'
-
+import { loadBoards } from '../store/action/board.actions.js'
+import { useDispatch, useSelector } from 'react-redux'
 
 
 export const BoardController = ({ onSetIsPinned, isPinned }) => {
     const params = useParams()
     const naviget = useNavigate()
+    const dispatch = useDispatch()
     const [isExpend, setIsExpend] = useState(false)
     const [isActivityOpen, setActivityOpen] = useState(false)
-    const [boards, setBoards] = useState(null)
     const [board, setBoard] = useState(null)
-
+    let { boards } = useSelector((storeState) => storeState.boardModule)
+    console.log('boards: ', boards);
     useEffect(() => {
-        loadBoards()
+        onLoadBoards()
         loadBoard()
     }, [])
 
-    const loadBoards = async () => {
-        const boards = await boardService.query()
-        setBoards(boards)
+    const onLoadBoards = async () => {
+        await dispatch(loadBoards())
+        console.log('boards: ', boards);
     }
     const loadBoard = async () => {
         const board = await boardService.getById(params.id)
@@ -33,12 +35,12 @@ export const BoardController = ({ onSetIsPinned, isPinned }) => {
     }
     const addBoard = async () => {
         await boardService.save({})
-        loadBoards()
+        onLoadBoards()
     }
 
     const removeBoard = async (boardId) => {
         await boardService.remove(boardId)
-        loadBoards()
+        onLoadBoards()
         if (boardId === params.id) {
             toHomePage()
         }

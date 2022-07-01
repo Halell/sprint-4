@@ -2,21 +2,18 @@ import { useEffect, useState, useCallback } from 'react'
 import { Navigate, useNavigate, useParams } from 'react-router-dom'
 import { BoardHeader } from './board-header'
 import { BoardContent } from './board-group'
-import { loadBoard, setFilterBy } from '../store/action/board.actions'
+import { loadBoard, setFilterBy, updateBoard, loadBoards } from '../store/action/board.actions'
 import { taskService } from '../services/task.service'
 import { groupService } from '../services/group.service'
 import { boardService } from '../services/board.service'
 import { useDispatch, useSelector } from 'react-redux'
 import { socketService } from '../services/socket.service'
 import { DragDropContext, Droppable } from 'react-beautiful-dnd'
-import { userService } from '../services/user.service'
 
 export const Board = ({ isPinned }) => {
     const params = useParams()
     let { board } = useSelector((storeState) => storeState.boardModule)
     const dispatch = useDispatch()
-    // const user = userService.getLoggedinUser()
-    // console.log('user: ', user);
     useEffect(() => {
         socketService.off('update board', onLoadBoard)
         socketService.on('update board', onLoadBoard)
@@ -90,7 +87,9 @@ export const Board = ({ isPinned }) => {
     const onSaveBoard = async (newBoard) => {
         await boardService.save(newBoard)
         calcProgress(newBoard)
-        // dispatch(loadBoard(params.id))
+        console.log('newBoard: ', newBoard);
+        dispatch(updateBoard(newBoard))
+        dispatch(loadBoards())
     }
 
 

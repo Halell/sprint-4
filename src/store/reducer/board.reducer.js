@@ -1,14 +1,17 @@
 const initialState = {
     board: {},
+    boards: [],
     lastRemovedBoard: null,
     filterBy: null,
     isOnScreenClick: false
 }
 export function boardReducer(state = initialState, action) {
     var newState = state
-    var board
-    var isOnScreenClick
     switch (action.type) {
+        case 'SET_BOARDS':
+            newState = { ...state, boards: action.boards }
+            console.log('newState: ', newState);
+            break
         case 'SET_BOARD':
             newState = { ...state, board: action.board }
             break
@@ -25,6 +28,7 @@ export function boardReducer(state = initialState, action) {
             newState = { ...state, isOnScreenClick: [...state.isOnScreenClick, action.isOnScreenClick] }
             break
         default:
+
     }
     // For debug:
     window.boardState = newState
