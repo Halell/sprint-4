@@ -154,6 +154,7 @@ export function TaskColumn({ board, boardColumn, task, setStatus, statusBgcColor
                             setStatus={setStatus}
                             field={'priority'}
                             closeModal={setColumn}
+                            board={board}
                         />
                     </div>
                 }

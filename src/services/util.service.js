@@ -8,7 +8,7 @@ export const utilService = {
 }
 
 function getColors() {
-    var colors = []
+    var colors = ['rgb(0, 200, 117)', 'rgb(253, 171, 61)', 'rgb(226, 68, 92)', 'rgb(196, 196, 196)', 'rgb(162, 93, 220)']
     for (var i = 0; i < 20; i++) {
         colors.push(utilService.getRandomColor())
     }

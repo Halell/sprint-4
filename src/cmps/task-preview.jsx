@@ -18,8 +18,8 @@ export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask, on
     useOutsideClick(wrapperRef, setIsModalOpen, false, null)
 
     useEffect(() => {
-        setStatus(task.priority, 'priority', 'loading')
-        setStatus(task.status, 'status', 'loading')
+        setStatus(task.priority, 'priority', task.style.status, 'loading')
+        setStatus(task.status, 'status', task.style.status, 'loading')
     }, [])
 
     const handleSelect = (date) => {
@@ -97,21 +97,17 @@ export const TaskPreview = ({ board, task, onUpdateTask, group, onRemoveTask, on
         const updateBoard = boardService.setActivity(board, 'Update task text')
         onUpdateTask(task, group.id, updateBoard)
     }
-    const setStatus = async (val, field, loading) => {
-        var color = 'rgb(196, 196, 196)'
+    const setStatus = async (val, field, label, loading) => {
         const prevStatus = task[field]
         var style = {
             from: statusBgcColor,
             to: ''
         }
-        if (val === 'done' || val === 'high') color = 'rgb(0, 200, 117)'
-        if (val === 'working on it' || val === 'mid') color = 'rgb(253, 171, 61)'
-        if (val === 'stuck' || val === 'low') color = 'rgb(226, 68, 92)'
 
         task[field] = val
-        field === 'status' ? setStatusBgcColor(color) : setImportanceBgcColor(color)
-        task.style[field] = color
-        style.to = color
+        field === 'status' ? setStatusBgcColor(label) : setImportanceBgcColor(label)
+        task.style[field] = label
+        style.to = label
         if (loading) return
         const newTask = taskService.setActivity(task, `Changed ${field}`, prevStatus, task[field], style)
         const updateBoard = boardService.setActivity(board, `Changed ${field}`, prevStatus, task[field], style)
