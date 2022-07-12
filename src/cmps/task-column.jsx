@@ -59,7 +59,8 @@ export function TaskColumn({ board, boardColumn, task, setStatus, statusBgcColor
                     <LabelsModal
                         parentRef={parentRef}
                         setStatus={setStatus}
-                        field={'status'}
+                        taskField={'status'}
+                        boardField={'statuses'}
                         closeModal={setColumn}
                     />
                 </div>
@@ -152,7 +153,8 @@ export function TaskColumn({ board, boardColumn, task, setStatus, statusBgcColor
                         <LabelsModal
                             parentRef={parentRef}
                             setStatus={setStatus}
-                            field={'priority'}
+                            taskField={'priority'}
+                            boardField={'priorities'}
                             closeModal={setColumn}
                             board={board}
                         />

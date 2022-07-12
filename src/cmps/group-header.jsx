@@ -87,7 +87,6 @@ export function GroupHeader({ board, group, onUseBtn, onSaveGroup, onUpdateColum
                                     })}
                                 </div>
                             </div>
-
                         }
                         <div className="border"></div>
                         <div className="btn-modal-remove" onClick={() => onUseBtn('remove', group)}><AiOutlineDelete /> <span>Remove group</span> </div>

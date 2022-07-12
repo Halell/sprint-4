@@ -1,21 +1,26 @@
 import { useEffect, useState } from "react"
-import { useDispatch } from "react-redux"
 import { Link } from 'react-router-dom'
 import { boardService } from '../services/board.service.js'
+import { userService } from "../services/user.service.js"
 // import { userService } from "../services/user.service"
 
 export const HomePage = () => {
     const [boards, setBoards] = useState(null)
 
     useEffect(() => {
-        loadBoards()
+        onLogout()
+        onLoadBoards()
     }, [])
 
-    const loadBoards = async () => {
+    const onLogout = () => {
+        userService.logout()
+    }
+
+    const onLoadBoards = async () => {
         const boards = await boardService.query()
         if (!boards.length) {
             await boardService.save({})
-            loadBoards()
+            // onLoadBoards()
         }
         console.log('boards: ', boards);
         setBoards(boards)
